@@ -8,13 +8,30 @@ export default function Resume() {
 
             <div className='resume-box'>
                 <div className='left-box'>
-                    <h1 className='text-xl font-bold'>KAMRUZZAMAN</h1>
-                    <p className='subtitle mb-10 capitalize'>Software Engineer</p>
+                    <Image
+                        src='/images/profile.png'
+                        className='mx-auto rounded-full bg-primary-400 object-cover'
+                        width={150}
+                        height={150}
+                        alt='profile'
+                    />
+                    <h1 className='mt-4 text-center text-xl font-bold'>KAMRUZZAMAN</h1>
+                    <p className='subtitle mb-6 text-center capitalize'>Software Engineer</p>
                     {/* contact info */}
                     <div className='subtitle left'>
                         <p className='subtitle-border'>Personal Details</p>
                     </div>
                     <ul className='mb-3 space-y-2'>
+                        {/* <li className='flex items-center'>
+                            <Image
+                                className='contact-icon'
+                                src='/images/user.png'
+                                width={20}
+                                height={20}
+                                alt='KAMRUZZAMAN'
+                            />
+                            <p className='text-sm'>KAMRUZZAMAN</p>
+                        </li> */}
                         <li className='flex items-center'>
                             <Image
                                 className='contact-icon'
