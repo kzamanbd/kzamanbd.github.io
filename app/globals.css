@@ -7,7 +7,13 @@
         @apply print:mx-0 print:my-0 print:rounded-none print:shadow-none relative break-before-auto;
     }
     .subtitle {
-        @apply font-bold text-primary print:text-gray-700 uppercase;
+        @apply font-bold text-primary print:text-gray-700 capitalize mb-3 relative;
+    }
+    .subtitle.left {
+        @apply after:h-px after:absolute after:inset-0 after:bg-primary after:m-auto z-10;
+    }
+    .subtitle-border {
+        @apply relative z-20 w-max bg-white pr-3;
     }
     .resume-box {
         @apply grid h-full grid-cols-10 gap-4;
@@ -37,7 +43,7 @@
         @apply print:bg-primary-50 text-xs flex items-center w-32 rounded-md bg-white px-3 py-2 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900;
     }
     .contact-icon {
-        @apply w-6 h-6 mr-4 rounded;
+        @apply mr-3 rounded;
     }
     /* extra buttons */
     .export-btn {

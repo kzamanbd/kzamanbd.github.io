@@ -9,27 +9,29 @@ export default function Resume() {
             <div className='resume-box'>
                 <div className='left-box'>
                     <h1 className='text-xl font-bold'>KAMRUZZAMAN</h1>
-                    <p className='subtitle capitalize'>Software Engineer</p>
+                    <p className='subtitle mb-10 capitalize'>Software Engineer</p>
                     {/* contact info */}
-                    <p className='subtitle mb-2 mt-10'>Contact</p>
-                    <ul className='divide-y-2'>
-                        <li className='flex items-center py-2'>
+                    <div className='subtitle left'>
+                        <p className='subtitle-border'>Personal Details</p>
+                    </div>
+                    <ul className='mb-3 space-y-2'>
+                        <li className='flex items-center'>
                             <Image
                                 className='contact-icon'
                                 src='/images/phone.png'
-                                width={24}
-                                height={24}
+                                width={20}
+                                height={20}
                                 alt='phone'
                             />
                             <p className='text-sm'>+880 1716 724 245</p>
                         </li>
 
-                        <li className='flex items-center py-2'>
+                        <li className='flex items-center'>
                             <Image
                                 className='contact-icon'
                                 src='/images/email.png'
-                                width={24}
-                                height={24}
+                                width={20}
+                                height={20}
                                 alt='email'
                             />
                             <a
@@ -41,12 +43,12 @@ export default function Resume() {
                             </a>
                         </li>
 
-                        <li className='flex items-center py-2'>
+                        <li className='flex items-center'>
                             <Image
                                 className='contact-icon'
                                 src='/images/location.png'
-                                width={24}
-                                height={24}
+                                width={20}
+                                height={20}
                                 alt='location'
                             />
                             <p className='text-sm'>
@@ -55,12 +57,12 @@ export default function Resume() {
                             </p>
                         </li>
 
-                        <li className='flex items-center py-2'>
+                        <li className='flex items-center'>
                             <Image
                                 className='contact-icon'
                                 src='/images/github.png'
-                                width={24}
-                                height={24}
+                                width={20}
+                                height={20}
                                 alt='github'
                             />
                             <a
@@ -71,12 +73,12 @@ export default function Resume() {
                                 github.com/kzamaan
                             </a>
                         </li>
-                        <li className='flex items-center py-2'>
+                        <li className='flex items-center'>
                             <Image
                                 className='contact-icon'
                                 src='/images/linkedin.png'
-                                width={24}
-                                height={24}
+                                width={20}
+                                height={20}
                                 alt='github'
                             />
                             <a
@@ -90,8 +92,10 @@ export default function Resume() {
                     </ul>
 
                     {/* Education */}
-                    <p className='subtitle my-3'>Education</p>
-                    <div className='text-sm'>
+                    <div className='subtitle left'>
+                        <p className='subtitle-border'>Education</p>
+                    </div>
+                    <div className='mb-3 text-sm'>
                         <div className='mb-2'>
                             <p>
                                 <span className='font-bold'>B.SC. In CSE </span>
@@ -111,8 +115,10 @@ export default function Resume() {
                         </div>
                     </div>
                     {/* Key Skills */}
-                    <p className='subtitle my-3'>Key Skills</p>
-                    <div className='space-y-4'>
+                    <div className='subtitle left'>
+                        <p className='subtitle-border'>Key Skills</p>
+                    </div>
+                    <div className='mb-3 space-y-4'>
                         <button className='gradient-btn group from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500'>
                             <span className='gradient-content'>PHP/Laravel</span>
                         </button>
@@ -127,7 +133,9 @@ export default function Resume() {
                         </button>
                     </div>
                     {/* Training */}
-                    <p className='subtitle my-3'>Training</p>
+                    <div className='subtitle left'>
+                        <span className='subtitle-border'>Training</span>
+                    </div>
                     <div className='space-y-2 text-sm'>
                         <div>
                             <p className='font-bold'>PHP/Laravel (2019)</p>
@@ -140,7 +148,7 @@ export default function Resume() {
                     </div>
                 </div>
                 <div className='right-box'>
-                    <p className='subtitle mb-4'>Summary</p>
+                    <p className='subtitle'>Summary</p>
 
                     <p className='mb-6 text-sm'>
                         Over three years of experience building web applications, updating existing web applications,
@@ -151,7 +159,7 @@ export default function Resume() {
                     </p>
 
                     {/* Experience section */}
-                    <p className='subtitle mb-4'>Professional Experience</p>
+                    <p className='subtitle'>Professional Experience</p>
                     <div className='mb-6'>
                         {/* last job Experience */}
                         <div className='grid grid-cols-5 gap-16'>
@@ -260,7 +268,7 @@ export default function Resume() {
                     </div>
 
                     {/* Additional Skills */}
-                    <p className='subtitle mb-4'>Additional Skills</p>
+                    <p className='subtitle'>Additional Skills</p>
 
                     <ul className='bullet-list'>
                         <li className='flex items-center'>

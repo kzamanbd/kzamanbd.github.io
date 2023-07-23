@@ -19,10 +19,10 @@ module.exports = {
                     gray: '#F5F8FA',
                 },
                 primary: {
-                    DEFAULT: '#009EF7',
                     50: primary[50],
                     100: primary[100],
                     200: primary[200],
+                    DEFAULT: primary[500],
                 },
                 info: {
                     light: colors.blue[50],
