@@ -18,12 +18,7 @@ module.exports = {
                 light: {
                     gray: '#F5F8FA',
                 },
-                primary: {
-                    50: primary[50],
-                    100: primary[100],
-                    200: primary[200],
-                    DEFAULT: primary[500],
-                },
+                primary: primary,
                 info: {
                     light: colors.blue[50],
                     DEFAULT: colors.blue[500],
