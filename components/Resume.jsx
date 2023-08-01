@@ -16,10 +16,10 @@ export default function Resume() {
                         alt='profile'
                     />
                     <h1 className='mt-4 text-center text-xl font-bold'>KAMRUZZAMAN</h1>
-                    <p className='subtitle mb-6 text-center capitalize'>Software Engineer</p>
+                    <h5 className='subtitle mb-6 text-center capitalize'>Software Engineer</h5>
                     {/* contact info */}
                     <div className='subtitle left'>
-                        <p className='subtitle-border'>Personal Details</p>
+                        <h5 className='subtitle-border'>Personal Details</h5>
                     </div>
                     <ul className='mb-3 space-y-2'>
                         {/* <li className='flex items-center'>
@@ -110,9 +110,9 @@ export default function Resume() {
 
                     {/* Education */}
                     <div className='subtitle left'>
-                        <p className='subtitle-border'>Education</p>
+                        <h5 className='subtitle-border'>Education</h5>
                     </div>
-                    <div className='mb-3 text-sm'>
+                    <section className='mb-3 text-sm'>
                         <div className='mb-2'>
                             <p>
                                 <span className='font-bold'>B.SC. In CSE </span>
@@ -130,12 +130,12 @@ export default function Resume() {
                             <p className='italic'>Rumdo Institute of Modern Technology.</p>
                             <p> – Mymensingh City.</p>
                         </div>
-                    </div>
+                    </section>
                     {/* Key Skills */}
                     <div className='subtitle left'>
-                        <p className='subtitle-border'>Key Skills</p>
+                        <h5 className='subtitle-border'>Key Skills</h5>
                     </div>
-                    <div className='mb-3 space-y-4'>
+                    <section className='mb-3 space-y-4'>
                         <button className='gradient-btn group from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500'>
                             <span className='gradient-content'>PHP/Laravel</span>
                         </button>
@@ -148,12 +148,12 @@ export default function Resume() {
                         <button className='gradient-btn group from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500'>
                             <span className='gradient-content'>React/Redux</span>
                         </button>
-                    </div>
+                    </section>
                     {/* Training */}
                     <div className='subtitle left'>
-                        <span className='subtitle-border'>Training</span>
+                        <h5 className='subtitle-border'>Training</h5>
                     </div>
-                    <div className='space-y-2 text-sm'>
+                    <section className='space-y-2 text-sm'>
                         <div>
                             <p className='font-bold'>PHP/Laravel (2019)</p>
                             <p className='italic'>Creative It Institute, Dhaka.</p>
@@ -162,12 +162,12 @@ export default function Resume() {
                             <p className='font-bold'>Redux (2023)</p>
                             <p className='italic'>Learn with Sumit.</p>
                         </div>
-                    </div>
+                    </section>
                 </div>
                 <div className='right-box'>
-                    <p className='subtitle'>Summary</p>
+                    <h5 className='subtitle'>Summary</h5>
 
-                    <p className='mb-6 text-sm'>
+                    <p className='mb-5 text-sm'>
                         Over three years of experience building web applications, updating existing web applications,
                         and fixing bugs. I like to learn and use new technology in web development. I have worked
                         extensively on various stages of application development by creating & implementing application
@@ -176,8 +176,8 @@ export default function Resume() {
                     </p>
 
                     {/* Experience section */}
-                    <p className='subtitle'>Professional Experience</p>
-                    <div className='mb-6'>
+                    <h5 className='subtitle'>Professional Experience</h5>
+                    <section className='mb-5'>
                         {/* last job Experience */}
                         <div className='grid grid-cols-5 gap-16'>
                             <div className='section-box col-span-2'>
@@ -194,7 +194,7 @@ export default function Resume() {
                                 <p>TMC Building (6th Floor), 52 New Eskaton Road, Dhaka 1000.</p>
                             </div>
                         </div>
-                        <p className='mt-4'>
+                        <p className='mt-2'>
                             <span className='font-bold'>Software Engineer</span>
                             <span className='ml-2 text-sm'>at MononSoft Ltd. (A Sister Concern of JMI Group)</span>
                         </p>
@@ -238,8 +238,8 @@ export default function Resume() {
                                 </p>
                             </li>
                         </ul>
-                    </div>
-                    <div className='mb-6'>
+                    </section>
+                    <section className='mb-5'>
                         {/* last job Experience */}
                         <div className='grid grid-cols-5 gap-16'>
                             <div className='section-box col-span-2'>
@@ -252,7 +252,7 @@ export default function Resume() {
                                 <p>27/2 Ram Babu Road, Mymensingh – 2200</p>
                             </div>
                         </div>
-                        <p className='mt-4'>
+                        <p className='mt-2'>
                             <span className='font-bold'>Junior Software Engineer </span>
                             <span className='ml-2 text-sm'>at MaxSOP </span>
                         </p>
@@ -282,10 +282,10 @@ export default function Resume() {
                                 <p>Perform other operational tasks based on {`"as and when required"`}.</p>
                             </li>
                         </ul>
-                    </div>
+                    </section>
 
                     {/* Additional Skills */}
-                    <p className='subtitle'>Additional Skills</p>
+                    <h5 className='subtitle'>Additional Skills</h5>
 
                     <ul className='bullet-list'>
                         <li className='flex items-center'>
