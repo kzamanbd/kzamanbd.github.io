@@ -1,26 +1,8 @@
 'use client';
 
-import html2canvas from 'html2canvas';
-import { jsPDF } from 'jspdf';
 import { useState } from 'react';
 
 export default function DocExport() {
-    const resumeDownload = () => {
-        const printBtn = document.querySelector('.export-btn');
-        const resume = document.getElementById('resume');
-
-        printBtn.classList.add('hidden');
-
-        html2canvas(resume).then(canvas => {
-            const imgData = canvas.toDataURL('image/png');
-            const pdf = new jsPDF();
-            pdf.addImage(imgData, 'PNG', 0, 0);
-            pdf.save('KAMRUZZAMAN.pdf');
-
-            printBtn.classList.remove('hidden');
-        });
-    };
-
     const [editable, setEditable] = useState(true);
 
     const contentEditable = () => {
@@ -79,7 +61,7 @@ export default function DocExport() {
                         <rect x='6' y='14' width='12' height='8'></rect>
                     </svg>
                 </button>
-                <button onClick={resumeDownload} className='download-btn'>
+                <a href='/KAMRUZZAMAN.pdf' download className='download-btn'>
                     <svg
                         xmlns='http://www.w3.org/2000/svg'
                         width='16'
@@ -94,7 +76,7 @@ export default function DocExport() {
                         <polyline points='7 10 12 15 17 10'></polyline>
                         <line x1='12' y1='15' x2='12' y2='3'></line>
                     </svg>
-                </button>
+                </a>
             </div>
         </div>
     );
