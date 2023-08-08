@@ -1,6 +1,5 @@
 /** @type {import('tailwindcss').Config} */
 const colors = require('tailwindcss/colors');
-const primary = colors.sky;
 
 module.exports = {
     content: [
@@ -14,7 +13,7 @@ module.exports = {
                 light: {
                     gray: '#F5F8FA',
                 },
-                primary,
+                primary: colors.sky,
             },
             fontSize: {
                 sm: '12px',
