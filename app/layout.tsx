@@ -3,7 +3,6 @@ import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
-
 const description = `Over three years of experience building web applications, updating existing web applications, and fixing bugs. I like to learn and use new technology in web development. I have worked extensively on various stages of application development by creating & implementing application architecture, which includes various stages in development, code signing, and releasing to Market and collaborative environments for the web platform.`;
 
 const authorName = 'KAMRUZZAMAN';
@@ -12,7 +11,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 	return (
 		<html lang="en">
 			<head>
-				<title>KAMRUZZAMAN</title>
+				<title>{authorName}</title>
 				<meta
 					name="viewport"
 					content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
