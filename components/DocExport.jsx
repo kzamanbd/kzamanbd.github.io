@@ -61,7 +61,7 @@ export default function DocExport() {
                         <rect x='6' y='14' width='12' height='8'></rect>
                     </svg>
                 </button>
-                <a href='/KAMRUZZAMAN.pdf' download className='download-btn'>
+                <a href='/kamruzzaman.pdf' download className='download-btn'>
                     <svg
                         xmlns='http://www.w3.org/2000/svg'
                         width='16'
