@@ -3,7 +3,7 @@
 @layer components {
     /* a4 page */
     .page {
-        @apply w-[210mm] h-[297mm] mx-auto my-6 rounded bg-white border px-8 pt-16 pb-10;
+        @apply w-[210mm] h-[297mm] mx-auto my-6 rounded bg-white border px-8 pt-10 pb-10;
         @apply print:mx-0 print:my-0 print:rounded-none print:shadow-none relative break-before-auto;
     }
     .resume-box {
