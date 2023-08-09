@@ -1,22 +1,18 @@
-import DocExport from '@/components/DocExport';
+import ActionButton from '@/components/ActionButton';
 import Image from 'next/image';
 
 export default function Resume() {
     return (
         <div id='resume' className='page'>
-            <DocExport />
+            <ActionButton />
 
             <div className='resume-box'>
                 <div className='left-box'>
-                    <Image
-                        src='/images/profile.png'
-                        className='mx-auto rounded-full bg-primary-400 object-cover'
-                        width={150}
-                        height={150}
-                        alt='profile'
-                    />
-                    <h1 className='mt-4 text-center text-xl font-bold'>KAMRUZZAMAN</h1>
-                    <h5 className='subtitle mb-6 text-center capitalize'>Software Engineer</h5>
+                    <Image src='/images/profile.png' className='profile-photo' width={150} height={150} alt='profile' />
+                    <div className='name--title mt-4 text-center'>
+                        <h1 className='text-xl font-bold'>KAMRUZZAMAN</h1>
+                        <h5 className='subtitle mb-6 capitalize'>Software Engineer</h5>
+                    </div>
                     {/* contact info */}
                     <div className='subtitle left'>
                         <h5 className='subtitle-border'>Personal Details</h5>
@@ -138,9 +134,6 @@ export default function Resume() {
                     <section className='mb-3 space-y-4'>
                         <button className='gradient-btn group from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500'>
                             <span className='gradient-content'>PHP/Laravel</span>
-                        </button>
-                        <button className='gradient-btn group from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500'>
-                            <span className='gradient-content'>Node.js/Express</span>
                         </button>
                         <button className='gradient-btn group from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600'>
                             <span className='gradient-content'>VueJS/Vuex</span>
@@ -304,7 +297,7 @@ export default function Resume() {
                             <div className='mr-4'>
                                 <div className='bullet'></div>
                             </div>
-                            <p>Proficient Understanding of Code Versioning Tools (Git) CI/CD and Github Action.</p>
+                            <p>Proficient Understanding of Code Versioning Tools (Git), CI/CD and Github Action.</p>
                         </li>
                         <li className='flex items-center'>
                             <div className='mr-4'>
@@ -316,7 +309,7 @@ export default function Resume() {
                             <div className='mr-4'>
                                 <div className='bullet'></div>
                             </div>
-                            <p>Knowledge of JIRA, Elasticsearch, Linux or Other Unix-based systems.</p>
+                            <p>Knowledge of ElasticSearch, Kibana, Linux or Other Unix-based systems.</p>
                         </li>
                         <li className='flex items-center'>
                             <div className='mr-4'>

@@ -9,10 +9,17 @@ export default function DocExport() {
         document.body.contentEditable = editable;
         setEditable(() => !editable);
     };
+    const toggleImage = () => {
+        const image = document.querySelector('.profile-photo');
+        const title = document.querySelector('.name--title');
+        image.classList.toggle('hidden');
+        title.classList.toggle('text-center');
+        title.classList.toggle('mt-4');
+    };
     return (
         <div className='export-btn'>
-            <div className='inline-flex rounded-md shadow-sm'>
-                <button onClick={contentEditable} className='edit-btn'>
+            <div className='inline-flex'>
+                <button onClick={contentEditable} className='btn'>
                     {editable ? (
                         <svg
                             xmlns='http://www.w3.org/2000/svg'
@@ -45,7 +52,7 @@ export default function DocExport() {
                         </svg>
                     )}
                 </button>
-                <button onClick={() => window.print()} className='print-btn'>
+                <button onClick={() => window.print()} className='btn'>
                     <svg
                         xmlns='http://www.w3.org/2000/svg'
                         width='16'
@@ -61,7 +68,18 @@ export default function DocExport() {
                         <rect x='6' y='14' width='12' height='8'></rect>
                     </svg>
                 </button>
-                <a href='/kamruzzaman.pdf' download className='download-btn'>
+                <button onClick={toggleImage} className='btn'>
+                    <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        height='18px'
+                        viewBox='0 0 24 24'
+                        width='18px'
+                        fill='#000000'>
+                        <path d='M0 0h24v24H0V0z' fill='none' />
+                        <path d='M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14 6 17h12l-3.86-5.14z' />
+                    </svg>
+                </button>
+                <a href='/kamruzzaman.pdf' download className='btn'>
                     <svg
                         xmlns='http://www.w3.org/2000/svg'
                         width='16'
