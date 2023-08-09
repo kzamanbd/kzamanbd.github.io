@@ -19,7 +19,7 @@
         @apply font-bold print:text-gray-700 uppercase mb-2 relative text-primary-500;
     }
     .subtitle.left {
-        @apply after:h-[2px] after:absolute after:inset-0 after:bg-primary-500 after:m-auto z-10;
+        @apply after:h-px after:absolute after:inset-0 after:bg-primary-500 after:m-auto z-10;
     }
     .subtitle-border {
         @apply relative z-20 w-max bg-white pr-3;
@@ -28,7 +28,7 @@
         @apply flex h-10 items-center justify-center rounded-lg bg-primary-100;
     }
     .resume-link {
-        @apply text-sm text-primary-500 underline print:text-black;
+        @apply text-sm text-primary-500 underline;
     }
     .bullet-list {
         @apply mt-2 space-y-1.5 text-xs ml-5;
