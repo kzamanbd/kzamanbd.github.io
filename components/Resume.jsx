@@ -3,15 +3,15 @@ import Image from 'next/image';
 
 export default function Resume() {
     return (
-        <div id='resume' className='page'>
+        <div className='page'>
             <ActionButton />
 
-            <div className='resume-box'>
+            <div className='resume-box with-photo'>
                 <div className='left-box'>
                     <Image src='/images/profile.png' className='profile-photo' width={150} height={150} alt='profile' />
-                    <div className='name--title mt-4 text-center'>
+                    <div className='name--title'>
                         <h1 className='text-xl font-bold'>KAMRUZZAMAN</h1>
-                        <h5 className='subtitle mb-6 capitalize'>Software Engineer</h5>
+                        <h5 className='subtitle capitalize'>Software Engineer</h5>
                     </div>
                     {/* contact info */}
                     <div className='subtitle left'>

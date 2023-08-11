@@ -3,8 +3,8 @@
 @layer components {
     /* a4 page */
     .page {
-        @apply w-full md:w-[210mm] print:w-[210mm] h-[297mm] mx-auto my-6 rounded bg-white border px-8 pt-10 pb-10;
-        @apply print:mx-0 print:my-0 print:rounded-none print:shadow-none relative break-before-auto;
+        @apply mx-auto my-6 h-[297mm] w-full rounded border bg-white px-8 pb-10 pt-10 print:w-[210mm] md:w-[210mm];
+        @apply relative break-before-auto print:mx-0 print:my-0 print:rounded-none print:shadow-none;
     }
     .resume-box {
         @apply grid h-full grid-cols-10 gap-4;
@@ -12,14 +12,14 @@
     .left-box {
         @apply col-span-3;
     }
-    .right-box{
+    .right-box {
         @apply col-span-7 text-justify;
     }
     .subtitle {
-        @apply font-bold print:text-gray-700 uppercase mb-2 relative text-primary-500;
+        @apply relative mb-2 font-bold uppercase text-primary-500 print:text-gray-700;
     }
     .subtitle.left {
-        @apply after:h-px after:absolute after:inset-0 after:bg-primary-500 after:m-auto z-10;
+        @apply z-10 after:absolute after:inset-0 after:m-auto after:h-px after:bg-primary-500;
     }
     .subtitle-border {
         @apply relative z-20 w-max bg-white pr-3;
@@ -31,16 +31,16 @@
         @apply text-sm text-primary-500 underline;
     }
     .bullet-list {
-        @apply mt-2 space-y-1.5 text-xs ml-5;
+        @apply ml-5 mt-2 space-y-1.5 text-xs;
     }
     .bullet {
         @apply h-1.5 w-1.5 rounded-full bg-primary-500;
     }
     .gradient-btn {
-        @apply relative flex items-center justify-center overflow-hidden rounded bg-gradient-to-br p-0.5 font-bold text-gray-900 dark:text-white hover:text-white focus:outline-none focus:ring-0;
+        @apply relative flex items-center justify-center overflow-hidden rounded bg-gradient-to-br p-0.5 font-bold text-gray-900 hover:text-white focus:outline-none focus:ring-0 dark:text-white;
     }
     .gradient-content {
-        @apply print:bg-primary-50 text-xs flex items-center w-32 rounded-md bg-white px-3 py-2 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900;
+        @apply flex w-32 items-center rounded-md bg-white px-3 py-2 text-xs transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900 print:bg-primary-50;
     }
     .contact-icon {
         @apply mr-3 rounded;
@@ -48,12 +48,21 @@
     .profile-photo {
         @apply mx-auto rounded-full bg-primary-400 object-cover;
     }
+    .name--title {
+        @apply mb-10;
+    }
+    .resume-box.with-photo .name--title {
+        @apply mb-6 mt-4 text-center;
+    }
+    .resume-box:not(.with-photo) .profile-photo {
+        @apply hidden;
+    }
     /* extra buttons */
     .export-btn {
-        @apply cursor-pointer space-x-2 absolute right-6 top-4 text-sm print:hidden flex items-center z-50;
+        @apply absolute right-6 top-4 z-50 flex cursor-pointer items-center space-x-2 text-sm print:hidden;
     }
     .btn {
-        @apply flex justify-center items-center h-8 w-8 border border-r-0;
+        @apply flex h-8 w-8 items-center justify-center border border-r-0;
     }
     .btn:first-child {
         @apply rounded-l;
@@ -61,8 +70,6 @@
     .btn:last-child {
         @apply rounded-r border-r;
     }
-    
-
 }
 @tailwind utilities;
 

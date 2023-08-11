@@ -10,11 +10,7 @@ export default function DocExport() {
         setEditable(() => !editable);
     };
     const toggleImage = () => {
-        const image = document.querySelector('.profile-photo');
-        const title = document.querySelector('.name--title');
-        image.classList.toggle('hidden');
-        title.classList.toggle('text-center');
-        title.classList.toggle('mt-4');
+        document.querySelector('.resume-box').classList.toggle('with-photo');
     };
     return (
         <div className='export-btn'>
