@@ -152,7 +152,12 @@ export default function Resume() {
                             <p className='italic'>Creative It Institute, Dhaka.</p>
                         </div>
                         <div>
-                            <p className='font-bold'>Redux (2023)</p>
+                            <a
+                                href='https://learnwithsumit.com/certificates/verify/LWSCTXN-F584A5R7'
+                                target='_blank'
+                                className='resume-link font-bold'>
+                                Redux (2023)
+                            </a>
                             <p className='italic'>Learn with Sumit.</p>
                         </div>
                     </section>
