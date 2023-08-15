@@ -79,11 +79,11 @@ export default function Resume() {
                                 alt='github'
                             />
                             <a
-                                href='https://github.com/kzamaan'
+                                href='https://github.com/kzamanbd'
                                 target='_blank'
                                 className='resume-link'
                                 rel='noreferrer'>
-                                github.com/kzamaan
+                                github.com/kzamanbd
                             </a>
                         </li>
                         <li className='flex items-center'>
