@@ -13,7 +13,7 @@ module.exports = {
                 light: {
                     gray: '#F5F8FA',
                 },
-                primary: colors.sky,
+                primary: colors.indigo,
             },
             fontSize: {
                 sm: '12px',

@@ -83,7 +83,7 @@ export default function Resume() {
                                 target='_blank'
                                 className='resume-link'
                                 rel='noreferrer'>
-                                github.com/kzamanbd
+                                kzamanbd
                             </a>
                         </li>
                         <li className='flex items-center'>
@@ -99,7 +99,7 @@ export default function Resume() {
                                 target='_blank'
                                 className='resume-link'
                                 rel='noreferrer'>
-                                linkedin.com/in/kzamanbd
+                                in/kzamanbd
                             </a>
                         </li>
                     </ul>

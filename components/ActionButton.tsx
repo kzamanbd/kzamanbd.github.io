@@ -3,20 +3,20 @@
 import { useState } from 'react';
 
 export default function DocExport() {
-    const [editable, setEditable] = useState(true);
+    const [editable, setEditable] = useState('true');
 
     const contentEditable = () => {
         document.body.contentEditable = editable;
-        setEditable(() => !editable);
+        setEditable(prevState => (prevState === 'true' ? 'false' : 'true'));
     };
     const toggleImage = () => {
-        document.querySelector('.resume-box').classList.toggle('with-photo');
+        document.querySelector('.resume-box')?.classList.toggle('with-photo');
     };
     return (
         <div className='export-btn'>
             <div className='inline-flex'>
                 <button onClick={contentEditable} className='btn'>
-                    {editable ? (
+                    {editable === 'true' ? (
                         <svg
                             xmlns='http://www.w3.org/2000/svg'
                             width='16'
