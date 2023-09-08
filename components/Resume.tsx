@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 export default function Resume() {
     return (
-        <div className='page'>
+        <div className='page gradient'>
             <ActionButton />
 
             <div className='resume-box with-photo'>
