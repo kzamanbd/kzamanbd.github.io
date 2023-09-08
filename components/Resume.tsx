@@ -59,20 +59,6 @@ export default function Resume() {
                         <li className='flex items-center'>
                             <Image
                                 className='contact-icon'
-                                src='/images/location.png'
-                                width={20}
-                                height={20}
-                                alt='location'
-                            />
-                            <p className='text-sm'>
-                                Tejgaon Industrial Area,
-                                <br /> 29/C & 29/D, Dhaka
-                            </p>
-                        </li>
-
-                        <li className='flex items-center'>
-                            <Image
-                                className='contact-icon'
                                 src='/images/github.png'
                                 width={20}
                                 height={20}
@@ -83,7 +69,7 @@ export default function Resume() {
                                 target='_blank'
                                 className='resume-link'
                                 rel='noreferrer'>
-                                kzamanbd
+                                github.com/kzamanbd
                             </a>
                         </li>
                         <li className='flex items-center'>
@@ -99,8 +85,22 @@ export default function Resume() {
                                 target='_blank'
                                 className='resume-link'
                                 rel='noreferrer'>
-                                in/kzamanbd
+                                linkedin.com/in/kzamanbd
                             </a>
+                        </li>
+
+                        <li className='flex items-center'>
+                            <Image
+                                className='contact-icon'
+                                src='/images/location.png'
+                                width={20}
+                                height={20}
+                                alt='location'
+                            />
+                            <p className='text-sm'>
+                                Tejgaon Industrial Area,
+                                <br /> 29/C & 29/D, Dhaka
+                            </p>
                         </li>
                     </ul>
 
