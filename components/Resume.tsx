@@ -193,12 +193,15 @@ export default function Resume() {
                                 <a
                                     href='https://mononsoft.org'
                                     className='ml-2 text-sm font-medium text-primary-800 dark:bg-primary-900 dark:text-primary-300'>
-                                    at MononSoft Ltd. (A Sister Concern of JMI Group)
+                                    at <span className='underline'>MononSoft Ltd. (A Sister Concern of JMI Group)</span>
                                 </a>
                             </h3>
-                            <time className='mb-3 block text-sm font-normal leading-none text-gray-700 dark:text-gray-500'>
-                                May 2020 – Jun 2021
-                            </time>
+                            <div className='mb-3 flex items-center justify-between'>
+                                <time className='block text-sm font-normal leading-none text-gray-700 dark:text-gray-500'>
+                                    May 2020 – Jun 2021
+                                </time>
+                                <address className='text-xs'>52 New Eskaton Road, Dhaka-1000.</address>
+                            </div>
                             <ul className='bullet-list'>
                                 <li className='flex items-center'>
                                     <div className='mr-4'>
@@ -257,12 +260,16 @@ export default function Resume() {
                                 <a
                                     href='https://maxsop.com/'
                                     className='ml-2 text-sm font-medium text-primary-800 dark:bg-primary-900 dark:text-primary-300'>
-                                    at MaxSOP
+                                    at <span className='underline'>MaxSOP</span>
                                 </a>
                             </h3>
-                            <time className='mb-3 block text-sm font-normal leading-none text-gray-700 dark:text-gray-500'>
-                                May 2020 – Jun 2021
-                            </time>
+                            <div className='mb-3 flex items-center justify-between'>
+                                <time className='block text-sm font-normal leading-none text-gray-700 dark:text-gray-500'>
+                                    May 2020 – Jun 2021
+                                </time>
+
+                                <address className='text-xs'>27/2 Ram Babu Road, Mymensingh-2200</address>
+                            </div>
                             <ul className='bullet-list'>
                                 <li className='flex items-center'>
                                     <div className='mr-4'>
