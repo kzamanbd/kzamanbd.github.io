@@ -64,7 +64,7 @@
         @apply mr-3 rounded;
     }
     .profile-photo {
-        @apply mx-auto rounded-full bg-primary-400 object-cover;
+        @apply mx-auto rounded-full bg-gradient-to-r from-emerald-400 to-primary-400 object-cover;
     }
     .name--title {
         @apply mb-10;
