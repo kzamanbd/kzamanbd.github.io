@@ -3,7 +3,7 @@
 @layer components {
     /* a4 page */
     .page {
-        @apply z-[1] mx-auto my-6 h-[297mm] bg-white w-full rounded border px-8 pb-10 pt-10 print:w-[210mm] md:w-[210mm];
+        @apply z-[1] mx-auto my-6 h-[297mm] w-full rounded border bg-white px-8 pb-10 pt-10 print:w-[210mm] md:w-[210mm];
         @apply relative break-before-auto print:mx-0 print:my-0 print:rounded-none print:shadow-none;
     }
     .gradient {
@@ -18,6 +18,17 @@
             radial-gradient(at 33% 50%, hsla(222, 67%, 73%, 1) 0px, transparent 50%),
             radial-gradient(at 79% 53%, hsla(343, 68%, 79%, 1) 0px, transparent 50%);
     }
+    .orange-gradient {
+        @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
+    }
+
+    .green-gradient {
+        @apply bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent;
+    }
+
+    .blue-gradient {
+        @apply bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
+    }
     .resume-box {
         @apply grid h-full grid-cols-10 gap-4;
     }
@@ -28,16 +39,9 @@
         @apply col-span-7 text-justify;
     }
     .subtitle {
-        @apply relative mb-2 font-bold uppercase text-primary-500 print:text-gray-700;
+        @apply blue-gradient relative mb-2 font-bold uppercase print:text-gray-700;
     }
 
-    .subtitle.left {
-        @apply z-10 after:absolute after:inset-0 after:m-auto after:h-px after:bg-primary-500;
-    }
-    .subtitle-border {
-        @apply relative z-20 w-max bg-white pr-3;
-    }
-    
     .section-box {
         @apply flex h-10 items-center justify-center rounded-lg bg-primary-100;
     }
@@ -45,7 +49,7 @@
         @apply text-sm text-primary-500 underline;
     }
     .bullet-list {
-        @apply ml-5 mt-2 space-y-1.5 text-xs;
+        @apply ml-2 mt-2 space-y-1.5 text-xs;
     }
     .bullet {
         @apply h-1.5 w-1.5 rounded-full bg-primary-500;
@@ -83,18 +87,6 @@
     }
     .btn:last-child {
         @apply rounded-r border-r;
-    }
-
-    .orange-gradient {
-        @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
-    }
-
-    .green-gradient {
-        @apply bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent;
-    }
-
-    .blue-gradient {
-        @apply bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
     }
 }
 @tailwind utilities;

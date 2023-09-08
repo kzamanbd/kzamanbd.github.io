@@ -14,8 +14,8 @@ export default function Resume() {
                         <h5 className='subtitle capitalize'>Software Engineer</h5>
                     </div>
                     {/* contact info */}
-                    <div className='subtitle left'>
-                        <h5 className='subtitle-border'>Personal Details</h5>
+                    <div className='subtitle'>
+                        <h5 className='subtitle-text'>Personal Details</h5>
                     </div>
                     <ul className='mb-3 space-y-2'>
                         {/* <li className='flex items-center'>
@@ -105,8 +105,8 @@ export default function Resume() {
                     </ul>
 
                     {/* Education */}
-                    <div className='subtitle left'>
-                        <h5 className='subtitle-border'>Education</h5>
+                    <div className='subtitle'>
+                        <h5 className='subtitle-text'>Education</h5>
                     </div>
                     <section className='mb-3 text-sm'>
                         <div className='mb-2'>
@@ -128,23 +128,23 @@ export default function Resume() {
                         </div>
                     </section>
                     {/* Key Skills */}
-                    <div className='subtitle left'>
-                        <h5 className='subtitle-border'>Key Skills</h5>
+                    <div className='subtitle'>
+                        <h5 className='subtitle-text'>Key Skills</h5>
                     </div>
                     <section className='mb-3 space-y-4'>
                         <button className='gradient-btn group from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500'>
                             <span className='gradient-content'>PHP/Laravel</span>
                         </button>
-                        <button className='gradient-btn group from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600'>
+                        <button className='gradient-btn group from-green-400 to-primary-600 group-hover:from-green-400 group-hover:to-primary-600'>
                             <span className='gradient-content'>VueJS/Vuex</span>
                         </button>
-                        <button className='gradient-btn group from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500'>
+                        <button className='gradient-btn group from-purple-600 to-primary-500 group-hover:from-purple-600 group-hover:to-primary-500'>
                             <span className='gradient-content'>React/Redux</span>
                         </button>
                     </section>
                     {/* Training */}
                     <div className='subtitle left'>
-                        <h5 className='subtitle-border'>Training</h5>
+                        <h5 className='subtitle-text'>Training</h5>
                     </div>
                     <section className='space-y-2 text-sm'>
                         <div>
@@ -174,129 +174,142 @@ export default function Resume() {
                     </p>
 
                     {/* Experience section */}
-                    <h5 className='subtitle'>Professional Experience</h5>
-                    <section className='mb-5'>
-                        {/* last job Experience */}
-                        <div className='grid grid-cols-5 gap-16'>
-                            <div className='section-box col-span-2'>
-                                <p className='text-sm font-bold'>Jun 2021 - Present</p>
-                            </div>
-                            <div className='col-span-3 flex flex-col justify-center text-xs'>
+                    <h5 className='subtitle mb-5'>Professional Experience</h5>
+
+                    <ol className='relative border-l border-primary-500 dark:border-gray-700'>
+                        <li className='mb-6 ml-6'>
+                            <span className='absolute -left-3 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-primary-100 ring-8 ring-white dark:bg-primary-900 dark:ring-gray-900'>
+                                <svg
+                                    className='h-2.5 w-2.5 text-primary-800 dark:text-primary-300'
+                                    aria-hidden='true'
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    fill='currentColor'
+                                    viewBox='0 0 20 20'>
+                                    <path d='M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z' />
+                                </svg>
+                            </span>
+                            <h3 className='mb-1 flex items-center font-bold text-gray-900 dark:text-white '>
+                                Software Engineer
                                 <a
                                     href='https://mononsoft.org'
-                                    target='_blank'
-                                    className='resume-link'
-                                    rel='noreferrer'>
-                                    https://mononsoft.org
+                                    className='ml-2 text-sm font-medium text-primary-800 dark:bg-primary-900 dark:text-primary-300'>
+                                    at MononSoft Ltd. (A Sister Concern of JMI Group)
                                 </a>
-                                <p>TMC Building (6th Floor), 52 New Eskaton Road, Dhaka 1000.</p>
-                            </div>
-                        </div>
-                        <p className='mt-2'>
-                            <span className='font-bold'>Software Engineer</span>
-                            <span className='ml-2 text-sm'>at MononSoft Ltd. (A Sister Concern of JMI Group)</span>
-                        </p>
-                        <ul className='bullet-list'>
-                            <li className='flex items-center'>
-                                <div className='mr-4'>
-                                    <div className='bullet'></div>
-                                </div>
-                                <p>Developing an ERP system based on Laravel, Vue.js and React.js.</p>
-                            </li>
-                            <li className='flex items-center'>
-                                <div className='mr-4'>
-                                    <div className='bullet'></div>
-                                </div>
-                                <p>Developing software solutions to meet customer needs.</p>
-                            </li>
-                            <li className='flex items-center'>
-                                <div className='mr-4'>
-                                    <div className='bullet'></div>
-                                </div>
-                                <p>Creating and implementing the source code of new applications.</p>
-                            </li>
-                            <li className='flex items-center'>
-                                <div className='mr-4'>
-                                    <div className='bullet'></div>
-                                </div>
-                                <p>Testing source code and debugging code.</p>
-                            </li>
-                            <li className='flex items-center'>
-                                <div className='mr-4'>
-                                    <div className='bullet'></div>
-                                </div>
-                                <p>Evaluating existing applications and performing updates and modifications.</p>
-                            </li>
-                            <li className='flex items-center'>
-                                <div className='mr-4'>
-                                    <div className='bullet'></div>
-                                </div>
-                                <p>
-                                    Developing technical handbooks to represent the design and code of new applications.
-                                </p>
-                            </li>
-                        </ul>
-                    </section>
-                    <section className='mb-5'>
-                        {/* last job Experience */}
-                        <div className='grid grid-cols-5 gap-16'>
-                            <div className='section-box col-span-2'>
-                                <p className='text-sm font-bold'>May 2020 – Jun 2021</p>
-                            </div>
-                            <div className='col-span-3 flex flex-col justify-center text-xs'>
-                                <a href='https://maxsop.com' target='_blank' className='resume-link' rel='noreferrer'>
-                                    https://maxsop.com
+                            </h3>
+                            <time className='mb-3 block text-sm font-normal leading-none text-gray-700 dark:text-gray-500'>
+                                May 2020 – Jun 2021
+                            </time>
+                            <ul className='bullet-list'>
+                                <li className='flex items-center'>
+                                    <div className='mr-4'>
+                                        <div className='bullet'></div>
+                                    </div>
+                                    <p>Developing an ERP system based on Laravel, Vue.js and React.js.</p>
+                                </li>
+                                <li className='flex items-center'>
+                                    <div className='mr-4'>
+                                        <div className='bullet'></div>
+                                    </div>
+                                    <p>Developing software solutions to meet customer needs.</p>
+                                </li>
+                                <li className='flex items-center'>
+                                    <div className='mr-4'>
+                                        <div className='bullet'></div>
+                                    </div>
+                                    <p>Creating and implementing the source code of new applications.</p>
+                                </li>
+                                <li className='flex items-center'>
+                                    <div className='mr-4'>
+                                        <div className='bullet'></div>
+                                    </div>
+                                    <p>Testing source code and debugging code.</p>
+                                </li>
+                                <li className='flex items-center'>
+                                    <div className='mr-4'>
+                                        <div className='bullet'></div>
+                                    </div>
+                                    <p>Evaluating existing applications and performing updates and modifications.</p>
+                                </li>
+                                <li className='flex items-center'>
+                                    <div className='mr-4'>
+                                        <div className='bullet'></div>
+                                    </div>
+                                    <p>
+                                        Developing technical handbooks to represent the design and code of new
+                                        applications.
+                                    </p>
+                                </li>
+                            </ul>
+                        </li>
+                        <li className='mb-6 ml-6'>
+                            <span className='absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary-100 ring-8 ring-white dark:bg-primary-900 dark:ring-gray-900'>
+                                <svg
+                                    className='h-2.5 w-2.5 text-primary-800 dark:text-primary-300'
+                                    aria-hidden='true'
+                                    xmlns='http://www.w3.org/2000/svg'
+                                    fill='currentColor'
+                                    viewBox='0 0 20 20'>
+                                    <path d='M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z' />
+                                </svg>
+                            </span>
+                            <h3 className='mb-1 font-bold text-gray-900 dark:text-white'>
+                                Junior Software Engineer
+                                <a
+                                    href='https://maxsop.com/'
+                                    className='ml-2 text-sm font-medium text-primary-800 dark:bg-primary-900 dark:text-primary-300'>
+                                    at MaxSOP
                                 </a>
-                                <p>27/2 Ram Babu Road, Mymensingh – 2200</p>
-                            </div>
-                        </div>
-                        <p className='mt-2'>
-                            <span className='font-bold'>Junior Software Engineer </span>
-                            <span className='ml-2 text-sm'>at MaxSOP </span>
-                        </p>
-                        <ul className='bullet-list'>
-                            <li className='flex items-center'>
-                                <div className='mr-4'>
-                                    <div className='bullet'></div>
-                                </div>
-                                <p>Developing web applications based on PHP frameworks - Laravel, Vue JS.</p>
-                            </li>
-                            <li className='flex items-center'>
-                                <div className='mr-4'>
-                                    <div className='bullet'></div>
-                                </div>
-                                <p>Build efficient, testable & reusable codes. Modify existing code as needed.</p>
-                            </li>
-                            <li className='flex items-center'>
-                                <div className='mr-4'>
-                                    <div className='bullet'></div>
-                                </div>
-                                <p>Executed and monitored standards for user interfaces page design and development.</p>
-                            </li>
-                            <li className='flex items-center'>
-                                <div className='mr-4'>
-                                    <div className='bullet'></div>
-                                </div>
-                                <p>Perform other operational tasks based on {`"as and when required"`}.</p>
-                            </li>
-                        </ul>
-                    </section>
+                            </h3>
+                            <time className='mb-3 block text-sm font-normal leading-none text-gray-700 dark:text-gray-500'>
+                                May 2020 – Jun 2021
+                            </time>
+                            <ul className='bullet-list'>
+                                <li className='flex items-center'>
+                                    <div className='mr-4'>
+                                        <div className='bullet'></div>
+                                    </div>
+                                    <p>Developing web applications based on PHP frameworks - Laravel, Vue JS.</p>
+                                </li>
+                                <li className='flex items-center'>
+                                    <div className='mr-4'>
+                                        <div className='bullet'></div>
+                                    </div>
+                                    <p>Build efficient, testable & reusable codes. Modify existing code as needed.</p>
+                                </li>
+                                <li className='flex items-center'>
+                                    <div className='mr-4'>
+                                        <div className='bullet'></div>
+                                    </div>
+                                    <p>
+                                        Executed and monitored standards for user interfaces page design and
+                                        development.
+                                    </p>
+                                </li>
+                                <li className='flex items-center'>
+                                    <div className='mr-4'>
+                                        <div className='bullet'></div>
+                                    </div>
+                                    <p>Perform other operational tasks based on {`"as and when required"`}.</p>
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
 
                     {/* Additional Skills */}
                     <h5 className='subtitle'>Additional Skills</h5>
 
-                    <ul className='bullet-list'>
+                    <ul className='bullet-list ml-4'>
                         <li className='flex items-center'>
                             <div className='mr-4'>
                                 <div className='bullet'></div>
                             </div>
-                            <p>Good Knowledge on Web Services likes REST/JSON/XML APIs.</p>
+                            <p>Advance Knowledge on Web Services likes REST/JSON/XML APIs.</p>
                         </li>
                         <li className='flex items-center'>
                             <div className='mr-4'>
                                 <div className='bullet'></div>
                             </div>
-                            <p>HTML, CSS, Bootstrap, Tailwind CSS, Livewire, Alpine.js and MySQL</p>
+                            <p>SQL, MySQL, TypeScript, Redux, Tailwind CSS, Bootstrap, Vuetify and Livewire.</p>
                         </li>
                         <li className='flex items-center'>
                             <div className='mr-4'>
@@ -326,7 +339,7 @@ export default function Resume() {
                             <div className='mr-4'>
                                 <div className='bullet'></div>
                             </div>
-                            <p>Self-managed, independent, initiative and proactive.</p>
+                            <p>Problem-solving skills, Self-managed, independent, initiative and proactive.</p>
                         </li>
                     </ul>
                 </div>
