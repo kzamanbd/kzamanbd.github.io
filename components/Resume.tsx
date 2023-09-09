@@ -1,6 +1,6 @@
-import ActionButton from '@/components/ActionButton';
-import JobIcon from '@/components/JobIcon';
-import Image from 'next/image';
+import ActionButton from "@/components/ActionButton";
+import JobIcon from "@/components/JobIcon";
+import Image from "next/image";
 
 export default function Resume() {
 	return (
@@ -179,7 +179,7 @@ export default function Resume() {
 
 					<ol className="relative border-l border-primary-500 dark:border-gray-700">
 						<li className="mb-6 ml-6">
-							<span className="absolute -left-3 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-primary-100 ring-8 ring-white dark:bg-primary-900 dark:ring-gray-900">
+							<span className="absolute -left-3 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-white ring-8 ring-primary-200 dark:bg-primary-900 dark:ring-gray-900">
 								<JobIcon />
 							</span>
 							<h3 className="mb-1 flex items-center font-bold text-gray-900 dark:text-white ">
@@ -239,7 +239,7 @@ export default function Resume() {
 							</ul>
 						</li>
 						<li className="mb-6 ml-6">
-							<span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-primary-100 ring-8 ring-white dark:bg-primary-900 dark:ring-gray-900">
+							<span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-white ring-8 ring-primary-200 dark:bg-primary-900 dark:ring-gray-900">
 								<JobIcon />
 							</span>
 							<h3 className="mb-1 font-bold text-gray-900 dark:text-white">
