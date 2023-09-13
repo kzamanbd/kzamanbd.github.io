@@ -192,7 +192,7 @@ export default function Resume() {
 							</h3>
 							<div className="mb-3 flex items-center justify-between">
 								<time className="block text-sm font-normal leading-none text-gray-700 dark:text-gray-500">
-									May 2020 – Jun 2021
+									Jun 2021 - Present
 								</time>
 								<address className="text-xs">52 New Eskaton Road, Dhaka-1000.</address>
 							</div>
