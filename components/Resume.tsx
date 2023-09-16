@@ -177,21 +177,19 @@ export default function Resume() {
 					{/* Experience section */}
 					<h5 className="subtitle mb-5">Professional Experience</h5>
 
-					<ol className="relative border-l border-primary-500 dark:border-gray-700">
+					<ol className="relative border-l border-primary-500">
 						<li className="mb-6 ml-6">
-							<span className="absolute -left-3 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-white ring-8 ring-primary-200 dark:bg-primary-900 dark:ring-gray-900">
+							<span className="absolute -left-3 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-white ring-8 ring-primary-200">
 								<JobIcon />
 							</span>
-							<h3 className="mb-1 flex items-center font-bold text-gray-900 dark:text-white ">
+							<h3 className="mb-1 flex items-center font-bold text-gray-900">
 								Software Engineer
-								<a
-									href="https://mononsoft.org"
-									className="ml-2 text-sm font-medium text-primary-800 dark:bg-primary-900 dark:text-primary-300">
+								<a href="https://mononsoft.org" className="ml-2 text-sm font-medium text-primary-800">
 									at <span className="underline">MononSoft Ltd. (A Sister Concern of JMI Group)</span>
 								</a>
 							</h3>
 							<div className="mb-3 flex items-center justify-between">
-								<time className="block text-sm font-normal leading-none text-gray-700 dark:text-gray-500">
+								<time className="block text-sm font-normal leading-none text-gray-700">
 									Jun 2021 - Present
 								</time>
 								<address className="text-xs">52 New Eskaton Road, Dhaka-1000.</address>
@@ -239,19 +237,17 @@ export default function Resume() {
 							</ul>
 						</li>
 						<li className="mb-6 ml-6">
-							<span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-white ring-8 ring-primary-200 dark:bg-primary-900 dark:ring-gray-900">
+							<span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-white ring-8 ring-primary-200">
 								<JobIcon />
 							</span>
-							<h3 className="mb-1 font-bold text-gray-900 dark:text-white">
+							<h3 className="mb-1 font-bold text-gray-900 ">
 								Junior Software Engineer
-								<a
-									href="https://maxsop.com/"
-									className="ml-2 text-sm font-medium text-primary-800 dark:bg-primary-900 dark:text-primary-300">
+								<a href="https://maxsop.com/" className="ml-2 text-sm font-medium text-primary-800">
 									at <span className="underline">MaxSOP</span>
 								</a>
 							</h3>
 							<div className="mb-3 flex items-center justify-between">
-								<time className="block text-sm font-normal leading-none text-gray-700 dark:text-gray-500">
+								<time className="block text-sm font-normal leading-none text-gray-700">
 									May 2020 – Jun 2021
 								</time>
 

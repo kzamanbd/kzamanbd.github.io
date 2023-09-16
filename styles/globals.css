@@ -54,10 +54,10 @@
 		@apply h-1.5 w-1.5 rounded-full bg-primary-500;
 	}
 	.gradient-btn {
-		@apply relative flex items-center justify-center overflow-hidden rounded bg-gradient-to-br p-0.5 font-bold text-gray-900 hover:text-white focus:outline-none focus:ring-0 dark:text-white;
+		@apply relative flex items-center justify-center overflow-hidden rounded bg-gradient-to-br p-0.5 font-bold text-gray-900 hover:text-white focus:outline-none focus:ring-0;
 	}
 	.gradient-content {
-		@apply flex w-32 items-center rounded-md bg-white px-3 py-2 text-xs transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900 print:bg-primary-50;
+		@apply flex w-32 items-center rounded-md bg-white px-3 py-2 text-xs transition-all duration-75 ease-in group-hover:bg-opacity-0 print:bg-primary-50;
 	}
 	.contact-icon {
 		@apply mr-3 rounded;

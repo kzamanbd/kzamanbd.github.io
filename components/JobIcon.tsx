@@ -1,7 +1,7 @@
 const JobIcon = () => {
 	return (
 		<svg
-			className="h-2.5 w-2.5 text-primary-800 dark:text-primary-300 fill-primary-500"
+			className="h-2.5 w-2.5 text-primary-800 fill-primary-500"
 			xmlns="http://www.w3.org/2000/svg"
 			height="24px"
 			viewBox="0 0 24 24"
