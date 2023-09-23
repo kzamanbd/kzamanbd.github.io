@@ -183,7 +183,7 @@ export default function Resume() {
 								<JobIcon />
 							</span>
 							<h3 className="mb-1 flex items-center font-bold text-gray-900">
-								Software Engineer
+								<span>Software Engineer</span>
 								<a href="https://mononsoft.org" className="ml-2 text-sm font-medium text-primary-800">
 									at <span className="underline">MononSoft Ltd. (A Sister Concern of JMI Group)</span>
 								</a>
@@ -240,8 +240,8 @@ export default function Resume() {
 							<span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-white ring-8 ring-primary-200">
 								<JobIcon />
 							</span>
-							<h3 className="mb-1 font-bold text-gray-900 ">
-								Junior Software Engineer
+							<h3 className="mb-1 flex items-center font-bold text-gray-900">
+								<span>Junior Software Engineer</span>
 								<a href="https://maxsop.com/" className="ml-2 text-sm font-medium text-primary-800">
 									at <span className="underline">MaxSOP</span>
 								</a>
@@ -250,7 +250,6 @@ export default function Resume() {
 								<time className="block text-sm font-normal leading-none text-gray-700">
 									May 2020 – Jun 2021
 								</time>
-
 								<address className="text-xs">27/2 Ram Babu Road, Mymensingh-2200</address>
 							</div>
 							<ul className="bullet-list">
