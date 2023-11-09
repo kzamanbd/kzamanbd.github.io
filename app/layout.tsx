@@ -18,7 +18,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 />
 
                 <link rel="manifest" href="/manifest.json" />
-                <link rel="icon" href="/icons/icon-192x192.png" />
+                <link rel="icon" href="/kzaman-transparent.png" />
                 <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
                 <meta name="theme-color" content="#009EF7" />
                 <meta name="apple-mobile-web-app-status-bar" content="#009EF7" />
