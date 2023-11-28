@@ -310,13 +310,9 @@ export default function Resume() {
                             <div className="mr-4">
                                 <div className="bullet"></div>
                             </div>
-                            <p>Familiarity with DevOps processes and tools (Docker).</p>
-                        </li>
-                        <li className="flex items-center">
-                            <div className="mr-4">
-                                <div className="bullet"></div>
-                            </div>
-                            <p>Knowledge of ElasticSearch, Kibana, Linux or Other Unix-based systems.</p>
+                            <p>
+                                Familiarity with DevOps processes and tools (Docker), Linux or Other Unix-based systems.
+                            </p>
                         </li>
                         <li className="flex items-center">
                             <div className="mr-4">
