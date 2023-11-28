@@ -1,6 +1,6 @@
-import ActionButton from "@/components/ActionButton";
-import JobIcon from "@/components/JobIcon";
-import Image from "next/image";
+import ActionButton from '@/components/ActionButton';
+import JobIcon from '@/components/JobIcon';
+import Image from 'next/image';
 
 export default function Resume() {
     return (
@@ -136,11 +136,11 @@ export default function Resume() {
                         <button className="gradient-btn group from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500">
                             <span className="gradient-content">PHP/Laravel</span>
                         </button>
-                        <button className="gradient-btn group from-green-400 to-primary-600 group-hover:from-green-400 group-hover:to-primary-600">
-                            <span className="gradient-content">VueJS/Vuex</span>
-                        </button>
                         <button className="gradient-btn group from-purple-600 to-primary-500 group-hover:from-purple-600 group-hover:to-primary-500">
                             <span className="gradient-content">React/Redux</span>
+                        </button>
+                        <button className="gradient-btn group from-green-400 to-primary-600 group-hover:from-green-400 group-hover:to-primary-600">
+                            <span className="gradient-content">VueJS/Vuex</span>
                         </button>
                     </section>
                     {/* Training */}
