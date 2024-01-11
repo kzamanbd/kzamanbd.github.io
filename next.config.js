@@ -1,8 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    output: process.env.NODE_ENV === 'production' ? 'export' : 'standalone',
+    output: 'export',
     distDir: process.env.NODE_ENV === 'production' ? '.next' : 'build',
-    poweredByHeader: false,
+    poweredByHeader: false
 };
 
 module.exports = nextConfig;
