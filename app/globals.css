@@ -2,7 +2,7 @@
 @tailwind components;
 @layer components {
     .page {
-        @apply z-[1] mx-auto my-6 w-full rounded border bg-white px-8 pb-10 pt-12 h-auto md:h-[297mm] print:h-[297mm] print:w-[210mm] md:w-[210mm];
+        @apply z-[1] mx-auto md:my-6 w-full rounded border bg-white px-8 pb-10 pt-12 h-auto md:h-[297mm] print:h-[297mm] print:w-[210mm] md:w-[210mm];
         @apply relative break-before-auto print:mx-0 print:my-0 print:rounded-none print:shadow-none;
     }
     .gradient {
