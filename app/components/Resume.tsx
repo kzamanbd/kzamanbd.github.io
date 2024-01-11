@@ -184,7 +184,10 @@ export default function Resume() {
                             </span>
                             <h3 className="mb-1 flex items-center font-bold text-gray-900">
                                 <span>Software Engineer</span>
-                                <a href="https://mononsoft.org" className="ml-2 text-sm font-medium text-primary-800">
+                                <a
+                                    href="https://mononsoft.org"
+                                    className="ml-2 text-sm font-medium text-primary-800"
+                                    target="_blank">
                                     at <span className="underline">MononSoft Ltd. (A Sister Concern of JMI Group)</span>
                                 </a>
                             </h3>
@@ -242,7 +245,10 @@ export default function Resume() {
                             </span>
                             <h3 className="mb-1 flex items-center font-bold text-gray-900">
                                 <span>Junior Software Engineer</span>
-                                <a href="https://maxsop.com/" className="ml-2 text-sm font-medium text-primary-800">
+                                <a
+                                    href="https://maxsop.com/"
+                                    className="ml-2 text-sm font-medium text-primary-800"
+                                    target="_blank">
                                     at <span className="underline">MaxSOP</span>
                                 </a>
                             </h3>
