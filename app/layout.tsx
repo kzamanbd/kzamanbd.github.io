@@ -1,12 +1,12 @@
-import "@/styles/globals.css";
-import { Inter } from "next/font/google";
-import Script from 'next/script'
+import '@/styles/globals.css';
+import { Inter } from 'next/font/google';
+import Script from 'next/script';
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({ subsets: ['latin'] });
 
 const description = `Over three years of experience building web applications, updating existing web applications, and fixing bugs. I like to learn and use new technology in web development. I have worked extensively on various stages of application development by creating & implementing application architecture, which includes various stages in development, code signing, and releasing to Market and collaborative environments for the web platform.`;
 
-const authorName = "KAMRUZZAMAN";
+const authorName = 'KAMRUZZAMAN';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
@@ -51,7 +51,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <div className={inter.className}>{children}</div>
                 <Script src="https://www.googletagmanager.com/gtag/js?id=G-3HFZXXGGM3" />
                 <Script id="google-analytics">
-                {`
+                    {`
                   window.dataLayer = window.dataLayer || [];
                   function gtag(){dataLayer.push(arguments);}
                   gtag('js', new Date());

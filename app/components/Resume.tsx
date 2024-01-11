@@ -1,5 +1,5 @@
-import ActionButton from '@/components/ActionButton';
-import JobIcon from '@/components/JobIcon';
+import ActionButton from '@/app/components/ActionButton';
+import JobIcon from '@/app/components/JobIcon';
 import Image from 'next/image';
 
 export default function Resume() {

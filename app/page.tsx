@@ -1,5 +1,5 @@
-import CoverLetter from "@/components/CoverLetter";
-import Resume from "@/components/Resume";
+import CoverLetter from '@/app/components/CoverLetter';
+import Resume from '@/app/components/Resume';
 
 export default function Home() {
     return (
