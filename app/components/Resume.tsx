@@ -4,7 +4,7 @@ import Image from 'next/image';
 
 export default function Resume() {
     return (
-        <div className="page gradient">
+        <div className="page gradient resume">
             <ActionButton />
 
             <div className="resume-box with-photo">
@@ -132,19 +132,19 @@ export default function Resume() {
                     <div className="subtitle">
                         <h5 className="subtitle-text">Key Skills</h5>
                     </div>
-                    <section className="mb-3 space-y-4">
-                        <button className="gradient-btn group from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500">
-                            <span className="gradient-content">PHP/Laravel</span>
+                    <section className="grid grid-cols-3 gap-2">
+                        <button className="key-button group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
+                            <span className="key-skill">PHP</span>
                         </button>
-                        <button className="gradient-btn group from-purple-600 to-primary-500 group-hover:from-purple-600 group-hover:to-primary-500">
-                            <span className="gradient-content">React/Redux</span>
+                        <button className="key-button group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
+                            <span className="key-skill">VueJS</span>
                         </button>
-                        <button className="gradient-btn group from-green-400 to-primary-600 group-hover:from-green-400 group-hover:to-primary-600">
-                            <span className="gradient-content">VueJS/Vuex</span>
+                        <button className="key-button group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
+                            <span className="key-skill">React</span>
                         </button>
                     </section>
                     {/* Training */}
-                    <div className="subtitle left">
+                    <div className="subtitle left mt-3">
                         <h5 className="subtitle-text">Training</h5>
                     </div>
                     <section className="space-y-2 text-sm">
