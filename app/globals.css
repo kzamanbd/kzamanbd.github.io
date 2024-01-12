@@ -6,8 +6,7 @@
         @apply relative break-before-auto print:mx-0 print:my-0 print:rounded-none print:shadow-none print:h-[297mm] print:w-[210mm];
     }
     .gradient {
-        @apply after:absolute after:inset-0 after:z-[-1] after:h-full after:w-full after:rotate-180;
-        @apply after:bg-[url(/background.svg)];
+        @apply after:absolute after:inset-0 after:z-[-1] after:h-full after:w-full after:rotate-180 after:bg-[url(/background.svg)];
     }
     .orange-gradient {
         @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
@@ -32,7 +31,9 @@
     .subtitle {
         @apply blue-gradient relative mb-2 font-bold uppercase print:text-gray-700;
     }
-
+    .timeline-icon {
+        @apply absolute flex h-6 w-6 items-center justify-center rounded-full bg-white ring-8 ring-primary-200;
+    }
     .section-box {
         @apply flex h-10 items-center justify-center rounded-lg bg-primary-100;
     }
@@ -46,10 +47,10 @@
         @apply h-1.5 w-1.5 rounded-full bg-primary-500;
     }
     .key-button {
-        @apply relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg;
+        @apply relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-full bg-gradient-to-br focus:ring-4 focus:outline-none;
     }
     .key-skill {
-        @apply w-full relative px-2 py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0;
+        @apply rounded-full w-full relative px-2 py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 group-hover:bg-opacity-0;
     }
     .contact-icon {
         @apply mr-3 rounded;

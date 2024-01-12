@@ -1,5 +1,5 @@
 import ActionButton from '@/app/components/ActionButton';
-import JobIcon from '@/app/components/JobIcon';
+import TimelineIcon from '@/app/components/TimelineIcon';
 import Image from 'next/image';
 
 export default function Resume() {
@@ -132,14 +132,17 @@ export default function Resume() {
                     <div className="subtitle">
                         <h5 className="subtitle-text">Key Skills</h5>
                     </div>
-                    <section className="grid grid-cols-3 gap-2">
-                        <button className="key-button group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800">
-                            <span className="key-skill">PHP</span>
+                    <section className="grid grid-cols-2 gap-2">
+                        <button className="key-button group from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white focus:ring-pink-200">
+                            <span className="key-skill">PHP/Laravel</span>
                         </button>
-                        <button className="key-button group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-lime-800">
+                        <button className="key-button group from-yellow-500 to-orange-400 group-hover:from-yellow-500 group-hover:to-orange-400 hover:text-white focus:ring-yellow-200">
+                            <span className="key-skill">JavaScript</span>
+                        </button>
+                        <button className="key-button group from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 focus:ring-lime-200">
                             <span className="key-skill">VueJS</span>
                         </button>
-                        <button className="key-button group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800">
+                        <button className="key-button group from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white focus:ring-cyan-200">
                             <span className="key-skill">React</span>
                         </button>
                     </section>
@@ -179,9 +182,7 @@ export default function Resume() {
 
                     <ol className="relative border-l border-primary-500">
                         <li className="mb-6 ml-6">
-                            <span className="absolute -left-3 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-white ring-8 ring-primary-200">
-                                <JobIcon />
-                            </span>
+                            <TimelineIcon className="-left-3 -top-1" />
                             <h3 className="mb-1 flex items-center font-bold text-gray-900">
                                 <span className="mr-2">Software Engineer</span>
                                 <div className="text-sm font-medium text-primary-800 flex items-center space-x-1">
@@ -243,9 +244,7 @@ export default function Resume() {
                             </ul>
                         </li>
                         <li className="mb-6 ml-6">
-                            <span className="absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-white ring-8 ring-primary-200">
-                                <JobIcon />
-                            </span>
+                            <TimelineIcon className="-left-3" />
                             <h3 className="mb-1 flex items-center font-bold text-gray-900">
                                 <span>Junior Software Engineer</span>
                                 <a
