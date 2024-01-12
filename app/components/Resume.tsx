@@ -191,19 +191,21 @@ export default function Resume() {
                     <ol className="relative border-l border-primary-500">
                         <li className="mb-6 ml-6">
                             <TimelineIcon className="-top-1" />
-                            <h3 className="mb-1 flex items-center font-bold text-gray-900">
-                                <span className="mr-2">Software Engineer</span>
-                                <div className="text-sm font-medium text-primary-800 flex items-center space-x-1">
+                            <h3 className="mb-1 md:flex print:flex items-center font-bold text-gray-900">
+                                <div className="mr-2">Software Engineer</div>
+                                <div className="text-sm font-medium text-primary-800 flex space-x-1">
                                     <span>at</span>
-                                    <a href="https://mononsoft.org" target="_blank" className="underline">
-                                        MononSoft Ltd.
-                                    </a>
-                                    <a href="https://jmigroup-bd.com" target="_blank" className="underline">
-                                        (A Sister Concern of JMI Group)
-                                    </a>
+                                    <div className="md:flex print:flex items-center space-x-1">
+                                        <a href="https://mononsoft.org" target="_blank" className="underline">
+                                            MononSoft Ltd.
+                                        </a>
+                                        <a href="https://jmigroup-bd.com" target="_blank" className="underline">
+                                            (A Sister Concern of JMI Group)
+                                        </a>
+                                    </div>
                                 </div>
                             </h3>
-                            <div className="mb-3 flex items-center justify-between">
+                            <div className="mb-3 space-y-1 md:space-y-0 print:space-y-0 md:flex print:flex items-center justify-between">
                                 <time className="block text-sm font-normal leading-none text-gray-700">
                                     Jun 2021 - Present
                                 </time>
@@ -253,8 +255,8 @@ export default function Resume() {
                         </li>
                         <li className="mb-6 ml-6">
                             <TimelineIcon />
-                            <h3 className="mb-1 flex items-center font-bold text-gray-900">
-                                <span>Junior Software Engineer</span>
+                            <h3 className="mb-1 md:flex print:flex items-center font-bold text-gray-900">
+                                <div>Junior Software Engineer</div>
                                 <a
                                     href="https://maxsop.com/"
                                     className="ml-2 text-sm font-medium text-primary-800"
@@ -262,7 +264,7 @@ export default function Resume() {
                                     at <span className="underline">MaxSOP</span>
                                 </a>
                             </h3>
-                            <div className="mb-3 flex items-center justify-between">
+                            <div className="mb-3 space-y-1 md:space-y-0 print:space-y-0 md:flex print:flex items-center justify-between">
                                 <time className="block text-sm font-normal leading-none text-gray-700">
                                     May 2020 – Jun 2021
                                 </time>
