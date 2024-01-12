@@ -182,7 +182,7 @@ export default function Resume() {
 
                     <ol className="relative border-l border-primary-500">
                         <li className="mb-6 ml-6">
-                            <TimelineIcon className="-left-3 -top-1" />
+                            <TimelineIcon className="-top-1" />
                             <h3 className="mb-1 flex items-center font-bold text-gray-900">
                                 <span className="mr-2">Software Engineer</span>
                                 <div className="text-sm font-medium text-primary-800 flex items-center space-x-1">
@@ -244,7 +244,7 @@ export default function Resume() {
                             </ul>
                         </li>
                         <li className="mb-6 ml-6">
-                            <TimelineIcon className="-left-3" />
+                            <TimelineIcon />
                             <h3 className="mb-1 flex items-center font-bold text-gray-900">
                                 <span>Junior Software Engineer</span>
                                 <a

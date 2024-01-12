@@ -1,8 +1,8 @@
-const TimelineIcon = ({ className }: { className: string }) => {
+const TimelineIcon = ({ className }: { className?: string }) => {
     return (
         <div className={`timeline-icon ${className}`}>
             <svg
-                className="h-2.5 w-2.5 text-primary-800 fill-primary-500"
+                className="rounded-full fill-primary-500 bg-white p-1.5"
                 xmlns="http://www.w3.org/2000/svg"
                 height="24px"
                 viewBox="0 0 24 24"

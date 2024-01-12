@@ -32,7 +32,7 @@
         @apply blue-gradient relative mb-2 font-bold uppercase print:text-gray-700;
     }
     .timeline-icon {
-        @apply absolute flex h-6 w-6 items-center justify-center rounded-full bg-white ring-8 ring-primary-200;
+        @apply absolute -left-5 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-emerald-400 to-primary-400;
     }
     .section-box {
         @apply flex h-10 items-center justify-center rounded-lg bg-primary-100;
