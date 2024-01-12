@@ -1,6 +1,6 @@
 export default function CoverLetter() {
     return (
-        <div className="page cover-letter mt-6">
+        <div className="page cover-letter hidden mt-6">
             <div className="pr-10 text-justify text-sm">
                 <h1 className="subtitle mb-8 text-3xl capitalize">Dear Hiring Manager!</h1>
 

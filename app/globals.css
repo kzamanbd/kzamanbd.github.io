@@ -68,8 +68,8 @@
         @apply hidden;
     }
     /* extra buttons */
-    .export-btn {
-        @apply hidden absolute right-6 top-4 z-50 md:flex cursor-pointer items-center space-x-2 text-sm print:hidden;
+    .action-button {
+        @apply absolute right-6 top-4 z-50 flex cursor-pointer items-center space-x-2 text-sm print:hidden;
     }
     .btn {
         @apply flex h-8 w-8 items-center justify-center border border-r-0;
