@@ -85,7 +85,7 @@
                 </g>
                 <circle id="Oval-Copy-6" fill="url(#linearGradient-5)" opacity="0.182152158" cx="938.5" cy="124.5" r="124.5"></circle>
                 <circle id="Oval-Copy-8" fill="url(#linearGradient-6)" cx="1093" cy="341" r="11"></circle>
-                <g id="Oval-Copy-10">
+                <g id="Oval-Copy-10" opacity="0.58653274">
                     <use fill="black" fill-opacity="1" filter="url(#filter-9)" xlink:href="#path-8"></use>
                     <use fill="url(#linearGradient-7)" fill-rule="evenodd" xlink:href="#path-8"></use>
                 </g>
