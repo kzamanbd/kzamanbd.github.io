@@ -19,8 +19,7 @@ export default function DocExport() {
 
     const toggleImage = () => {
         setDropdown(!dropdown);
-        const el = document.querySelector('.resume-box');
-        el?.classList.toggle('with-photo');
+        document.querySelector('.resume-box')?.classList.toggle('with-photo');
     };
 
     return (
@@ -48,7 +47,7 @@ export default function DocExport() {
                 {dropdown && (
                     <div className="z-10 absolute right-8 -top-1 bg-white divide-y divide-gray-100 rounded-lg shadow">
                         <div className="inline-flex">
-                            <button onClick={contentEditable} className="btn">
+                            <button onClick={contentEditable} className="action-btn">
                                 {editable === 'true' ? (
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +80,7 @@ export default function DocExport() {
                                     </svg>
                                 )}
                             </button>
-                            <button onClick={printPreview} className="btn">
+                            <button onClick={printPreview} className="action-btn">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="16"
@@ -114,7 +113,7 @@ export default function DocExport() {
                                     />
                                 </svg>
                             </button>
-                            <button onClick={toggleImage} className="btn">
+                            <button onClick={toggleImage} className="action-btn">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     height="18px"
@@ -125,7 +124,7 @@ export default function DocExport() {
                                     <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14 6 17h12l-3.86-5.14z" />
                                 </svg>
                             </button>
-                            <a href="/kamruzzaman.pdf" download className="btn">
+                            <a href="/kamruzzaman.pdf" download className="action-btn">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="16"

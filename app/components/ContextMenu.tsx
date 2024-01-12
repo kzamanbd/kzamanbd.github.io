@@ -23,7 +23,10 @@ function ContextMenu({ children }: any) {
         setDropdownContext(true);
     };
     const hideContext = (event: any) => {
-        setDropdownContext(false);
+        event.preventDefault();
+        if (!event.target.closest('.context-menu')) {
+            setDropdownContext(false);
+        }
     };
 
     return (
@@ -32,7 +35,7 @@ function ContextMenu({ children }: any) {
             {dropdown && (
                 <div
                     style={{ top: xYPosition.y, left: xYPosition.x }}
-                    className="context-menu fixed z-50 bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                    className="context-menu fixed z-50 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 print:hidden">
                     <ul className="py-2 text-sm text-gray-700">
                         <li>
                             <button
@@ -94,7 +97,9 @@ function ContextMenu({ children }: any) {
                             </button>
                         </li>
                         <li>
-                            <button className="w-full flex items-center space-x-2 px-4 py-2 hover:bg-gray-100 ">
+                            <button
+                                onClick={() => document.querySelector('.resume-box')?.classList.toggle('with-photo')}
+                                className="w-full flex items-center space-x-2 px-4 py-2 hover:bg-gray-100 ">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     height="18px"

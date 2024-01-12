@@ -69,13 +69,13 @@
     .action-button {
         @apply md:hidden absolute right-6 top-4 z-50 flex cursor-pointer items-center space-x-2 text-sm print:hidden;
     }
-    .btn {
+    .action-btn {
         @apply flex h-8 w-8 items-center justify-center border border-r-0;
     }
-    .btn:first-child {
+    .action-btn:first-child {
         @apply rounded-l;
     }
-    .btn:last-child {
+    .action-btn:last-child {
         @apply rounded-r border-r;
     }
 }
