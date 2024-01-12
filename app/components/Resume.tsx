@@ -19,16 +19,6 @@ export default function Resume() {
                         <h5 className="subtitle-text">Personal Details</h5>
                     </div>
                     <ul className="mb-3 space-y-2">
-                        {/* <li className='flex items-center'>
-                            <Image
-                                className='contact-icon'
-                                src='/images/user.png'
-                                width={20}
-                                height={20}
-                                alt='KAMRUZZAMAN'
-                            />
-                            <p className='text-sm'>KAMRUZZAMAN</p>
-                        </li> */}
                         <li className="flex items-center">
                             <Image
                                 className="contact-icon"
@@ -60,6 +50,23 @@ export default function Resume() {
                         <li className="flex items-center">
                             <Image
                                 className="contact-icon"
+                                src="/images/leetcode.svg"
+                                width={20}
+                                height={20}
+                                alt="leetcode kzamanbd"
+                            />
+                            <a
+                                href="https://leetcode.com/kzamanbd"
+                                target="_blank"
+                                className="resume-link"
+                                rel="noreferrer">
+                                leetcode.com/kzamanbd
+                            </a>
+                        </li>
+
+                        <li className="flex items-center">
+                            <Image
+                                className="contact-icon"
                                 src="/images/github.png"
                                 width={20}
                                 height={20}
@@ -73,6 +80,7 @@ export default function Resume() {
                                 github.com/kzamanbd
                             </a>
                         </li>
+
                         <li className="flex items-center">
                             <Image
                                 className="contact-icon"
