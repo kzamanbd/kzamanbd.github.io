@@ -2,8 +2,8 @@
 @tailwind components;
 @layer components {
     .page {
-        @apply z-[1] mx-auto md:my-6 w-full rounded border bg-white px-8 pb-10 pt-12 h-auto md:h-[297mm] print:h-[297mm] print:w-[210mm] md:w-[210mm];
-        @apply relative break-before-auto print:mx-0 print:my-0 print:rounded-none print:shadow-none;
+        @apply z-[1] mx-auto w-full bg-white px-8 pb-10 pt-12 h-auto md:my-6 md:h-[297mm] md:w-[210mm] md:rounded md:border;
+        @apply relative break-before-auto print:mx-0 print:my-0 print:rounded-none print:shadow-none print:h-[297mm] print:w-[210mm];
     }
     .gradient {
         @apply after:absolute after:inset-0 after:z-[-1] after:h-full after:w-full after:rotate-180;
@@ -45,11 +45,11 @@
     .bullet {
         @apply h-1.5 w-1.5 rounded-full bg-primary-500;
     }
-    .gradient-btn {
-        @apply relative flex items-center justify-center overflow-hidden rounded bg-gradient-to-br p-0.5 font-bold text-gray-900 hover:text-white focus:outline-none focus:ring-0;
+    .key-button {
+        @apply relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-lg;
     }
-    .gradient-content {
-        @apply flex w-32 items-center rounded-md bg-white px-3 py-2 text-xs transition-all duration-75 ease-in group-hover:bg-opacity-0 print:bg-primary-50;
+    .key-skill {
+        @apply w-full relative px-2 py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0;
     }
     .contact-icon {
         @apply mr-3 rounded;
@@ -68,7 +68,7 @@
     }
     /* extra buttons */
     .export-btn {
-        @apply absolute right-6 top-4 z-50 flex cursor-pointer items-center space-x-2 text-sm print:hidden;
+        @apply hidden absolute right-6 top-4 z-50 md:flex cursor-pointer items-center space-x-2 text-sm print:hidden;
     }
     .btn {
         @apply flex h-8 w-8 items-center justify-center border border-r-0;
