@@ -149,7 +149,7 @@ export default function Resume() {
                     </div>
                     <section className="space-y-2 text-sm">
                         <div>
-                            <p className="font-bold">PHP/Laravel (2019)</p>
+                            <p className="resume-link font-bold">PHP/Laravel (2019)</p>
                             <p className="italic">Creative It Institute, Dhaka.</p>
                         </div>
                         <div>
@@ -183,13 +183,16 @@ export default function Resume() {
                                 <JobIcon />
                             </span>
                             <h3 className="mb-1 flex items-center font-bold text-gray-900">
-                                <span>Software Engineer</span>
-                                <a
-                                    href="https://mononsoft.org"
-                                    className="ml-2 text-sm font-medium text-primary-800"
-                                    target="_blank">
-                                    at <span className="underline">MononSoft Ltd. (A Sister Concern of JMI Group)</span>
-                                </a>
+                                <span className="mr-2">Software Engineer</span>
+                                <div className="text-sm font-medium text-primary-800 flex items-center space-x-1">
+                                    <span>at</span>
+                                    <a href="https://mononsoft.org" target="_blank" className="underline">
+                                        MononSoft Ltd.
+                                    </a>
+                                    <a href="https://jmigroup-bd.com" target="_blank" className="underline">
+                                        (A Sister Concern of JMI Group)
+                                    </a>
+                                </div>
                             </h3>
                             <div className="mb-3 flex items-center justify-between">
                                 <time className="block text-sm font-normal leading-none text-gray-700">
