@@ -140,7 +140,7 @@ export default function Resume() {
                     <div className="subtitle">
                         <h5 className="subtitle-text">Key Skills</h5>
                     </div>
-                    <section className="grid grid-cols-3 md:grid-cols-2 gap-2">
+                    <section className="grid grid-cols-3 md:grid-cols-2 gap-2 print:grid-cols-2">
                         <button className="key-button group from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 focus:ring-pink-200">
                             <span className="key-skill bg-pink-50 text-pink-500 hover:text-white">PHP/Laravel</span>
                         </button>
