@@ -22,7 +22,7 @@ function ContextMenu({ children }: any) {
         setXyPosition(currentPosition);
         setDropdownContext(true);
     };
-    const hideContext = () => {
+    const hideContext = (event: any) => {
         setDropdownContext(false);
     };
 
@@ -32,12 +32,12 @@ function ContextMenu({ children }: any) {
             {dropdown && (
                 <div
                     style={{ top: xYPosition.y, left: xYPosition.x }}
-                    className="fixed z-50 bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
-                    <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
+                    className="context-menu fixed z-50 bg-white divide-y divide-gray-100 rounded-lg shadow w-44">
+                    <ul className="py-2 text-sm text-gray-700">
                         <li>
                             <button
                                 onClick={() => window.print()}
-                                className="w-full flex items-center space-x-2 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                className="w-full flex items-center space-x-2 px-4 py-2 hover:bg-gray-100">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="16"
@@ -58,7 +58,7 @@ function ContextMenu({ children }: any) {
                         <li>
                             <button
                                 onClick={contentEditable}
-                                className="w-full flex items-center space-x-2 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                className="w-full flex items-center space-x-2 px-4 py-2 hover:bg-gray-100 ">
                                 {editable === 'true' ? (
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -94,7 +94,7 @@ function ContextMenu({ children }: any) {
                             </button>
                         </li>
                         <li>
-                            <button className="w-full flex items-center space-x-2 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                            <button className="w-full flex items-center space-x-2 px-4 py-2 hover:bg-gray-100 ">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     height="18px"
@@ -104,13 +104,13 @@ function ContextMenu({ children }: any) {
                                     <path d="M0 0h24v24H0V0z" fill="none" />
                                     <path d="M19 5v14H5V5h14m0-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-4.86 8.86l-3 3.87L9 13.14 6 17h12l-3.86-5.14z" />
                                 </svg>
-                                <span>Toggle Photo</span>
+                                <span>Photo</span>
                             </button>
                         </li>
                         <li>
                             <button
                                 onClick={() => document.querySelector('.cover-letter')?.classList.toggle('hidden')}
-                                className="w-full flex items-center space-x-2 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                className="w-full flex items-center space-x-2 px-4 py-2 hover:bg-gray-100 ">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
@@ -124,14 +124,14 @@ function ContextMenu({ children }: any) {
                                         d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z"
                                     />
                                 </svg>
-                                <span>Toggle Cover Letter</span>
+                                <span>Cover Letter</span>
                             </button>
                         </li>
                         <li>
                             <a
                                 href="/kamruzzaman.pdf"
                                 download
-                                className="w-full flex items-center space-x-2 px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                                className="w-full flex items-center space-x-2 px-4 py-2 hover:bg-gray-100 ">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="16"

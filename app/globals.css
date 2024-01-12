@@ -50,10 +50,10 @@
         @apply relative inline-flex items-center justify-center p-0.5 overflow-hidden text-sm font-medium text-gray-900 rounded-full bg-gradient-to-br focus:ring-4 focus:outline-none;
     }
     .key-skill {
-        @apply rounded-full w-full relative px-2 py-1.5 transition-all ease-in duration-75 bg-white dark:bg-gray-900 group-hover:bg-opacity-0;
+        @apply rounded-full w-full relative px-2 py-1.5 transition-all ease-in duration-75 bg-white group-hover:bg-opacity-0;
     }
     .contact-icon {
-        @apply mr-3 rounded;
+        @apply mr-3 rounded h-5 w-5;
     }
     .profile-photo {
         @apply mx-auto rounded-full bg-gradient-to-r from-emerald-400 to-primary-400 object-cover;

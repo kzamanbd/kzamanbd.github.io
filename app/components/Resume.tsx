@@ -51,8 +51,8 @@ export default function Resume() {
                             <Image
                                 className="contact-icon"
                                 src="/images/leetcode.svg"
-                                width={20}
-                                height={20}
+                                width="0"
+                                height="0"
                                 alt="leetcode kzamanbd"
                             />
                             <a
@@ -141,17 +141,17 @@ export default function Resume() {
                         <h5 className="subtitle-text">Key Skills</h5>
                     </div>
                     <section className="grid grid-cols-2 gap-2">
-                        <button className="key-button group from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white focus:ring-pink-200">
-                            <span className="key-skill">PHP/Laravel</span>
+                        <button className="key-button group from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 focus:ring-pink-200">
+                            <span className="key-skill bg-pink-50 text-pink-500 hover:text-white">PHP/Laravel</span>
                         </button>
-                        <button className="key-button group from-yellow-500 to-orange-400 group-hover:from-yellow-500 group-hover:to-orange-400 hover:text-white focus:ring-yellow-200">
-                            <span className="key-skill">JavaScript</span>
+                        <button className="key-button group from-yellow-500 to-orange-400 group-hover:from-yellow-500 group-hover:to-orange-400 focus:ring-yellow-200">
+                            <span className="key-skill bg-yellow-50 text-yellow-500 hover:text-white">JavaScript</span>
                         </button>
                         <button className="key-button group from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 focus:ring-lime-200">
-                            <span className="key-skill">VueJS</span>
+                            <span className="key-skill bg-teal-50 text-teal-500 hover:text-black">VueJS</span>
                         </button>
                         <button className="key-button group from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white focus:ring-cyan-200">
-                            <span className="key-skill">React</span>
+                            <span className="key-skill bg-cyan-50 text-cyan-500 hover:text-white">React</span>
                         </button>
                     </section>
                     {/* Training */}

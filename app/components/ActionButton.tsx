@@ -28,7 +28,7 @@ export default function DocExport() {
             <div className="dropdown">
                 <button
                     onClick={() => setDropdown(!dropdown)}
-                    className="text-primary-500 bg-primary-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                    className="text-primary-500 bg-primary-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center"
                     type="button">
                     <svg
                         className="w-2.5 h-2.5"
@@ -46,7 +46,7 @@ export default function DocExport() {
                     </svg>
                 </button>
                 {dropdown && (
-                    <div className="z-10 absolute right-8 -top-1 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
+                    <div className="z-10 absolute right-8 -top-1 bg-white divide-y divide-gray-100 rounded-lg shadow">
                         <div className="inline-flex">
                             <button onClick={contentEditable} className="btn">
                                 {editable === 'true' ? (
