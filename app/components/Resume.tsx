@@ -313,6 +313,12 @@ export default function Resume() {
                             <div className="mr-4">
                                 <div className="bullet"></div>
                             </div>
+                            <p>Basic Knowledge of Android Apps Development (Kotlin, Java).</p>
+                        </li>
+                        <li className="flex items-center">
+                            <div className="mr-4">
+                                <div className="bullet"></div>
+                            </div>
                             <p>Proficient Understanding of Code Versioning Tools (Git), CI/CD and Github Action.</p>
                         </li>
                         <li className="flex items-center">
