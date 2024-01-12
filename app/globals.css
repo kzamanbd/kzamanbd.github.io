@@ -11,11 +11,9 @@
     .orange-gradient {
         @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
     }
-
     .green-gradient {
         @apply bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent;
     }
-
     .blue-gradient {
         @apply bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
     }
@@ -32,7 +30,7 @@
         @apply blue-gradient relative mb-2 font-bold uppercase print:text-gray-700;
     }
     .timeline-icon {
-        @apply absolute -left-5 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-emerald-400 to-primary-400;
+        @apply absolute -left-5 flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-r from-emerald-300 to-primary-300;
     }
     .section-box {
         @apply flex h-10 items-center justify-center rounded-lg bg-primary-100;
