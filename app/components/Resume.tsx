@@ -19,82 +19,80 @@ export default function Resume() {
                         <h5 className="subtitle-text">Personal Details</h5>
                     </div>
                     <ul className="mb-3 space-y-2">
-                        <li className="flex items-center">
-                            <Image
-                                className="contact-icon"
-                                src="/images/phone.png"
-                                width={20}
-                                height={20}
-                                alt="phone"
-                            />
-                            <p className="text-sm">+880 1716 724 245</p>
+                        <li>
+                            <a href="tel:8801716724245" className="flex items-center">
+                                <Image
+                                    className="contact-icon"
+                                    src="/images/phone.png"
+                                    width={20}
+                                    height={20}
+                                    alt="phone"
+                                />
+                                <span className="text-sm">+880 1716 724 245</span>
+                            </a>
                         </li>
 
-                        <li className="flex items-center">
-                            <Image
-                                className="contact-icon"
-                                src="/images/email.png"
-                                width={20}
-                                height={20}
-                                alt="email"
-                            />
+                        <li>
                             <a
                                 href="mailto:kzamanbn@gmail.com"
                                 target="_blank"
-                                className="resume-link"
-                                rel="noreferrer">
-                                kzamanbn@gmail.com
+                                className="resume-link flex items-center">
+                                <Image
+                                    className="contact-icon"
+                                    src="/images/email.png"
+                                    width={20}
+                                    height={20}
+                                    alt="email"
+                                />
+                                <span>kzamanbn@gmail.com</span>
                             </a>
                         </li>
 
                         <li className="flex items-center">
-                            <Image
-                                className="contact-icon"
-                                src="/images/leetcode.svg"
-                                width="0"
-                                height="0"
-                                alt="leetcode kzamanbd"
-                            />
                             <a
                                 href="https://leetcode.com/kzamanbd"
                                 target="_blank"
-                                className="resume-link"
-                                rel="noreferrer">
-                                leetcode.com/kzamanbd
+                                className="resume-link flex items-center">
+                                <Image
+                                    className="contact-icon"
+                                    src="/images/leetcode.svg"
+                                    width="0"
+                                    height="0"
+                                    alt="leetcode kzamanbd"
+                                />
+                                <span>leetcode.com/kzamanbd</span>
                             </a>
                         </li>
 
-                        <li className="flex items-center">
-                            <Image
-                                className="contact-icon"
-                                src="/images/github.png"
-                                width={20}
-                                height={20}
-                                alt="github"
-                            />
+                        <li>
                             <a
                                 href="https://github.com/kzamanbd"
                                 target="_blank"
-                                className="resume-link"
-                                rel="noreferrer">
-                                github.com/kzamanbd
+                                className="resume-link flex items-center">
+                                <Image
+                                    className="contact-icon"
+                                    src="/images/github.png"
+                                    width={20}
+                                    height={20}
+                                    alt="github"
+                                />
+                                <span>github.com/kzamanbd</span>
                             </a>
                         </li>
 
-                        <li className="flex items-center">
-                            <Image
-                                className="contact-icon"
-                                src="/images/linkedin.png"
-                                width={20}
-                                height={20}
-                                alt="github"
-                            />
+                        <li>
                             <a
                                 href="https://linkedin.com/in/kzamanbd"
                                 target="_blank"
-                                className="resume-link"
-                                rel="noreferrer">
-                                linkedin.com/in/kzamanbd
+                                className="resume-link flex items-center">
+                                <Image
+                                    className="contact-icon"
+                                    src="/images/linkedin.png"
+                                    width={20}
+                                    height={20}
+                                    alt="github"
+                                />
+                                <span>linkedin.com/in/kzamanbd</span>
                             </a>
                         </li>
 
