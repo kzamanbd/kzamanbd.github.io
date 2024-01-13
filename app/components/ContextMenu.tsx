@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 
-function ContextMenu({ children }: any) {
+function ContextMenu({ children, className }: any) {
     const [dropdown, setDropdownContext] = useState(false);
     const [editable, setEditable] = useState('true');
     const [xYPosition, setXyPosition] = useState({ x: 0, y: 0 });
@@ -23,14 +23,13 @@ function ContextMenu({ children }: any) {
         setDropdownContext(true);
     };
     const hideContext = (event: any) => {
-        event.preventDefault();
         if (!event.target.closest('.context-menu')) {
             setDropdownContext(false);
         }
     };
 
     return (
-        <div onContextMenu={handleContextMenu} onClick={hideContext}>
+        <div onContextMenu={handleContextMenu} onClick={hideContext} className={className}>
             {children}
             {dropdown && (
                 <div
