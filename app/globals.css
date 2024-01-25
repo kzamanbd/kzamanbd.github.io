@@ -5,7 +5,7 @@
         @apply z-[1] mx-auto w-full bg-white px-8 pb-10 pt-12 h-auto md:my-6 md:h-[297mm] md:w-[210mm] md:rounded md:border;
         @apply relative break-before-auto print:mx-0 print:my-0 print:rounded-none print:shadow-none print:h-[297mm] print:w-[210mm];
     }
-    .gradient {
+    .background {
         @apply after:absolute after:inset-0 after:z-[-1] after:h-full after:w-full after:rotate-180 after:bg-[url(/background.svg)];
     }
     .orange-gradient {
