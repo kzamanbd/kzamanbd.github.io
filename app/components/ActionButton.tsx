@@ -98,7 +98,7 @@ export default function DocExport() {
                             </button>
                             <button
                                 onClick={() => document.querySelector('.cover-letter')?.classList.toggle('hidden')}
-                                className="btn">
+                                className="action-btn">
                                 <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     fill="none"
