@@ -27,7 +27,7 @@ export default function DocExport() {
             <div className="dropdown">
                 <button
                     onClick={() => setDropdown(!dropdown)}
-                    className="text-primary-500 bg-primary-100 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2 text-center inline-flex items-center"
+                    className="text-primary-500 bg-primary-100 focus:ring-0 focus:outline-none font-medium rounded-lg text-sm p-2 text-center inline-flex items-center"
                     type="button">
                     <svg
                         className="w-2.5 h-2.5"
