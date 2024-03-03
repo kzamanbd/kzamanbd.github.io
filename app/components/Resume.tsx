@@ -171,6 +171,21 @@ export default function Resume() {
                             <p className="italic">Learn with Sumit.</p>
                         </div>
                     </section>
+                    {/* Profile */}
+                    <a
+                        className="text-sm font-bold mt-2 resume-link"
+                        href="https://codeforces.com/profile/kzamanbd"
+                        target="_blank">
+                        Codeforces Stats
+                    </a>
+                    <a href="https://codeforces.com/profile/kzamanbd" target="_blank">
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                            className="-ml-0.5"
+                            src="https://raw.githubusercontent.com/kzamanbd/cf-stats/main/output/light_card.svg"
+                            alt="Codeforces Stats"
+                        />
+                    </a>
                 </div>
                 <div className="right-box">
                     <h5 className="subtitle">Summary</h5>
