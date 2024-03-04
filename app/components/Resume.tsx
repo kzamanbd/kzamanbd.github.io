@@ -19,6 +19,70 @@ export default function Resume() {
                         <h5 className="subtitle-text">Personal Details</h5>
                     </div>
                     <ul className="mb-3 space-y-2">
+                        <li className="flex items-center">
+                            <a
+                                href="https://codeforces.com/profile/kzamanbd"
+                                target="_blank"
+                                className="resume-link flex items-center">
+                                <Image
+                                    className="contact-icon"
+                                    src="/images/codeforces.png"
+                                    width="0"
+                                    height="0"
+                                    alt="codeforces kzamanbd"
+                                />
+                                <span>@kzamanbd</span>
+                            </a>
+                        </li>
+
+                        <li className="flex items-center">
+                            <a
+                                href="https://leetcode.com/kzamanbd"
+                                target="_blank"
+                                className="resume-link flex items-center">
+                                <Image
+                                    className="contact-icon"
+                                    src="/images/leetcode.svg"
+                                    width="0"
+                                    height="0"
+                                    alt="leetcode kzamanbd"
+                                />
+                                <span>@kzamanbd</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a
+                                href="https://github.com/kzamanbd"
+                                target="_blank"
+                                className="resume-link flex items-center">
+                                <Image
+                                    className="contact-icon"
+                                    src="/images/github.png"
+                                    width={20}
+                                    height={20}
+                                    alt="github"
+                                />
+                                <span>@kzamanbd</span>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a
+                                href="https://linkedin.com/in/kzamanbd"
+                                target="_blank"
+                                className="resume-link flex items-center">
+                                <Image
+                                    className="contact-icon"
+                                    src="/images/linkedin.png"
+                                    width={20}
+                                    height={20}
+                                    alt="github"
+                                />
+                                <span>@kzamanbd</span>
+                            </a>
+                        </li>
+
                         <li>
                             <a href="tel:8801716724245" className="flex items-center">
                                 <Image
@@ -49,54 +113,6 @@ export default function Resume() {
                         </li>
 
                         <li className="flex items-center">
-                            <a
-                                href="https://leetcode.com/kzamanbd"
-                                target="_blank"
-                                className="resume-link flex items-center">
-                                <Image
-                                    className="contact-icon"
-                                    src="/images/leetcode.svg"
-                                    width="0"
-                                    height="0"
-                                    alt="leetcode kzamanbd"
-                                />
-                                <span>leetcode.com/kzamanbd</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a
-                                href="https://github.com/kzamanbd"
-                                target="_blank"
-                                className="resume-link flex items-center">
-                                <Image
-                                    className="contact-icon"
-                                    src="/images/github.png"
-                                    width={20}
-                                    height={20}
-                                    alt="github"
-                                />
-                                <span>github.com/kzamanbd</span>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a
-                                href="https://linkedin.com/in/kzamanbd"
-                                target="_blank"
-                                className="resume-link flex items-center">
-                                <Image
-                                    className="contact-icon"
-                                    src="/images/linkedin.png"
-                                    width={20}
-                                    height={20}
-                                    alt="github"
-                                />
-                                <span>linkedin.com/in/kzamanbd</span>
-                            </a>
-                        </li>
-
-                        <li className="flex items-center">
                             <Image
                                 className="contact-icon"
                                 src="/images/location.png"
@@ -119,7 +135,7 @@ export default function Resume() {
                         <div className="mb-2">
                             <p>
                                 <span className="font-bold">B.SC. In CSE </span>
-                                <span>(Continuing)</span>
+                                <span>(Ongoing)</span>
                             </p>
                             <p className="italic">Southeast University.</p>
                             <p> – 251/A Tejgaon I/A, Dhaka</p>
@@ -171,21 +187,6 @@ export default function Resume() {
                             <p className="italic">Learn with Sumit.</p>
                         </div>
                     </section>
-                    {/* Profile */}
-                    <a
-                        className="text-sm font-bold mt-2 resume-link"
-                        href="https://codeforces.com/profile/kzamanbd"
-                        target="_blank">
-                        Codeforces Stats
-                    </a>
-                    <a href="https://codeforces.com/profile/kzamanbd" target="_blank">
-                        {/* eslint-disable-next-line @next/next/no-img-element */}
-                        <img
-                            className="-ml-0.5"
-                            src="https://raw.githubusercontent.com/kzamanbd/cf-stats/main/output/light_card.svg"
-                            alt="Codeforces Stats"
-                        />
-                    </a>
                 </div>
                 <div className="right-box">
                     <h5 className="subtitle">Summary</h5>
