@@ -330,7 +330,7 @@ export default function Resume() {
                             <div className="mr-4">
                                 <div className="bullet"></div>
                             </div>
-                            <p>Advance Knowledge on Web Services likes REST/JSON/XML APIs.</p>
+                            <p>Knowledge on Web Services likes REST/JSON/XML APIs.</p>
                         </li>
                         <li className="flex items-center">
                             <div className="mr-4">
@@ -342,7 +342,7 @@ export default function Resume() {
                             <div className="mr-4">
                                 <div className="bullet"></div>
                             </div>
-                            <p>Basic Knowledge of Android Apps Development (Kotlin, Java).</p>
+                            <p>Basic Knowledge of Android Apps Development.</p>
                         </li>
                         <li className="flex items-center">
                             <div className="mr-4">
