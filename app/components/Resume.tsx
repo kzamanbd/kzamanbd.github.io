@@ -324,6 +324,12 @@ export default function Resume() {
                             <div className="mr-4">
                                 <div className="bullet"></div>
                             </div>
+                            <p>A solid foundation on OOP, Algorithm, Data Structure.</p>
+                        </li>
+                        <li className="flex items-center">
+                            <div className="mr-4">
+                                <div className="bullet"></div>
+                            </div>
                             <p>Advance Knowledge on Web Services likes REST/JSON/XML APIs.</p>
                         </li>
                         <li className="flex items-center">
