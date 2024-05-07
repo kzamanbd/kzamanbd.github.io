@@ -1,6 +1,5 @@
-// import ContextMenu from './components/ContextMenu';
-import CoverLetter from './components/CoverLetter';
-import Resume from './components/Resume';
+import CoverLetter from './components/Resume/CoverLetter';
+import Resume from './components/Resume/Resume';
 
 export default function Home() {
     return (
