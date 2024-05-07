@@ -5,7 +5,7 @@ import { FaFacebook, FaTwitterSquare } from 'react-icons/fa';
 import { MdDownload } from 'react-icons/md';
 import { RiContactsFill } from 'react-icons/ri';
 import { SiLeetcode } from 'react-icons/si';
-import { authorName, description, profileImage } from '@/app/layout';
+import { authorName, description, profileImage } from '@/static/siteMetadata';
 
 export const user = {
     name: authorName,
