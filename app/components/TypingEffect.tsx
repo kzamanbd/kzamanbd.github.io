@@ -44,7 +44,7 @@ const TypingEffect = ({ dataText }: TypingEffectProps) => {
     return (
         <>
             <span>{text}</span>
-            <span className="cursor-pointer"></span>
+            <span className="cursor-pointer-effect"></span>
         </>
     );
 };
