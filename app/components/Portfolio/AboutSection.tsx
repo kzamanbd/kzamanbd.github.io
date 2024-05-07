@@ -1,5 +1,6 @@
-import { user } from './HeroSection';
 import Image from 'next/image';
+
+import { user } from '@/static/siteMetadata';
 
 function AboutSection() {
     return (

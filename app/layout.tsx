@@ -8,7 +8,7 @@ import { authorName, description, profileImage } from '@/static/siteMetadata';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (
-        <html lang="en" suppressHydrationWarning={true}>
+        <html className="scroll-smooth" lang="en" suppressHydrationWarning={true}>
             <head>
                 <title>{authorName}</title>
                 <meta

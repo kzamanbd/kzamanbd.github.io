@@ -4,22 +4,9 @@ import { FaFacebook, FaTwitterSquare } from 'react-icons/fa';
 import { MdDownload } from 'react-icons/md';
 import { RiContactsFill } from 'react-icons/ri';
 import { SiLeetcode } from 'react-icons/si';
-import { authorName, description, profileImage } from '@/static/siteMetadata';
 import TypingEffect from '../TypingEffect';
 
-export const user = {
-    name: authorName,
-    designation: 'Software Engineer',
-    github: 'https://github.com/kzamanbd',
-    linkedIn: 'https://www.linkedin.com/in/kzamanbd/',
-    codeforces: 'https://codeforces.com/profile/kzamanbd',
-    facebook: 'https://www.facebook.com/kzaman.me',
-    leetcode: 'https://leetcode.com/u/kzamanbd',
-    twitter: '',
-    resume: '/resume',
-    description: description,
-    profile: profileImage
-};
+import { user } from '@/static/siteMetadata';
 
 export default function HeroSection() {
     return (

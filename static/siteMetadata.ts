@@ -3,3 +3,17 @@ export const description = `Over three years of experience building web applicat
 export const authorName = 'KAMRUZZAMAN';
 
 export const profileImage = '/kzaman-transparent.png';
+
+export const user = {
+    name: authorName,
+    designation: 'Software Engineer',
+    github: 'https://github.com/kzamanbd',
+    linkedIn: 'https://www.linkedin.com/in/kzamanbd/',
+    codeforces: 'https://codeforces.com/profile/kzamanbd',
+    facebook: 'https://www.facebook.com/kzaman.me',
+    leetcode: 'https://leetcode.com/u/kzamanbd',
+    twitter: '',
+    resume: '/resume',
+    description: description,
+    profile: profileImage
+};
