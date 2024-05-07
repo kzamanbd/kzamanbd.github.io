@@ -1,4 +1,3 @@
-import Image from 'next/image';
 import Link from 'next/link';
 import { BsGithub, BsLinkedin } from 'react-icons/bs';
 import { FaFacebook, FaTwitterSquare } from 'react-icons/fa';
@@ -18,7 +17,7 @@ export const user = {
     twitter: '',
     resume: '/resume',
     description: description,
-    profile: profileImage,
+    profile: profileImage
 };
 
 export default function HeroSection() {
