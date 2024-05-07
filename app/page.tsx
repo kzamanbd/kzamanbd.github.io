@@ -1,11 +1,9 @@
-import CoverLetter from './components/Resume/CoverLetter';
-import Resume from './components/Resume/Resume';
+import HeroSection from './components/Portfolio/HeroSection';
 
-export default function Home() {
+export default function Portfolio() {
     return (
-        <>
-            <Resume />
-            <CoverLetter />
-        </>
+        <div className="portfolio">
+            <HeroSection />
+        </div>
     );
 }

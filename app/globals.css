@@ -78,9 +78,26 @@
     .action-btn:last-child {
         @apply rounded-r border-r;
     }
+    .portfolio {
+        @apply min-h-screen relative mx-auto px-6 sm:px-12 lg:max-w-[70rem] xl:max-w-[76rem] 2xl:max-w-[92rem] text-white;
+    }
 }
 @tailwind utilities;
 
+:root {
+    --foreground-rgb: rgb(211, 216, 232);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --foreground-rgb: 255, 255, 255;
+    }
+}
+
+body:has(.portfolio) {
+    color: rgb(var(--foreground-rgb));
+    background-color: #0d1224;
+}
 body {
     @apply bg-[url('/images/mask.svg')] [mask-image:linear-gradient(0deg,#fff,rgba(255,255,255,1))] print:bg-white;
 }
