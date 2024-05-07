@@ -230,6 +230,16 @@ body {
 .sticky-card {
     top: calc(var(--index) * 4rem);
 }
+.cursor-pointer {
+    border-left: 0.1em solid #00FF41;
+    animation: blink 0.7s steps(1) infinite;
+}
+
+@keyframes blink {
+    50% {
+        border-color: transparent;
+    }
+}
 
 @page {
     size: A4;

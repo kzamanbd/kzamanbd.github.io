@@ -5,6 +5,7 @@ import { MdDownload } from 'react-icons/md';
 import { RiContactsFill } from 'react-icons/ri';
 import { SiLeetcode } from 'react-icons/si';
 import { authorName, description, profileImage } from '@/static/siteMetadata';
+import TypingEffect from '../TypingEffect';
 
 export const user = {
     name: authorName,
@@ -107,7 +108,9 @@ export default function HeroSection() {
                             <div>
                                 <span className="ml-4 lg:ml-8 mr-2 text-white">name:</span>
                                 <span className="text-gray-400">{`'`}</span>
-                                <span className="text-amber-300">{user.name}</span>
+                                <span className="text-amber-300">
+                                    <TypingEffect dataText={[user.name]} />
+                                </span>
                                 <span className="text-gray-400">{`',`}</span>
                             </div>
                             <div className="ml-4 lg:ml-8 mr-2">
