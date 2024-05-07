@@ -5,9 +5,10 @@ import { FaFacebook, FaTwitterSquare } from 'react-icons/fa';
 import { MdDownload } from 'react-icons/md';
 import { RiContactsFill } from 'react-icons/ri';
 import { SiLeetcode } from 'react-icons/si';
+import { authorName, description, profileImage } from '@/app/layout';
 
-const user = {
-    name: 'KAMRUZZAMAN',
+export const user = {
+    name: authorName,
     designation: 'Software Engineer',
     github: 'https://github.com/kzamanbd',
     linkedIn: 'https://www.linkedin.com/in/kzamanbd/',
@@ -15,7 +16,9 @@ const user = {
     facebook: 'https://www.facebook.com/kzaman.me',
     leetcode: 'https://leetcode.com/u/kzamanbd',
     twitter: '',
-    resume: '/resume'
+    resume: '/resume',
+    description: description,
+    profile: profileImage,
 };
 
 export default function HeroSection() {
