@@ -15,5 +15,8 @@ export const user = {
     twitter: '',
     resume: '/resume',
     description: description,
-    profile: profileImage
+    profile: profileImage,
+    phone: '+8801716724245',
+    email: 'kzamanbn@gmail.com',
+    address: 'Dhaka, Bangladesh',
 };

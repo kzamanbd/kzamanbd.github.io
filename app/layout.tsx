@@ -1,6 +1,8 @@
 import './globals.css';
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -47,6 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             </head>
             <body suppressHydrationWarning={true}>
                 <div className={inter.className}>{children}</div>
+                <ToastContainer />
                 <Script src="https://www.googletagmanager.com/gtag/js?id=G-3HFZXXGGM3" />
                 <Script id="google-analytics">
                     {`
