@@ -1,3 +1,6 @@
+import Link from 'next/link';
+import GlowCard from './components/glow-card';
+
 export default function Features() {
     return (
         <section className="bg-white dark:bg-gray-900">
@@ -12,7 +15,7 @@ export default function Features() {
                     </p>
                 </div>
                 <div className="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
-                    <div>
+                    <Link href="/portfolio">
                         <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                             <svg
                                 className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
@@ -30,8 +33,8 @@ export default function Features() {
                             Plan it, create it, launch it. Collaborate seamlessly with all the organization and hit your
                             marketing goals every month with our marketing plan.
                         </p>
-                    </div>
-                    <div>
+                    </Link>
+                    <Link href="/resume">
                         <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                             <svg
                                 className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
@@ -46,7 +49,7 @@ export default function Features() {
                             Protect your organization, devices and stay compliant with our structured workflows and
                             custom permissions made for you.
                         </p>
-                    </div>
+                    </Link>
                     <div>
                         <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                             <svg
@@ -67,7 +70,7 @@ export default function Features() {
                             templates to help you get started.
                         </p>
                     </div>
-                    <div>
+                    <Link href="/checkout">
                         <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                             <svg
                                 className="w-5 h-5 text-primary-600 lg:w-6 lg:h-6 dark:text-primary-300"
@@ -86,7 +89,7 @@ export default function Features() {
                             Audit-proof software built for critical financial operations like month-end close and
                             quarterly budgeting.
                         </p>
-                    </div>
+                    </Link>
                     <div>
                         <div className="flex justify-center items-center mb-4 w-10 h-10 rounded-full bg-primary-100 lg:h-12 lg:w-12 dark:bg-primary-900">
                             <svg
