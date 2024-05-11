@@ -21,7 +21,7 @@ export default function CheckoutForm() {
             });
             const data = await res.json();
             console.log('Payment response', data);
-            //window.open(data.GatewayPageURL, '_self');
+            window.open(data.GatewayPageURL, '_self');
         } catch (error) {
             console.error('Payment failed', error);
         } finally {
