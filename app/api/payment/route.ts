@@ -2,15 +2,15 @@ import { NextResponse } from 'next/server';
 
 export async function POST(request: Request) {
     // generate unique id for each transaction id
-    const transactionId = Math.floor(Math.random() * 1000000000);
+    const randomString = Math.random().toString(36).substring(7);
+    const transactionId = `${randomString.toUpperCase()}${Math.random().toString(36).substring(7).toUpperCase()}`;
+    console.log('Transaction ID:', transactionId);
 
     const sslUrl = 'https://sandbox.sslcommerz.com/gwprocess/v4/api.php';
 
     const formData = new FormData();
     const storeId = process.env.NEXT_PUBLIC_STORE_ID as string;
     const storePassword = process.env.NEXT_PUBLIC_STORE_PASSWORD as string;
-
-    console.log('store id', storeId, 'store password', storePassword, process.env.NEXT_PUBLIC_BASE_URL);
 
     formData.append('store_id', storeId);
     formData.append('store_passwd', storePassword);

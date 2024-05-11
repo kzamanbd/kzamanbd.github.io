@@ -231,7 +231,7 @@ body {
     top: calc(var(--index) * 4rem);
 }
 .cursor-pointer-effect {
-    border-left: 0.1em solid #00FF41;
+    border-left: 0.1em solid #00ff41;
     animation: blink 0.7s steps(1) infinite;
 }
 
