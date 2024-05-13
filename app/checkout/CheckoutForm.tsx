@@ -2,6 +2,7 @@
 
 import Image from 'next/image';
 import { useState } from 'react';
+import axios from 'axios';
 
 export default function CheckoutForm() {
     const [loading, setLoading] = useState(false);
@@ -13,15 +14,9 @@ export default function CheckoutForm() {
         // Call the payment API
         try {
             setLoading(true);
-            const res = await fetch('/api/payment', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            });
-            const data = await res.json();
-            console.log('Payment response', data);
-            window.open(data.GatewayPageURL, '_self');
+            const res = await axios.post('/api/payment');
+            console.log('Payment response', res.data);
+            window.open(res.data.GatewayPageURL, '_self');
         } catch (error) {
             console.error('Payment failed', error);
         } finally {
