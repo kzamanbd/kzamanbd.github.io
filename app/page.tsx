@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import GlowCard from './components/glow-card';
+import GlowCard from './components/GlowCard';
 
 export default function Features() {
     return (
