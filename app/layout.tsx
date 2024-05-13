@@ -6,7 +6,7 @@ import NextTopLoader from 'nextjs-toploader';
 
 const inter = Inter({ subsets: ['latin'] });
 
-import { authorName, description, profileImage } from '@/static/siteMetadata';
+import { authorName, description, profileImage } from '@/app/metadata';
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
     return (

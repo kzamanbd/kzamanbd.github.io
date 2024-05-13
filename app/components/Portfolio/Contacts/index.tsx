@@ -1,5 +1,5 @@
 // @flow strict
-import { user } from '@/static/siteMetadata';
+import { user } from '@/app/metadata';
 import Link from 'next/link';
 import { BiLogoLinkedin } from 'react-icons/bi';
 import { CiLocationOn } from 'react-icons/ci';

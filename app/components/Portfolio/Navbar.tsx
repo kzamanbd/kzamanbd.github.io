@@ -1,7 +1,7 @@
 // @flow strict
 import Link from 'next/link';
 
-import { user } from '@/static/siteMetadata';
+import { user } from '@/app/metadata';
 
 function Navbar() {
     return (

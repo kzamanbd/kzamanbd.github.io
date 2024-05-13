@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { user } from '@/static/siteMetadata';
+import { user } from '@/app/metadata';
 
 function AboutSection() {
     return (

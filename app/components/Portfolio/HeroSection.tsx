@@ -6,7 +6,7 @@ import { RiContactsFill } from 'react-icons/ri';
 import { SiLeetcode } from 'react-icons/si';
 import TypingEffect from '../TypingEffect';
 
-import { user } from '@/static/siteMetadata';
+import { user } from '@/app/metadata';
 
 export default function HeroSection() {
     return (
