@@ -2,7 +2,7 @@ import './globals.css';
 import { Inter } from 'next/font/google';
 import Script from 'next/script';
 import { ToastContainer } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
+import NextTopLoader from 'nextjs-toploader';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -12,7 +12,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     return (
         <html className="scroll-smooth" lang="en" suppressHydrationWarning={true}>
             <head>
-                <title>{authorName}</title>
                 <meta
                     name="viewport"
                     content="minimum-scale=1, initial-scale=1, width=device-width, shrink-to-fit=no, user-scalable=no, viewport-fit=cover"
@@ -48,7 +47,20 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 <meta property="og:image" content="/images/icons/android-chrome-192x192.png" />
             </head>
             <body suppressHydrationWarning={true}>
-                <div className={inter.className}>{children}</div>
+                <div className={inter.className}>
+                    <NextTopLoader
+                        color="#2299DD"
+                        initialPosition={0.08}
+                        crawlSpeed={200}
+                        height={3}
+                        crawl={true}
+                        showSpinner={true}
+                        easing="ease"
+                        speed={200}
+                        shadow="0 0 10px #2299DD,0 0 5px #2299DD"
+                    />
+                    {children}
+                </div>
                 <ToastContainer />
                 <Script src="https://www.googletagmanager.com/gtag/js?id=G-3HFZXXGGM3" />
                 <Script id="google-analytics">

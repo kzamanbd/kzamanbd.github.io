@@ -1,6 +1,11 @@
 import Link from 'next/link';
 import GlowCard from './components/GlowCard';
 
+export const metadata = {
+    title: 'DraftScripts - Features',
+    description: 'DraftScripts features for business teams like yours.'
+};
+
 export default function Features() {
     return (
         <section className="bg-white dark:bg-gray-900">

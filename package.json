@@ -11,6 +11,7 @@
     "dependencies": {
         "@emailjs/browser": "^4.3.3",
         "next": "14.2.3",
+        "nextjs-toploader": "^1.6.12",
         "react": "^18",
         "react-dom": "^18",
         "react-google-recaptcha": "^3.1.0",

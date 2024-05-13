@@ -2,7 +2,6 @@
 
 import emailjs from '@emailjs/browser';
 import { useState } from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
 import { TbMailForward } from 'react-icons/tb';
 import { toast } from 'react-toastify';
 
@@ -141,10 +140,7 @@ export default function FormWithCaptcha() {
                             value={input.message}
                         />
                     </div>
-                    <ReCAPTCHA
-                        sitekey={`${process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY}`}
-                        onChange={(code: any) => setCaptcha(code)}
-                    />
+
                     <div className="flex flex-col items-center gap-2">
                         {error.required && <p className="text-sm text-red-400">Email and Message are required!</p>}
                         <button
@@ -160,5 +156,3 @@ export default function FormWithCaptcha() {
         </div>
     );
 }
-
-
