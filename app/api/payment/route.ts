@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-export async function POST(request: Request) {
+export async function GET(request: Request) {
     // generate unique id for each transaction id
     const randomString = Math.random().toString(36).substring(7);
     const transactionId = `${randomString.toUpperCase()}${Math.random().toString(36).substring(7).toUpperCase()}`;

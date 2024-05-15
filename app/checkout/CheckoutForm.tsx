@@ -14,7 +14,7 @@ export default function CheckoutForm() {
         try {
             setLoading(true);
             const res = await fetch('/api/payment', {
-                method: 'POST',
+                method: 'GET',
                 headers: {
                     'Content-Type': 'application/json'
                 }
