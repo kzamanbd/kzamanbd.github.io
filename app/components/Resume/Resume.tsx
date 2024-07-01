@@ -342,13 +342,28 @@ export default function Resume() {
                             <div className="mr-4">
                                 <div className="bullet"></div>
                             </div>
-                            <p>Basic Knowledge of Android Apps Development.</p>
+                            <p>Experience with Software Development Life Cycle (SDLC) and Agile methodologies.</p>
                         </li>
                         <li className="flex items-center">
                             <div className="mr-4">
                                 <div className="bullet"></div>
                             </div>
-                            <p>Proficient Understanding of Code Versioning Tools (Git), CI/CD and Github Action.</p>
+                            <p>
+                                Experience in working with version control systems like Git, Bitbucket, GitLab, and
+                                GitHub.
+                            </p>
+                        </li>
+                        <li className="flex items-center">
+                            <div className="mr-4">
+                                <div className="bullet"></div>
+                            </div>
+                            <p>Basic knowledge of Cloud Platforms like AWS, Microsoft Azure, Google Cloud Platform.</p>
+                        </li>
+                        <li className="flex items-center">
+                            <div className="mr-4">
+                                <div className="bullet"></div>
+                            </div>
+                            <p>Experience working in a Dockerized environment.</p>
                         </li>
                         <li className="flex items-center">
                             <div className="mr-4">
