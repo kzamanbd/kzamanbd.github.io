@@ -1,0 +1,32 @@
+{
+    "name": "kzamanbd.github.io",
+    "version": "1.0.0",
+    "description": "[![Linkedin](https://raw.githubusercontent.com/kzamanbd/kzamanbd/master/gitartwork.svg)](https://www.linkedin.com/in/kzamanbd)",
+    "main": "index.js",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/kzamanbd/kzamanbd.github.io.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/kzamanbd/kzamanbd.github.io/issues"
+    },
+    "homepage": "https://github.com/kzamanbd/kzamanbd.github.io#readme",
+    "dependencies": {
+        "@tailwindcss/vite": "^4.1.13",
+        "tailwindcss": "^4.1.13",
+        "vite": "^7.1.7"
+    },
+    "devDependencies": {
+        "glob": "^11.0.0",
+        "prettier": "^3.6.2",
+        "prettier-plugin-tailwindcss": "^0.6.14"
+    }
+}
