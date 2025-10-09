@@ -13,6 +13,8 @@
             <div class="mx-auto max-w-6xl px-4">
                 <div class="flex h-16 items-center justify-between">
                     <a href="/" class="text-lg font-semibold tracking-tight">KAMRUZZAMAN</a>
+
+                    <!-- Desktop Navigation -->
                     <nav class="hidden gap-6 text-sm md:flex">
                         <a class="text-neutral-300 hover:text-white" href="/">Home</a>
                         <a class="text-neutral-300 hover:text-white" href="#about">About</a>
@@ -20,11 +22,47 @@
                         <a class="text-neutral-300 hover:text-white" href="#experience">Experience</a>
                         <a class="text-neutral-300 hover:text-white" href="#contact">Contact</a>
                     </nav>
-                    <a
-                        href="#contact"
-                        class="inline-flex items-center rounded-md bg-cyan-500 px-4 py-2 text-sm font-medium text-neutral-900 transition hover:bg-cyan-400 md:hidden">
-                        Contact
-                    </a>
+
+                    <!-- Mobile Navigation Controls -->
+                    <div class="flex items-center gap-3 md:hidden">
+                        <a
+                            href="#contact"
+                            class="inline-flex items-center rounded-md bg-cyan-500 px-4 py-2 text-sm font-medium text-neutral-900 transition hover:bg-cyan-400">
+                            Contact
+                        </a>
+                        <button
+                            id="mobile-menu-button"
+                            class="inline-flex items-center justify-center rounded-md border border-white/10 bg-white/5 p-2 text-neutral-300 hover:bg-white/10"
+                            aria-label="Toggle mobile menu"
+                            aria-expanded="false"
+                            aria-controls="mobile-menu">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Mobile Menu (hidden by default) -->
+                <div id="mobile-menu" class="hidden overflow-hidden transition-all duration-300 max-h-0">
+                    <div class="py-4 border-t border-white/10">
+                        <nav class="flex flex-col gap-3 text-sm">
+                            <a class="text-neutral-300 hover:text-white py-2" href="/">Home</a>
+                            <a class="text-neutral-300 hover:text-white py-2" href="#about">About</a>
+                            <a class="text-neutral-300 hover:text-white py-2" href="#education">Education</a>
+                            <a class="text-neutral-300 hover:text-white py-2" href="#experience">Experience</a>
+                            <a class="text-neutral-300 hover:text-white py-2" href="#contact">Contact</a>
+                        </nav>
+                    </div>
                 </div>
             </div>
         </header>
@@ -477,6 +515,57 @@
             </div>
             <script>
                 document.getElementById('year').textContent = new Date().getFullYear();
+
+                // Mobile Menu Toggle
+                const mobileMenuButton = document.getElementById('mobile-menu-button');
+                const mobileMenu = document.getElementById('mobile-menu');
+
+                if (mobileMenuButton && mobileMenu) {
+                    const toggleMenu = () => {
+                        const expanded = mobileMenuButton.getAttribute('aria-expanded') === 'true';
+                        mobileMenuButton.setAttribute('aria-expanded', !expanded);
+
+                        if (!expanded) {
+                            // Open menu
+                            mobileMenu.classList.remove('hidden');
+                            setTimeout(() => {
+                                mobileMenu.style.maxHeight = mobileMenu.scrollHeight + 'px';
+                            }, 10);
+
+                            // Change to X icon
+                            mobileMenuButton.innerHTML = `
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            `;
+                        } else {
+                            // Close menu
+                            mobileMenu.style.maxHeight = '0px';
+                            setTimeout(() => {
+                                mobileMenu.classList.add('hidden');
+                            }, 300); // Match duration-300 from CSS
+
+                            // Change to hamburger icon
+                            mobileMenuButton.innerHTML = `
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                                </svg>
+                            `;
+                        }
+                    };
+
+                    mobileMenuButton.addEventListener('click', toggleMenu);
+
+                    // Close mobile menu when clicking on nav links
+                    const mobileNavLinks = mobileMenu.querySelectorAll('a');
+                    mobileNavLinks.forEach((link) => {
+                        link.addEventListener('click', () => {
+                            if (mobileMenuButton.getAttribute('aria-expanded') === 'true') {
+                                toggleMenu();
+                            }
+                        });
+                    });
+                }
             </script>
         </footer>
     </body>
