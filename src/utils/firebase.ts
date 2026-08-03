@@ -16,6 +16,4 @@ const firebaseConfig = {
 const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
 const firestore = getFirestore(app);
 
-console.log(firestore);
-
 export { app, firestore };
