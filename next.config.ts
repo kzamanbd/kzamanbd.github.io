@@ -13,6 +13,14 @@ const buildTime = process.env.NEXT_PUBLIC_BUILD_TIME ?? new Date().toISOString()
 
 const nextConfig: NextConfig = {
     poweredByHeader: false,
+    // `.dev.tsx` / `.dev.ts` count as routes only in development, which is what
+    // keeps the article editor and its filesystem Server Actions out of the
+    // production build entirely. This site is server-rendered, so an unguarded
+    // /studio route would be live and world-writable on the deployed host; the
+    // actions module carries a second, runtime guard for the same reason.
+    pageExtensions: isDev
+        ? ['tsx', 'ts', 'jsx', 'js', 'dev.tsx', 'dev.ts']
+        : ['tsx', 'ts', 'jsx', 'js'],
     env: {
         NEXT_PUBLIC_BUILD_TIME: buildTime
     },
