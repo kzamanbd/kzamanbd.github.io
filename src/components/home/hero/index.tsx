@@ -45,7 +45,7 @@ export default function HeroArea() {
                         {/* Back to the body face: the display font is drawn for
                             the name at display size, and reads cramped at this
                             one. */}
-                        <span className="text-foreground/60 font-sans mb-3 block text-lg font-semibold tracking-normal sm:text-xl md:text-2xl">
+                        <span className="text-foreground/60 mb-3 block font-sans text-lg font-semibold tracking-normal sm:text-xl md:text-2xl">
                             Hello, I&apos;m
                         </span>
                         <ShinyText className="pr-2 pb-2">{user.name}</ShinyText>
