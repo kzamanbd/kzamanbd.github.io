@@ -1,0 +1,49 @@
+name: CI
+
+on:
+    push:
+        branches:
+            - main
+    pull_request:
+    workflow_dispatch:
+
+jobs:
+    verify:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Setup pnpm
+              uses: pnpm/action-setup@v4
+              with:
+                  version: 10
+
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+                  cache: pnpm
+
+            - name: Install dependencies
+              run: pnpm install --frozen-lockfile
+
+            - name: Lint
+              run: pnpm lint
+
+            - name: Type check
+              run: pnpm check-types
+
+            - name: Build
+              run: pnpm build
+              env:
+                  # Build-time placeholders. The Firebase client config is public
+                  # by design (access is governed by Firestore security rules),
+                  # but the real values live in the Vercel project settings, so CI
+                  # only needs the build to resolve the reads.
+                  NEXT_PUBLIC_FIREBASE_API_KEY: ci-placeholder
+                  NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN: ci-placeholder
+                  NEXT_PUBLIC_FIREBASE_PROJECT_ID: ci-placeholder
+                  NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET: ci-placeholder
+                  NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID: ci-placeholder
+                  NEXT_PUBLIC_FIREBASE_APP_ID: ci-placeholder

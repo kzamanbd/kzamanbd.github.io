@@ -1,49 +1,80 @@
-# Hey There 👋
+# kzamanbd portfolio
 
-[![Linkedin](https://raw.githubusercontent.com/kzamanbd/kzamanbd/master/gitartwork.svg)](https://www.linkedin.com/in/kzamanbd)
+Personal portfolio and resume site for **MD Kamruzzaman**, Full Stack Software Engineer.
+Next.js 16 (App Router) + React 19 + Tailwind CSS v4 + TypeScript, with Firebase-backed
+short URLs.
 
-I am **KAMRUZZAMAN**, a self-taught Software Developer from Bangladesh. I have been working as a Professional Full Stack Developer for the last 3 years, Though I started my Self-Taught Programming Journey In 2016. I specialize in converting pixel-perfect web pages for my company with 100% Mobile responsiveness. In the last few years, I have helped dozens of my client create websites for their business that are mobile and SEO-friendly.
+Extracted from the `draftscripts` monorepo into a standalone project; the shared
+metadata, social icons, theme provider and class helpers that used to come from
+`@repo/shared` now live under `src/lib` and `src/components`.
 
-Want to know more about me? [**Check out my Portfolio.**](https://kzamanbd.github.io/)
+## Requirements
 
-- 📚 Currently I am focusing on Node.js
+- Node 22+
+- pnpm 10+
 
-- 🎯 Goal of 2025 is to learn Node.js, Vue.js & Industrial Good Practices
+## Commands
 
-## Find me on Social Platforms
+```bash
+pnpm install
 
-[![Linkedin](https://raw.githubusercontent.com/kzamanbd/kzamanbd/master/images/linkedin.png 'Linkedin')](https://www.linkedin.com/in/kzamanbd 'Linkedin') [![Facebook](https://raw.githubusercontent.com/kzamanbd/kzamanbd/master/images/facebook.png 'Facebook')](http://facebook.com/kzaman.me 'Facebook') [![Discord](https://raw.githubusercontent.com/kzamanbd/kzamanbd/master/images/discord.png 'Discord')](https://discordapp.com/users/kzaman#9304 'Discord') [![Instagram](https://raw.githubusercontent.com/kzamanbd/kzamanbd/master/images/instagram.png 'Instagram')](https://www.instagram.com/kzaman.me/ 'Instagram')
+pnpm dev            # dev server (Turbopack)
+pnpm dev:https      # dev server over HTTPS
+pnpm build          # production build
+pnpm start          # serve the production build
 
-[![Followers](https://img.shields.io/github/followers/kzamanbd?username=kzamanbd&label=Followers)](https://github.com/kzamanbd?tab=followers)
-![Profile](https://komarev.com/ghpvc/?username=kzamanbd&label=Profile%20views&color=green&style=flat)
+pnpm lint           # eslint, zero warnings allowed
+pnpm check-types    # tsc --noEmit
+pnpm format         # prettier --write .
+```
 
-![Github Overview](https://raw.githubusercontent.com/kzamanbd/github-stats/master/generated/overview.svg#gh-light-mode-only)
-![Github Language](https://raw.githubusercontent.com/kzamanbd/github-stats/master/generated/languages.svg#gh-light-mode-only)
+## Environment
 
-## Tech Stack
+Copy `.env.example` to `.env.local` and fill in the Firebase client config. The
+`NEXT_PUBLIC_*` values are shipped to the browser by design (the Firebase client
+SDK needs them); access is governed by Firestore security rules, not secrecy.
 
-### Programming Languages
+```bash
+cp .env.example .env.local
+```
 
-![PHP](https://img.shields.io/badge/PHP-%23777BB4.svg?&style=for-the-badge&logo=php&logoColor=white)
-![JavaScript](https://img.shields.io/badge/JavaScript%20-%23323330.svg?&style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
-![JAVA](https://img.shields.io/badge/JAVA-%23ED8B00.svg?&style=for-the-badge&logo=java&logoColor=white)
-![Python](https://img.shields.io/badge/Python-14354C?style=for-the-badge&logo=python&logoColor=white)
-![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
+## Hosting
 
-### Web Technologies, Frameworks & CMS
+**This app is server-rendered and cannot be hosted on GitHub Pages.** It uses
+API route handlers (`src/app/api/*`), Server Actions (`src/app/shorturl/actions.ts`)
+and a dynamic redirect route (`src/app/shorturl/[code]`), none of which survive a
+static export. Deploy to Vercel (or any Node host) and point the domain there.
 
-![Laravel](https://img.shields.io/badge/Laravel%20-%23FF2D20.svg?&style=for-the-badge&logo=laravel&logoColor=white)
-![Livewire](https://img.shields.io/badge/Laravel%20Livewire%20-%23FF2D20.svg?&style=for-the-badge&logo=laravel-livwire&logoColor=white)
-![Vue.JS](https://img.shields.io/badge/VueJs%20-%2335495e.svg?&style=for-the-badge&logo=vue.js&logoColor=%234FC08D)
-![React](https://img.shields.io/badge/React%20JS-%2335495e.svg?&style=for-the-badge&logo=reactjs&logoColor=%234FC08D)
-![HTML5](https://img.shields.io/badge/HTML5%20-%23E34F26.svg?&style=for-the-badge&logo=html5&logoColor=white)
-![jQuery](https://img.shields.io/badge/JQuery%20-%230769AD.svg?&style=for-the-badge&logo=jquery&logoColor=white)
-![CSS3](https://img.shields.io/badge/CSS3%20-%231572B6.svg?&style=for-the-badge&logo=css3&logoColor=white)
-![Bootstrap](https://img.shields.io/badge/Bootstrap%20-%23563D7C.svg?&style=for-the-badge&logo=bootstrap&logoColor=white)
-![WordPress](https://img.shields.io/badge/WordPress%20-%2321759B.svg?&style=for-the-badge&logo=wordpress&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/TailwindCSS%20-%2338B2AC.svg?&style=for-the-badge&logo=tailwind-css&logoColor=white)
+The repository keeps its `kzamanbd.github.io` name for continuity; the GitHub
+Pages workflow that used to build the old Vite site has been replaced by a CI
+workflow that lints, type-checks and builds.
 
-### Databases
+## Layout
 
-![MYSQL](https://img.shields.io/badge/-MYSQL-%234479A1?style=for-the-badge&logo=mysql&logoColor=ffffff)
-![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)
+```
+src/
+  app/            routes only: pages, layouts, metadata routes, API handlers
+    api/          route handlers
+    resume/       on-site resume (print friendly)
+    shorturl/     Firebase-backed short links + [code] redirect
+    plugins/      plugin landing pages
+  components/
+    animations/   animated underline, shiny text
+    backgrounds/  grid and dot backdrops
+    common/       section heading, tag, spotlight primitives
+    home/         home page sections, each with its own contents.ts
+    icons/        social icons
+    layout/       navbar, footer, theme controls, scroll sync
+    resume/       resume building blocks
+  lib/            site metadata and shared types
+  utils/          pure helpers (cn, firebase, jsonLd, formatting)
+```
+
+## Conventions
+
+- Prettier: 4-space indent, single quotes, no trailing commas, `printWidth` 100,
+  `bracketSameLine`, and **CRLF** line endings. `prettier-plugin-tailwindcss`
+  sorts class names.
+- Kebab-case component files, camelCase utilities.
+- Import with the `@/` alias rather than relative paths.
+- `src/app/` holds routing concerns only; components live in `src/components/`.

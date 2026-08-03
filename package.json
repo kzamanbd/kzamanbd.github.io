@@ -1,32 +1,65 @@
 {
-    "name": "kzamanbd.github.io",
-    "version": "1.0.0",
-    "description": "[![Linkedin](https://raw.githubusercontent.com/kzamanbd/kzamanbd/master/gitartwork.svg)](https://www.linkedin.com/in/kzamanbd)",
-    "main": "index.js",
+    "name": "kzamanbd-portfolio",
+    "version": "0.1.0",
+    "private": true,
     "type": "module",
     "scripts": {
-        "dev": "vite",
-        "build": "vite build"
+        "dev": "next dev --turbopack",
+        "dev:https": "next dev --experimental-https",
+        "build": "next build",
+        "start": "next start",
+        "lint": "eslint src --max-warnings 0",
+        "check-types": "tsc --noEmit",
+        "format": "prettier --write .",
+        "format:check": "prettier --check ."
     },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/kzamanbd/kzamanbd.github.io.git"
+    "prettier": {
+        "$schema": "https://json.schemastore.org/prettierrc",
+        "semi": true,
+        "tabWidth": 4,
+        "singleQuote": true,
+        "printWidth": 100,
+        "trailingComma": "none",
+        "bracketSameLine": true,
+        "endOfLine": "crlf",
+        "plugins": [
+            "prettier-plugin-tailwindcss"
+        ]
     },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/kzamanbd/kzamanbd.github.io/issues"
-    },
-    "homepage": "https://github.com/kzamanbd/kzamanbd.github.io#readme",
     "dependencies": {
-        "@tailwindcss/vite": "^4.1.13",
-        "tailwindcss": "^4.1.13",
-        "vite": "^7.1.7"
+        "@next/third-parties": "16.2.4",
+        "clsx": "^2.1.1",
+        "firebase": "^12.1.0",
+        "lucide-react": "^0.539.0",
+        "next": "16.2.4",
+        "next-themes": "^0.4.6",
+        "react": "19.2.5",
+        "react-dom": "19.2.5",
+        "tailwind-merge": "^3.3.1"
     },
     "devDependencies": {
-        "glob": "^11.0.0",
-        "prettier": "^3.6.2",
-        "prettier-plugin-tailwindcss": "^0.6.14"
+        "@eslint/js": "^9.24.0",
+        "@next/eslint-plugin-next": "^15.3.0",
+        "@tailwindcss/postcss": "^4",
+        "@types/node": "^20",
+        "@types/react": "19.2.14",
+        "@types/react-dom": "19.2.3",
+        "eslint": "^9",
+        "eslint-config-prettier": "^10.1.1",
+        "eslint-plugin-react": "^7.37.5",
+        "eslint-plugin-react-hooks": "^5.2.0",
+        "globals": "^16.0.0",
+        "prettier": "^3.5.3",
+        "prettier-plugin-tailwindcss": "^0.6.11",
+        "schema-dts": "^1.1.5",
+        "tailwindcss": "^4",
+        "typescript": "^5",
+        "typescript-eslint": "^8.29.1"
+    },
+    "pnpm": {
+        "overrides": {
+            "@types/react": "19.2.14",
+            "@types/react-dom": "19.2.3"
+        }
     }
 }

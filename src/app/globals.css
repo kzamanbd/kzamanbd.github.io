@@ -1,0 +1,348 @@
+@import 'tailwindcss';
+
+@theme {
+    --color-primary: var(--color-blue-500, #6366f1);
+    --color-primary-50: var(--color-blue-50, #eef2ff);
+    --color-primary-100: var(--color-blue-100, #e0e7ff);
+    --color-primary-200: var(--color-blue-200, #c7d2fe);
+    --color-primary-300: var(--color-blue-300, #a5b4fc);
+    --color-primary-400: var(--color-blue-400, #818cf8);
+    --color-primary-500: var(--color-blue-500, #6366f1);
+    --color-primary-600: var(--color-blue-600, #4f46e5);
+    --color-primary-700: var(--color-blue-700, #4338ca);
+    --color-primary-800: var(--color-blue-800, #3730a3);
+    --color-primary-900: var(--color-blue-900, #312e81);
+    --color-primary-950: var(--color-blue-950, #1e1b4b);
+    --foreground-rgb: rgb(211, 216, 232);
+    --color-dark: #1f2937;
+    --color-white: #ffffff;
+    --color-light: #f5f8fa;
+
+    --text-sm: 12px;
+
+    --font-sans: Inter, Helvetica, 'sans-serif', ui-sans-serif, system-ui, sans-serif;
+}
+
+@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant hover (&:hover);
+
+/* Surface tokens for the site chrome (navbar, footer, cards, backdrops).
+   `next-themes` writes the resolved theme as a `dark` class on <html> and runs
+   its own pre-paint script, so these flip with the switcher and never flash.
+   They deliberately track the existing body colours (`--color-light` in light,
+   gray-800 in dark) so the glass surfaces sit on the same base as the page. */
+:root {
+    --background: #f5f8fa;
+    --foreground: #111827;
+    /* Decorative grid/dot backdrop lines, derived from the foreground token so
+       they stay subtle and flip with the theme (dark lines on light, light lines
+       on dark) instead of a fixed gray. Consumed by the background components. */
+    --grid-line: color-mix(in oklab, var(--foreground) 13%, transparent);
+    --grid-dot: color-mix(in oklab, var(--foreground) 22%, transparent);
+}
+
+.dark {
+    --background: #1f2937;
+    --foreground: #f3f4f6;
+}
+
+/* `inline` so the utilities resolve to the custom properties themselves rather
+   than to their value at build time, which is what lets bg-background and
+   text-foreground follow the theme switch. */
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+}
+
+/* Shared keyboard focus ring. One definition so every interactive surface (nav
+   and theme chrome, links, buttons, form controls) shows the same visible focus
+   indicator instead of a per-component mix of the UA outline and bespoke rings.
+   Uses focus-visible so it only appears for keyboard users. */
+@utility focus-ring {
+    @apply focus-visible:ring-foreground/50 focus-visible:ring-offset-background focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none;
+}
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+    button:not(:disabled),
+    [role='button']:not(:disabled) {
+        cursor: pointer;
+    }
+    input:disabled,
+    button:disabled,
+    [role='button']:disabled {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --foreground-rgb: 255, 255, 255;
+        }
+    }
+    body {
+        @apply bg-light dark:bg-gray-800 print:bg-transparent;
+    }
+}
+
+@layer components {
+    .page-container {
+        @apply relative z-[1] mx-auto h-auto w-full break-before-auto bg-white md:my-6 md:h-[297mm] md:w-[210mm] md:rounded md:border print:mx-0 print:my-0 print:h-[297mm] print:w-[210mm] print:rounded-none print:border-0 print:shadow-none;
+    }
+    .orange-gradient {
+        @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
+    }
+    .green-gradient {
+        @apply bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent;
+    }
+    .blue-gradient {
+        @apply bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
+    }
+    .resume-box {
+        @apply grid h-full grid-cols-12 gap-4;
+    }
+    .left-box {
+        @apply col-span-full bg-[#f8fafe] py-8 pr-6 pl-8 md:col-span-4 print:col-span-4;
+    }
+    .right-box {
+        @apply col-span-full py-8 pr-8 pl-6 text-justify md:col-span-8 md:pl-2 print:col-span-8;
+    }
+    .subtitle {
+        @apply relative mb-1.5 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text font-bold text-transparent uppercase print:text-gray-700;
+    }
+    .timeline-icon {
+        @apply border-primary-200 absolute -left-[6.5px] flex h-3 w-3 items-center justify-center rounded-full border;
+    }
+    .section-box {
+        @apply bg-primary-100 flex h-10 items-center justify-center rounded-lg;
+    }
+    .bullet-list {
+        @apply relative ml-2 space-y-1.5 text-left text-xs;
+    }
+    .bullet-list li {
+        @apply before:bg-primary-500 flex items-center before:mr-2 before:h-1 before:w-1 before:rounded-full;
+    }
+    .key-button {
+        @apply relative inline-flex items-center justify-center overflow-hidden rounded-full bg-gradient-to-br p-0.5 text-sm font-medium text-gray-900 focus:ring-4 focus:outline-none;
+    }
+    .key-skill {
+        @apply relative w-full rounded-full bg-white px-2 py-1.5 transition-all duration-75 ease-in;
+    }
+    .contact-icon {
+        @apply mr-3 h-4 w-4 rounded;
+    }
+    .profile-photo {
+        @apply size-40 rounded-xl object-cover;
+    }
+    .name--title {
+        @apply mb-10;
+    }
+    .resume-box.with-photo .name--title {
+        @apply mt-4 mb-6;
+    }
+    .resume-box:not(.with-photo) .profile-photo {
+        @apply hidden;
+    }
+    /* extra buttons */
+    .action-btn {
+        @apply flex h-8 w-8 items-center justify-center border border-r-0;
+    }
+    .action-btn:first-child {
+        @apply rounded-l;
+    }
+    .action-btn:last-child {
+        @apply rounded-r border-r;
+    }
+
+    /* Common ATS Resume Classes */
+    .contact-link {
+        @apply flex items-center gap-1;
+    }
+    .section-heading {
+        @apply mb-1.5 font-bold uppercase;
+    }
+    .timeline-container {
+        @apply relative mb-4 ml-2 flex flex-col;
+    }
+    .timeline-container > div {
+        @apply border-primary-500 relative border-l pb-4 pl-4;
+    }
+    .timeline-container > div:last-child {
+        @apply border-transparent pb-0;
+    }
+    .job-header {
+        @apply -mt-1 mb-2 flex justify-between;
+    }
+    .company-info {
+        @apply flex gap-1 text-sm font-medium;
+    }
+    .job-meta {
+        @apply text-right text-sm;
+    }
+    .resume-list-item {
+        @apply flex items-center;
+    }
+    .resume-link {
+        @apply hover:text-primary-500 text-sm font-semibold text-gray-800 underline;
+    }
+    .radial-gradient {
+        background: radial-gradient(
+            farthest-corner,
+            var(--color-primary-100),
+            #eaf6ff,
+            #fff9ea,
+            #fafafa,
+            #f5f7f2
+        );
+        background-size: 200% 200%;
+        animation: moveGradient 10s infinite linear alternate;
+        @apply dark:bg-gray-800 dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800;
+    }
+}
+
+/* Custom animations for gradient effects */
+@keyframes pulse-slow {
+    0%,
+    100% {
+        opacity: 0.6;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.8;
+        transform: scale(1.05);
+    }
+}
+
+@keyframes animate-gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes moveGradient {
+    0% {
+        background-position: 0% 0%;
+    }
+    25% {
+        background-position: 100% 0%;
+    }
+    50% {
+        background-position: 100% 100%;
+    }
+    75% {
+        background-position: 0% 100%;
+    }
+    100% {
+        background-position: 0% 0%;
+    }
+}
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in-up {
+    animation: fade-in-up 0.5s ease-out forwards;
+}
+
+.animate-pulse-slow {
+    animation: pulse-slow 6s ease-in-out infinite;
+}
+
+.animate-gradient {
+    animation: animate-gradient 3s ease infinite;
+}
+
+@keyframes blob-bounce {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(30px, -50px) scale(1.1);
+    }
+    66% {
+        transform: translate(-20px, 20px) scale(0.9);
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+@keyframes shine {
+    from {
+        background-position: 0 0;
+    }
+    to {
+        background-position: -200% 0;
+    }
+}
+
+.animate-blob {
+    animation: blob-bounce 7s infinite;
+}
+
+.animate-shine {
+    background-size: 200% auto;
+    animation: shine 4s linear infinite;
+}
+
+.animation-delay-2000 {
+    animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+    animation-delay: 4s;
+}
+
+/* Global reduced-motion safety net. The site opts into motion per component
+   (motion-safe utilities and prefers-reduced-motion blocks), but any inline
+   transition or animate utility that misses the gate would still run at full
+   motion. This blanket reset neutralises animation, transition and smooth scroll
+   for visitors who ask for reduced motion, so the per-component gating cannot be
+   silently undermined. Kept minimal (duration collapse, single iteration) so
+   state changes still apply instantly rather than snapping mid-transition. */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+@page {
+    size: A4;
+    margin: 2.5rem;
+    @bottom-right {
+        content: 'Page ' counter(page) ' of ' counter(pages);
+        font-size: 12px;
+    }
+}

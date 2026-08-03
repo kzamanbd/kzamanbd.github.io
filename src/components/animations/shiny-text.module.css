@@ -1,0 +1,16 @@
+/* Shimmer sweep for the hero name. The animation only runs when motion is
+   allowed; its duration is overridden inline via the `speed` prop. */
+@media (prefers-reduced-motion: no-preference) {
+    .shine {
+        animation: shine 5s linear infinite;
+    }
+}
+
+@keyframes shine {
+    0% {
+        background-position: 100%;
+    }
+    100% {
+        background-position: -100%;
+    }
+}
