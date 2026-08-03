@@ -18,12 +18,15 @@ import { useRef } from 'react';
  * article instead of one per block.
  */
 export default function ArticleContent({ html }: { html: string }) {
-    const bodyRef = useRef<HTMLDivElement>(null);
+    const bodyRef = useRef<HTMLElement>(null);
     useSpotlightSurfaces(bodyRef);
 
     return (
         <>
-            <div
+            {/* A real <article> element, not a div: the reading-progress bar
+                measures the first one on the page to know how far the body has
+                been read. */}
+            <article
                 ref={bodyRef}
                 className={cn(styles.content, 'max-w-none')}
                 dangerouslySetInnerHTML={{ __html: html }}

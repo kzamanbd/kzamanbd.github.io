@@ -1,45 +1,26 @@
-/* The site's signature card treatment: an ambient accent glow that rests dim and
-   blooms gently on hover, plus a cursor-following spotlight and a lit border
-   segment. Every self-contained card surface should carry it, so a new card
-   never ships flat and glow-less.
+/* The skill tile: a square that rests quiet so the grid reads as one cohesive
+   set, then blooms to the skill's own brand colour on hover, with the cursor
+   lighting the surface and the nearest stretch of border. Smaller and softer
+   than the project cards, since twenty-odd of these sit side by side. */
 
-   The accent is contextual: each tile passes its own `--brand-color` inline, and
-   the glow falls back to the foreground token when none is given. The intensity
-   steps up in dark mode, where a light bloom needs more room to read. */
-
-.card {
+.tile {
     position: relative;
     isolation: isolate;
-    --card-glow: 9%;
+    --tile-glow: 10%;
+    --pointer-x: 50%;
+    --pointer-y: 50%;
+    --spotlight-strength: 6%;
+    --spotlight-border-strength: 45%;
 }
 
-:global(html.dark) .card {
-    --card-glow: 16%;
+:global(html.dark) .tile {
+    --tile-glow: 18%;
+    --spotlight-strength: 9%;
+    --spotlight-border-strength: 65%;
 }
 
-/* Ambient bloom: always faintly present, full on hover. */
-.card::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    border-radius: inherit;
-    pointer-events: none;
-    opacity: 0.55;
-    background: radial-gradient(
-        circle at 50% 0%,
-        color-mix(in oklab, var(--brand-color, var(--foreground)) var(--card-glow), transparent),
-        transparent 70%
-    );
-}
-
-.card:hover::before {
-    opacity: 1;
-}
-
-/* Cursor spotlight: centred by default so a card with no pointer data (touch,
-   reduced motion) still looks deliberate rather than lopsided. */
-.card::after {
+/* Ambient bloom, from the bottom of the tile so the icon above stays crisp. */
+.tile::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -48,41 +29,69 @@
     pointer-events: none;
     opacity: 0;
     background: radial-gradient(
-        180px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
-        color-mix(in oklab, var(--brand-color, var(--foreground)) 18%, transparent),
+        circle at 50% 100%,
+        color-mix(in oklab, var(--brand-color, var(--foreground)) var(--tile-glow), transparent),
+        transparent 72%
+    );
+}
+
+.tile:hover::before {
+    opacity: 1;
+}
+
+/* Cursor spotlight, kept tight: the tile is small, so a wide radius would wash
+   the whole square flat instead of reading as a moving highlight. */
+.tile::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(
+        7rem circle at var(--pointer-x) var(--pointer-y),
+        color-mix(
+            in oklab,
+            var(--brand-color, var(--foreground)) var(--spotlight-strength),
+            transparent
+        ),
         transparent 70%
     );
 }
 
-.card:hover::after {
+.tile:hover::after {
     opacity: 1;
 }
 
-/* The lit stretch of border nearest the cursor. */
 .border {
     opacity: 0;
-    border-color: color-mix(in oklab, var(--brand-color, var(--foreground)) 45%, transparent);
+    border-color: color-mix(
+        in oklab,
+        var(--brand-color, var(--foreground)) var(--spotlight-border-strength),
+        transparent
+    );
     -webkit-mask-image: radial-gradient(
-        140px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
-        #000 0%,
-        transparent 70%
+        5rem circle at var(--pointer-x) var(--pointer-y),
+        #000,
+        rgb(0 0 0 / 0.35),
+        transparent
     );
     mask-image: radial-gradient(
-        140px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
-        #000 0%,
-        transparent 70%
+        5rem circle at var(--pointer-x) var(--pointer-y),
+        #000,
+        rgb(0 0 0 / 0.35),
+        transparent
     );
 }
 
-.card:hover .border {
+.tile:hover .border {
     opacity: 1;
 }
 
 @media (prefers-reduced-motion: no-preference) {
-    .card::before {
-        transition: opacity 700ms ease-out;
-    }
-    .card::after,
+    .tile::before,
+    .tile::after,
     .border {
         transition: opacity 400ms ease-out;
     }

@@ -1,0 +1,111 @@
+/* Contact panel ambient accent. A soft emerald glow bleeds from the top corners
+   of the card, echoing the hover bloom on the skill tiles and tying the form's
+   accent to the green "sent" confirmation. As everywhere else, the glow rests
+   dim and lifts to full on hover, and steps up a little in dark mode. */
+
+.panel {
+    --panel-glow: 9%;
+    /* Overwritten per frame by useSpotlightSurfaces, which the form points at
+       this panel. The 50% defaults are what touch devices and the frames before
+       the first pointermove get: a centred bloom rather than a lopsided one. */
+    --pointer-x: 50%;
+    --pointer-y: 50%;
+    --spotlight-radius: 26rem;
+    --spotlight-strength: 2%;
+    --spotlight-border-strength: 50%;
+}
+
+:global(html.dark) .panel {
+    --panel-glow: 16%;
+    --spotlight-strength: 3.2%;
+    --spotlight-border-strength: 68%;
+}
+
+.panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0.55;
+    background-image:
+        radial-gradient(
+            55% 45% at 88% 0%,
+            color-mix(in oklab, var(--color-emerald-500) var(--panel-glow), transparent),
+            transparent 72%
+        ),
+        radial-gradient(
+            50% 40% at 6% 4%,
+            color-mix(
+                in oklab,
+                var(--color-emerald-500) calc(var(--panel-glow) * 0.55),
+                transparent
+            ),
+            transparent 70%
+        );
+}
+
+.panel:hover::before {
+    opacity: 1;
+}
+
+/* Cursor spotlight. It rides ::after, in the same z-0 bucket as the ambient
+   bloom on ::before but later in tree order, so the moving highlight reads on
+   top of that bloom while the panel's content (z-10) stays above both. */
+.panel::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background-image: radial-gradient(
+        circle var(--spotlight-radius) at var(--pointer-x) var(--pointer-y),
+        color-mix(in oklab, var(--color-emerald-500) var(--spotlight-strength), transparent),
+        transparent
+    );
+}
+
+.panel:hover::after {
+    opacity: 1;
+}
+
+/* The lit edge, on the shared SpotlightBorder span: a radial mask crops its
+   hairline border to a soft circle at the pointer, so only the stretch of edge
+   nearest the cursor brightens. */
+.border {
+    opacity: 0;
+    border-color: color-mix(
+        in oklab,
+        var(--color-emerald-500) var(--spotlight-border-strength),
+        transparent
+    );
+    -webkit-mask-image: radial-gradient(
+        18rem circle at var(--pointer-x) var(--pointer-y),
+        #000,
+        rgb(0 0 0 / 0.35),
+        transparent
+    );
+    mask-image: radial-gradient(
+        18rem circle at var(--pointer-x) var(--pointer-y),
+        #000,
+        rgb(0 0 0 / 0.35),
+        transparent
+    );
+}
+
+.panel:hover .border {
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .panel::before {
+        transition: opacity 700ms ease-out;
+    }
+    .panel::after,
+    .border {
+        transition: opacity 500ms ease-out;
+    }
+}

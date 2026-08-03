@@ -1,4 +1,9 @@
 import ArticleCard from '@/components/articles/article-card';
+import DifficultyBadge from '@/components/articles/difficulty-badge';
+import ImageLightbox from '@/components/articles/image-lightbox';
+import ReadingProgress from '@/components/articles/reading-progress';
+import ShareMenu from '@/components/articles/share-menu';
+import SyncPageGradient from '@/components/backgrounds/page-gradient/sync-page-gradient';
 import ArticleContent from '@/components/articles/article-content';
 import ArticleCover from '@/components/articles/article-cover';
 import Comments from '@/components/articles/comments';
@@ -8,6 +13,7 @@ import WhatYoullLearn from '@/components/articles/what-youll-learn';
 import SpotlightList from '@/components/common/spotlight-list';
 import Tag from '@/components/common/tag';
 import Breadcrumb from '@/components/layout/breadcrumb';
+import { jetBrainsMono } from '@/config/mono-font';
 import {
     getAdjacentArticles,
     getAllArticles,
@@ -77,6 +83,12 @@ export default async function ArticlePage({ params }: PageProps) {
 
     return (
         <main className="px-4 pt-28 pb-16">
+            {/* The page wash and the progress bar both take the article's own
+                cover colours, so the whole route reads as one accent. */}
+            <SyncPageGradient colors={article.coverColors} />
+            <ReadingProgress accentColors={article.coverColors} />
+            <ImageLightbox />
+
             {/* Structured data for the post itself and for the breadcrumb trail. */}
             <script
                 type="application/ld+json"
@@ -91,7 +103,9 @@ export default async function ArticlePage({ params }: PageProps) {
                 }}
             />
 
-            <div className="container mx-auto max-w-6xl">
+            {/* The monospace face is scoped to this route by applying its
+                variable here, so it never ships with the home page. */}
+            <div className={`${jetBrainsMono.variable} container mx-auto max-w-6xl`}>
                 <Breadcrumb trail={trail} />
 
                 <header className="mt-6 max-w-3xl">
@@ -106,7 +120,7 @@ export default async function ArticlePage({ params }: PageProps) {
                         {article.difficulty && (
                             <>
                                 <span aria-hidden="true">&middot;</span>
-                                <span>{article.difficulty}</span>
+                                <DifficultyBadge difficulty={article.difficulty} />
                             </>
                         )}
                         {article.updated && (
@@ -121,15 +135,27 @@ export default async function ArticlePage({ params }: PageProps) {
                         {article.description}
                     </p>
 
-                    {article.tags.length > 0 && (
-                        <ul className="mt-5 flex flex-wrap gap-2">
-                            {article.tags.map((tag) => (
-                                <Tag key={tag} className="text-foreground/70 px-3 py-1 text-xs">
-                                    {tag}
-                                </Tag>
-                            ))}
-                        </ul>
-                    )}
+                    <div className="mt-5 flex flex-wrap items-center justify-between gap-4">
+                        {article.tags.length > 0 && (
+                            <ul className="flex flex-wrap gap-2">
+                                {article.tags.map((tag) => (
+                                    <Tag key={tag} className="text-foreground/70 px-3 py-1 text-xs">
+                                        <Link
+                                            href={`/articles?tag=${encodeURIComponent(tag)}`}
+                                            className="focus-ring hover:text-foreground block rounded-full transition-colors">
+                                            {tag}
+                                        </Link>
+                                    </Tag>
+                                ))}
+                            </ul>
+                        )}
+
+                        <ShareMenu
+                            title={article.title}
+                            description={article.description}
+                            accentColors={article.coverColors}
+                        />
+                    </div>
                 </header>
 
                 <div className="mt-10 overflow-hidden rounded-2xl">

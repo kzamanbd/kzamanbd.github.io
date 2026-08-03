@@ -11,7 +11,8 @@ export type NavItemData = {
 export const sectionItems: NavItemData[] = [
     { label: 'About', href: '/#about', sectionId: 'about' },
     { label: 'Skills', href: '/#skills', sectionId: 'skills' },
-    { label: 'Writing', href: '/#articles', sectionId: 'articles' }
+    { label: 'Projects', href: '/#work', sectionId: 'work' },
+    { label: 'Contact', href: '/#contact', sectionId: 'contact' }
 ];
 
 // Standalone pages.

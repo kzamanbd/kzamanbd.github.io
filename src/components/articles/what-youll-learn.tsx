@@ -1,7 +1,7 @@
 import SpotlightBorder from '@/components/common/spotlight-border';
 import { spotlightSurfaceProps } from '@/components/common/spotlight-surface';
 import SpotlightGroup from '@/components/common/spotlight-group';
-import styles from '@/components/home/skills/skill-card.module.css';
+import styles from '@/components/common/glow-card.module.css';
 import { cn } from '@/utils/cn';
 
 /** Key takeaways from the article's frontmatter, shown above the body. */

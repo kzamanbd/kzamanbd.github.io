@@ -5,9 +5,10 @@ import SpotlightBorder from '@/components/common/spotlight-border';
 import SpotlightList from '@/components/common/spotlight-list';
 import { spotlightSurfaceProps } from '@/components/common/spotlight-surface';
 import { coreCompetencies, heroStats, socialLinks } from '@/components/home/hero/contents';
-import styles from '@/components/home/skills/skill-card.module.css';
+import styles from '@/components/common/glow-card.module.css';
 import { heroId } from '@/components/layout/navbar/contents';
 import ButtonLink from '@/components/ui/button-link';
+import { zain } from '@/config/fonts';
 import { user } from '@/lib/metadata';
 import { cn } from '@/utils/cn';
 import { ArrowRight } from 'lucide-react';
@@ -32,10 +33,19 @@ export default function HeroArea() {
                         Open to exciting opportunities
                     </p>
 
+                    {/* The display face is scoped here rather than set globally:
+                        applying the variable on this one element is what keeps
+                        Zain off every other route. */}
                     <h1
-                        className="animate-fade-in-up text-foreground text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl lg:text-7xl"
+                        className={cn(
+                            zain.variable,
+                            'animate-fade-in-up text-foreground font-display text-5xl font-extrabold tracking-tight sm:text-6xl md:text-7xl lg:text-8xl'
+                        )}
                         style={{ animationDelay: '100ms' }}>
-                        <span className="text-foreground/60 mb-3 block text-xl font-semibold sm:text-2xl md:text-3xl">
+                        {/* Back to the body face: the display font is drawn for
+                            the name at display size, and reads cramped at this
+                            one. */}
+                        <span className="text-foreground/60 font-sans mb-3 block text-lg font-semibold tracking-normal sm:text-xl md:text-2xl">
                             Hello, I&apos;m
                         </span>
                         <ShinyText className="pr-2 pb-2">{user.name}</ShinyText>

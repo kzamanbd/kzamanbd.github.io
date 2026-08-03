@@ -11,7 +11,7 @@ export const useUrlShortener = () => {
     const [isCopied, setIsCopied] = useState(false);
     const [isLoading, setIsLoading] = useState(false);
 
-    const handleShortenUrl = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleShortenUrl = async (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();
 
         setError('');

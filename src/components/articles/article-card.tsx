@@ -2,7 +2,8 @@ import SpotlightBorder from '@/components/common/spotlight-border';
 import { spotlightSurfaceProps } from '@/components/common/spotlight-surface';
 import Tag from '@/components/common/tag';
 import ArticleCover from '@/components/articles/article-cover';
-import styles from '@/components/home/skills/skill-card.module.css';
+import DifficultyBadge from '@/components/articles/difficulty-badge';
+import styles from '@/components/common/glow-card.module.css';
 import type { ArticleSummary } from '@/lib/posts';
 import { cn } from '@/utils/cn';
 import { formatArticleDate } from '@/utils/format-date';
@@ -63,14 +64,21 @@ export default function ArticleCard({
                         {article.description}
                     </p>
 
-                    {article.tags.length > 0 && (
-                        <ul className="mt-4 flex flex-wrap gap-2">
-                            {article.tags.slice(0, 4).map((tag) => (
-                                <Tag key={tag} className="text-foreground/70 px-2.5 py-0.5 text-xs">
-                                    {tag}
-                                </Tag>
-                            ))}
-                        </ul>
+                    {(article.tags.length > 0 || article.difficulty) && (
+                        <div className="mt-4 flex flex-wrap items-center gap-2">
+                            {article.difficulty && (
+                                <DifficultyBadge difficulty={article.difficulty} />
+                            )}
+                            <ul className="flex flex-wrap gap-2">
+                                {article.tags.slice(0, 4).map((tag) => (
+                                    <Tag
+                                        key={tag}
+                                        className="text-foreground/70 px-2.5 py-0.5 text-xs">
+                                        {tag}
+                                    </Tag>
+                                ))}
+                            </ul>
+                        </div>
                     )}
                 </div>
             </Link>

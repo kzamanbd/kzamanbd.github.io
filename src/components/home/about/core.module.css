@@ -1,0 +1,47 @@
+/* The glow hues line up with the connector corners, so each line leaves a glow
+   of its own colour: blue (top-left, Craft), emerald (top-right, Scale), rose
+   (bottom-right, End to end), orange (bottom-left, Now). It breathes on a slow
+   pulse and holds steady for anyone who prefers reduced motion. */
+
+.glow {
+    pointer-events: none;
+    position: absolute;
+    inset: -0.5rem;
+    border-radius: 9999px;
+    opacity: 0.6;
+    filter: blur(24px);
+    background: conic-gradient(
+        from -45deg,
+        var(--color-blue-500),
+        var(--color-emerald-500),
+        var(--color-rose-500),
+        var(--color-orange-500),
+        var(--color-blue-500)
+    );
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .glow {
+        animation: glow-pulse 5.5s ease-in-out infinite;
+    }
+}
+
+@keyframes glow-pulse {
+    0%,
+    100% {
+        opacity: 0.4;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.7;
+        transform: scale(1.04);
+    }
+}
+
+/* Keep the portrait from being dragged or long-press-saved: `draggable={false}`
+   covers mouse drag, these cover the touch callout. */
+.photo {
+    user-select: none;
+    -webkit-user-drag: none;
+    -webkit-touch-callout: none;
+}

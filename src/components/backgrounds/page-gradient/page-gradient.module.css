@@ -1,0 +1,49 @@
+/* Registering the gradient colours as <color> custom properties is what lets
+   them be transitioned: a background-image cannot animate, but a registered
+   custom property used inside one can. That is what cross-fades the wash on
+   navigation instead of snapping to the next route's colours. @property is
+   global wherever it is declared, so registering here is fine, and it has to
+   travel with the rule below or the cross-fade degrades to a snap. */
+
+@property --page-grad-from {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: transparent;
+}
+
+@property --page-grad-to {
+    syntax: '<color>';
+    inherits: false;
+    initial-value: transparent;
+}
+
+/* The per-page wash, rendered on every route except home (which paints its own
+   section swells). Each accent colour is mixed a little into the base
+   background rather than toward transparent, so every stop stays on the base
+   colour and the gradient ends on the exact footer background at the bottom.
+   That avoids the muddy fade-to-transparent band and lets the wash meet the
+   footer seamlessly in both themes. */
+.pageGradient {
+    --wash-strength: 6%;
+    background-image: linear-gradient(
+        180deg,
+        var(--background) 0%,
+        color-mix(in oklab, var(--page-grad-from) var(--wash-strength), var(--background)) 15%,
+        color-mix(in oklab, var(--page-grad-to) var(--wash-strength), var(--background)) 55%,
+        var(--background) 100%
+    );
+}
+
+/* A touch stronger when the resolved theme is dark; only the mix strength
+   changes, so the single gradient rule above is reused. */
+:global(html.dark) .pageGradient {
+    --wash-strength: 12%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .pageGradient {
+        transition:
+            --page-grad-from 700ms ease,
+            --page-grad-to 700ms ease;
+    }
+}

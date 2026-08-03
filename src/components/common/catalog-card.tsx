@@ -1,7 +1,7 @@
 import SpotlightBorder from '@/components/common/spotlight-border';
 import { spotlightSurfaceProps } from '@/components/common/spotlight-surface';
 import Tag from '@/components/common/tag';
-import styles from '@/components/home/skills/skill-card.module.css';
+import styles from '@/components/common/glow-card.module.css';
 import { cn } from '@/utils/cn';
 import type { LucideIcon } from 'lucide-react';
 import type { CSSProperties } from 'react';

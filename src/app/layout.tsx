@@ -6,8 +6,10 @@ import HashScroll from '@/components/layout/hash-scroll';
 import Navbar from '@/components/layout/navbar';
 import ServiceWorkerManager from '@/components/pwa/service-worker-manager';
 import { ThemeProviders } from '@/components/theme-providers';
+import PageGradientBackground from '@/components/backgrounds/page-gradient';
+import { PageGradientProvider } from '@/components/backgrounds/page-gradient/provider';
+import { notoSans } from '@/config/fonts';
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
 import './globals.css';
 
 import {
@@ -19,8 +21,6 @@ import {
     siteThumbnail,
     siteURL
 } from '@/lib/metadata';
-
-const inter = Inter({ subsets: ['latin'] });
 
 // GTM, the pageview tracker and the service worker exist only in production:
 // analytics should not record local navigation, and the worker would fight
@@ -97,20 +97,35 @@ export default function RootLayout({
 }: Readonly<{
     children: React.ReactNode;
 }>) {
+    // `data-scroll-behavior="smooth"` tells Next the smooth scrolling on <html>
+    // is deliberate: it then suppresses it for the duration of a route
+    // transition, so a navigation lands at the top instead of gliding there,
+    // while in-page anchors keep gliding.
     return (
-        <html lang="en" className="scroll-smooth" suppressHydrationWarning={true}>
+        <html
+            lang="en"
+            className="scroll-smooth"
+            data-scroll-behavior="smooth"
+            suppressHydrationWarning={true}>
             <head>
                 <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
                 <meta name="apple-mobile-web-app-title" content="Kamruzzaman" />
                 <meta property="fb:pages" content={facebookPageId}></meta>
                 <JsonLdScript />
             </head>
-            <body className={`${inter.className} antialiased`} suppressHydrationWarning={true}>
+            {/* `relative` so the page wash below can span the whole document
+                and scroll with it rather than staying pinned to the viewport. */}
+            <body
+                className={`${notoSans.variable} relative font-sans antialiased`}
+                suppressHydrationWarning={true}>
                 <ThemeProviders>
-                    <HashScroll />
-                    <Navbar />
-                    {children}
-                    <Footer />
+                    <PageGradientProvider>
+                        <PageGradientBackground />
+                        <HashScroll />
+                        <Navbar />
+                        {children}
+                        <Footer />
+                    </PageGradientProvider>
                     {isProduction && (
                         <>
                             <DeferredGoogleTagManager />

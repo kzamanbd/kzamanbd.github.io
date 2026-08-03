@@ -1,0 +1,89 @@
+/* The site's signature card treatment: an ambient accent glow that rests dim and
+   blooms gently on hover, plus a cursor-following spotlight and a lit border
+   segment. Every self-contained card surface should carry it, so a new card
+   never ships flat and glow-less.
+
+   The accent is contextual: each tile passes its own `--brand-color` inline, and
+   the glow falls back to the foreground token when none is given. The intensity
+   steps up in dark mode, where a light bloom needs more room to read. */
+
+.card {
+    position: relative;
+    isolation: isolate;
+    --card-glow: 9%;
+}
+
+:global(html.dark) .card {
+    --card-glow: 16%;
+}
+
+/* Ambient bloom: always faintly present, full on hover. */
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0.55;
+    background: radial-gradient(
+        circle at 50% 0%,
+        color-mix(in oklab, var(--brand-color, var(--foreground)) var(--card-glow), transparent),
+        transparent 70%
+    );
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+/* Cursor spotlight: centred by default so a card with no pointer data (touch,
+   reduced motion) still looks deliberate rather than lopsided. */
+.card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(
+        180px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+        color-mix(in oklab, var(--brand-color, var(--foreground)) 18%, transparent),
+        transparent 70%
+    );
+}
+
+.card:hover::after {
+    opacity: 1;
+}
+
+/* The lit stretch of border nearest the cursor. */
+.border {
+    opacity: 0;
+    border-color: color-mix(in oklab, var(--brand-color, var(--foreground)) 45%, transparent);
+    -webkit-mask-image: radial-gradient(
+        140px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+        #000 0%,
+        transparent 70%
+    );
+    mask-image: radial-gradient(
+        140px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+        #000 0%,
+        transparent 70%
+    );
+}
+
+.card:hover .border {
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .card::before {
+        transition: opacity 700ms ease-out;
+    }
+    .card::after,
+    .border {
+        transition: opacity 400ms ease-out;
+    }
+}

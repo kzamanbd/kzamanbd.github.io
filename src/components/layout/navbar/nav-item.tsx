@@ -30,7 +30,9 @@ export default function NavItem({ item, active, variant = 'pill', onNavigate }: 
         variant === 'cta'
             ? cn(ctaClassName, active && 'ring-foreground/30 ring-2 ring-offset-0')
             : cn(
-                  'focus-ring block text-sm transition-colors',
+                  // whitespace-nowrap: the bar is a single row, so a two-word
+                  // label ("Short URL") must not wrap and double its height.
+                  'focus-ring block text-sm whitespace-nowrap transition-colors',
                   variant === 'pill'
                       ? 'rounded-full px-2.5 py-1.5 lg:px-3'
                       : 'hover:bg-foreground/5 flex min-h-11 items-center rounded-xl px-4',

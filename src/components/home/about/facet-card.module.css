@@ -1,0 +1,117 @@
+/* No overflow-hidden here on purpose: the gradient layers below round their own
+   corners with `border-radius: inherit` instead. Clipping to the padding box
+   would swallow the lit border ring, which has to sit one pixel out to land on
+   the card's real border rather than just inside it, where it reads as a second
+   border. */
+
+.card {
+    position: relative;
+    /* Overwritten per frame by useSpotlightSurfaces on the enclosing group. The
+       50% defaults are what touch devices and the frames before the first
+       pointermove get: a centred bloom. */
+    --pointer-x: 50%;
+    --pointer-y: 50%;
+    --spotlight-radius: 16rem;
+    --spotlight-strength: 2.5%;
+    --spotlight-border-strength: 50%;
+    --facet-glow-strength: 20%;
+}
+
+:global(html.dark) .card {
+    --spotlight-strength: 4.5%;
+    --spotlight-border-strength: 68%;
+    --facet-glow-strength: 32%;
+}
+
+/* A soft accent gradient that grows in from the corner where the connector line
+   attaches (--facet-origin), tinted with that line's colour (--facet-accent). */
+.glow {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    transform-origin: var(--facet-origin);
+    background: radial-gradient(
+        120% 120% at var(--facet-origin),
+        color-mix(in oklab, var(--facet-accent) var(--facet-glow-strength), transparent) 0%,
+        transparent 62%
+    );
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .glow {
+        transform: scale(0.9);
+        transition:
+            opacity 450ms ease,
+            transform 450ms ease;
+    }
+}
+
+.card:hover .glow {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* For the bento tiles, which cannot be hovered on touch, keep a faint tint on. */
+.persistent .glow {
+    opacity: 0.6;
+}
+
+/* Cursor spotlight. Unlike the project cards and skill tiles this rides a real
+   span rather than a pseudo-element, because the card carries an opaque
+   background (a negative-z layer would hide behind it) and its content sits in
+   a positioned wrapper that an ::after would paint over. It is placed before
+   that wrapper in the markup, so it lands above the background and below the
+   text. */
+.spotlight {
+    pointer-events: none;
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    background-image: radial-gradient(
+        circle var(--spotlight-radius) at var(--pointer-x) var(--pointer-y),
+        color-mix(in oklab, var(--facet-accent) var(--spotlight-strength), transparent),
+        transparent
+    );
+}
+
+.card:hover .spotlight {
+    opacity: 1;
+}
+
+/* The lit edge, on the shared SpotlightBorder span: a radial mask crops its
+   hairline border to a soft circle at the pointer, so only the stretch nearest
+   the cursor brightens. */
+.border {
+    opacity: 0;
+    border-color: color-mix(
+        in oklab,
+        var(--facet-accent) var(--spotlight-border-strength),
+        transparent
+    );
+    -webkit-mask-image: radial-gradient(
+        11rem circle at var(--pointer-x) var(--pointer-y),
+        #000,
+        rgb(0 0 0 / 0.35),
+        transparent
+    );
+    mask-image: radial-gradient(
+        11rem circle at var(--pointer-x) var(--pointer-y),
+        #000,
+        rgb(0 0 0 / 0.35),
+        transparent
+    );
+}
+
+.card:hover .border {
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .spotlight,
+    .border {
+        transition: opacity 500ms ease-out;
+    }
+}

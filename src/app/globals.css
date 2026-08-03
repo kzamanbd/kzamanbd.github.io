@@ -19,8 +19,17 @@
     --color-light: #f5f8fa;
 
     --text-sm: 12px;
+}
 
-    --font-sans: Inter, Helvetica, 'sans-serif', ui-sans-serif, system-ui, sans-serif;
+/* `inline` so the font utilities resolve to the custom properties themselves.
+   Noto Sans is the body face, loaded in the root layout; Zain is the display
+   face, applied only where its variable is (the home hero); JetBrains Mono
+   ships only on the routes that opt in, so its variable is absent elsewhere and
+   the utility falls through to the generic monospace stack. */
+@theme inline {
+    --font-sans: var(--font-noto-sans), Helvetica, ui-sans-serif, system-ui, sans-serif;
+    --font-display: var(--font-zain-sans-serif), var(--font-noto-sans), sans-serif;
+    --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, monospace;
 }
 
 @custom-variant dark (&:where(.dark, .dark *));
@@ -63,6 +72,57 @@
 @theme inline {
     --color-background: var(--background);
     --color-foreground: var(--foreground);
+}
+
+/* Registering the background tokens as <color> custom properties makes them
+   interpolable, so switching theme cross-fades the background instead of
+   snapping. They are set on :root and read by descendants (the body, the
+   section washes), hence inherits: true, with the light palette as the initial
+   value. Only background surfaces are registered: --foreground and the other UI
+   colours are deliberately left unregistered so text snaps instantly rather
+   than fading. Registration changes no values; it only makes them animatable. */
+@property --background {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #f5f8fa;
+}
+@property --section-swell-indigo {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #e9e9f0;
+}
+@property --section-swell-blue {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #e7ebf2;
+}
+@property --section-swell-yellow {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #f0eee4;
+}
+@property --section-swell-teal {
+    syntax: '<color>';
+    inherits: true;
+    initial-value: #e6f1ef;
+}
+
+/* Cross-fade the theme on switch. next-themes flips the `dark` class on <html>,
+   which re-resolves the tokens on :root, so transitioning them there animates
+   the body background and every gradient consumer together. Only the background
+   surfaces transition; text snaps, so the content never looks like it is fading
+   out. 400ms reads as responsive for a deliberate toggle, and there is no
+   first-paint flash because next-themes sets the class before the first painted
+   style, leaving no prior value to interpolate from. */
+@media (prefers-reduced-motion: no-preference) {
+    :root {
+        transition:
+            --background 400ms ease,
+            --section-swell-indigo 400ms ease,
+            --section-swell-blue 400ms ease,
+            --section-swell-yellow 400ms ease,
+            --section-swell-teal 400ms ease;
+    }
 }
 
 /* Shared keyboard focus ring. One definition so every interactive surface (nav
@@ -112,7 +172,6 @@
            declared in two places that could drift apart. */
         @apply bg-background print:bg-transparent;
     }
-
     /* Home page only: each direct section swells from the base background to a
        faint wash of its own accent and back, so consecutive sections meet on the
        exact same colour and blend with no seam. The accent tints cycle by
@@ -142,16 +201,16 @@
 
 @layer components {
     .page-container {
-        @apply relative z-[1] mx-auto h-auto w-full break-before-auto bg-white md:my-6 md:h-[297mm] md:w-[210mm] md:rounded md:border print:mx-0 print:my-0 print:h-[297mm] print:w-[210mm] print:rounded-none print:border-0 print:shadow-none;
+        @apply relative z-1 mx-auto h-auto w-full break-before-auto bg-white md:my-6 md:h-[297mm] md:w-[210mm] md:rounded md:border print:mx-0 print:my-0 print:h-[297mm] print:w-[210mm] print:rounded-none print:border-0 print:shadow-none;
     }
     .orange-gradient {
-        @apply bg-gradient-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
+        @apply bg-linear-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
     }
     .green-gradient {
-        @apply bg-gradient-to-r from-green-400 to-green-500 bg-clip-text text-transparent;
+        @apply bg-linear-to-r from-green-400 to-green-500 bg-clip-text text-transparent;
     }
     .blue-gradient {
-        @apply bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
+        @apply bg-linear-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent;
     }
     .resume-box {
         @apply grid h-full grid-cols-12 gap-4;
@@ -163,10 +222,10 @@
         @apply col-span-full py-8 pr-8 pl-6 text-justify md:col-span-8 md:pl-2 print:col-span-8;
     }
     .subtitle {
-        @apply relative mb-1.5 bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text font-bold text-transparent uppercase print:text-gray-700;
+        @apply relative mb-1.5 bg-linear-to-r from-blue-600 to-cyan-600 bg-clip-text font-bold text-transparent uppercase print:text-gray-700;
     }
     .timeline-icon {
-        @apply border-primary-200 absolute -left-[6.5px] flex h-3 w-3 items-center justify-center rounded-full border;
+        @apply border-primary-200 absolute left-[-6.5px] flex h-3 w-3 items-center justify-center rounded-full border;
     }
     .section-box {
         @apply bg-primary-100 flex h-10 items-center justify-center rounded-lg;
@@ -178,7 +237,7 @@
         @apply before:bg-primary-500 flex items-center before:mr-2 before:h-1 before:w-1 before:rounded-full;
     }
     .key-button {
-        @apply relative inline-flex items-center justify-center overflow-hidden rounded-full bg-gradient-to-br p-0.5 text-sm font-medium text-gray-900 focus:ring-4 focus:outline-none;
+        @apply relative inline-flex items-center justify-center overflow-hidden rounded-full bg-linear-to-br p-0.5 text-sm font-medium text-gray-900 focus:ring-4 focus:outline-none;
     }
     .key-skill {
         @apply relative w-full rounded-full bg-white px-2 py-1.5 transition-all duration-75 ease-in;
@@ -203,10 +262,10 @@
         @apply flex h-8 w-8 items-center justify-center border border-r-0;
     }
     .action-btn:first-child {
-        @apply rounded-l;
+        @apply rounded-l-sm;
     }
     .action-btn:last-child {
-        @apply rounded-r border-r;
+        @apply rounded-r-sm border-r;
     }
 
     /* Common ATS Resume Classes */
@@ -251,7 +310,7 @@
         );
         background-size: 200% 200%;
         animation: moveGradient 10s infinite linear alternate;
-        @apply dark:bg-gray-800 dark:bg-gradient-to-br dark:from-gray-900 dark:to-gray-800;
+        @apply dark:bg-gray-800 dark:bg-linear-to-br dark:from-gray-900 dark:to-gray-800;
     }
 }
 

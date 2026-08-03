@@ -8,7 +8,10 @@ import Link from 'next/link';
 export default function Breadcrumb({ trail }: { trail: BreadcrumbEntry[] }) {
     return (
         <nav aria-label="Breadcrumb">
-            <ol className="text-foreground/60 flex flex-wrap items-center gap-1.5 text-sm">
+            {/* Monospace, so the trail reads as a terminal path. The face only
+                loads on routes that apply the JetBrains Mono variable; anywhere
+                else this falls through to the generic monospace stack. */}
+            <ol className="text-foreground/60 flex flex-wrap items-center gap-1.5 font-mono text-sm">
                 {trail.map((entry, index) => {
                     const isLast = index === trail.length - 1;
                     return (

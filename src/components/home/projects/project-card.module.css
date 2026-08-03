@@ -1,0 +1,131 @@
+/* Project cards carry the site's signature bloom, tuned for a wider surface: a
+   soft multi-hue aurora anchored in the top-left corner, a cursor-following
+   spotlight, and a lit stretch of border nearest the pointer.
+
+   The three hues (--glow-a/b/c) are generated per card from its index in
+   project-card.tsx, golden-angle spaced, so consecutive cards land far apart on
+   the colour wheel and any project added to contents.ts gets its own gradient
+   automatically. This file owns only placement, softness and theme handling. */
+
+.card {
+    position: relative;
+    isolation: isolate;
+    --glow-strength: 6%;
+    /* Overwritten per frame by useSpotlightSurfaces. The 50% defaults are what
+       touch devices and the frames before the first pointermove get: a centred
+       bloom rather than a lopsided one. */
+    --pointer-x: 50%;
+    --pointer-y: 50%;
+    --spotlight-radius: 21rem;
+    --spotlight-strength: 4%;
+    --spotlight-border-strength: 45%;
+}
+
+:global(html.dark) .card {
+    --glow-strength: 9%;
+    --spotlight-strength: 6%;
+    --spotlight-border-strength: 65%;
+}
+
+/* Corner aurora: three translucent washes layered behind the content. */
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0.5;
+    background-image:
+        radial-gradient(
+            80% 85% at 0% 0%,
+            color-mix(in oklab, var(--glow-a, var(--foreground)) var(--glow-strength), transparent),
+            transparent 78%
+        ),
+        radial-gradient(
+            70% 75% at 20% 4%,
+            color-mix(in oklab, var(--glow-b, var(--foreground)) var(--glow-strength), transparent),
+            transparent 75%
+        ),
+        radial-gradient(
+            65% 70% at 2% 24%,
+            color-mix(in oklab, var(--glow-c, var(--foreground)) var(--glow-strength), transparent),
+            transparent 72%
+        );
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+/* Cursor spotlight. It rides ::after, in the same z-index bucket as the aurora
+   but later in tree order, so the moving highlight reads on top of the static
+   corner wash while the card's text stays above both. Pitched wide and faint on
+   purpose: the surface should read as lit from wherever the cursor is, not as a
+   bright disc chasing it. */
+.card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background-image: radial-gradient(
+        circle var(--spotlight-radius) at var(--pointer-x) var(--pointer-y),
+        color-mix(
+            in oklab,
+            var(--glow-b, var(--foreground)) var(--spotlight-strength),
+            transparent
+        ),
+        color-mix(
+            in oklab,
+            var(--glow-c, var(--foreground)) calc(var(--spotlight-strength) * 0.4),
+            transparent
+        ),
+        transparent
+    );
+}
+
+.card:hover::after {
+    opacity: 1;
+}
+
+/* The lit edge, on the SpotlightBorder span: both pseudo-elements above are
+   already spoken for. A radial mask crops the hairline border to a soft circle
+   at the pointer, tighter than the spotlight radius so the lit run stays a
+   localised arc instead of the whole perimeter. */
+.border {
+    opacity: 0;
+    border-color: color-mix(
+        in oklab,
+        var(--glow-a, var(--foreground)) var(--spotlight-border-strength),
+        transparent
+    );
+    -webkit-mask-image: radial-gradient(
+        15rem circle at var(--pointer-x) var(--pointer-y),
+        #000,
+        rgb(0 0 0 / 0.35),
+        transparent
+    );
+    mask-image: radial-gradient(
+        15rem circle at var(--pointer-x) var(--pointer-y),
+        #000,
+        rgb(0 0 0 / 0.35),
+        transparent
+    );
+}
+
+.card:hover .border {
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .card::before {
+        transition: opacity 300ms ease-out;
+    }
+    .card::after,
+    .border {
+        transition: opacity 500ms ease-out;
+    }
+}

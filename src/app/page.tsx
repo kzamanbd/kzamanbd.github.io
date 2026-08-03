@@ -1,6 +1,8 @@
 import AboutArea from '@/components/home/about';
 import ArticlesArea from '@/components/home/articles';
+import ContactArea from '@/components/home/contact';
 import HeroArea from '@/components/home/hero';
+import ProjectsArea from '@/components/home/projects';
 import SkillsArea from '@/components/home/skills';
 import SectionUrlSync from '@/components/layout/section-url-sync';
 
@@ -25,7 +27,9 @@ const Home = () => {
                 <HeroArea />
                 <AboutArea />
                 <SkillsArea />
+                <ProjectsArea />
                 <ArticlesArea />
+                <ContactArea />
             </main>
 
             <SectionUrlSync />

@@ -1,0 +1,36 @@
+/* The share trigger carries the same accent bloom as every other surface here,
+   tinted with the article's own cover colours so the button belongs to the page
+   it sits on rather than to a fixed palette. */
+
+.trigger {
+    --trigger-glow: 12%;
+}
+
+:global(html.dark) .trigger {
+    --trigger-glow: 22%;
+}
+
+.trigger::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0.55;
+    background: linear-gradient(
+        to right,
+        color-mix(in oklab, var(--accent-from, var(--foreground)) var(--trigger-glow), transparent),
+        color-mix(in oklab, var(--accent-to, var(--foreground)) var(--trigger-glow), transparent)
+    );
+}
+
+.trigger:hover::before {
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .trigger::before {
+        transition: opacity 400ms ease-out;
+    }
+}

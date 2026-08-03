@@ -1,7 +1,7 @@
 import DotBackground from '@/components/backgrounds/dot-background';
 import SectionHeading from '@/components/common/section-heading';
 import SpotlightList from '@/components/common/spotlight-list';
-import { skillGroups } from '@/components/home/skills/contents';
+import { skills } from '@/components/home/skills/contents';
 import SkillCard from '@/components/home/skills/skill-card';
 
 export default function SkillsArea() {
@@ -11,15 +11,18 @@ export default function SkillsArea() {
 
             <div className="container mx-auto max-w-6xl">
                 <div className="mb-12 text-center">
-                    <SectionHeading className="text-foreground">Skills & Tooling</SectionHeading>
+                    <SectionHeading className="text-foreground">
+                        Skills &amp; Tooling
+                    </SectionHeading>
                     <p className="text-foreground/60 mx-auto mt-4 max-w-2xl text-lg">
-                        The stack I reach for day to day, grouped by where it sits in a system.
+                        The stack I reach for day to day, ordered by where each piece sits in a
+                        system.
                     </p>
                 </div>
 
-                <SpotlightList className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-                    {skillGroups.map((group) => (
-                        <SkillCard key={group.title} {...group} />
+                <SpotlightList className="flex flex-wrap justify-center gap-3 sm:gap-4">
+                    {skills.map((skill) => (
+                        <SkillCard key={skill.name} skill={skill} />
                     ))}
                 </SpotlightList>
             </div>
