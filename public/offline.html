@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Offline | Kamruzzaman</title>
+        <meta name="robots" content="noindex" />
+        <style>
+            :root {
+                --background: #f5f8fa;
+                --foreground: #111827;
+                --accent: #f59e0b;
+                color-scheme: light dark;
+            }
+            @media (prefers-color-scheme: dark) {
+                :root {
+                    --background: #1f2937;
+                    --foreground: #f3f4f6;
+                }
+            }
+            html[data-status='online'] {
+                --accent: #10b981;
+            }
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                margin: 0;
+                min-height: 100dvh;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 1rem;
+                padding: 2rem 1rem;
+                text-align: center;
+                background: var(--background);
+                color: var(--foreground);
+                font-family:
+                    Inter,
+                    ui-sans-serif,
+                    system-ui,
+                    -apple-system,
+                    'Segoe UI',
+                    sans-serif;
+            }
+            .dot {
+                width: 0.6rem;
+                height: 0.6rem;
+                border-radius: 999px;
+                background: var(--accent);
+                box-shadow: 0 0 0 0.35rem color-mix(in oklab, var(--accent) 25%, transparent);
+            }
+            h1 {
+                margin: 0;
+                font-size: clamp(1.75rem, 5vw, 2.5rem);
+            }
+            p {
+                margin: 0;
+                max-width: 34rem;
+                line-height: 1.7;
+                color: color-mix(in oklab, var(--foreground) 75%, transparent);
+            }
+            .status {
+                font-size: 0.8rem;
+                font-weight: 600;
+                letter-spacing: 0.08em;
+                text-transform: uppercase;
+                color: var(--accent);
+            }
+            .actions {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.75rem;
+                justify-content: center;
+                margin-top: 0.5rem;
+            }
+            a,
+            button {
+                font: inherit;
+                font-weight: 600;
+                cursor: pointer;
+                border-radius: 999px;
+                border: 1px solid color-mix(in oklab, var(--foreground) 20%, transparent);
+                padding: 0.7rem 1.4rem;
+                text-decoration: none;
+                color: inherit;
+                background: transparent;
+            }
+            button {
+                background: var(--foreground);
+                color: var(--background);
+                border-color: transparent;
+            }
+            label {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.5rem;
+                font-size: 0.85rem;
+                color: color-mix(in oklab, var(--foreground) 70%, transparent);
+            }
+        </style>
+    </head>
+    <body data-network-root>
+        <span class="dot" aria-hidden="true"></span>
+        <p class="status" data-network-status>No connection</p>
+        <h1 data-network-title>Offline</h1>
+        <p data-network-copy>
+            You have slipped off the grid. This page was not saved for offline reading, so reconnect
+            to load it, or head back to somewhere you have already been.
+        </p>
+
+        <div class="actions">
+            <button type="button" onclick="location.reload()">Try again</button>
+            <a href="/">Back home</a>
+        </div>
+
+        <label>
+            <input type="checkbox" data-network-autoreload checked />
+            Automatically reload when the connection returns
+            <span data-network-countdown></span>
+        </label>
+
+        <script>
+            // Dependency-free on purpose: this file is served by the service
+            // worker as the navigation fallback, outside the Next runtime, so
+            // nothing here can rely on React or the client router.
+            //
+            // Connectivity is confirmed with an active fetch probe rather than
+            // trusting navigator.onLine, which stays true under DevTools
+            // "Offline" and behind captive portals. The `online` event is only a
+            // hint and can be missed entirely, so we also poll while offline and
+            // stop once connectivity is confirmed.
+            (function () {
+                var KEY = 'network-auto-reload';
+                var DELAY = 5;
+                var root = document.documentElement;
+                var title = document.querySelector('[data-network-title]');
+                var copy = document.querySelector('[data-network-copy]');
+                var status = document.querySelector('[data-network-status]');
+                var box = document.querySelector('[data-network-autoreload]');
+                var countdown = document.querySelector('[data-network-countdown]');
+                var timer = null;
+                var probing = false;
+                var state = null;
+
+                function getPref() {
+                    try {
+                        var value = localStorage.getItem(KEY);
+                        return value === null ? true : value === '1';
+                    } catch (error) {
+                        return true;
+                    }
+                }
+
+                function setPref(on) {
+                    try {
+                        localStorage.setItem(KEY, on ? '1' : '0');
+                    } catch (error) {}
+                }
+
+                function stop() {
+                    if (timer) {
+                        clearInterval(timer);
+                        timer = null;
+                    }
+                    if (countdown) countdown.textContent = '';
+                }
+
+                function startCountdown() {
+                    stop();
+                    if (!getPref()) return;
+                    var left = DELAY;
+                    if (countdown) countdown.textContent = '(' + left + 's)';
+                    timer = setInterval(function () {
+                        left -= 1;
+                        if (countdown) countdown.textContent = '(' + left + 's)';
+                        if (left <= 0) {
+                            stop();
+                            location.reload();
+                        }
+                    }, 1000);
+                }
+
+                function apply(online) {
+                    if (state === online) return;
+                    state = online;
+                    root.setAttribute('data-status', online ? 'online' : 'offline');
+                    if (online) {
+                        if (title) title.textContent = 'Online';
+                        if (status) status.textContent = 'Back online';
+                        if (copy)
+                            copy.textContent =
+                                'You are back online. Reload to pick up where you left off.';
+                        startCountdown();
+                    } else {
+                        if (title) title.textContent = 'Offline';
+                        if (status) status.textContent = 'No connection';
+                        if (copy)
+                            copy.textContent =
+                                'You have slipped off the grid. This page was not saved for offline reading, so reconnect to load it, or head back to somewhere you have already been.';
+                        stop();
+                    }
+                }
+
+                function probe() {
+                    if (probing) return;
+                    probing = true;
+                    fetch('/version.json?ts=' + Date.now(), { cache: 'no-store' })
+                        .then(function (response) {
+                            apply(response.ok);
+                        })
+                        .catch(function () {
+                            apply(false);
+                        })
+                        .then(function () {
+                            probing = false;
+                            if (state !== true) setTimeout(probe, 3000);
+                        });
+                }
+
+                if (box) {
+                    box.checked = getPref();
+                    box.addEventListener('change', function () {
+                        setPref(box.checked);
+                        if (box.checked && state === true) startCountdown();
+                        else stop();
+                    });
+                }
+
+                window.addEventListener('online', probe);
+                window.addEventListener('offline', function () {
+                    apply(false);
+                    probe();
+                });
+                probe();
+            })();
+        </script>
+    </body>
+</html>

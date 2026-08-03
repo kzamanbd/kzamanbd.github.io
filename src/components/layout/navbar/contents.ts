@@ -11,7 +11,6 @@ export type NavItemData = {
 export const sectionItems: NavItemData[] = [
     { label: 'About', href: '/#about', sectionId: 'about' },
     { label: 'Skills', href: '/#skills', sectionId: 'skills' },
-    { label: 'Projects', href: '/#work', sectionId: 'work' },
     { label: 'Writing', href: '/#articles', sectionId: 'articles' },
     { label: 'Contact', href: '/#contact', sectionId: 'contact' }
 ];
@@ -19,6 +18,8 @@ export const sectionItems: NavItemData[] = [
 // Standalone pages.
 export const pageItems: NavItemData[] = [
     { label: 'Articles', href: '/articles' },
+    { label: 'Uses', href: '/uses' },
+    { label: 'Now', href: '/now' },
     { label: 'Resume', href: '/resume' },
     { label: 'Short URL', href: '/shorturl' }
 ];

@@ -1,6 +1,7 @@
 import ArticleCard from '@/components/articles/article-card';
 import ArticleContent from '@/components/articles/article-content';
 import ArticleCover from '@/components/articles/article-cover';
+import Comments from '@/components/articles/comments';
 import SeriesNav from '@/components/articles/series-nav';
 import TableOfContents from '@/components/articles/table-of-contents';
 import WhatYoullLearn from '@/components/articles/what-youll-learn';
@@ -198,6 +199,8 @@ export default async function ArticlePage({ params }: PageProps) {
                         {series && <SeriesNav series={series} />}
                     </aside>
                 </div>
+
+                <Comments />
 
                 {related.length > 0 && (
                     <section className="border-foreground/10 mt-20 border-t pt-12">

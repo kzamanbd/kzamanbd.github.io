@@ -1,9 +1,9 @@
+import ContactForm from '@/components/contact-form';
 import AboutArea from '@/components/home/about';
 import ArticlesArea from '@/components/home/articles';
 import HeroArea from '@/components/home/hero';
 import SkillsArea from '@/components/home/skills';
 import SectionUrlSync from '@/components/layout/section-url-sync';
-import ProjectsSection from '@/components/projects-section';
 
 const Home = () => {
     return (
@@ -21,8 +21,8 @@ const Home = () => {
                 <HeroArea />
                 <AboutArea />
                 <SkillsArea />
-                <ProjectsSection />
                 <ArticlesArea />
+                <ContactForm />
             </main>
 
             <SectionUrlSync />

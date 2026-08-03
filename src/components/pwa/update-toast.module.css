@@ -1,0 +1,30 @@
+/* Faint accent wash so the toast echoes the page surfaces instead of reading as
+   a flat panel. Mixed toward transparent, not an opaque fill, so the
+   backdrop-blur still frosts the content behind it. A raw color-mix gradient is
+   one of the few values Tailwind cannot express, so it lives here. */
+.toast {
+    background-image: linear-gradient(
+        135deg,
+        color-mix(in oklab, var(--color-blue-500, #3b82f6) 14%, var(--background)) 0%,
+        color-mix(in oklab, var(--color-teal-500, #14b8a6) 14%, var(--background)) 100%
+    );
+}
+
+/* Entrance: the toast eases up from below the viewport edge. Gated behind
+   prefers-reduced-motion, and scoped alongside its keyframes by CSS Modules. */
+@media (prefers-reduced-motion: no-preference) {
+    .toast {
+        animation: update-toast-in 0.28s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+}
+
+@keyframes update-toast-in {
+    from {
+        opacity: 0;
+        transform: translateY(1rem);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

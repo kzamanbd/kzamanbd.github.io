@@ -1,20 +1,43 @@
+import withSerwistInit from '@serwist/next';
 import type { NextConfig } from 'next';
 
+const isDev = process.env.NODE_ENV !== 'production';
+
+// A fresh ISO timestamp per build, baked into the client and into the
+// version.json route so a running app can detect a newer deploy: the deployed
+// build's builtAt is strictly later than the one baked into an older open tab.
+// Git plays no part, so it behaves identically locally and in CI regardless of
+// clone depth. An explicit NEXT_PUBLIC_BUILD_TIME wins, so a build can be pinned
+// to compare two runs byte for byte.
+const buildTime = process.env.NEXT_PUBLIC_BUILD_TIME ?? new Date().toISOString();
+
 const nextConfig: NextConfig = {
-    /* config options here */
     poweredByHeader: false,
-    images: {
-        remotePatterns: [
-            {
-                protocol: 'https',
-                hostname: 'images.unsplash.com',
-                pathname: '/**'
-            }
-        ]
+    env: {
+        NEXT_PUBLIC_BUILD_TIME: buildTime
     },
     experimental: {
         turbopackFileSystemCacheForDev: true
     }
 };
 
-export default nextConfig;
+// Serwist compiles the service worker (src/app/sw.ts) into public/sw.js. It is
+// disabled in development so it never fights Turbopack's hot reload.
+// Registration is manual (see ServiceWorkerManager) so the update toast can
+// drive the waiting-worker swap rather than a new build silently taking over an
+// open tab.
+//
+// `@serwist/next` is a webpack plugin and is a no-op under Turbopack, which is
+// Next 16's default bundler: building with it silently produces no sw.js and an
+// inert PWA. Hence `next build --webpack` in package.json. Dev still uses
+// Turbopack, which is fine because the worker is disabled there anyway.
+const withSerwist = withSerwistInit({
+    cacheOnNavigation: true,
+    swSrc: 'src/app/sw.ts',
+    swDest: 'public/sw.js',
+    disable: isDev,
+    register: false,
+    reloadOnOnline: false
+});
+
+export default withSerwist(nextConfig);

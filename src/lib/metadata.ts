@@ -98,3 +98,25 @@ export const user: User = {
     email: 'kzamanbn@gmail.com',
     address: 'Dhaka, Bangladesh'
 };
+
+// Analytics and social identity. Moved here from layout.tsx so every consumer
+// reads one source rather than re-declaring the ids.
+export const googleTagManagerId: string = 'G-NB5NCE8041';
+export const facebookPageId: string = '561025357095593';
+
+/**
+ * giscus comment widget, backed by GitHub Discussions.
+ *
+ * `repoId` and `categoryId` are opaque node IDs generated at https://giscus.app
+ * after enabling Discussions on the repository and installing the giscus GitHub
+ * App. Until both are filled in, `isGiscusConfigured` is false and the comment
+ * section does not render at all, rather than showing giscus's error panel.
+ */
+export const giscus = {
+    repo: 'kzamanbd/kzamanbd.github.io' as `${string}/${string}`,
+    repoId: '',
+    category: 'Comments',
+    categoryId: ''
+};
+
+export const isGiscusConfigured: boolean = giscus.repoId.length > 0 && giscus.categoryId.length > 0;

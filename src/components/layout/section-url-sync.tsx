@@ -10,7 +10,7 @@ const spyIds = [heroId, ...sectionIds];
 
 /**
  * Home page only: keeps the URL hash pointing at the section in view as the
- * visitor scrolls (#about, #work, ...), clearing it back to "/" at the hero.
+ * visitor scrolls (#about, #skills, ...), clearing it back to "/" at the hero.
  * Renders nothing.
  */
 export default function SectionUrlSync() {
