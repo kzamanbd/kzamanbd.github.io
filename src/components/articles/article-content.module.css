@@ -1,0 +1,264 @@
+/* Article body styling. The HTML comes from `marked`, so it cannot carry utility
+   classes; everything below targets the plain tags that renderer emits. Scoped to
+   this module so it never leaks into the rest of the site. */
+
+.content {
+    color: var(--foreground);
+    line-height: 1.75;
+}
+
+.content > * + * {
+    margin-top: 1.25rem;
+}
+
+.content h2,
+.content h3 {
+    font-weight: 700;
+    scroll-margin-top: 6rem;
+}
+
+.content h2 {
+    margin-top: 3rem;
+    font-size: 1.5rem;
+}
+
+.content h3 {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+}
+
+.content a {
+    color: var(--color-primary-600, #4f46e5);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
+.content ul,
+.content ol {
+    padding-left: 1.5rem;
+}
+
+.content ul {
+    list-style: disc;
+}
+
+.content ol {
+    list-style: decimal;
+}
+
+.content li + li {
+    margin-top: 0.4rem;
+}
+
+.content blockquote {
+    border-left: 3px solid color-mix(in oklab, var(--foreground) 25%, transparent);
+    padding-left: 1rem;
+    color: color-mix(in oklab, var(--foreground) 75%, transparent);
+}
+
+.content mark {
+    background: color-mix(in oklab, var(--color-amber-400, #fbbf24) 45%, transparent);
+    color: inherit;
+    border-radius: 0.15em;
+    padding-inline: 0.15em;
+}
+
+.content dl {
+    display: grid;
+    gap: 0.25rem 1rem;
+}
+
+.content dt {
+    font-weight: 700;
+}
+
+.content dd {
+    color: color-mix(in oklab, var(--foreground) 75%, transparent);
+    padding-left: 1rem;
+}
+
+.content kbd {
+    border: 1px solid color-mix(in oklab, var(--foreground) 25%, transparent);
+    border-bottom-width: 2px;
+    border-radius: 0.35rem;
+    padding: 0.1em 0.4em;
+    font-size: 0.85em;
+    font-family: ui-monospace, monospace;
+}
+
+/* Inline code. Fenced blocks are wrapped in .code-block and styled below, so
+   exclude anything inside a <pre>. */
+.content :not(pre) > code {
+    background: color-mix(in oklab, var(--foreground) 8%, transparent);
+    border-radius: 0.35rem;
+    padding: 0.15em 0.35em;
+    font-size: 0.9em;
+}
+
+/* GitHub-style alerts from marked-alert. */
+.content :global(.markdown-alert) {
+    border-left: 4px solid var(--alert-accent, var(--foreground));
+    background: color-mix(in oklab, var(--alert-accent, var(--foreground)) 8%, transparent);
+    border-radius: 0.5rem;
+    padding: 0.9rem 1rem;
+}
+
+.content :global(.markdown-alert-title) {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-weight: 700;
+    color: var(--alert-accent, var(--foreground));
+}
+
+.content :global(.markdown-alert-note) {
+    --alert-accent: var(--color-blue-500, #3b82f6);
+}
+.content :global(.markdown-alert-tip) {
+    --alert-accent: var(--color-emerald-500, #10b981);
+}
+.content :global(.markdown-alert-important) {
+    --alert-accent: var(--color-purple-500, #a855f7);
+}
+.content :global(.markdown-alert-warning) {
+    --alert-accent: var(--color-amber-500, #f59e0b);
+}
+.content :global(.markdown-alert-caution) {
+    --alert-accent: var(--color-red-500, #ef4444);
+}
+
+/* Fenced code blocks: header bar plus the Shiki output. */
+.content :global(.code-block) {
+    position: relative;
+    isolation: isolate;
+    border: 1px solid color-mix(in oklab, var(--foreground) 12%, transparent);
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: color-mix(in oklab, var(--foreground) 4%, transparent);
+}
+
+.content :global(.code-block__bar) {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.5rem 0.9rem;
+    border-bottom: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
+    font-size: 0.75rem;
+    color: color-mix(in oklab, var(--foreground) 65%, transparent);
+}
+
+.content :global(.code-block__meta) {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-width: 0;
+}
+
+.content :global(.code-block__lang) {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-weight: 600;
+}
+
+.content :global(.code-block__path) {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: ui-monospace, monospace;
+}
+
+.content :global(.code-block__copy-button) {
+    cursor: pointer;
+    border-radius: 0.4rem;
+    padding: 0.15rem 0.5rem;
+    font-size: 0.7rem;
+    font-weight: 600;
+    color: inherit;
+    background: color-mix(in oklab, var(--foreground) 8%, transparent);
+}
+
+.content :global(.code-block__copy-button:hover) {
+    background: color-mix(in oklab, var(--foreground) 16%, transparent);
+}
+
+.content :global(.code-block pre) {
+    overflow-x: auto;
+    padding: 1rem;
+    font-size: 0.85rem;
+    line-height: 1.6;
+}
+
+/* Shiki emits both palettes; pick the dark one when the theme is dark. Values
+   are written as CSS variables by `defaultColor: false`. */
+:global(html.dark) .content :global(.shiki),
+:global(html.dark) .content :global(.shiki span) {
+    color: var(--shiki-dark) !important;
+    background-color: var(--shiki-dark-bg) !important;
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+}
+
+/* Wide tables scroll inside their own frame rather than the page. */
+.content :global(.table-window) {
+    position: relative;
+    isolation: isolate;
+    border: 1px solid color-mix(in oklab, var(--foreground) 12%, transparent);
+    border-radius: 0.75rem;
+}
+
+.content :global(.table-scroll) {
+    overflow-x: auto;
+    border-radius: inherit;
+}
+
+.content :global(.table-window table) {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+}
+
+.content :global(.table-window th),
+.content :global(.table-window td) {
+    border-bottom: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
+    padding: 0.6rem 0.9rem;
+    text-align: left;
+    white-space: nowrap;
+}
+
+.content :global(.table-window th) {
+    font-weight: 700;
+    background: color-mix(in oklab, var(--foreground) 5%, transparent);
+}
+
+/* Mermaid diagrams. Until the client renders them this is the raw source, which
+   stays legible; afterwards it holds an SVG that should centre and scale. */
+.content :global(pre.mermaid) {
+    overflow-x: auto;
+    padding: 1rem;
+    font-family: ui-monospace, monospace;
+    font-size: 0.8rem;
+    border: 1px solid color-mix(in oklab, var(--foreground) 12%, transparent);
+    border-radius: 0.75rem;
+}
+
+.content :global(pre.mermaid[data-mermaid-rendered='true']) {
+    display: flex;
+    justify-content: center;
+    font-family: inherit;
+}
+
+.content :global(pre.mermaid svg) {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Footnotes section appended by marked-footnote. */
+.content :global(.footnotes) {
+    margin-top: 3rem;
+    border-top: 1px solid color-mix(in oklab, var(--foreground) 12%, transparent);
+    padding-top: 1rem;
+    font-size: 0.9rem;
+    color: color-mix(in oklab, var(--foreground) 75%, transparent);
+}

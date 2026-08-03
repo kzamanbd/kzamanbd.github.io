@@ -29,6 +29,15 @@ export const metadata: Metadata = {
         template: '%s | Kamruzzaman'
     },
     description,
+    // Advertise the three feeds site-wide so a reader can subscribe from any page.
+    alternates: {
+        canonical: siteURL,
+        types: {
+            'application/rss+xml': `${siteURL}/feed.xml`,
+            'application/atom+xml': `${siteURL}/atom.xml`,
+            'application/feed+json': `${siteURL}/feed.json`
+        }
+    },
     openGraph: {
         title: authorName,
         description,
