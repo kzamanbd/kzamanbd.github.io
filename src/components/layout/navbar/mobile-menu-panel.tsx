@@ -1,4 +1,4 @@
-import type { NavItemData } from '@/components/layout/navbar/contents';
+import { resumeItem, type NavItemData } from '@/components/layout/navbar/contents';
 import NavItem from '@/components/layout/navbar/nav-item';
 import NavLogo from '@/components/layout/navbar/nav-logo';
 import ThemeToggle from '@/components/layout/theme-toggle';
@@ -36,6 +36,17 @@ export default function MobileMenuPanel({
                 onNavigate={onNavigate}
                 className="text-foreground/80 hover:text-foreground hover:bg-foreground/5 flex min-h-11 items-center rounded-xl px-4 py-3 transition-colors"
             />
+            <div aria-hidden="true" className="bg-foreground/10 my-1 h-px" />
+            {/* The resume leads the panel: it is the one thing most visitors are
+                here for, so it is a filled action rather than another list row. */}
+            <ul className="px-1 py-1">
+                <NavItem
+                    item={resumeItem}
+                    active={isActive(resumeItem)}
+                    variant="cta"
+                    onNavigate={onNavigate}
+                />
+            </ul>
             <div aria-hidden="true" className="bg-foreground/10 my-1 h-px" />
             <ul className="flex flex-col gap-0.5">
                 {sectionItems.map((item) => (

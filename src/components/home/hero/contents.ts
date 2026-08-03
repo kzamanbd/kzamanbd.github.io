@@ -5,18 +5,19 @@ import { Cpu, Database, Layout, Terminal, type LucideIcon } from 'lucide-react';
 export interface CoreCompetency {
     name: string;
     Icon: LucideIcon;
-    /** Tailwind gradient stops for the tile's icon chip. */
-    gradient: string;
+    /** Accent the tile's glow and lit border take, as a CSS colour value. */
+    brandColor: string;
 }
 
 export const coreCompetencies: CoreCompetency[] = [
-    { name: 'PHP & Laravel', Icon: Terminal, gradient: 'from-indigo-500 to-purple-500' },
-    { name: 'React & Vue', Icon: Layout, gradient: 'from-blue-500 to-cyan-500' },
-    { name: 'TypeScript', Icon: Cpu, gradient: 'from-amber-500 to-orange-500' },
-    { name: 'AWS & DevOps', Icon: Database, gradient: 'from-emerald-500 to-teal-500' }
+    { name: 'PHP & Laravel', Icon: Terminal, brandColor: 'var(--color-indigo-500)' },
+    { name: 'React & Vue', Icon: Layout, brandColor: 'var(--color-cyan-500)' },
+    { name: 'TypeScript', Icon: Cpu, brandColor: 'var(--color-amber-500)' },
+    { name: 'AWS & DevOps', Icon: Database, brandColor: 'var(--color-emerald-500)' }
 ];
 
 export const socialLinks = [
+    { href: user.github, Icon: Github, label: 'GitHub' },
     { href: user.linkedin, Icon: Linkedin, label: 'LinkedIn' },
     { href: user.leetcode, Icon: LeetCode, label: 'LeetCode' },
     { href: user.codeforces, Icon: Codeforces, label: 'Codeforces' },
@@ -28,5 +29,3 @@ export const heroStats = [
     { value: '15+', label: 'Enterprise Projects' },
     { value: '1000+', label: 'Problems Solved' }
 ];
-
-export { Github };

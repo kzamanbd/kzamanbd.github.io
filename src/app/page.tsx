@@ -1,4 +1,3 @@
-import ContactForm from '@/components/contact-form';
 import AboutArea from '@/components/home/about';
 import ArticlesArea from '@/components/home/articles';
 import HeroArea from '@/components/home/hero';
@@ -7,7 +6,10 @@ import SectionUrlSync from '@/components/layout/section-url-sync';
 
 const Home = () => {
     return (
-        <div className="relative min-h-screen overflow-hidden bg-slate-50 font-sans selection:bg-indigo-500/30 dark:bg-gray-950">
+        // No background of its own: the body's --background token governs, so the
+        // page, the footer and every glass surface sit on one colour instead of
+        // the page overriding it and leaving the footer on a different shade.
+        <div className="relative overflow-hidden font-sans selection:bg-indigo-500/30">
             {/* Ambient glow orbs, shared by every section below. */}
             <div
                 aria-hidden="true"
@@ -17,12 +19,13 @@ const Home = () => {
                 <div className="animate-pulse-slow absolute bottom-[-20%] left-[20%] h-[50vh] w-[50vw] rounded-full bg-purple-500/10 mix-blend-multiply blur-[100px] [animation-delay:4s] dark:bg-purple-500/10 dark:mix-blend-screen" />
             </div>
 
-            <main>
+            {/* `home-sections` drives the per-section accent swell in globals.css,
+                so consecutive sections blend into each other with no seam. */}
+            <main className="home-sections relative">
                 <HeroArea />
                 <AboutArea />
                 <SkillsArea />
                 <ArticlesArea />
-                <ContactForm />
             </main>
 
             <SectionUrlSync />

@@ -39,11 +39,22 @@
        on dark) instead of a fixed gray. Consumed by the background components. */
     --grid-line: color-mix(in oklab, var(--foreground) 13%, transparent);
     --grid-dot: color-mix(in oklab, var(--foreground) 22%, transparent);
+    /* Faint per-section washes for the home page. Each home section swells from
+       the base background to its own accent and back, so consecutive sections
+       share the exact base colour at their edges and blend with no seam. */
+    --section-swell-indigo: #e9e9f0;
+    --section-swell-blue: #e7ebf2;
+    --section-swell-yellow: #f0eee4;
+    --section-swell-teal: #e6f1ef;
 }
 
 .dark {
     --background: #1f2937;
     --foreground: #f3f4f6;
+    --section-swell-indigo: #232235;
+    --section-swell-blue: #1f2534;
+    --section-swell-yellow: #2a2820;
+    --section-swell-teal: #1d2f2c;
 }
 
 /* `inline` so the utilities resolve to the custom properties themselves rather
@@ -95,7 +106,37 @@
         }
     }
     body {
-        @apply bg-light dark:bg-gray-800 print:bg-transparent;
+        /* Token-driven, so the page, the footer and every glass surface sit on
+           one base colour. The values match the previous `bg-light` /
+           `dark:bg-gray-800` exactly, so nothing shifts; they just stop being
+           declared in two places that could drift apart. */
+        @apply bg-background print:bg-transparent;
+    }
+
+    /* Home page only: each direct section swells from the base background to a
+       faint wash of its own accent and back, so consecutive sections meet on the
+       exact same colour and blend with no seam. The accent tints cycle by
+       section order, so a section added to the home page is tinted
+       automatically. Scoped to .home-sections so inner pages stay flat. */
+    main.home-sections > section {
+        background-image: linear-gradient(
+            to bottom,
+            var(--background) 0%,
+            var(--section-swell, var(--section-swell-indigo)) 50%,
+            var(--background) 100%
+        );
+    }
+    main.home-sections > section:nth-of-type(4n + 1) {
+        --section-swell: var(--section-swell-indigo);
+    }
+    main.home-sections > section:nth-of-type(4n + 2) {
+        --section-swell: var(--section-swell-blue);
+    }
+    main.home-sections > section:nth-of-type(4n + 3) {
+        --section-swell: var(--section-swell-yellow);
+    }
+    main.home-sections > section:nth-of-type(4n + 4) {
+        --section-swell: var(--section-swell-teal);
     }
 }
 

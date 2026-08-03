@@ -1,4 +1,4 @@
-import type { NavItemData } from '@/components/layout/navbar/contents';
+import { resumeItem, type NavItemData } from '@/components/layout/navbar/contents';
 import NavItem from '@/components/layout/navbar/nav-item';
 import NavLogo from '@/components/layout/navbar/nav-logo';
 import { cn } from '@/utils/cn';
@@ -53,6 +53,8 @@ export default function DesktopNav({
                 {pageItems.map((item) => (
                     <NavItem key={item.href} item={item} active={isActive(item)} />
                 ))}
+                <li aria-hidden="true" className="bg-foreground/15 mx-0.5 h-5 w-px" />
+                <NavItem item={resumeItem} active={isActive(resumeItem)} variant="cta" />
             </ul>
         </nav>
     );
