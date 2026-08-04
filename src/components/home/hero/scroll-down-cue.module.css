@@ -1,0 +1,53 @@
+/* The "there is more below" hint at the foot of the full-height hero.
+
+   The hero fills the viewport, so on a short laptop screen nothing below it is
+   visible and the page can read as a single card. The cue is the one moving
+   thing there: a mouse outline with a wheel that drifts down and fades, plus a
+   chevron that bobs in step. */
+
+.wheel {
+    animation: wheel-drift 2s ease-in-out infinite;
+}
+
+.chevron {
+    animation: chevron-bob 2s ease-in-out infinite;
+}
+
+@keyframes wheel-drift {
+    0% {
+        opacity: 0;
+        transform: translateY(0);
+    }
+    30% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(0.6rem);
+    }
+}
+
+@keyframes chevron-bob {
+    0%,
+    100% {
+        transform: translateY(0);
+        opacity: 0.5;
+    }
+    50% {
+        transform: translateY(0.25rem);
+        opacity: 1;
+    }
+}
+
+/* Motion is the whole point of the cue, so with reduced motion it holds its
+   resting pose rather than disappearing: the affordance still reads. */
+@media (prefers-reduced-motion: reduce) {
+    .wheel,
+    .chevron {
+        animation: none;
+    }
+
+    .wheel {
+        opacity: 1;
+    }
+}
