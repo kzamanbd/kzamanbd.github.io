@@ -1,6 +1,8 @@
 import ArticleCard from '@/components/articles/article-card';
-import DifficultyBadge from '@/components/articles/difficulty-badge';
+import ArticleMeta from '@/components/articles/article-meta';
+import ArticlePager from '@/components/articles/article-pager';
 import ImageLightbox from '@/components/articles/image-lightbox';
+import MobileTableOfContents from '@/components/articles/mobile-table-of-contents';
 import ReadingProgress from '@/components/articles/reading-progress';
 import ShareMenu from '@/components/articles/share-menu';
 import SyncPageGradient from '@/components/backgrounds/page-gradient/sync-page-gradient';
@@ -9,9 +11,10 @@ import ArticleCover from '@/components/articles/article-cover';
 import Comments from '@/components/articles/comments';
 import SeriesNav from '@/components/articles/series-nav';
 import TableOfContents from '@/components/articles/table-of-contents';
+import TagLink from '@/components/articles/tag-link';
+import TechStack from '@/components/articles/tech-stack';
 import WhatYoullLearn from '@/components/articles/what-youll-learn';
 import SpotlightList from '@/components/common/spotlight-list';
-import Tag from '@/components/common/tag';
 import Breadcrumb from '@/components/layout/breadcrumb';
 import { jetBrainsMono } from '@/config/mono-font';
 import {
@@ -23,9 +26,7 @@ import {
 } from '@/lib/posts';
 import { siteURL } from '@/lib/metadata';
 import { buildArticleJsonLd, buildBreadcrumbJsonLd } from '@/utils/article-json-ld';
-import { formatArticleDate } from '@/utils/format-date';
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 interface PageProps {
@@ -113,23 +114,7 @@ export default async function ArticlePage({ params }: PageProps) {
                         {article.title}
                     </h1>
 
-                    <div className="text-foreground/60 mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm">
-                        <time dateTime={article.date}>{formatArticleDate(article.date)}</time>
-                        <span aria-hidden="true">&middot;</span>
-                        <span>{article.readingMinutes} min read</span>
-                        {article.difficulty && (
-                            <>
-                                <span aria-hidden="true">&middot;</span>
-                                <DifficultyBadge difficulty={article.difficulty} />
-                            </>
-                        )}
-                        {article.updated && (
-                            <>
-                                <span aria-hidden="true">&middot;</span>
-                                <span>Updated {formatArticleDate(article.updated)}</span>
-                            </>
-                        )}
-                    </div>
+                    <ArticleMeta article={article} className="mt-4" />
 
                     <p className="text-foreground/70 mt-4 text-lg leading-relaxed">
                         {article.description}
@@ -139,13 +124,7 @@ export default async function ArticlePage({ params }: PageProps) {
                         {article.tags.length > 0 && (
                             <ul className="flex flex-wrap gap-2">
                                 {article.tags.map((tag) => (
-                                    <Tag key={tag} className="text-foreground/70 px-3 py-1 text-xs">
-                                        <Link
-                                            href={`/articles?tag=${encodeURIComponent(tag)}`}
-                                            className="focus-ring hover:text-foreground block rounded-full transition-colors">
-                                            {tag}
-                                        </Link>
-                                    </Tag>
+                                    <TagLink key={tag} tag={tag} />
                                 ))}
                             </ul>
                         )}
@@ -173,51 +152,15 @@ export default async function ArticlePage({ params }: PageProps) {
                     <div className="min-w-0 space-y-8">
                         <WhatYoullLearn items={article.learn} />
 
-                        {article.tech.length > 0 && (
-                            <div>
-                                <h2 className="text-foreground/70 text-xs font-semibold tracking-wide uppercase">
-                                    Built with
-                                </h2>
-                                <ul className="mt-3 flex flex-wrap gap-2">
-                                    {article.tech.map((item) => (
-                                        <Tag
-                                            key={item}
-                                            className="text-foreground/70 px-3 py-1 text-xs">
-                                            {item}
-                                        </Tag>
-                                    ))}
-                                </ul>
-                            </div>
-                        )}
+                        <TechStack items={article.tech} />
+
+                        {/* Below `lg` the sticky aside is hidden, so the TOC
+                            rides above the body instead of beside it. */}
+                        <MobileTableOfContents items={article.toc} />
 
                         <ArticleContent html={article.html} />
 
-                        {(previous || next) && (
-                            <nav
-                                aria-label="Adjacent articles"
-                                className="border-foreground/10 grid gap-4 border-t pt-8 sm:grid-cols-2">
-                                {previous && (
-                                    <Link
-                                        href={`/articles/${previous.slug}`}
-                                        className="focus-ring border-foreground/10 hover:border-foreground/30 rounded-xl border p-4 transition-colors">
-                                        <span className="text-foreground/50 text-xs">Previous</span>
-                                        <span className="text-foreground mt-1 block font-semibold">
-                                            {previous.title}
-                                        </span>
-                                    </Link>
-                                )}
-                                {next && (
-                                    <Link
-                                        href={`/articles/${next.slug}`}
-                                        className="focus-ring border-foreground/10 hover:border-foreground/30 rounded-xl border p-4 text-right transition-colors sm:col-start-2">
-                                        <span className="text-foreground/50 text-xs">Next</span>
-                                        <span className="text-foreground mt-1 block font-semibold">
-                                            {next.title}
-                                        </span>
-                                    </Link>
-                                )}
-                            </nav>
-                        )}
+                        <ArticlePager previous={previous} next={next} />
                     </div>
 
                     <aside className="space-y-8">

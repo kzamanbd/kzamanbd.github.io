@@ -1,0 +1,109 @@
+/* Prev/next cards at the foot of an article. They reuse the site's rest-and-bloom
+   treatment, but tuned down: these sit under a long read and should invite the
+   next click without competing with the related-reading grid below them.
+
+   Each card is tinted by the destination article's own cover gradient, passed in
+   as `--brand-color`, so the pager previews where the link goes. */
+
+.card {
+    position: relative;
+    isolation: isolate;
+    --card-glow: 8%;
+}
+
+:global(html.dark) .card {
+    --card-glow: 15%;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0.4;
+    background: radial-gradient(
+        circle at 50% 0%,
+        color-mix(in oklab, var(--brand-color, var(--foreground)) var(--card-glow), transparent),
+        transparent 70%
+    );
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background: radial-gradient(
+        200px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+        color-mix(in oklab, var(--brand-color, var(--foreground)) 16%, transparent),
+        transparent 70%
+    );
+}
+
+.card:hover::after {
+    opacity: 1;
+}
+
+.border {
+    opacity: 0;
+    border-color: color-mix(in oklab, var(--brand-color, var(--foreground)) 45%, transparent);
+    -webkit-mask-image: radial-gradient(
+        160px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+        #000 0%,
+        transparent 70%
+    );
+    mask-image: radial-gradient(
+        160px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+        #000 0%,
+        transparent 70%
+    );
+}
+
+.card:hover .border {
+    opacity: 1;
+}
+
+/* The arrow leans towards the edge it points at on hover, which is the only
+   motion in the card and reads as "keep going this way". */
+.arrow {
+    transition: transform 250ms ease-out;
+}
+
+.card:hover .arrowPrev {
+    transform: translateX(-0.25rem);
+}
+
+.card:hover .arrowNext {
+    transform: translateX(0.25rem);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .arrow {
+        transition: none;
+    }
+
+    .card:hover .arrowPrev,
+    .card:hover .arrowNext {
+        transform: none;
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .card::before {
+        transition: opacity 700ms ease-out;
+    }
+
+    .card::after,
+    .border {
+        transition: opacity 400ms ease-out;
+    }
+}

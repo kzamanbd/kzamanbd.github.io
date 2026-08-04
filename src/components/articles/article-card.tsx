@@ -2,11 +2,11 @@ import SpotlightBorder from '@/components/common/spotlight-border';
 import { spotlightSurfaceProps } from '@/components/common/spotlight-surface';
 import Tag from '@/components/common/tag';
 import ArticleCover from '@/components/articles/article-cover';
+import ArticleMeta from '@/components/articles/article-meta';
 import DifficultyBadge from '@/components/articles/difficulty-badge';
 import styles from '@/components/common/glow-card.module.css';
 import type { ArticleSummary } from '@/lib/posts';
 import { cn } from '@/utils/cn';
-import { formatArticleDate } from '@/utils/format-date';
 import Link from 'next/link';
 
 /**
@@ -42,19 +42,7 @@ export default function ArticleCard({
                 />
 
                 <div className="p-5">
-                    <div className="text-foreground/60 flex flex-wrap items-center gap-x-2 gap-y-1 text-xs">
-                        <time dateTime={article.date}>{formatArticleDate(article.date)}</time>
-                        <span aria-hidden="true">&middot;</span>
-                        <span>{article.readingMinutes} min read</span>
-                        {article.series && (
-                            <>
-                                <span aria-hidden="true">&middot;</span>
-                                <span className="font-medium">
-                                    {article.series.name} &middot; Part {article.series.order}
-                                </span>
-                            </>
-                        )}
-                    </div>
+                    <ArticleMeta article={article} variant="compact" />
 
                     <h3 className="text-foreground mt-2 text-lg font-semibold text-balance">
                         {article.title}
