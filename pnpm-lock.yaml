@@ -7,6 +7,9 @@ settings:
 importers:
     .:
         dependencies:
+            '@dagrejs/dagre':
+                specifier: ^3.1.0
+                version: 3.1.0
             '@next/third-parties':
                 specifier: 16.2.4
                 version: 16.2.4(next@16.2.4(react-dom@19.2.5(react@19.2.5))(react@19.2.5))(react@19.2.5)
@@ -16,6 +19,9 @@ importers:
             '@serwist/window':
                 specifier: ^9.5.12
                 version: 9.5.12(browserslist@4.28.6)(typescript@5.9.3)
+            '@xyflow/react':
+                specifier: ^12.11.2
+                version: 12.11.2(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)
             clsx:
                 specifier: ^2.1.1
                 version: 2.1.1
@@ -150,6 +156,18 @@ packages:
         resolution:
             {
                 integrity: sha512-U+HFai5+zmJCkK86QsaJtoITlboZHBqrVketcO2ROv865xfCMSFpELQoz1GkX5GzME8pTa+3kbKrZHQtI0gdbw==
+            }
+
+    '@dagrejs/dagre@3.1.0':
+        resolution:
+            {
+                integrity: sha512-22SWJOfiQVCSFF0qN43SMiYS7Ch9Z6HZoO8+5PycGzGgmtdXIvHoZ2DoT5BweVGf+wwHxBFZu4eO0do0RIYQaw==
+            }
+
+    '@dagrejs/graphlib@4.0.3':
+        resolution:
+            {
+                integrity: sha512-9kvysNliOxG5m3lr1Qq5uCc+SYxx+BaLDM2SDGkgoZvKJ1bSESzbZ3gn4rSxqX1xR07swcSdeuGyKYQhAURxAA==
             }
 
     '@emnapi/runtime@1.11.3':
@@ -1677,6 +1695,28 @@ packages:
                 integrity: sha512-WbBhLrooyePuQ1VZxrJjtLvTc4NVfpOyKx0sKqioq9bX1C1m7Jgykkn8gLrtwumBioXIqam8DLxp88Adbue6Hw==
             }
 
+    '@xyflow/react@12.11.2':
+        resolution:
+            {
+                integrity: sha512-eLAlDWJfWnQEhJwGMjlWdAXO9eYllKpliUmPQlAmOLxz6mExXuzMVDUKLMquixgkrtmMFFtug3jGKmYYld12cA==
+            }
+        peerDependencies:
+            '@types/react': '>=17'
+            '@types/react-dom': '>=17'
+            react: '>=17'
+            react-dom: '>=17'
+        peerDependenciesMeta:
+            '@types/react':
+                optional: true
+            '@types/react-dom':
+                optional: true
+
+    '@xyflow/system@0.0.79':
+        resolution:
+            {
+                integrity: sha512-czLyOh91NF0hIzbNzwi8I6GlqG23BHh2435OddfI6uiaLH3xdrdygO93gqgH1Bv9mhy8XPFQJOBn1FTq4LvEWA==
+            }
+
     acorn-jsx@5.3.2:
         resolution:
             {
@@ -1894,6 +1934,12 @@ packages:
         resolution:
             {
                 integrity: sha512-RpPp0asT/6ufRm//AJVwpViZbGM/MkjQFxJccQRHmISF/22NBtsHqAWmL+/pmkPWoIUJdWyeVleTl1wydHATVQ==
+            }
+
+    classcat@5.0.5:
+        resolution:
+            {
+                integrity: sha512-JhZUT7JFcQy/EzW605k/ktHtncoo9vnyW/2GspNYwFlN1C/WmjuV/xtS04e9SOkL2sTdw0VAZ2UGCcQ9lR6p6w==
             }
 
     client-only@0.0.1:
@@ -4575,6 +4621,14 @@ packages:
                 integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==
             }
 
+    use-sync-external-store@1.6.0:
+        resolution:
+            {
+                integrity: sha512-Pp6GSwGP/NrPIrxVFAIkOQeyw8lFenOHijQWkUTrDvrF4ALqylP2C/KCkeS9dpUM3KvYRQhna5vt7IL95+ZQ9w==
+            }
+        peerDependencies:
+            react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
     uuid@14.0.1:
         resolution:
             {
@@ -4698,6 +4752,24 @@ packages:
                 integrity: sha512-ytENFjIJFl2UwYglde2jchW2Hwm4GJFLDiSXWdTrJQBIN9Fcyp7n4DhxJEiWNAJMV1/BqWfW/kkg71UDcHJyTQ==
             }
 
+    zustand@4.5.7:
+        resolution:
+            {
+                integrity: sha512-CHOUy7mu3lbD6o6LJLfllpjkzhHXSBlX8B9+qPddUsIfeF5S/UZ5q0kmCsnRqT1UHFQZchNFDDzMbQsuesHWlw==
+            }
+        engines: { node: '>=12.7.0' }
+        peerDependencies:
+            '@types/react': '>=16.8'
+            immer: '>=9.0.6'
+            react: '>=16.8'
+        peerDependenciesMeta:
+            '@types/react':
+                optional: true
+            immer:
+                optional: true
+            react:
+                optional: true
+
     zwitch@2.0.4:
         resolution:
             {
@@ -4715,6 +4787,12 @@ snapshots:
     '@braintree/sanitize-url@7.1.2': {}
 
     '@chevrotain/types@11.1.2': {}
+
+    '@dagrejs/dagre@3.1.0':
+        dependencies:
+            '@dagrejs/graphlib': 4.0.3
+
+    '@dagrejs/graphlib@4.0.3': {}
 
     '@emnapi/runtime@1.11.3':
         dependencies:
@@ -5726,6 +5804,31 @@ snapshots:
             d3-selection: 3.0.0
             d3-transition: 3.0.1(d3-selection@3.0.0)
 
+    '@xyflow/react@12.11.2(@types/react-dom@19.2.3(@types/react@19.2.14))(@types/react@19.2.14)(react-dom@19.2.5(react@19.2.5))(react@19.2.5)':
+        dependencies:
+            '@xyflow/system': 0.0.79
+            classcat: 5.0.5
+            react: 19.2.5
+            react-dom: 19.2.5(react@19.2.5)
+            zustand: 4.5.7(@types/react@19.2.14)(react@19.2.5)
+        optionalDependencies:
+            '@types/react': 19.2.14
+            '@types/react-dom': 19.2.3(@types/react@19.2.14)
+        transitivePeerDependencies:
+            - immer
+
+    '@xyflow/system@0.0.79':
+        dependencies:
+            '@types/d3-drag': 3.0.7
+            '@types/d3-interpolate': 3.0.4
+            '@types/d3-selection': 3.0.11
+            '@types/d3-transition': 3.0.9
+            '@types/d3-zoom': 3.0.8
+            d3-drag: 3.0.0
+            d3-interpolate: 3.0.1
+            d3-selection: 3.0.0
+            d3-zoom: 3.0.0
+
     acorn-jsx@5.3.2(acorn@8.18.0):
         dependencies:
             acorn: 8.18.0
@@ -5872,6 +5975,8 @@ snapshots:
     character-entities-html4@2.1.0: {}
 
     character-entities-legacy@3.0.0: {}
+
+    classcat@5.0.5: {}
 
     client-only@0.0.1: {}
 
@@ -7618,6 +7723,10 @@ snapshots:
         dependencies:
             punycode: 2.3.1
 
+    use-sync-external-store@1.6.0(react@19.2.5):
+        dependencies:
+            react: 19.2.5
+
     uuid@14.0.1: {}
 
     vfile-message@4.0.3:
@@ -7710,5 +7819,12 @@ snapshots:
     yocto-queue@0.1.0: {}
 
     zod@4.4.3: {}
+
+    zustand@4.5.7(@types/react@19.2.14)(react@19.2.5):
+        dependencies:
+            use-sync-external-store: 1.6.0(react@19.2.5)
+        optionalDependencies:
+            '@types/react': 19.2.14
+            react: 19.2.5
 
     zwitch@2.0.4: {}

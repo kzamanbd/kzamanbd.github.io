@@ -200,9 +200,10 @@ marked.use({
         if (token.type !== 'code') return;
         const codeToken = token as CodeToken;
         const { lang } = parseCodeMeta(codeToken);
-        // Mermaid blocks render to SVG in the browser (see MermaidRenderer), so
-        // skip Shiki and let the code renderer emit a <pre class="mermaid">.
-        if (lang === 'mermaid') return;
+        // Mermaid and flow blocks are rendered in the browser (see
+        // MermaidRenderer and FlowDiagrams), so skip Shiki and let the code
+        // renderer emit the placeholder each one mounts onto.
+        if (lang === 'mermaid' || lang === 'flow') return;
         codeToken.highlighted = await highlightCode(codeToken.text, lang);
     },
     renderer: {
@@ -211,6 +212,14 @@ marked.use({
             const { lang, filePath } = parseCodeMeta(codeToken);
             if (lang === 'mermaid') {
                 return `<pre class="mermaid not-prose">${escapeHtml(codeToken.text)}</pre>`;
+            }
+            // A `flow` fence becomes an empty mount point holding its own
+            // source. FlowDiagrams portals a real React tree into each one, so
+            // the diagram is interactive despite the body arriving as a string;
+            // until that runs the source stays visible and legible, which is
+            // also what a reader with JavaScript off is left with.
+            if (lang === 'flow') {
+                return `<pre class="flow-diagram not-prose">${escapeHtml(codeToken.text)}</pre>`;
             }
             const highlighted =
                 codeToken.highlighted ?? `<pre><code>${escapeHtml(codeToken.text)}</code></pre>`;
