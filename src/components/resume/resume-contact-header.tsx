@@ -40,7 +40,7 @@ export default function ResumeContactHeader() {
                     </li>
                 </ul>
 
-                <div className="mb-4 flex flex-wrap gap-2 text-sm">
+                <div className="mb-4 flex flex-wrap gap-x-2 text-sm">
                     {socialLinks.map(([name, url], index) => (
                         <div key={name} className="contact-link">
                             <a href={url} target="_blank" rel="noreferrer" className="resume-link">

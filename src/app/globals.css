@@ -314,6 +314,10 @@
     }
 }
 
+body:has(.page-container) button[aria-label='Open menu'] {
+    @apply print:hidden;
+}
+
 /* Custom animations for gradient effects */
 @keyframes pulse-slow {
     0%,
