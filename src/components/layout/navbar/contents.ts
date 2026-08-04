@@ -33,6 +33,22 @@ export const pageItems: NavItemData[] = [
  */
 export const resumeItem: NavItemData = { label: 'Resume', href: '/resume' };
 
+/**
+ * Authoring tools, reachable from the navbar only while developing.
+ *
+ * The routes behind these are `.dev.tsx` files, which `next.config.ts` only
+ * treats as pages outside production — so in a deployed build they do not exist
+ * and a link to one would 404. Emptying the list there means StudioMenu renders
+ * nothing and the check lives in exactly one place.
+ *
+ * `NODE_ENV` is inlined at build time, so the production bundle drops both the
+ * entries and the branch.
+ */
+export const studioItems: NavItemData[] =
+    process.env.NODE_ENV === 'development'
+        ? [{ label: 'Article editor', href: '/studio/article-editor' }]
+        : [];
+
 export const sectionIds = sectionItems.map((item) => item.sectionId as string);
 
 // id of the hero element on the home page; observed to toggle the navbar.

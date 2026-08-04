@@ -1,6 +1,7 @@
 import { resumeItem, type NavItemData } from '@/components/layout/navbar/contents';
 import NavItem from '@/components/layout/navbar/nav-item';
 import NavLogo from '@/components/layout/navbar/nav-logo';
+import StudioMenu from '@/components/layout/navbar/studio-menu';
 import { cn } from '@/utils/cn';
 
 interface DesktopNavProps {
@@ -54,6 +55,8 @@ export default function DesktopNav({
                     <NavItem key={item.href} item={item} active={isActive(item)} />
                 ))}
                 <li aria-hidden="true" className="bg-foreground/15 mx-0.5 h-5 w-px" />
+                {/* Development only; renders nothing in a production build. */}
+                <StudioMenu />
                 <NavItem item={resumeItem} active={isActive(resumeItem)} variant="cta" />
             </ul>
         </nav>

@@ -1,4 +1,5 @@
 import type { ArticleFrontmatter } from '@/lib/article-schema';
+import { toDateString } from '@/utils/article-date';
 import matter from 'gray-matter';
 
 /**
@@ -105,8 +106,12 @@ export function parseArticleFile(raw: string): {
         frontmatter: {
             title: typeof data.title === 'string' ? data.title : '',
             description: typeof data.description === 'string' ? data.description : '',
-            date: typeof data.date === 'string' ? data.date : String(data.date ?? ''),
-            updated: typeof data.updated === 'string' ? data.updated : undefined,
+            // `toDateString`, not `String()`: an unquoted YAML date reaches us
+            // as a real `Date` from gray-matter, and stringifying that gives
+            // "Tue Aug 04 2026 00:00:00 GMT+0000" — which the editor's date
+            // input rejects and `formatArticleDate` renders as nothing.
+            date: toDateString(data.date),
+            updated: data.updated ? toDateString(data.updated) : undefined,
             tags: stringList(data.tags),
             cover: typeof data.cover === 'string' ? data.cover : undefined,
             category: typeof data.category === 'string' ? data.category : undefined,

@@ -124,17 +124,24 @@ export default function ArticleEditor({
         setSavedSlugOverride(null);
     };
 
-    /** Saves first, since the article route reads from disk, then opens it. */
+    /**
+     * Saves first, since both routes read from disk, then opens the article at
+     * full width in a new tab.
+     *
+     * A draft goes to the studio preview rather than to `/articles/[slug]`: the
+     * published route deliberately 404s on `draft: true`, so an unfinished post
+     * can never be linked or crawled. The preview renders the same chrome from
+     * the same components, so the author still sees the real page.
+     */
     const previewFullPage = async () => {
         const result = await saveArticle();
         if (!result) return;
-        if (draft.frontmatter.draft) {
-            window.alert(
-                'This article is marked as a draft, so the article route will 404. Untick Draft to preview the full page.'
-            );
-            return;
-        }
-        window.open(`/articles/${fileSlug(result.file)}`, '_blank', 'noopener,noreferrer');
+
+        const slug = fileSlug(result.file);
+        const href = draft.frontmatter.draft
+            ? `/studio/article-editor/preview/${slug}`
+            : `/articles/${slug}`;
+        window.open(href, '_blank', 'noopener,noreferrer');
     };
 
     return (
