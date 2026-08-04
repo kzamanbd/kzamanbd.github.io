@@ -244,6 +244,7 @@
 }
 
 .content :global(pre.mermaid[data-mermaid-rendered='true']) {
+    position: relative;
     display: flex;
     justify-content: center;
     font-family: inherit;
@@ -252,6 +253,73 @@
 .content :global(pre.mermaid svg) {
     max-width: 100%;
     height: auto;
+}
+
+/* The expand control, injected by useMermaidDiagrams once a diagram renders.
+   Styled here rather than inline on the element because it lives outside React's
+   tree and has no className the utility classes could be attached through.
+
+   Kept visible on touch, where there is no hover to reveal it. */
+.content :global(pre.mermaid .mermaid-expand-button) {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid color-mix(in oklab, var(--foreground) 12%, transparent);
+    border-radius: 0.5rem;
+    background: color-mix(in oklab, var(--background) 80%, transparent);
+    color: color-mix(in oklab, var(--foreground) 65%, transparent);
+    backdrop-filter: blur(4px);
+    cursor: pointer;
+    opacity: 0;
+    transition:
+        opacity 200ms ease-out,
+        color 200ms ease-out;
+}
+
+.content :global(pre.mermaid .mermaid-expand-button svg) {
+    width: 1rem;
+    height: 1rem;
+}
+
+.content :global(pre.mermaid:hover .mermaid-expand-button),
+.content :global(pre.mermaid .mermaid-expand-button:focus-visible) {
+    opacity: 1;
+}
+
+.content :global(pre.mermaid .mermaid-expand-button:hover) {
+    color: var(--foreground);
+}
+
+@media (hover: none) {
+    .content :global(pre.mermaid .mermaid-expand-button) {
+        opacity: 1;
+    }
+}
+
+/* Flow diagrams. The `<pre>` is only a mount point: FlowDiagrams empties it and
+   portals a real React tree in. Until that runs — and for a reader with
+   JavaScript off — it holds the fence's source, so it is styled to stay legible
+   exactly like the pre-render mermaid state above. */
+.content :global(pre.flow-diagram) {
+    overflow-x: auto;
+    padding: 1rem;
+    font-family: ui-monospace, monospace;
+    font-size: 0.8rem;
+    border: 1px solid color-mix(in oklab, var(--foreground) 12%, transparent);
+    border-radius: 0.75rem;
+}
+
+/* Once mounted the child owns its own frame, so the placeholder chrome goes. */
+.content :global(pre.flow-diagram:has(> *)) {
+    padding: 0;
+    border: 0;
+    font-family: inherit;
+    font-size: inherit;
 }
 
 /* Footnotes section appended by marked-footnote. */
