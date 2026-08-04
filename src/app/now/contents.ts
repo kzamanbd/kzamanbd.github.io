@@ -1,5 +1,5 @@
 import type { CatalogSection } from '@/components/common/catalog-card';
-import { BookOpen, Briefcase, Code, Cpu, Target } from 'lucide-react';
+import { BookOpen, Briefcase, Code, Cpu, PenLine, Server, Target } from 'lucide-react';
 
 /**
  * Page-wise data for /now. Update `lastUpdated` whenever you revise this file:
@@ -52,6 +52,36 @@ export const nowSections: CatalogSection[] = [
             {
                 kind: 'tags',
                 tags: ['System design', 'Query optimization', 'Caching strategies', 'AWS']
+            }
+        ]
+    },
+    {
+        title: 'Home lab',
+        Icon: Server,
+        intro: 'A small self-hosted setup, kept deliberately close to how production actually behaves.',
+        blocks: [
+            {
+                kind: 'list',
+                items: [
+                    'Running services in Docker Compose rather than on the host, so a rebuild is never a mystery',
+                    'Reverse proxying everything behind one entry point with real certificates',
+                    'Breaking it on purpose now and then, because that is the cheapest place to learn recovery'
+                ]
+            }
+        ]
+    },
+    {
+        title: 'Writing',
+        Icon: PenLine,
+        intro: 'Notes that were only ever going to help me, rewritten so they help someone else.',
+        blocks: [
+            {
+                kind: 'list',
+                items: [
+                    'Postmortems of bugs that took longer than they should have',
+                    'The Laravel and MySQL behaviour that is obvious only after it bites you',
+                    'How this site is put together, where a decision is worth explaining'
+                ]
             }
         ]
     },

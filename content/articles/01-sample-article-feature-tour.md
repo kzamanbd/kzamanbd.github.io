@@ -102,6 +102,41 @@ flowchart LR
     E --> C
 ```
 
+A `flow` block is the interactive kind: it renders as a static diagram first, and
+the reader can switch to a canvas that walks the path one hop at a time. Declare
+scenarios to let one picture show more than one route.
+
+```flow
+title: How a request reaches the origin
+packets: on
+
+scenario "Cache hit"
+> The edge already holds the response, so the origin is never touched.
+Browser [the reader's tab] --> Edge (HTTPS) {secure}
+Edge [CDN PoP] --> Browser (cached response) {allowed}
+> Served from the PoP in a few milliseconds.
+
+scenario "Cache miss"
+> Nothing cached, so the request travels the whole way and back.
+Browser --> Edge (HTTPS) {secure}
+Edge --> Origin (forwarded) {neutral}
+> The PoP has no copy, so it asks the origin.
+Origin [the app server] --> Database (query) {neutral}
+Database --> Origin (rows) {neutral}
+Origin --> Edge (response + cache headers) {allowed}
+> Stored at the PoP, so the next reader takes the short path above.
+Edge --> Browser (response) {allowed}
+```
+
+## Images
+
+Any image in the body opens full-screen, with pan and zoom. Where a post has more
+than one, the arrow keys step between them without closing the viewer.
+
+![The site rendered on a narrow viewport](/screenshot-637x911.png)
+
+![The site rendered on a wide viewport](/screenshot-640x320.png)
+
 ## Tables
 
 Wide tables scroll inside their own frame rather than pushing the page sideways.
