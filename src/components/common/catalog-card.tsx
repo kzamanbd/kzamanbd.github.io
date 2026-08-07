@@ -61,7 +61,7 @@ function Block({ block }: { block: CatalogBlock }) {
 }
 
 /**
- * One entry in the /now snapshot or the /uses catalog: a monospace index in the
+ * One entry in the /now snapshot: a monospace index in the
  * corner, an accent-tinted icon badge and title, an optional intro, the section's
  * blocks, then an optional closing outro.
  *

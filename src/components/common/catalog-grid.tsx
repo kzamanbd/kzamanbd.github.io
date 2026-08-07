@@ -2,7 +2,7 @@ import CatalogCard, { type CatalogSection } from '@/components/common/catalog-ca
 import SpotlightList from '@/components/common/spotlight-list';
 
 /**
- * Bento grid shared by /now and /uses. Wide sections span two columns; cards
+ * Bento grid used by /now. Wide sections span two columns; cards
  * stretch to fill their cell, so a row has no gaps even when its cards hold
  * different amounts of content. `grid-flow-row-dense` backfills the slot a wide
  * card would otherwise leave open at the end of a row.

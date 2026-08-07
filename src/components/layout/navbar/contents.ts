@@ -18,7 +18,6 @@ export const sectionItems: NavItemData[] = [
 // Standalone pages.
 export const pageItems: NavItemData[] = [
     { label: 'Articles', href: '/articles' },
-    { label: 'Uses', href: '/uses' },
     { label: 'Now', href: '/now' },
     { label: 'Short URL', href: '/shorturl' }
 ];
