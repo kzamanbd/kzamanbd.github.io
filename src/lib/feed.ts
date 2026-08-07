@@ -41,24 +41,30 @@ function absoluteUrl(pathOrUrl: string): string {
 export async function getFeedData(): Promise<FeedData> {
     const summaries = getAllArticles();
 
-    const items = await Promise.all(
-        summaries.map<Promise<FeedItem>>(async (summary) => {
-            const article = await getArticle(summary.slug);
-            // Readers do not render the CSS gradient cover, so point at the
-            // route-generated OpenGraph PNG unless the article ships its own image.
-            const image = summary.cover ?? `/articles/${summary.slug}/opengraph-image`;
-            return {
-                title: summary.title,
-                description: summary.description,
-                url: absoluteUrl(`/articles/${summary.slug}`),
-                imageUrl: absoluteUrl(image),
-                tags: summary.tags,
-                published: requireArticleDate(summary.date),
-                updated: requireArticleDate(summary.updated ?? summary.date),
-                contentHtml: article?.html ?? ''
-            };
-        })
-    );
+    // Rendered one article at a time, never Promise.all: renderMarkdown shares a
+    // single module-level `marked` instance, and marked-footnote keeps its
+    // footnote state in one closure. Two parses in flight at once corrupt each
+    // other's footnote container and crash inside marked's tokenizer, which only
+    // surfaces once a second article exists to overlap with. Article pages avoid
+    // this by rendering one per request; the feed is the only place that fans out
+    // across the whole corpus, so it must serialise here.
+    const items: FeedItem[] = [];
+    for (const summary of summaries) {
+        const article = await getArticle(summary.slug);
+        // Readers do not render the CSS gradient cover, so point at the
+        // route-generated OpenGraph PNG unless the article ships its own image.
+        const image = summary.cover ?? `/articles/${summary.slug}/opengraph-image`;
+        items.push({
+            title: summary.title,
+            description: summary.description,
+            url: absoluteUrl(`/articles/${summary.slug}`),
+            imageUrl: absoluteUrl(image),
+            tags: summary.tags,
+            published: requireArticleDate(summary.date),
+            updated: requireArticleDate(summary.updated ?? summary.date),
+            contentHtml: article?.html ?? ''
+        });
+    }
 
     // The feed's own timestamp is the most recent article change. Wall-clock time
     // would make an unchanged corpus produce a different feed on every request,
