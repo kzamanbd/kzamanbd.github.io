@@ -5,7 +5,7 @@ import type { MetadataRoute } from 'next';
 export const dynamic = 'force-static';
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const siteURL = process.env.NEXT_PUBLIC_SITE_URL || 'https://draftscripts.com';
+    const siteURL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kzaman.com';
     const articles = getAllArticles();
 
     // The corpus only changes on deploy, so the index's lastModified is the most

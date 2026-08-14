@@ -21,7 +21,7 @@ export const authorName = 'KAMRUZZAMAN';
 
 export const siteName = authorName;
 
-export const siteURL = 'https://draftscripts.com';
+export const siteURL = 'https://kzaman.com';
 
 export const siteThumbnail = '/thumbnail.png';
 
