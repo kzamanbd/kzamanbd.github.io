@@ -1,0 +1,57 @@
+name: Deploy Pages
+
+# Publishes the kzamanbd.github.io redirect shell. It is not a build of this
+# app: the app needs a Node host and lives on Vercel at kzaman.com (see
+# .github/pages/index.html). Only the shell's own sources can change what gets
+# deployed, so nothing else triggers a run.
+on:
+    push:
+        branches:
+            - main
+        paths:
+            - '.github/pages/**'
+            - '.github/workflows/deploy-pages.yml'
+    workflow_dispatch:
+
+permissions:
+    contents: read
+    pages: write
+    id-token: write
+
+# One deployment at a time, queued rather than cancelled: cancelling mid-publish
+# would leave the live site on whatever partial state the run had reached.
+concurrency:
+    group: pages
+    cancel-in-progress: false
+
+jobs:
+    deploy:
+        runs-on: ubuntu-latest
+        environment:
+            name: github-pages
+            url: ${{ steps.deployment.outputs.page_url }}
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Configure Pages
+              uses: actions/configure-pages@v5
+
+            - name: Assemble redirect shell
+              run: |
+                  mkdir -p _site
+                  cp .github/pages/index.html _site/index.html
+                  # GitHub Pages falls back to 404.html for any path it has no
+                  # file for, which here is every path but "/". Serving the same
+                  # document there is what lets a deep link such as
+                  # /articles/some-post carry its path across to kzaman.com.
+                  cp .github/pages/index.html _site/404.html
+
+            - name: Upload artifact
+              uses: actions/upload-pages-artifact@v3
+              with:
+                  path: _site
+
+            - name: Deploy to GitHub Pages
+              id: deployment
+              uses: actions/deploy-pages@v4

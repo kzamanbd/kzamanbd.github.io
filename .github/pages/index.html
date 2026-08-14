@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>kzaman.com</title>
+        <link rel="canonical" href="https://kzaman.com/" />
+        <script>
+            // GitHub Pages serves static files only, while this site is
+            // server-rendered (route handlers under src/app/api, the shorturl
+            // Server Actions, /version.json), so the real host is Vercel at
+            // kzaman.com. This shell exists purely to forward the legacy
+            // kzamanbd.github.io address.
+            //
+            // The deploy workflow publishes this same document as 404.html, and
+            // GitHub Pages serves 404.html for every unmatched path — which is
+            // every path here. So location.pathname still holds whatever URL the
+            // visitor asked for, and the hop keeps path, query and hash intact.
+            //
+            // replace() rather than assignment, so the shell never enters session
+            // history: Back returns to wherever the visitor came from instead of
+            // landing here and bouncing forward again.
+            (function () {
+                var here = location.pathname + location.search + location.hash;
+                location.replace('https://kzaman.com' + (here === '/' ? '' : here));
+            })();
+        </script>
+        <noscript>
+            <meta http-equiv="refresh" content="0; url=https://kzaman.com/" />
+        </noscript>
+        <style>
+            :root {
+                color-scheme: light dark;
+            }
+            body {
+                display: grid;
+                min-height: 100dvh;
+                margin: 0;
+                place-items: center;
+                font:
+                    16px/1.6 system-ui,
+                    sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <p>Redirecting to <a href="https://kzaman.com/">kzaman.com</a>…</p>
+    </body>
+</html>
