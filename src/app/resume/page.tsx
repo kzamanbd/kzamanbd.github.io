@@ -22,7 +22,9 @@ import SkillsTable from '@/components/resume/skills-table';
 const Resume = () => {
     return (
         <div>
-            <div className="mx-auto mt-20 md:w-[210mm] print:hidden">
+            {/* `mt-8`, not the navbar-clearing offset the site pages use: this
+                route sits outside the `(site)` group, so there is no navbar. */}
+            <div className="mx-auto mt-8 md:w-[210mm] print:hidden">
                 <div className="border-foreground/10 bg-background/50 flex items-center justify-between rounded-2xl border p-4 backdrop-blur-sm">
                     <h1 className="text-lg font-bold">Resume</h1>
                     <PrintButton />

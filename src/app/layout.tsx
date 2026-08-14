@@ -1,9 +1,7 @@
 import DeferredGoogleTagManager from '@/components/analytics/deferred-google-tag-manager';
 import PageviewTracker from '@/components/analytics/pageview-tracker';
 import { JsonLdScript } from '@/components/json-ld-script';
-import Footer from '@/components/layout/footer';
 import HashScroll from '@/components/layout/hash-scroll';
-import Navbar from '@/components/layout/navbar';
 import ServiceWorkerManager from '@/components/pwa/service-worker-manager';
 import { ThemeProviders } from '@/components/theme-providers';
 import PageGradientBackground from '@/components/backgrounds/page-gradient';
@@ -122,9 +120,7 @@ export default function RootLayout({
                     <PageGradientProvider>
                         <PageGradientBackground />
                         <HashScroll />
-                        <Navbar />
                         {children}
-                        <Footer />
                     </PageGradientProvider>
                     {isProduction && (
                         <>

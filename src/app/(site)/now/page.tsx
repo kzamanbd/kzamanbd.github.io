@@ -1,4 +1,4 @@
-import { nowMeta, nowQuote, nowSections } from '@/app/now/contents';
+import { nowMeta, nowQuote, nowSections } from '@/app/(site)/now/contents';
 import CatalogGrid from '@/components/common/catalog-grid';
 import SectionHeading from '@/components/common/section-heading';
 import Breadcrumb from '@/components/layout/breadcrumb';

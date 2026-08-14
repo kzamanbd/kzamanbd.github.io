@@ -43,13 +43,21 @@ client component.
 `src/app/` holds routing concerns only: pages, layouts, metadata routes
 (`sitemap.ts`, `robots.ts`, `manifest.ts`), API handlers, `globals.css`. Every
 component lives in `src/components/`, and `src/components/` never imports from
-`src/app/`. Data a route owns sits beside it (`src/app/now/contents.ts`,
+`src/app/`. Data a route owns sits beside it (`src/app/(site)/now/contents.ts`,
 `src/app/resume/contents.ts`); data a self-contained component owns sits in a
 `contents.ts` inside that component's folder (`src/components/home/*/contents.ts`).
 When a route's data and its components share types, the types go in a `types.ts`
 in the component folder so both sides can import them without crossing the boundary.
 
 Files are kebab-case; imports always use the `@/` alias, never relative paths.
+
+The root layout owns only what every route needs — `<html>`/`<body>`, the theme
+providers, the page wash, analytics. The navbar and footer live one level down in
+`src/app/(site)/layout.tsx`, so a route opts out of the site chrome by sitting
+outside that group; `/resume` is the one that does, because it is printed rather
+than browsed. `error.tsx` and `not-found.tsx` stay at the app root (Next only
+honours a global not-found there) and therefore render the navbar and footer
+themselves.
 
 ### Article pipeline
 

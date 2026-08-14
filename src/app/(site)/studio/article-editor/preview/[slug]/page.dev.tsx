@@ -1,4 +1,4 @@
-import { loadArticleForPreview } from '@/app/studio/article-editor/preview/[slug]/loader.dev';
+import { loadArticleForPreview } from '@/app/(site)/studio/article-editor/preview/[slug]/loader.dev';
 import ArticleContent from '@/components/articles/article-content';
 import ArticleCover from '@/components/articles/article-cover';
 import ArticleMeta from '@/components/articles/article-meta';

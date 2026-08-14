@@ -4,7 +4,7 @@ import {
     listArticles,
     loadArticle,
     saveArticle
-} from '@/app/studio/article-editor/actions.dev';
+} from '@/app/(site)/studio/article-editor/actions.dev';
 import ArticleEditor from '@/components/articles/editor';
 import type { EditorActions } from '@/components/articles/editor/types';
 import type { Metadata } from 'next';
