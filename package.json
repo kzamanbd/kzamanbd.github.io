@@ -17,8 +17,8 @@
         "start": "next start",
         "lint": "eslint src --max-warnings 0",
         "check-types": "tsc --noEmit",
-        "format": "prettier --write .",
-        "format:check": "prettier --check ."
+        "format": "prettier --write src",
+        "format:check": "prettier --check src"
     },
     "prettier": {
         "$schema": "https://json.schemastore.org/prettierrc",
