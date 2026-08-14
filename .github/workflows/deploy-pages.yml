@@ -9,8 +9,8 @@ on:
         branches:
             - main
         paths:
-            - '.github/pages/**'
-            - '.github/workflows/deploy-pages.yml'
+            - ".github/pages/**"
+            - ".github/workflows/deploy-pages.yml"
     workflow_dispatch:
 
 permissions:
@@ -32,7 +32,7 @@ jobs:
             url: ${{ steps.deployment.outputs.page_url }}
         steps:
             - name: Checkout
-              uses: actions/checkout@v4
+              uses: actions/checkout@v6
 
             - name: Configure Pages
               uses: actions/configure-pages@v5
