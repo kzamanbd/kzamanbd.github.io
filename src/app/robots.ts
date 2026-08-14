@@ -8,7 +8,18 @@ export default function robots(): MetadataRoute.Robots {
         rules: {
             userAgent: '*',
             allow: '/',
-            disallow: '/private/'
+            disallow: [
+                '/private/',
+                // The shortener's redirect targets are user-supplied, so a
+                // crawled /shorturl/<code> would lend this domain's name to
+                // whatever it points at. The tool's own page stays indexable;
+                // the redirects do not.
+                '/shorturl/'
+                // /articles/search is deliberately NOT listed: it carries a
+                // `noindex` robots tag, and a crawler that is blocked here can
+                // never fetch the page to see it. Blocking a page you want
+                // dropped from the index is what keeps it in the index.
+            ]
         },
         sitemap: sitemapURL
     };

@@ -3,6 +3,13 @@
     "version": "0.1.0",
     "private": true,
     "type": "module",
+    "browserslist": [
+        "chrome >= 111",
+        "edge >= 111",
+        "firefox >= 128",
+        "safari >= 16.4",
+        "not dead"
+    ],
     "scripts": {
         "dev": "next dev --turbopack",
         "dev:https": "next dev --experimental-https",

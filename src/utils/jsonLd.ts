@@ -1,102 +1,105 @@
-import { ProfilePage, WithContext } from 'schema-dts';
+import { Graph, Person, ProfilePage, WebSite, WithContext } from 'schema-dts';
 
 import {
     currentJobTitle,
     currentWorkplace,
     currentWorkplaceURL,
+    description,
     education,
     educationURL,
     jsonLdAlternateName,
     jsonLdDescription,
     jsonLdKnowsAbout,
-    siteAuthorEmail,
     siteName,
     siteThumbnail,
     siteURL,
     user
 } from '@/lib/metadata';
 
-export const jsonLd: WithContext<ProfilePage> = {
+/**
+ * Stable node identifiers. Every other piece of structured data on the site —
+ * article `author`, breadcrumb trails, the plugin's `author` — points at these
+ * by `@id` rather than restating the person, so a crawler resolves one entity
+ * instead of reconciling several near-identical copies of it.
+ */
+export const personId = `${siteURL}#person`;
+export const websiteId = `${siteURL}#website`;
+
+/**
+ * Every profile that independently confirms this is the same person. `sameAs`
+ * is only worth what the destination corroborates, so each URL here should
+ * carry kzaman.com back in its own website field.
+ */
+const sameAs: string[] = [
+    user.linkedin,
+    user.github,
+    user.wordpressOrg,
+    user.leetcode,
+    user.codeforces,
+    user.youtube,
+    user.twitter,
+    user.facebook
+];
+
+const person: Person = {
+    '@type': 'Person',
+    '@id': personId,
+    name: siteName,
+    alternateName: jsonLdAlternateName,
+    url: siteURL,
+    image: siteThumbnail,
+    jobTitle: currentJobTitle,
+    description: jsonLdDescription,
+    knowsAbout: jsonLdKnowsAbout,
+    sameAs,
+    worksFor: {
+        '@type': 'Organization',
+        '@id': `${currentWorkplaceURL}#org`,
+        name: currentWorkplace,
+        url: currentWorkplaceURL
+    },
+    alumniOf: {
+        '@type': 'CollegeOrUniversity',
+        '@id': `${educationURL}#alumni`,
+        name: education,
+        url: educationURL
+    }
+};
+
+const website: WebSite = {
+    '@type': 'WebSite',
+    '@id': websiteId,
+    url: siteURL,
+    name: siteName,
+    description,
+    inLanguage: 'en',
+    publisher: { '@id': personId }
+};
+
+/**
+ * The site-level graph, rendered from the root layout on every route.
+ *
+ * It deliberately contains no page-type node: a `ProfilePage` here would claim
+ * that every URL on the site — including each article — is a profile of a
+ * person, which competes with that page's own `BlogPosting` for the
+ * main-entity interpretation. The page type is declared per route instead.
+ */
+export const siteGraphJsonLd: Graph = {
+    '@context': 'https://schema.org',
+    '@graph': [website, person]
+};
+
+/**
+ * The homepage, and only the homepage, is a profile page. `mainEntity` refers
+ * to the person by `@id` rather than repeating the node, so the two pieces of
+ * markup describe one entity rather than two similar ones.
+ */
+export const profilePageJsonLd: WithContext<ProfilePage> = {
     '@context': 'https://schema.org',
     '@type': 'ProfilePage',
+    '@id': `${siteURL}#profilepage`,
     url: siteURL,
-    dateCreated: new Date().toISOString(),
-    datePublished: new Date().toISOString(),
-    mainEntity: {
-        '@type': 'Person',
-        '@id': `${siteURL}#person`,
-        name: siteName,
-        alternateName: jsonLdAlternateName,
-        url: siteURL,
-        image: siteThumbnail,
-        jobTitle: currentJobTitle,
-        identifier: [
-            {
-                '@type': 'PropertyValue',
-                propertyID: 'GitHub',
-                value: user.github
-            },
-            {
-                '@type': 'PropertyValue',
-                propertyID: 'LinkedIn',
-                value: user.linkedin
-            },
-            {
-                '@type': 'PropertyValue',
-                propertyID: 'Facebook',
-                value: user.facebook
-            },
-            {
-                '@type': 'PropertyValue',
-                propertyID: 'Twitter',
-                value: user.twitter
-            }
-        ],
-        worksFor: {
-            '@type': 'Organization',
-            '@id': `${currentWorkplaceURL}#org`,
-            name: currentWorkplace,
-            url: currentWorkplaceURL
-        },
-        sameAs: [
-            user.linkedin,
-            user.github,
-            user.facebook,
-            user.twitter,
-            `mailto:${siteAuthorEmail}`
-        ],
-        alumniOf: {
-            '@type': 'CollegeOrUniversity',
-            '@id': `${educationURL}#alumni`,
-            name: education,
-            url: educationURL
-        },
-        description: jsonLdDescription,
-        interactionStatistic: [
-            {
-                '@type': 'InteractionCounter',
-                interactionType: {
-                    '@type': 'FollowAction'
-                },
-                userInteractionCount: 15
-            },
-            {
-                '@type': 'InteractionCounter',
-                interactionType: {
-                    '@type': 'LikeAction'
-                },
-                userInteractionCount: 205
-            }
-        ],
-        agentInteractionStatistic: [
-            {
-                '@type': 'InteractionCounter',
-                interactionType: {
-                    '@type': 'WriteAction'
-                },
-                userInteractionCount: 66
-            }
-        ],
-        knowsAbout: jsonLdKnowsAbout
-    }
+    name: siteName,
+    isPartOf: { '@id': websiteId },
+    mainEntity: { '@id': personId }
 };

@@ -8,7 +8,7 @@ import {
     X,
     YouTube
 } from '@/components/icons';
-import { user } from '@/lib/metadata';
+import { careerExperience, user } from '@/lib/metadata';
 
 /**
  * Every profile worth linking, in the order they earn attention: the code first,
@@ -34,7 +34,9 @@ export const socialLinks = [
 export const primarySocialLinks = socialLinks.slice(0, 4);
 
 export const heroStats = [
-    { value: '4+', label: 'Years Experience' },
+    // Derived, not typed: this tile said 4+ while the meta description said 5+
+    // and the resume listed a May 2020 start.
+    { value: `${careerExperience}+`, label: 'Years Experience' },
     { value: '15+', label: 'Enterprise Projects' },
     { value: '1000+', label: 'Problems Solved' }
 ];

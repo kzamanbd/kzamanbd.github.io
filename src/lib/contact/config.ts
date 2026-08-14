@@ -13,11 +13,12 @@ export const resendApiKey: string = process.env.RESEND_API_KEY ?? '';
 /**
  * The address the notification is sent from. Resend will only accept a domain
  * it has verified, so this defaults to their shared sandbox sender, which can
- * deliver to the Resend account owner's own address. Point it at a verified
- * domain (`Portfolio <hello@draftscripts.com>`) once that domain is set up.
+ * deliver to the Resend account owner's own address. kzaman.com is the one
+ * domain this site claims, so that is the sender to verify in Resend; until it
+ * is verified, mail from this address will not deliver anywhere else.
  */
 export const contactFromAddress: string =
-    process.env.CONTACT_FROM_EMAIL ?? 'Portfolio <hello@draftscripts.com>';
+    process.env.CONTACT_FROM_EMAIL ?? 'Kamruzzaman <hello@kzaman.com>';
 
 /** Where submissions land. Defaults to the address published on the site. */
 export const contactToAddress: string = process.env.CONTACT_TO_EMAIL ?? user.email;

@@ -5,6 +5,7 @@ import HeroArea from '@/components/home/hero';
 import ProjectsArea from '@/components/home/projects';
 import SkillsArea from '@/components/home/skills';
 import SectionUrlSync from '@/components/layout/section-url-sync';
+import { ProfilePageJsonLdScript } from '@/components/json-ld-script';
 
 const Home = () => {
     return (
@@ -12,6 +13,11 @@ const Home = () => {
         // page, the footer and every glass surface sit on one colour instead of
         // the page overriding it and leaving the footer on a different shade.
         <div className="relative overflow-hidden font-sans selection:bg-indigo-500/30">
+            {/* The one route that really is a profile of a person, so the one
+                route that declares `ProfilePage`. The site-level WebSite and
+                Person nodes come from the root layout. */}
+            <ProfilePageJsonLdScript />
+
             {/* Ambient glow orbs, shared by every section below. */}
             <div
                 aria-hidden="true"

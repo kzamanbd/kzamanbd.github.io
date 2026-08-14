@@ -1,7 +1,7 @@
 import type { EducationEntry, ExperienceEntry, SkillRow } from '@/components/resume/types';
+import { careerExperience } from '@/lib/metadata';
 
-export const professionalSummary =
-    'Strong problem-solving skills with a focus on scalable system design, performance optimization, and clean, maintainable code. 4+ years of experience engineering high-throughput web applications, APIs, and distributed systems. Deep expertise in PHP (Laravel) and modern JavaScript frameworks (React, Vue). Proven track record of delivering high-impact solutions across multi-vendor platforms and enterprise ERP systems, bridging product vision with rigorous engineering standards.';
+export const professionalSummary = `Strong problem-solving skills with a focus on scalable system design, performance optimization, and clean, maintainable code. ${careerExperience}+ years of experience engineering high-throughput web applications, APIs, and distributed systems. Deep expertise in PHP (Laravel) and modern JavaScript frameworks (React, Vue). Proven track record of delivering high-impact solutions across multi-vendor platforms and enterprise ERP systems, bridging product vision with rigorous engineering standards.`;
 
 export const skillRows: SkillRow[] = [
     {

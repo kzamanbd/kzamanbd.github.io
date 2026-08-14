@@ -37,10 +37,11 @@ export const shippedProjects: Project[] = [
         tech: ['PHP', 'WordPress', 'JavaScript'],
         repoURL: 'https://github.com/kzamanbd/debug-suite',
         links: [
-            {
-                url: 'https://wordpress.org/plugins/debug-suite/',
-                label: 'WordPress.org'
-            }
+            // Relative first: /plugins/debug-suite had no inbound link anywhere
+            // on the site, so the one product page here was unreachable by a
+            // reader and by a crawler alike.
+            { url: '/plugins/debug-suite', label: 'Overview' },
+            { url: 'https://wordpress.org/plugins/debug-suite/', label: 'WordPress.org' }
         ]
     },
     {
@@ -97,8 +98,7 @@ export const shippedProjects: Project[] = [
         description:
             'A small Docker Compose stack for local WordPress work, with a Cloudflare Tunnel wired in so a machine-local site is reachable over a real HTTPS hostname for webhook and OAuth testing.',
         tech: ['Docker', 'Shell', 'Cloudflare'],
-        repoURL: 'https://github.com/kzamanbd/wp-docker',
-        links: [{ url: 'https://wp.kzaman.me', label: 'Live' }]
+        repoURL: 'https://github.com/kzamanbd/wp-docker'
     }
 ];
 
@@ -111,8 +111,7 @@ export const personalProjects: Project[] = [
         description:
             'A full-stack monorepo of shared component libraries, applications, and utilities, used as the proving ground for patterns before they go into production work.',
         tech: ['TypeScript', 'React', 'Vue', 'Node.js'],
-        repoURL: 'https://github.com/kzamanbd/draftscripts',
-        links: [{ url: 'https://draftscripts.com', label: 'Live' }]
+        repoURL: 'https://github.com/kzamanbd/draftscripts'
     },
     {
         name: 'Laravel Tenancy',
@@ -120,8 +119,7 @@ export const personalProjects: Project[] = [
         description:
             'A multi-tenant Laravel starter: per-tenant database resolution, subdomain routing, and tenant-aware migrations, so a SaaS can start with isolation already in place rather than retrofitted.',
         tech: ['Laravel', 'PHP', 'TypeScript', 'MySQL'],
-        repoURL: 'https://github.com/kzamanbd/laravel-tenancy',
-        links: [{ url: 'https://www.draftscripts.com/tenancy', label: 'Demo' }]
+        repoURL: 'https://github.com/kzamanbd/laravel-tenancy'
     },
     {
         name: 'DPMS',
@@ -137,8 +135,7 @@ export const personalProjects: Project[] = [
         description:
             'A typing practice platform with real-time per-keystroke feedback, accuracy and speed history, and progress tracking across sessions.',
         tech: ['TypeScript', 'Next.js', 'Tailwind CSS'],
-        repoURL: 'https://github.com/kzamanbd/typeon',
-        links: [{ url: 'https://typeon.kzaman.me', label: 'Live' }]
+        repoURL: 'https://github.com/kzamanbd/typeon'
     },
     {
         name: 'Browser Terminal',
@@ -146,8 +143,7 @@ export const personalProjects: Project[] = [
         description:
             'A web SSH client: xterm.js in the browser talking over socket.io to an ssh2 session on the server, so a shell is one URL away with no local client installed.',
         tech: ['TypeScript', 'ssh2', 'Socket.IO', 'xterm.js'],
-        repoURL: 'https://github.com/kzamanbd/browser-terminal',
-        links: [{ url: 'https://console.kzaman.me', label: 'Live' }]
+        repoURL: 'https://github.com/kzamanbd/browser-terminal'
     },
     {
         name: 'Task Queue',

@@ -9,15 +9,37 @@ export interface User {
     medium: string;
     youtube: string;
     twitter: string;
+    /** wordpress.org profile: the strongest topical corroboration there is. */
+    wordpressOrg: string;
     description: string;
     phone: string;
     email: string;
     address: string;
 }
 
-export const description = `5+ yrs of hands-on experience in PHP, Laravel, WordPress, Vue.js, React, and AWS. Skilled in building and optimizing web apps from architecture to deployment. Passionate about learning new tools and delivering scalable, high-quality solutions in team environments`;
+/**
+ * The first professional role, from the resume (MaxSOP, May 2020). Every
+ * "N+ years" claim on the site derives from this one date: the hero stat, the
+ * about copy, the resume summary and the JSON-LD description used to disagree
+ * with each other, which is exactly the kind of contradiction a reader — or a
+ * search engine assessing the site — notices first.
+ */
+export const careerStart = new Date('2020-05-01T00:00:00Z');
 
-export const authorName = 'KAMRUZZAMAN';
+/** Completed years since `careerStart`, so the claim ages by itself. */
+export const careerExperience: number = Math.floor(
+    (Date.now() - careerStart.getTime()) / (365.25 * 24 * 60 * 60 * 1000)
+);
+
+export const description = `${careerExperience}+ yrs of hands-on experience in PHP, Laravel, WordPress, Vue.js, React, and AWS. Skilled in building and optimizing web apps from architecture to deployment. Passionate about learning new tools and delivering scalable, high-quality solutions in team environments`;
+
+/**
+ * One canonical spelling of the name, everywhere. Search engines resolve a
+ * person entity by matching this string across every profile that claims to be
+ * the same person, so it has to read identically here, on LinkedIn, on GitHub
+ * and on wordpress.org. `kzamanbd` is the handle, carried as `alternateName`.
+ */
+export const authorName = 'Md Kamruzzaman';
 
 export const siteName = authorName;
 
@@ -56,7 +78,6 @@ export const siteKeywords: string[] = [
 export const currentJobTitle: string = 'Software Engineer (Full Stack)';
 export const currentWorkplace: string = 'weDevs';
 export const currentWorkplaceURL: string = 'https://wedevs.com';
-export const careerExperience: number = new Date().getFullYear() - 2021;
 
 // education
 export const education: string = 'Bachelor of Science in Computer Science and Engineering';
@@ -93,6 +114,7 @@ export const user: User = {
     medium: 'https://medium.com/@kzamanbd',
     youtube: 'https://www.youtube.com/@draftscripts',
     twitter: 'https://x.com/_kzamanbd',
+    wordpressOrg: 'https://profiles.wordpress.org/kzamanbd/',
     description: description,
     phone: '+8801716724245',
     email: 'kzamanbn@gmail.com',

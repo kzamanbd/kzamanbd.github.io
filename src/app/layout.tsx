@@ -33,8 +33,14 @@ export const metadata: Metadata = {
     },
     description,
     // Advertise the three feeds site-wide so a reader can subscribe from any page.
+    //
+    // `'./'` — not `siteURL`. Next merges metadata down the segment tree, so an
+    // absolute canonical here is inherited by every route that does not set its
+    // own, and pages like /resume then declare themselves duplicates of the
+    // homepage. The relative form resolves against `metadataBase` per route, so
+    // each page self-canonicalises.
     alternates: {
-        canonical: siteURL,
+        canonical: './',
         types: {
             'application/rss+xml': `${siteURL}/feed.xml`,
             'application/atom+xml': `${siteURL}/atom.xml`,

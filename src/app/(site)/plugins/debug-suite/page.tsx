@@ -7,27 +7,45 @@ import {
     Gauge,
     Github,
     Monitor,
-    Play,
     Rocket,
     ShieldCheck,
     Sparkles,
     Star,
     Wrench
 } from 'lucide-react';
+import { siteURL } from '@/lib/metadata';
+import { getWordPressPluginInfo } from '@/lib/wordpress-plugin';
+import { personId } from '@/utils/jsonLd';
+import type { Metadata } from 'next';
 import Link from 'next/link';
+import type { SoftwareApplication, WithContext } from 'schema-dts';
 
-export const metadata = {
-    title: getTitle('Debug Suite - WordPress Plugin')
+const pageURL = `${siteURL}/plugins/debug-suite`;
+const pageDescription =
+    'Debug Suite is a free WordPress debugging toolkit: query and hook inspection, debug-log parsing, safe wp-config editing and performance monitoring, all from inside wp-admin without shell access.';
+
+export const metadata: Metadata = {
+    title: getTitle('Debug Suite - WordPress Plugin'),
+    description: pageDescription,
+    alternates: { canonical: pageURL },
+    openGraph: {
+        title: 'Debug Suite — WordPress debugging toolkit',
+        description: pageDescription,
+        url: pageURL,
+        type: 'website'
+    }
 };
 
-// Plugin data structure
+/** Where the plugin actually lives, for the CTAs and the structured data. */
+const pluginSlug = 'debug-suite';
+const directoryURL = `https://wordpress.org/plugins/${pluginSlug}/`;
+const repositoryURL = 'https://github.com/kzamanbd/debug-suite';
+
 const pluginData = {
     name: 'Debug Suite',
-    version: '1.0.0',
     description:
         'A comprehensive WordPress debugging toolkit that helps developers efficiently debug, monitor, and manage WordPress sites with advanced log parsing, configuration management, and performance monitoring.',
     category: 'WordPress Plugin',
-    compatibility: ['WordPress 6.0+', 'PHP 8.1+', 'Multisite Compatible'],
     features: [
         {
             icon: Bug,
@@ -77,18 +95,50 @@ const pluginData = {
             color: 'text-indigo-500',
             bgColor: 'bg-indigo-100 dark:bg-indigo-900/30'
         }
-    ],
-    stats: {
-        downloads: '25,000+',
-        rating: 4.8,
-        reviews: 487,
-        activeInstalls: '10,000+'
-    }
+    ]
 };
 
-const PluginDebugSuite = () => {
+/** `2026-07-23 2:36pm GMT` from the API, rendered as `July 2026`. */
+function releaseMonth(lastUpdated: string): string {
+    const parsed = new Date(lastUpdated.slice(0, 10));
+    if (Number.isNaN(parsed.getTime())) return '';
+    return parsed.toLocaleDateString('en-US', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+}
+
+const PluginDebugSuite = async () => {
+    // Read from the directory rather than restating it. `null` when the API is
+    // unreachable, in which case the numbers simply do not render.
+    const info = await getWordPressPluginInfo(pluginSlug);
+
+    const jsonLd: WithContext<SoftwareApplication> = {
+        '@context': 'https://schema.org',
+        '@type': 'SoftwareApplication',
+        '@id': `${pageURL}#software`,
+        name: pluginData.name,
+        url: pageURL,
+        description: pageDescription,
+        applicationCategory: 'DeveloperApplication',
+        operatingSystem: 'WordPress',
+        ...(info?.version && { softwareVersion: info.version }),
+        ...(info?.lastUpdated && { dateModified: info.lastUpdated.slice(0, 10) }),
+        downloadUrl: directoryURL,
+        author: { '@id': personId },
+        offers: {
+            '@type': 'Offer',
+            price: '0',
+            priceCurrency: 'USD'
+        }
+        // No `aggregateRating`: the plugin has no ratings yet, and inventing
+        // one is exactly the markup that gets structured data distrusted.
+    };
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-gray-50 dark:from-gray-900 dark:via-gray-800 dark:to-gray-900">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+
             {/* Background Decorations */}
             <div className="pointer-events-none absolute inset-0 overflow-hidden">
                 <div className="absolute -top-40 -right-40 h-80 w-80 rounded-full bg-purple-200/30 blur-3xl dark:bg-purple-800/20" />
@@ -110,9 +160,11 @@ const PluginDebugSuite = () => {
                     {/* Plugin Title */}
                     <h1 className="mb-4 text-4xl font-bold text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
                         {pluginData.name}
-                        <span className="ml-3 text-sm font-normal text-gray-500 dark:text-gray-400">
-                            v{pluginData.version}
-                        </span>
+                        {info && (
+                            <span className="ml-3 text-sm font-normal text-gray-500 dark:text-gray-400">
+                                v{info.version}
+                            </span>
+                        )}
                     </h1>
 
                     {/* Plugin Description */}
@@ -120,53 +172,83 @@ const PluginDebugSuite = () => {
                         {pluginData.description}
                     </p>
 
-                    {/* Stats Row */}
-                    <div className="mb-8 flex flex-wrap justify-center gap-6">
-                        <div className="flex items-center gap-2 rounded-lg bg-white/70 px-4 py-2 shadow-sm backdrop-blur-sm dark:bg-gray-800/70">
-                            <Download className="h-4 w-4 text-blue-600" />
-                            <span className="font-semibold text-gray-800 dark:text-gray-200">
-                                {pluginData.stats.downloads}
-                            </span>
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                                downloads
-                            </span>
-                        </div>
-                        <div className="flex items-center gap-2 rounded-lg bg-white/70 px-4 py-2 shadow-sm backdrop-blur-sm dark:bg-gray-800/70">
-                            <Star className="h-4 w-4 text-yellow-500" />
-                            <span className="font-semibold text-gray-800 dark:text-gray-200">
-                                {pluginData.stats.rating}
-                            </span>
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                                ({pluginData.stats.reviews} reviews)
-                            </span>
-                        </div>
-                        <div className="flex items-center gap-2 rounded-lg bg-white/70 px-4 py-2 shadow-sm backdrop-blur-sm dark:bg-gray-800/70">
-                            <Monitor className="h-4 w-4 text-green-600" />
-                            <span className="font-semibold text-gray-800 dark:text-gray-200">
-                                {pluginData.stats.activeInstalls}
-                            </span>
-                            <span className="text-sm text-gray-600 dark:text-gray-400">
-                                active installs
-                            </span>
-                        </div>
-                    </div>
+                    {/* Stats Row. Every figure comes from the wordpress.org API,
+                        and a figure the directory does not publish yet — active
+                        installs below its floor, a rating with no reviews — is
+                        left off rather than filled in. */}
+                    {info && (
+                        <div className="mb-8 flex flex-wrap justify-center gap-6">
+                            <div className="flex items-center gap-2 rounded-lg bg-white/70 px-4 py-2 shadow-sm backdrop-blur-sm dark:bg-gray-800/70">
+                                <Download className="h-4 w-4 text-blue-600" />
+                                <span className="font-semibold text-gray-800 tabular-nums dark:text-gray-200">
+                                    {info.downloads.toLocaleString('en-US')}
+                                </span>
+                                <span className="text-sm text-gray-600 dark:text-gray-400">
+                                    downloads
+                                </span>
+                            </div>
 
-                    {/* Action Buttons */}
+                            {info.rating !== null && (
+                                <div className="flex items-center gap-2 rounded-lg bg-white/70 px-4 py-2 shadow-sm backdrop-blur-sm dark:bg-gray-800/70">
+                                    <Star className="h-4 w-4 text-yellow-500" />
+                                    <span className="font-semibold text-gray-800 tabular-nums dark:text-gray-200">
+                                        {info.rating}
+                                    </span>
+                                    <span className="text-sm text-gray-600 dark:text-gray-400">
+                                        ({info.ratingCount}{' '}
+                                        {info.ratingCount === 1 ? 'review' : 'reviews'})
+                                    </span>
+                                </div>
+                            )}
+
+                            {info.activeInstalls !== null && (
+                                <div className="flex items-center gap-2 rounded-lg bg-white/70 px-4 py-2 shadow-sm backdrop-blur-sm dark:bg-gray-800/70">
+                                    <Monitor className="h-4 w-4 text-green-600" />
+                                    <span className="font-semibold text-gray-800 tabular-nums dark:text-gray-200">
+                                        {info.activeInstalls.toLocaleString('en-US')}+
+                                    </span>
+                                    <span className="text-sm text-gray-600 dark:text-gray-400">
+                                        active installs
+                                    </span>
+                                </div>
+                            )}
+
+                            {info.requiresWordPress && (
+                                <div className="flex items-center gap-2 rounded-lg bg-white/70 px-4 py-2 shadow-sm backdrop-blur-sm dark:bg-gray-800/70">
+                                    <Cog className="h-4 w-4 text-purple-600" />
+                                    <span className="font-semibold text-gray-800 dark:text-gray-200">
+                                        WP {info.requiresWordPress}+
+                                    </span>
+                                    {info.requiresPHP && (
+                                        <span className="text-sm text-gray-600 dark:text-gray-400">
+                                            PHP {info.requiresPHP}+
+                                        </span>
+                                    )}
+                                </div>
+                            )}
+                        </div>
+                    )}
+
+                    {/* Action Buttons. These were two <button>s with no handler
+                        and a link to github.com itself; all three now go where
+                        they say they go. There is no hosted demo, so there is
+                        no demo button. */}
                     <div className="flex flex-wrap justify-center gap-4">
-                        <button className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 px-8 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl dark:from-purple-500 dark:to-blue-500">
-                            <Download className="transition-transform group-hover:scale-110" />
-                            Download Free
-                        </button>
-                        <button className="group inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white px-8 py-4 font-semibold text-gray-700 shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700">
-                            <Play className="transition-transform group-hover:scale-110" />
-                            Live Demo
-                        </button>
                         <Link
-                            href="https://github.com"
+                            href={directoryURL}
                             target="_blank"
+                            rel="noopener noreferrer"
+                            className="group inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-purple-600 to-blue-600 px-8 py-4 font-semibold text-white shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl dark:from-purple-500 dark:to-blue-500">
+                            <Download className="transition-transform group-hover:scale-110" />
+                            Download free
+                        </Link>
+                        <Link
+                            href={repositoryURL}
+                            target="_blank"
+                            rel="noopener noreferrer"
                             className="group inline-flex items-center gap-2 rounded-full border border-gray-300 bg-white px-8 py-4 font-semibold text-gray-700 shadow-lg transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-50 dark:border-gray-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700">
                             <Github className="transition-transform group-hover:scale-110" />
-                            View Source
+                            View source
                         </Link>
                     </div>
                 </div>
@@ -301,19 +383,33 @@ const PluginDebugSuite = () => {
                                 <Star className="h-5 w-5 text-yellow-500" />
                                 Latest Release
                             </h3>
+                            {/* Version and release date come from the directory:
+                                this block claimed v1.0.0 in July 2024 while the
+                                directory was serving a much later release. */}
                             <div className="space-y-2">
-                                <div className="flex items-center gap-2">
-                                    <span className="rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800 dark:bg-green-900/30 dark:text-green-300">
-                                        v{pluginData.version}
-                                    </span>
-                                    <span className="text-sm text-gray-500 dark:text-gray-400">
-                                        July 2024
-                                    </span>
-                                </div>
-                                <p className="text-sm text-gray-600 dark:text-gray-300">
-                                    Initial stable release with comprehensive WordPress debugging
-                                    features
-                                </p>
+                                {info ? (
+                                    <>
+                                        <div className="flex items-center gap-2">
+                                            <span className="rounded-full bg-green-100 px-2 py-1 text-xs font-medium text-green-800 dark:bg-green-900/30 dark:text-green-300">
+                                                v{info.version}
+                                            </span>
+                                            {info.lastUpdated && (
+                                                <span className="text-sm text-gray-500 dark:text-gray-400">
+                                                    {releaseMonth(info.lastUpdated)}
+                                                </span>
+                                            )}
+                                        </div>
+                                        <p className="text-sm text-gray-600 dark:text-gray-300">
+                                            {info.testedUpTo
+                                                ? `Tested up to WordPress ${info.testedUpTo}.`
+                                                : 'Available now from the WordPress plugin directory.'}
+                                        </p>
+                                    </>
+                                ) : (
+                                    <p className="text-sm text-gray-600 dark:text-gray-300">
+                                        See the WordPress plugin directory for the current release.
+                                    </p>
+                                )}
                             </div>
                         </div>
                     </div>
@@ -323,17 +419,28 @@ const PluginDebugSuite = () => {
                 <section className="text-center">
                     <div className="rounded-2xl bg-gradient-to-r from-purple-600 to-blue-600 p-8 text-white shadow-2xl dark:from-purple-500 dark:to-blue-500">
                         <h2 className="mb-4 text-3xl font-bold">Ready to Debug Like a Pro?</h2>
+                        {/* The claim here used to be "join thousands of WordPress
+                            developers", which the directory numbers do not
+                            support. Free and installable is the true pitch. */}
                         <p className="mb-8 text-lg text-purple-100">
-                            Join thousands of WordPress developers who trust Debug Suite for their
-                            daily debugging workflow.
+                            Free on the WordPress plugin directory, and installable from your own
+                            wp-admin in a couple of clicks.
                         </p>
                         <div className="flex flex-wrap justify-center gap-4">
-                            <button className="rounded-full bg-white px-8 py-3 font-semibold text-purple-600 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
-                                Download Free
-                            </button>
-                            <button className="rounded-full border-2 border-white px-8 py-3 font-semibold text-white transition-all duration-300 hover:bg-white hover:text-purple-600">
-                                View Documentation
-                            </button>
+                            <Link
+                                href={directoryURL}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="rounded-full bg-white px-8 py-3 font-semibold text-purple-600 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-lg">
+                                Download free
+                            </Link>
+                            <Link
+                                href={`${repositoryURL}#readme`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="rounded-full border-2 border-white px-8 py-3 font-semibold text-white transition-all duration-300 hover:bg-white hover:text-purple-600">
+                                Read the docs
+                            </Link>
                         </div>
                     </div>
                 </section>
