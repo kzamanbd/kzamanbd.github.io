@@ -17,7 +17,8 @@ import {
     siteKeywords,
     siteName,
     siteThumbnail,
-    siteURL
+    siteURL,
+    user
 } from '@/lib/metadata';
 
 // GTM, the pageview tracker and the service worker exist only in production:
@@ -27,9 +28,11 @@ const isProduction = process.env.NODE_ENV === 'production';
 
 export const metadata: Metadata = {
     metadataBase: new URL(siteURL),
+    // Both halves carry the same name string the Person schema and every
+    // external profile use, so a title is one more place the entity matches.
     title: {
-        default: 'Kamruzzaman - Software Engineer',
-        template: '%s | Kamruzzaman'
+        default: `${authorName} — Full Stack Software Engineer`,
+        template: `%s | ${authorName}`
     },
     description,
     // Advertise the three feeds site-wide so a reader can subscribe from any page.
@@ -60,7 +63,10 @@ export const metadata: Metadata = {
         card: 'summary_large_image',
         title: authorName,
         description,
-        creator: '@_kzamanbd'
+        // Derived from the profile URL rather than typed a second time: this
+        // was still `@_kzamanbd` after the account moved, so every card
+        // credited a handle that 404s.
+        creator: `@${user.twitter.split('/').pop()}`
     },
     creator: authorName,
     applicationName: siteName,

@@ -1,11 +1,3 @@
-export const getTitle = (title: string) => {
-    return `${title} - DraftScripts Showcase`;
-};
-
-export const getDescription = (description: string) => {
-    return `${description} - Showcase`;
-};
-
 export const formatDate = (date: string, locale = 'en-US') => {
     const options: Intl.DateTimeFormatOptions = {
         year: 'numeric',

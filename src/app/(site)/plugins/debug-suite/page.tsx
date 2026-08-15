@@ -1,4 +1,3 @@
-import { getTitle } from '@/utils';
 import {
     BarChart,
     Bug,
@@ -25,7 +24,9 @@ const pageDescription =
     'Debug Suite is a free WordPress debugging toolkit: query and hook inspection, debug-log parsing, safe wp-config editing and performance monitoring, all from inside wp-admin without shell access.';
 
 export const metadata: Metadata = {
-    title: getTitle('Debug Suite - WordPress Plugin'),
+    // Not the old `getTitle()` helper: it appended "- DraftScripts Showcase",
+    // a second brand on the one page that should read as a kzaman.com product.
+    title: 'Debug Suite — WordPress Debugging Plugin',
     description: pageDescription,
     alternates: { canonical: pageURL },
     openGraph: {
