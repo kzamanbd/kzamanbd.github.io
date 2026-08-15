@@ -12,14 +12,33 @@ import './globals.css';
 
 import {
     authorName,
+    bingSiteVerification,
     description,
     facebookPageId,
+    googleSiteVerification,
     siteKeywords,
     siteName,
     siteThumbnail,
     siteURL,
     user
 } from '@/lib/metadata';
+
+/**
+ * Ownership verification tags, built from the tokens in `@/lib/metadata`. An
+ * unset token contributes nothing, so the block disappears rather than
+ * rendering `content=""`.
+ */
+const searchConsoleVerification: Metadata =
+    googleSiteVerification || bingSiteVerification
+        ? {
+              verification: {
+                  ...(googleSiteVerification && { google: googleSiteVerification }),
+                  ...(bingSiteVerification && {
+                      other: { 'msvalidate.01': bingSiteVerification }
+                  })
+              }
+          }
+        : {};
 
 // GTM, the pageview tracker and the service worker exist only in production:
 // analytics should not record local navigation, and the worker would fight
@@ -90,6 +109,7 @@ export const metadata: Metadata = {
             'max-snippet': -1
         }
     },
+    ...searchConsoleVerification,
     facebook: {
         admins: [facebookPageId]
     },

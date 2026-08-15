@@ -127,6 +127,25 @@ export const googleTagManagerId: string = 'G-NB5NCE8041';
 export const facebookPageId: string = '561025357095593';
 
 /**
+ * Search engine ownership tokens. Public strings, not secrets: they only prove
+ * control of this site to the tool that issued them, which is why they sit in
+ * source next to the analytics ids rather than in the environment.
+ *
+ * Google is additionally verified at the DNS level — kzaman.com carries a
+ * `google-site-verification=` TXT record, which is what backs the Search
+ * Console *Domain* property and covers http, https, www and non-www together.
+ * The meta tag below is a second, weaker signal for the same ownership; the DNS
+ * record is the one that matters and must not be removed from Cloudflare.
+ *
+ * Leave a token empty and its tag is not rendered at all — an empty
+ * `content=""` verifies nothing and reads as a broken deploy. Bing is not set
+ * up yet; the fastest route is importing the property from Search Console,
+ * which needs no token here.
+ */
+export const googleSiteVerification: string = '5495XQcOZj0V61G4yEWuxD7eKk4z1C2FPFokFweCtj8';
+export const bingSiteVerification: string = '';
+
+/**
  * giscus comment widget, backed by GitHub Discussions.
  *
  * `repoId` and `categoryId` are opaque node IDs generated at https://giscus.app
