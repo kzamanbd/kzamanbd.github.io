@@ -84,7 +84,16 @@ export const education: string = 'Bachelor of Science in Computer Science and En
 export const educationURL: string = 'https://www.seu.edu.bd/';
 
 // json-ld
-export const jsonLdAlternateName: string = 'kzamanbd';
+/**
+ * Every string people actually use for this person, so the entity matches
+ * whichever variant is typed. `authorName` is the canonical form and is set
+ * separately as `name`; these are the alternates, not replacements for it.
+ *
+ * `Kamruzzaman` is an ambiguous name — the query returns a politician, several
+ * professors and a cricketer — so claiming the variants is what lets Google
+ * attach the right one of them to this site.
+ */
+export const jsonLdAlternateName: string[] = ['Kamruzzaman', 'kzamanbd', 'Zaman'];
 export const jsonLdKnowsAbout: string[] = [
     'Web Development',
     'PHP',
