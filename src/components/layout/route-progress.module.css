@@ -1,0 +1,70 @@
+/* The navigation bar that rides the very top of the viewport while a route
+   transition is in flight. It sits above the floating chrome (which is z-50),
+   takes no pointer events, and is purely decorative: Next's own route announcer
+   already tells assistive tech that the page changed. */
+
+.track {
+    position: fixed;
+    inset-inline: 0;
+    top: 0;
+    z-index: 60;
+    height: 3px;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 260ms ease-out;
+}
+
+.track[data-active] {
+    opacity: 1;
+}
+
+.bar {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    transform-origin: left center;
+    border-start-end-radius: 3px;
+    border-end-end-radius: 3px;
+    background: linear-gradient(
+        90deg,
+        var(--color-primary-500),
+        var(--color-primary-400) 60%,
+        var(--color-primary-300)
+    );
+    transition: transform 200ms ease-out;
+}
+
+/* Once the bar has faded out it is rewound to zero. Dropping the transition
+   while it is invisible keeps that rewind from playing back on the next run. */
+.track:not([data-active]) .bar {
+    transition: none;
+}
+
+/* A short bloom at the leading edge, so the head of the bar reads as moving
+   rather than as a block that grows. */
+.bar::after {
+    content: '';
+    position: absolute;
+    inset-block: 0;
+    right: 0;
+    width: 100px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        color-mix(in oklab, var(--color-primary-300) 70%, transparent)
+    );
+    box-shadow: 0 0 10px 1px color-mix(in oklab, var(--color-primary-400) 60%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .track,
+    .bar {
+        transition: none;
+    }
+}
+
+@media print {
+    .track {
+        display: none;
+    }
+}

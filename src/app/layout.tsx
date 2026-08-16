@@ -2,6 +2,7 @@ import DeferredGoogleTagManager from '@/components/analytics/deferred-google-tag
 import PageviewTracker from '@/components/analytics/pageview-tracker';
 import { JsonLdScript } from '@/components/json-ld-script';
 import HashScroll from '@/components/layout/hash-scroll';
+import RouteProgress from '@/components/layout/route-progress';
 import ServiceWorkerManager from '@/components/pwa/service-worker-manager';
 import { ThemeProviders } from '@/components/theme-providers';
 import PageGradientBackground from '@/components/backgrounds/page-gradient';
@@ -152,6 +153,7 @@ export default function RootLayout({
                     <PageGradientProvider>
                         <PageGradientBackground />
                         <HashScroll />
+                        <RouteProgress />
                         {children}
                     </PageGradientProvider>
                     {isProduction && (
