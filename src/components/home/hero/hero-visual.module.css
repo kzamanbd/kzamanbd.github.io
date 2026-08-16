@@ -144,6 +144,17 @@
     filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.35));
 }
 
+/* A tile whose brand has no mark to draw, so it sets its name instead. Sized in
+   `cqw` rather than `em` because the tile carries no font-size of its own — the
+   stage is the only box the type can scale against. */
+.tile .tileWordmark {
+    font-size: 2.9cqw;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    text-shadow: 0 1px 2px rgb(0 0 0 / 0.35);
+}
+
 /* Small unbranded shapes — the confetti weDevs-style art scatters around the
    sphere. Decorative only, and the first thing dropped on narrow screens. */
 .shape {

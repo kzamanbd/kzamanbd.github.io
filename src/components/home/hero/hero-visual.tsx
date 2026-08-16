@@ -1,4 +1,9 @@
-import { heroAccentShapes, heroChipItems, heroOrbitItems } from '@/components/home/hero/contents';
+import {
+    heroAccentShapes,
+    heroChipItems,
+    heroOrbitBrandColor,
+    heroOrbitItems
+} from '@/components/home/hero/contents';
 import styles from '@/components/home/hero/hero-visual.module.css';
 import TechIcon, { techBrandColor } from '@/components/icons/tech-icon';
 import { user } from '@/lib/metadata';
@@ -51,22 +56,26 @@ export default function HeroVisual({ className, style }: HTMLAttributes<HTMLDivE
                     )
                 )}
 
-                {heroOrbitItems.map(({ icon, label, x, y, size, tilt, duration, delay }) => (
+                {heroOrbitItems.map((item) => (
                     <div
-                        key={label}
+                        key={item.label}
                         className={styles.tile}
                         style={
                             {
-                                '--brand': techBrandColor(icon),
-                                '--x': `${x}%`,
-                                '--y': `${y}%`,
-                                '--size': `${size}%`,
-                                '--tilt': `${tilt}deg`,
-                                '--duration': `${duration}s`,
-                                '--delay': `${delay}s`
+                                '--brand': heroOrbitBrandColor(item),
+                                '--x': `${item.x}%`,
+                                '--y': `${item.y}%`,
+                                '--size': `${item.size}%`,
+                                '--tilt': `${item.tilt}deg`,
+                                '--duration': `${item.duration}s`,
+                                '--delay': `${item.delay}s`
                             } as CSSProperties
                         }>
-                        <TechIcon name={icon} className={styles.tileIcon} />
+                        {item.kind === 'brand' ? (
+                            <TechIcon name={item.icon} className={styles.tileIcon} />
+                        ) : (
+                            <span className={styles.tileWordmark}>{item.text}</span>
+                        )}
                     </div>
                 ))}
 
