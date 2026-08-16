@@ -1,0 +1,168 @@
+/* The hero's copy column.
+
+   The composition is lifted from the weDevs home page: a heavy display headline
+   with pastel highlight bars struck under two of its words, a loose grey lede, a
+   white promo card, and two very soft colour blobs bleeding in from the corners.
+   The numbers here are the measured ones rather than eyeballed approximations,
+   so the treatment reads the same at the width it was designed at.
+
+   Everything is a CSS Module rather than utilities because most of it is either
+   a pseudo-element or a value with no utility equivalent (a blurred blob, a
+   rotated bar, a 0.0102em tracking). */
+
+/* The two blobs. Each is literally what the reference ships as an SVG — a solid
+   circle behind a 50px Gaussian blur at a low opacity — so it is cheaper and
+   sharper to draw it as a blurred div than to fetch the artwork. They sit at
+   `z-index: -1` in the section's own stacking context, which puts them under the
+   copy without needing a wrapper element. */
+.section::before,
+.section::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    border-radius: 50%;
+    filter: blur(50px);
+    pointer-events: none;
+}
+
+.section::before {
+    top: -124px;
+    left: -275px;
+    width: 684px;
+    height: 684px;
+    background: #3b80f4;
+    opacity: 0.166;
+}
+
+.section::after {
+    top: 173px;
+    right: -220px;
+    width: 695px;
+    height: 695px;
+    background: #8e44ad;
+    opacity: 0.16;
+}
+
+/* The reference is a light-only page. On dark the same two blobs at the same
+   opacity all but vanish against #1f2937, so they are pushed until they read as
+   the same amount of colour. */
+:global(html.dark) .section::before {
+    opacity: 0.3;
+}
+
+:global(html.dark) .section::after {
+    opacity: 0.28;
+}
+
+/* The headline. 48px / 900 / 1.15 at the reference width, tracked out by a hair
+   — Lato at 900 sets tight, and the extra 0.0102em is what stops the caps from
+   knitting together at display size. */
+.headline {
+    font-family: var(--font-lato), var(--font-noto-sans), sans-serif;
+    font-size: clamp(2.25rem, 1.4rem + 2.85vw, 3rem);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: 0.0102em;
+    color: var(--foreground);
+}
+
+/* One highlighted word. `isolation: isolate` is doing the load-bearing work: it
+   makes the word its own stacking context, so the bar's `z-index: -1` lands
+   behind the glyphs but still above the page rather than sinking behind the
+   section's background layers. */
+.mark {
+    position: relative;
+    isolation: isolate;
+    white-space: nowrap;
+}
+
+.mark::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset-inline: -0.02em;
+    bottom: 0.0625em;
+    height: 0.29em;
+    border-radius: 10px;
+    background: var(--mark);
+    /* The bar is struck by hand rather than ruled: a degree of tilt is the whole
+       reason it reads as a marker stroke instead of an underline. */
+    rotate: -1deg;
+}
+
+/* The bars are pastels picked to sit under black text. Behind near-white text
+   they would read as a light block with dark text missing from it, so on dark
+   they thin out to a wash of the same hue instead. */
+:global(html.dark) .mark::after {
+    opacity: 0.42;
+}
+
+/* The lede: 20px on 33px, which is a much looser measure than the site's usual
+   body copy and is most of why the reference column breathes. */
+.lede {
+    font-size: clamp(1.0625rem, 0.95rem + 0.4vw, 1.25rem);
+    line-height: 1.65;
+    letter-spacing: 0.009em;
+    color: #606b7b;
+}
+
+:global(html.dark) .lede {
+    color: color-mix(in oklab, var(--foreground) 68%, transparent);
+}
+
+/* The promo card. A 5px radius and a shadow with no visible edge — 80px of blur
+   at 4% — so it lifts off the page without ever drawing a line around itself. */
+.promo {
+    display: inline-block;
+    padding: 22px 27px;
+    border-radius: 5px;
+    background: #fff;
+    box-shadow: 0 30px 80px 0 rgb(0 0 0 / 0.04);
+}
+
+/* That shadow is invisible on a dark page, so the card earns its edge the other
+   way: a lifted surface and a hairline. */
+:global(html.dark) .promo {
+    background: color-mix(in oklab, var(--foreground) 6%, var(--background));
+    border: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
+    box-shadow: 0 30px 80px 0 rgb(0 0 0 / 0.35);
+}
+
+.promoLabel {
+    font-size: 0.875rem;
+    color: #707a89;
+}
+
+:global(html.dark) .promoLabel {
+    color: color-mix(in oklab, var(--foreground) 60%, transparent);
+}
+
+.promoValue {
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: var(--foreground);
+    line-height: 1.2;
+}
+
+/* The strip of marks along the bottom of the card, standing in for the client
+   logo row the reference runs there. Muted at rest so the card stays one quiet
+   block, and only the mark under the cursor comes up to full strength. */
+.promoStrip {
+    border-top: 1px solid color-mix(in oklab, var(--foreground) 8%, transparent);
+}
+
+.promoMark {
+    color: color-mix(in oklab, var(--foreground) 45%, transparent);
+    transition: color 300ms ease;
+}
+
+.promoMark:hover,
+.promoMark:focus-visible {
+    color: var(--foreground);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .promoMark {
+        transition: none;
+    }
+}

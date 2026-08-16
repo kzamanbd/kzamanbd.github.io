@@ -18,20 +18,24 @@ export interface Facet {
 }
 
 // What shapes how the work gets done, told as facets of the person rather than
-// as a skills list (Skills already covers the stack) or a name and title
-// (already in the hero). This is the part only About should carry.
+// as a skills list (Skills already covers the stack in depth) or a name and
+// title (already in the hero). This is the part only About should carry.
+//
+// The order is fixed by the diagram: each entry's placement, accent and
+// connector belong to one corner of the 3x3 grid, so a facet is rewritten in
+// place rather than reordered.
 export const facets: Facet[] = [
     {
-        title: 'Craft',
-        text: 'I turn tangled problems into simple, maintainable software that a team can keep building on years later.',
+        title: 'System design',
+        text: 'I draw the boundaries first: schemas, queues and service edges that keep a feature testable and the next change cheap.',
         accent: 'var(--color-blue-500)',
         placementClassName: 'lg:col-start-1 lg:row-start-1',
         line: { x: 16, y: 18 },
         origin: '100% 100%'
     },
     {
-        title: 'Scale',
-        text: 'Multi-vendor marketplace code that has to hold for thousands of stores at once, where a slow query is an outage.',
+        title: 'Problem solving',
+        text: 'Finding the query that got slow as the data grew, and the index, cache or rewrite that puts it back under budget.',
         accent: 'var(--color-emerald-500)',
         placementClassName: 'lg:col-start-3 lg:row-start-1',
         line: { x: 84, y: 18 },
@@ -46,8 +50,8 @@ export const facets: Facet[] = [
         origin: '100% 0%'
     },
     {
-        title: 'End to end',
-        text: `${careerExperience}+ years taking features from schema to deploy: APIs, queues, Docker images, and the AWS wiring behind them.`,
+        title: 'The stack',
+        text: `${careerExperience}+ years in PHP and Laravel, React and Next.js, MySQL and Redis — plus the Docker images and AWS wiring that carry them to production.`,
         accent: 'var(--color-rose-500)',
         placementClassName: 'lg:col-start-3 lg:row-start-3',
         line: { x: 84, y: 82 },
@@ -88,6 +92,6 @@ export const education: TimelineEntry[] = [
 ];
 
 export const bio: string[] = [
-    'I build and maintain multi-vendor marketplace software: payment gateways, ERP integrations, and the WordPress plugins that hold them together. Most of my time goes to Dokan, where a change has to work for thousands of stores at once.',
-    'The work I enjoy most sits where system design meets performance: finding the query that got slow as the data grew, drawing a boundary that makes a feature testable, and leaving code the next person can read.'
+    'I design and build the systems behind the screen: schemas, APIs, queues and background jobs, written in PHP and Laravel, fronted with React and Next.js, and held up by MySQL, Redis, Docker and AWS. At weDevs that work runs on thousands of live stores, which is a good place to learn that a design either holds or it does not.',
+    'The work I enjoy most sits where system design meets performance: finding the query that got slow as the data grew, drawing a boundary that makes a feature testable, and leaving code the next person can read. Most of what I write about started as one of those problems on a Tuesday afternoon.'
 ];

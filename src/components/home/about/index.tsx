@@ -17,7 +17,8 @@ export default function AboutArea() {
                 <div className="flex flex-col items-center text-center">
                     <SectionHeading className="text-foreground">About Me</SectionHeading>
                     <p className="text-foreground/60 mt-4 max-w-xl text-lg">
-                        The mindset, the experience, and the curiosity behind the software I build.
+                        How I think about system design, what I build with, and the problems I like
+                        solving.
                     </p>
                 </div>
 

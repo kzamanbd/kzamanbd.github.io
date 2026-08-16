@@ -1,0 +1,256 @@
+/* The hero's gradient graphic: a colour-wheel orb with the stack orbiting it.
+
+   Everything here is CSS-only — no measurement, no state, no pointer work — so
+   the visual stays a server component and costs nothing on the client beyond
+   the paint. Positions arrive as `--x` / `--y` percentages of the square stage,
+   which is what lets one set of coordinates hold at every breakpoint. */
+
+.stage {
+    position: relative;
+    aspect-ratio: 1;
+    width: 100%;
+
+    /* Everything inside is sized off the stage — tiles in percentages, the glass
+       pill in `cqw` — so the whole composition scales as one piece instead of
+       the fixed-size pieces swelling as the stage shrinks. */
+    container-type: inline-size;
+
+    /* One paint, read by both the orb and its halo. Overlapping radial pools
+       rather than a conic sweep: a conic gradient meets itself at a hard seam
+       and reads as a pie chart, where pools bleed into each other the way the
+       reference art does. Hard-coded hues on purpose — this is the site's one
+       piece of full-colour artwork and it should look the same in either
+       theme. */
+    --orb-wheel:
+        radial-gradient(circle at 26% 20%, #fb7185, transparent 58%),
+        radial-gradient(circle at 76% 16%, #c084fc, transparent 56%),
+        radial-gradient(circle at 88% 62%, #22d3ee, transparent 58%),
+        radial-gradient(circle at 58% 92%, #34d399, transparent 56%),
+        radial-gradient(circle at 16% 74%, #f59e0b, transparent 54%),
+        radial-gradient(circle at 50% 50%, #8b5cf6, transparent 72%),
+        /* Base fill under the pools. Without it the gaps between them fall
+           through to the page and the sphere reads washed out rather than
+           saturated. */
+        linear-gradient(155deg, #e879f9, #7c3aed 45%, #0ea5e9);
+}
+
+/* Everything that is decoration rather than content, on one layer so the whole
+   group can be `aria-hidden` in a single place while the portrait underneath it
+   keeps its `alt`. `inset: 0` so the per-item `--x`/`--y` percentages still
+   resolve against the stage. */
+.decor {
+    position: absolute;
+    inset: 0;
+}
+
+/* The colour spill the orb throws onto the page. A second, blurred copy of the
+   same paint rather than a hand-picked glow colour, so the two can never drift
+   apart. Blurred this hard the silhouette barely matters, so this one keeps the
+   cheap version: a diamond that simply spins. */
+.halo {
+    position: absolute;
+    inset: 8%;
+    border-radius: 20%;
+    background: var(--orb-wheel);
+    filter: blur(60px);
+    opacity: 0.45;
+    animation: diamond-spin 44s linear infinite reverse;
+}
+
+:global(html.dark) .halo {
+    opacity: 0.55;
+}
+
+/* The portrait frame. The gradient is the same paint the orb was made of, drawn
+   here as the frame's padding rather than as a disc: the artwork keeps its
+   colour, but as a rim around the photo instead of a field competing with it.
+
+   The radius is an organic blob rather than a circle, and it drifts between two
+   shapes on a long cycle — slow enough that it reads as the frame breathing
+   rather than as an animation asking for attention. */
+.portrait {
+    position: absolute;
+    inset: 15%;
+    padding: 2.4%;
+    border-radius: 46% 54% 52% 48% / 50% 46% 54% 50%;
+    background: var(--orb-wheel);
+    box-shadow:
+        0 1px 0 0 rgb(255 255 255 / 0.4) inset,
+        0 30px 60px -24px rgb(0 0 0 / 0.45);
+    animation: portrait-morph 20s ease-in-out infinite;
+}
+
+/* Nested one level deeper than it needs to be so it outranks the width/height
+   attributes next/image writes onto the element. `object-fit` is what lets a
+   near-square source sit in a frame of any ratio without distorting. */
+.portrait .portraitImage {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: inherit;
+}
+
+/* Two faint orbit rings, counter-rotating, to give the floating tiles a path to
+   belong to instead of hanging in empty space. */
+.ring {
+    position: absolute;
+    inset: 4%;
+    border-radius: 50%;
+    border: 1px dashed color-mix(in oklab, var(--foreground) 14%, transparent);
+    animation: orb-spin 60s linear infinite;
+}
+
+.ringInner {
+    inset: 20%;
+    border-style: dotted;
+    animation-duration: 40s;
+    animation-direction: reverse;
+}
+
+/* One floating stack tile. `translate` and `rotate` are set as their own
+   properties so the float keyframes can own `transform` outright without
+   having to restate the centring offset. */
+.tile {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    display: grid;
+    place-items: center;
+    width: var(--size);
+    height: var(--size);
+    translate: -50% -50%;
+    rotate: var(--tilt);
+    border-radius: 30%;
+    color: #fff;
+    background: linear-gradient(
+        150deg,
+        color-mix(in oklab, var(--brand) 78%, white),
+        var(--brand) 55%,
+        color-mix(in oklab, var(--brand) 80%, black)
+    );
+    box-shadow:
+        0 1px 0 0 rgb(255 255 255 / 0.35) inset,
+        0 18px 34px -12px color-mix(in oklab, var(--brand) 60%, transparent),
+        0 8px 16px -10px rgb(0 0 0 / 0.45);
+    animation: tile-float var(--duration) ease-in-out var(--delay) infinite;
+}
+
+/* Nested one level deeper than it needs to be so it outranks the `size-6`
+   utility TechIcon carries by default. */
+.tile .tileIcon {
+    width: 46%;
+    height: 46%;
+    filter: drop-shadow(0 1px 2px rgb(0 0 0 / 0.35));
+}
+
+/* Small unbranded shapes — the confetti weDevs-style art scatters around the
+   sphere. Decorative only, and the first thing dropped on narrow screens. */
+.shape {
+    position: absolute;
+    left: var(--x);
+    top: var(--y);
+    width: var(--size);
+    height: var(--size);
+    translate: -50% -50%;
+    animation: tile-float var(--duration) ease-in-out var(--delay) infinite;
+}
+
+.shapeSphere {
+    border-radius: 50%;
+    background: radial-gradient(circle at 32% 28%, #fff, var(--brand) 70%);
+    box-shadow: 0 10px 20px -12px color-mix(in oklab, var(--brand) 70%, transparent);
+}
+
+.shapeRing {
+    border-radius: 50%;
+    border: 3px solid color-mix(in oklab, var(--brand) 65%, transparent);
+}
+
+.shapeBar {
+    height: calc(var(--size) / 4);
+    border-radius: 999px;
+    rotate: var(--tilt);
+    background: linear-gradient(90deg, var(--brand), color-mix(in oklab, var(--brand) 40%, white));
+}
+
+/* The glass pill of secondary marks, sitting on the orb's lower edge the way the
+   reference art parks its avatar row. */
+.chipRow {
+    position: absolute;
+    right: 0;
+    bottom: 1%;
+    display: flex;
+    align-items: center;
+    gap: 2cqw;
+    padding: 2cqw 2.6cqw;
+    border-radius: 999px;
+    border: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
+    background: color-mix(in oklab, var(--background) 78%, transparent);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 18px 30px -18px rgb(0 0 0 / 0.5);
+    animation: tile-float 9s ease-in-out 1.5s infinite;
+}
+
+.chip {
+    display: grid;
+    place-items: center;
+    width: 6.5cqw;
+    height: 6.5cqw;
+    border-radius: 50%;
+    color: #fff;
+    background: linear-gradient(150deg, color-mix(in oklab, var(--brand) 75%, white), var(--brand));
+}
+
+.chipRow .chipIcon {
+    width: 3.4cqw;
+    height: 3.4cqw;
+}
+
+@keyframes orb-spin {
+    to {
+        rotate: 360deg;
+    }
+}
+
+@keyframes tile-float {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-2.5cqw);
+    }
+}
+
+@keyframes portrait-morph {
+    0%,
+    100% {
+        border-radius: 46% 54% 52% 48% / 50% 46% 54% 50%;
+    }
+    50% {
+        border-radius: 54% 46% 46% 54% / 46% 54% 46% 54%;
+    }
+}
+
+/* Below `lg` the stage shrinks to sit under the copy: the scattered shapes are
+   the first thing to go, because at that size they crowd the tiles instead of
+   framing them. */
+@media (width < 64rem) {
+    .shape {
+        display: none;
+    }
+}
+
+/* The graphic is decoration, so with reduced motion it simply holds still — the
+   composition reads the same standing as it does drifting. */
+@media (prefers-reduced-motion: reduce) {
+    .halo,
+    .portrait,
+    .ring,
+    .tile,
+    .shape,
+    .chipRow {
+        animation: none;
+    }
+}
