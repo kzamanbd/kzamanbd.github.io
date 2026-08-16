@@ -346,12 +346,27 @@ function wrapTables(html: string): string {
     );
 }
 
+// `marked` is configured once at module scope, and marked-footnote keeps its
+// footnote container in a single closure. Two parses in flight at once therefore
+// corrupt each other's state and crash inside marked's tokenizer — which only
+// surfaces once the corpus has a second article to overlap with, and only where
+// something renders more than one at a time (the three feed routes prerendering
+// in one worker). So every render queues behind the previous one. The pipeline
+// is CPU-bound anyway, so serialising costs nothing that concurrency was buying.
+let renderQueue: Promise<unknown> = Promise.resolve();
+
 /** Render Markdown through the full Shiki, Mermaid and heading pipeline. */
-export async function renderMarkdown(content: string): Promise<{
+export function renderMarkdown(content: string): Promise<{
     html: string;
     toc: TocItem[];
 }> {
-    const rendered = await marked.parse(content);
-    const { html, toc } = addHeadingIdsAndExtractToc(rendered);
-    return { html: wrapTables(html), toc };
+    const render = renderQueue.then(async () => {
+        const rendered = await marked.parse(content);
+        const { html, toc } = addHeadingIdsAndExtractToc(rendered);
+        return { html: wrapTables(html), toc };
+    });
+    // The queue swallows the rejection so one malformed article cannot wedge
+    // every render after it; the caller still receives the original failure.
+    renderQueue = render.catch(() => undefined);
+    return render;
 }
