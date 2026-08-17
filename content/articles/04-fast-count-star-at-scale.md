@@ -1,7 +1,7 @@
 ---
 title: 'SELECT COUNT(*) is slow on 30M rows: how to make counting fast at scale'
 description: 'Why COUNT(*) degrades on a 30M-row table under MVCC, and the full ladder of fixes — keyset pagination, planner estimates, capped counts, covering indexes, sharded summary counters, rollup tables and OLAP replicas — with the MySQL and PostgreSQL code for each and a table for picking the right one.'
-date: '2026-08-16'
+date: '2026-03-24'
 cover: '/images/articles/count-star-at-scale-cover.webp'
 tags:
     - Databases

@@ -1,7 +1,7 @@
 ---
 title: 'The auth service is down and users are still logging in: how stateless auth works'
 description: 'A backend interview question with a precise answer — the auth service sits on the issuance path, not the verification path. How locally verified signatures, JWKS caching and asymmetric keys keep requests flowing, exactly which operations are already broken, the revocation you traded away, and how to design the degradation deliberately.'
-date: '2026-08-16'
+date: '2026-06-07'
 cover: '/images/articles/stateless-auth-cover.webp'
 tags:
     - Authentication

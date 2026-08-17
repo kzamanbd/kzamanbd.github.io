@@ -1,7 +1,7 @@
 ---
 title: 'The cache scheduled the outage: stampedes, avalanches and how to survive midnight'
 description: 'A backend interview classic — 10,000 rps in front of a 1,000 rps database, one cache, one shared TTL, and a database that dies at 00:00:00. What the failure is actually called, why it does not recover on its own, and the full ladder of fixes: TTL jitter, single-flight coalescing, stale-while-revalidate, probabilistic early expiry and load shedding.'
-date: '2026-08-16'
+date: '2026-05-02'
 cover: '/images/articles/cache-stampede-cover.webp'
 tags:
     - Caching

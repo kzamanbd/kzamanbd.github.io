@@ -1,7 +1,7 @@
 ---
 title: 'Your authenticator works in airplane mode: how TOTP really works'
 description: 'The 6-digit code is never transmitted — it is derived. A full walk through RFC 6238: the shared secret exchanged once at enrolment, the time step, HMAC-SHA1 and dynamic truncation, the verification window and clock drift, replay prevention and rate limiting, plus the attacks TOTP does and does not stop.'
-date: '2026-08-16'
+date: '2026-07-01'
 cover: '/images/articles/totp-offline-cover.webp'
 tags:
     - Security

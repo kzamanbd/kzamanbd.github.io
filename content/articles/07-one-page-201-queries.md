@@ -1,7 +1,7 @@
 ---
 title: 'One product page, 201 queries: fixing N+1 and making it visible in review'
 description: 'The N+1 query problem, answered end to end — why 201 fast queries add up to 9 seconds while the slow log stays empty, the fix ladder from eager loading to batch loaders and counter caches, the traps (cartesian joins, per-parent limits, huge IN lists), and how to turn query count from a runtime accident into something CI fails on.'
-date: '2026-08-16'
+date: '2026-05-19'
 cover: '/images/articles/n-plus-one-queries-cover.webp'
 tags:
     - Databases

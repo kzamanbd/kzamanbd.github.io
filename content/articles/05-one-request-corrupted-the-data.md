@@ -1,7 +1,7 @@
 ---
 title: '800 million requests, one corrupted row: debugging what you cannot reproduce'
 description: 'A senior backend interview question, answered as an investigation. Why "1 in 800 million" and "cannot reproduce" are themselves evidence, how to read the shape of the corruption, how to reconstruct the timeline from binlog and WAL, how to turn one bad row into a population you can query — and how to make the whole bug class impossible afterwards.'
-date: '2026-08-16'
+date: '2026-04-11'
 cover: '/images/articles/unreproducible-corruption-cover.webp'
 tags:
     - Debugging

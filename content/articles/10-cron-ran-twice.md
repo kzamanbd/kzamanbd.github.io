@@ -1,7 +1,7 @@
 ---
 title: 'Your cron ran twice: why exactly-once scheduling does not exist'
 description: 'A job runs at midnight for four years, then runs twice with no deploy. The prime suspect is a daylight-saving fall-back, but there are eight others — clock steps, duplicate schedulers, catch-up controllers, lost acks. How to tell them apart from the logs in ten minutes, and why the real fix is a run key with a unique index rather than a better schedule.'
-date: '2026-08-16'
+date: '2026-07-23'
 cover: '/images/articles/cron-ran-twice-cover.webp'
 tags:
     - Scheduling
