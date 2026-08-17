@@ -1,0 +1,157 @@
+/* The upstream-contribution card. Same family as the project card — corner
+   aurora, cursor spotlight, lit border segment — retuned for a single wide
+   surface rather than one cell of a two-column grid.
+
+   Two things differ on purpose. The aurora is anchored along the top edge
+   instead of the top-left corner, because a full-width card would otherwise
+   read as lit from one end only. And the card carries a merge-coloured rail
+   down its inside edge, echoing a diff gutter, so a reader can tell at a glance
+   that this is a change that landed in somebody else's repository and not
+   another project of my own.
+
+   The hues arrive inline from contribution-card.tsx as --glow-a/b/c, the same
+   contract the project cards use, so this file owns only placement and theme
+   handling. */
+
+.card {
+    position: relative;
+    isolation: isolate;
+    --glow-strength: 7%;
+    /* Overwritten per frame by useSpotlightSurfaces; the 50% defaults are what
+       touch devices and the frames before the first pointermove get. */
+    --pointer-x: 50%;
+    --pointer-y: 50%;
+    --spotlight-radius: 26rem;
+    --spotlight-strength: 5%;
+    --spotlight-border-strength: 45%;
+    --rail-strength: 55%;
+}
+
+:global(html.dark) .card {
+    --glow-strength: 11%;
+    --spotlight-strength: 7%;
+    --spotlight-border-strength: 65%;
+    --rail-strength: 75%;
+}
+
+/* Aurora along the top edge: two wide washes plus a cooler one drifting right,
+   so the light reads as spread across the width rather than pooled in a corner. */
+.card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0.5;
+    background-image:
+        radial-gradient(
+            60% 90% at 4% 0%,
+            color-mix(in oklab, var(--glow-a, var(--foreground)) var(--glow-strength), transparent),
+            transparent 76%
+        ),
+        radial-gradient(
+            55% 80% at 46% 2%,
+            color-mix(in oklab, var(--glow-b, var(--foreground)) var(--glow-strength), transparent),
+            transparent 74%
+        ),
+        radial-gradient(
+            50% 85% at 92% 8%,
+            color-mix(in oklab, var(--glow-c, var(--foreground)) var(--glow-strength), transparent),
+            transparent 72%
+        );
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+/* Cursor spotlight, pitched wider than the project cards' because the surface
+   it has to cover is roughly twice as wide. */
+.card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: inherit;
+    pointer-events: none;
+    opacity: 0;
+    background-image: radial-gradient(
+        circle var(--spotlight-radius) at var(--pointer-x) var(--pointer-y),
+        color-mix(
+            in oklab,
+            var(--glow-b, var(--foreground)) var(--spotlight-strength),
+            transparent
+        ),
+        color-mix(
+            in oklab,
+            var(--glow-c, var(--foreground)) calc(var(--spotlight-strength) * 0.4),
+            transparent
+        ),
+        transparent
+    );
+}
+
+.card:hover::after {
+    opacity: 1;
+}
+
+/* The diff gutter. A hairline rail inside the card's left edge, brightest at
+   the top where the merge badge sits and fading out before the footer, so it
+   marks the card without boxing it in. */
+.rail {
+    position: absolute;
+    top: 1.5rem;
+    bottom: 1.5rem;
+    left: 0;
+    width: 2px;
+    border-radius: 999px;
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        color-mix(in oklab, var(--glow-a, var(--foreground)) var(--rail-strength), transparent),
+        color-mix(
+            in oklab,
+            var(--glow-b, var(--foreground)) calc(var(--rail-strength) * 0.5),
+            transparent
+        ),
+        transparent
+    );
+}
+
+/* The lit stretch of border nearest the cursor, on the SpotlightBorder span:
+   both pseudo-elements above are already spoken for. */
+.border {
+    opacity: 0;
+    border-color: color-mix(
+        in oklab,
+        var(--glow-a, var(--foreground)) var(--spotlight-border-strength),
+        transparent
+    );
+    -webkit-mask-image: radial-gradient(
+        18rem circle at var(--pointer-x) var(--pointer-y),
+        #000,
+        rgb(0 0 0 / 0.35),
+        transparent
+    );
+    mask-image: radial-gradient(
+        18rem circle at var(--pointer-x) var(--pointer-y),
+        #000,
+        rgb(0 0 0 / 0.35),
+        transparent
+    );
+}
+
+.card:hover .border {
+    opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .card::before {
+        transition: opacity 300ms ease-out;
+    }
+    .card::after,
+    .border {
+        transition: opacity 500ms ease-out;
+    }
+}

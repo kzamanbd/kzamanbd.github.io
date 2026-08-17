@@ -20,15 +20,77 @@ export interface Project {
 }
 
 /**
- * How many shipped projects stay on screen before the "Show more" toggle. Bump
- * this when a project should be visible without a click.
+ * A merged pull request into somebody else's repository. Kept separate from
+ * `projects` because the interesting facts are different ones: whose repo it is,
+ * what the change was, and the diff that landed — not a tech stack and a demo
+ * link.
+ *
+ * `mergedAt` is an ISO date so the card can render a real `<time>`; every field
+ * here is checkable against the PR itself, so nothing is rounded or dressed up.
  */
-export const collapsedShippedProjectCount = 4;
+export interface Contribution {
+    /** `owner/repo`, shown verbatim so the upstream project is unambiguous. */
+    repo: string;
+    /** What that upstream repository is, for a reader who does not recognise it. */
+    repoDescription: string;
+    repoURL: string;
+    title: string;
+    number: number;
+    pullRequestURL: string;
+    mergedAt: string;
+    description: string;
+    tech: string[];
+    diff: {
+        additions: number;
+        deletions: number;
+        files: number;
+    };
+    links?: ProjectExternalLink[];
+}
 
-// Things published for other people to install: the WordPress plugin
-// directory, the Chrome Web Store, a GitHub Action. These carry `links` to the
-// distribution page alongside the source.
-export const shippedProjects: Project[] = [
+export const contributions: Contribution[] = [
+    {
+        repo: 'laravel/vs-code-extension',
+        repoDescription: "Laravel's official VS Code extension",
+        repoURL: 'https://github.com/laravel/vs-code-extension',
+        title: 'Add auto-space in blade syntax',
+        number: 273,
+        pullRequestURL: 'https://github.com/laravel/vs-code-extension/pull/273',
+        mergedAt: '2025-03-06',
+        description:
+            'Blade delimiters now space themselves: typing `{{`, `{!!` or `{{--` inserts the inner padding and leaves the caret between it, so the braces come out formatted instead of being fixed up by hand afterwards. Shipped as an opt-out setting and scoped to Blade files, so it cannot disturb any other syntax.',
+        tech: ['TypeScript', 'VS Code API', 'Blade'],
+        diff: { additions: 139, deletions: 1, files: 4 },
+        links: [
+            {
+                url: 'https://github.com/laravel/vs-code-extension/issues/270',
+                label: 'Issue #270'
+            }
+        ]
+    }
+];
+
+// The public repositories worth a reader's time: what each one is, what it is
+// built from, and where to see it running.
+export const projects: Project[] = [
+    {
+        name: 'RTK Chat App',
+        category: 'Real-time App',
+        description:
+            'A real-time chat platform in a Turborepo monorepo: a React 19 client with Redux Toolkit and RTK Query over an Express API, messaging on Socket.IO, and one-to-one and group video calls over WebRTC behind JWT auth.',
+        tech: ['React', 'Redux Toolkit', 'Socket.IO', 'WebRTC'],
+        repoURL: 'https://github.com/kzamanbd/rtk-chat-app',
+        links: [{ url: 'https://chat.kzaman.com', label: 'Live app' }]
+    },
+    {
+        name: 'Browser Terminal',
+        category: 'Web App',
+        description:
+            'A web SSH client: xterm.js in the browser talking over socket.io to an ssh2 session on the server, so a shell is one URL away with no local client installed.',
+        tech: ['TypeScript', 'ssh2', 'Socket.IO', 'xterm.js'],
+        repoURL: 'https://github.com/kzamanbd/browser-terminal',
+        links: [{ url: 'https://console.kzaman.com', label: 'Live app' }]
+    },
     {
         name: 'WP Debug Suite',
         category: 'WordPress Plugin',
@@ -45,89 +107,12 @@ export const shippedProjects: Project[] = [
         ]
     },
     {
-        name: 'Codeforces Stats',
-        category: 'GitHub Action',
+        name: 'Smriti AI',
+        category: 'AI / Retrieval',
         description:
-            'A GitHub Action that renders a live Codeforces activity card and rating badge for a profile README, regenerated on a schedule so the numbers never go stale.',
-        tech: ['Python', 'GitHub Actions', 'SVG'],
-        repoURL: 'https://github.com/kzamanbd/cf-stats'
-    },
-    {
-        name: 'GitHub Stats',
-        category: 'GitHub Action',
-        description:
-            'Generates richer GitHub statistics images for a profile, counting contributions from private repositories that the default cards leave out.',
-        tech: ['Python', 'GitHub Actions', 'GraphQL'],
-        repoURL: 'https://github.com/kzamanbd/github-stats'
-    },
-    {
-        name: 'Fly CLI',
-        category: 'Developer Tool',
-        description:
-            'A Go command line wrapper over Docker Compose that collapses the everyday container operations, start, stop, logs, exec, into short commands with sane defaults.',
-        tech: ['Go', 'Docker', 'CLI'],
-        repoURL: 'https://github.com/kzamanbd/fly-cli'
-    },
-    {
-        name: 'WP Magic Login',
-        category: 'WordPress Plugin',
-        description:
-            'Token based passwordless sign-in for WordPress, driven from an external management portal: a signed token in the query string authenticates a known user and drops them straight into wp-admin.',
-        tech: ['PHP', 'WordPress', 'Auth'],
-        repoURL: 'https://github.com/kzamanbd/wp-magic-login'
-    },
-    {
-        name: 'Talent Portal',
-        category: 'WordPress Plugin',
-        description:
-            'A recruitment plugin that collects applications through a front-end form, stores each submission as a first-class record, and gives HR a review queue inside the WordPress admin.',
-        tech: ['PHP', 'WordPress', 'MySQL'],
-        repoURL: 'https://github.com/kzamanbd/talent-portal'
-    },
-    {
-        name: 'AI Content Finder',
-        category: 'Chrome Extension',
-        description:
-            'A browser extension that detects AI generated media on a page and makes it downloadable, working around players that hide the underlying source URL.',
-        tech: ['JavaScript', 'Chrome APIs'],
-        repoURL: 'https://github.com/kzamanbd/ai-extension'
-    },
-    {
-        name: 'WP Docker',
-        category: 'Dev Environment',
-        description:
-            'A small Docker Compose stack for local WordPress work, with a Cloudflare Tunnel wired in so a machine-local site is reachable over a real HTTPS hostname for webhook and OAuth testing.',
-        tech: ['Docker', 'Shell', 'Cloudflare'],
-        repoURL: 'https://github.com/kzamanbd/wp-docker'
-    }
-];
-
-// Things built to answer a question or scratch an itch, kept public so the
-// approach is readable even where the project is deliberately a prototype.
-export const personalProjects: Project[] = [
-    {
-        name: 'DraftScripts',
-        category: 'Monorepo',
-        description:
-            'A full-stack monorepo of shared component libraries, applications, and utilities, used as the proving ground for patterns before they go into production work.',
-        tech: ['TypeScript', 'React', 'Vue', 'Node.js'],
-        repoURL: 'https://github.com/kzamanbd/draftscripts'
-    },
-    {
-        name: 'Laravel Tenancy',
-        category: 'SaaS Boilerplate',
-        description:
-            'A multi-tenant Laravel starter: per-tenant database resolution, subdomain routing, and tenant-aware migrations, so a SaaS can start with isolation already in place rather than retrofitted.',
-        tech: ['Laravel', 'PHP', 'TypeScript', 'MySQL'],
-        repoURL: 'https://github.com/kzamanbd/laravel-tenancy'
-    },
-    {
-        name: 'DPMS',
-        category: 'Network Tooling',
-        description:
-            'A device monitoring and control proof of concept: ping and TCP reachability checks, PJLink projector control with telemetry, and Wake-on-LAN including a cross-VLAN relay strategy.',
-        tech: ['TypeScript', 'Node.js', 'PJLink', 'WoL'],
-        repoURL: 'https://github.com/kzamanbd/dpms'
+            'Question answering over your own documents, held to two rules: answer only from the retrieved passages, and cite them. Uploads are chunked and embedded with Gemini into PostgreSQL via pgvector, and a question that the corpus does not cover gets a refusal rather than a guess.',
+        tech: ['Laravel', 'React', 'pgvector', 'Gemini'],
+        repoURL: 'https://github.com/kzamanbd/smriti-ai'
     },
     {
         name: 'TypeOn',
@@ -135,15 +120,8 @@ export const personalProjects: Project[] = [
         description:
             'A typing practice platform with real-time per-keystroke feedback, accuracy and speed history, and progress tracking across sessions.',
         tech: ['TypeScript', 'Next.js', 'Tailwind CSS'],
-        repoURL: 'https://github.com/kzamanbd/typeon'
-    },
-    {
-        name: 'Browser Terminal',
-        category: 'Web App',
-        description:
-            'A web SSH client: xterm.js in the browser talking over socket.io to an ssh2 session on the server, so a shell is one URL away with no local client installed.',
-        tech: ['TypeScript', 'ssh2', 'Socket.IO', 'xterm.js'],
-        repoURL: 'https://github.com/kzamanbd/browser-terminal'
+        repoURL: 'https://github.com/kzamanbd/typeon',
+        links: [{ url: 'https://typeon.kzaman.com', label: 'Live app' }]
     },
     {
         name: 'Task Queue',
