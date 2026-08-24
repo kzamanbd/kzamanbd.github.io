@@ -1,168 +1,105 @@
-/* The hero's copy column.
+/* The hero's one column.
 
-   The composition is lifted from the weDevs home page: a heavy display headline
-   with pastel highlight bars struck under two of its words, a loose grey lede, a
-   white promo card, and two very soft colour blobs bleeding in from the corners.
-   The numbers here are the measured ones rather than eyeballed approximations,
-   so the treatment reads the same at the width it was designed at.
+   The hero is a wordmark: the name set as large as the viewport allows, the job
+   title hung off its right edge, and the profile marks centred under both. There
+   is no artwork to balance it against, so the type carries the whole screen and
+   the only measured values here are the ones that make display sizes read — the
+   negative tracking, the flat line-height, and the engineering grid behind it.
 
    Everything is a CSS Module rather than utilities because most of it is either
-   a pseudo-element or a value with no utility equivalent (a blurred blob, a
-   rotated bar, a 0.0102em tracking). */
+   a pseudo-element or a value with no utility equivalent (a ruled grid, a fluid
+   clamp, a -0.015em tracking). */
 
-/* The two blobs. Each is literally what the reference ships as an SVG — a solid
-   circle behind a 50px Gaussian blur at a low opacity — so it is cheaper and
-   sharper to draw it as a blurred div than to fetch the artwork. They sit at
-   `z-index: -1` in the section's own stacking context, which puts them under the
-   copy without needing a wrapper element. */
-.section::before,
-.section::after {
+/* The grid. Two repeating gradients rather than an image: it is a handful of
+   bytes, it stays crisp at every zoom, and the line colour can follow the theme
+   token instead of shipping a second asset for dark.
+
+   It sits at `z-index: -1` in the section's own stacking context, which puts it
+   under the type without needing a wrapper element, and `inset: 0` keeps it
+   inside the hero — the sections below draw their own accent swell and a grid
+   running through them would fight it.
+
+   The bottom fade is the whole reason the grid can end at all: cut flat, the
+   last rule reads as a border under the hero. The mask takes it to nothing over
+   the final quarter, so the grid ends where the reader stops looking for it. */
+.section::before {
     content: '';
     position: absolute;
     z-index: -1;
-    border-radius: 50%;
-    filter: blur(50px);
+    inset: 0;
+    background-image:
+        linear-gradient(to right, var(--hero-grid) 1px, transparent 1px),
+        linear-gradient(to bottom, var(--hero-grid) 1px, transparent 1px);
+    background-size: 64px 64px;
+    /* Anchored to the centre so the cells stay symmetrical about the name
+       rather than about the viewport's top-left corner. */
+    background-position: center;
+    -webkit-mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 55%, transparent 100%);
     pointer-events: none;
 }
 
-.section::before {
-    top: -124px;
-    left: -275px;
-    width: 684px;
-    height: 684px;
-    background: #3b80f4;
-    opacity: 0.166;
+/* Light: a hairline barely off the page colour — visible as a texture, never as
+   a table. Dark: the same weight has to come from the other side of the page,
+   and needs a touch more alpha to survive against a near-black field. */
+.section {
+    --hero-grid: rgb(15 23 42 / 0.055);
 }
 
-.section::after {
-    top: 173px;
-    right: -220px;
-    width: 695px;
-    height: 695px;
-    background: #8e44ad;
-    opacity: 0.16;
+:global(html.dark) .section {
+    --hero-grid: rgb(255 255 255 / 0.055);
 }
 
-/* The reference is a light-only page. On dark the same two blobs at the same
-   opacity all but vanish against #1f2937, so they are pushed until they read as
-   the same amount of colour. */
-:global(html.dark) .section::before {
-    opacity: 0.3;
-}
+/* The name. It scales on `vw` rather than stepping at breakpoints because it is
+   the only thing on the screen: the block should keep the same relationship to
+   the viewport's edges at every width, not snap between three sizes. The cap
+   stops it running past the column on very wide monitors.
 
-:global(html.dark) .section::after {
-    opacity: 0.28;
-}
-
-/* The headline. 48px / 900 / 1.15 at the reference width, tracked out by a hair
-   — Lato at 900 sets tight, and the extra 0.0102em is what stops the caps from
-   knitting together at display size. */
-.headline {
+   Tracking goes *negative* here, which is the opposite of what Lato 900 wants at
+   paragraph size — at 130px the default sidebearings read as gaps between the
+   letters instead of as spacing, and `1` line-height keeps the single line from
+   carrying a half-em of dead space under it. */
+.name {
     font-family: var(--font-lato), var(--font-noto-sans), sans-serif;
-    font-size: clamp(2.25rem, 1.4rem + 2.85vw, 3rem);
+    font-size: clamp(2rem, 0.25rem + 9.5vw, 8.5rem);
     font-weight: 900;
-    line-height: 1.15;
-    letter-spacing: 0.0102em;
+    line-height: 1;
+    letter-spacing: -0.015em;
     color: var(--foreground);
-}
-
-/* One highlighted word. `isolation: isolate` is doing the load-bearing work: it
-   makes the word its own stacking context, so the bar's `z-index: -1` lands
-   behind the glyphs but still above the page rather than sinking behind the
-   section's background layers. */
-.mark {
-    position: relative;
-    isolation: isolate;
     white-space: nowrap;
 }
 
-.mark::after {
-    content: '';
-    position: absolute;
-    z-index: -1;
-    inset-inline: -0.02em;
-    bottom: 0.0625em;
-    height: 0.29em;
-    border-radius: 10px;
-    background: var(--mark);
-    /* The bar is struck by hand rather than ruled: a degree of tilt is the whole
-       reason it reads as a marker stroke instead of an underline. */
-    rotate: -1deg;
-}
-
-/* The bars are pastels picked to sit under black text. Behind near-white text
-   they would read as a light block with dark text missing from it, so on dark
-   they thin out to a wash of the same hue instead. */
-:global(html.dark) .mark::after {
-    opacity: 0.42;
-}
-
-/* The lede: 20px on 33px, which is a much looser measure than the site's usual
-   body copy and is most of why the reference column breathes. */
-.lede {
-    font-size: clamp(1.0625rem, 0.95rem + 0.4vw, 1.25rem);
-    line-height: 1.65;
-    letter-spacing: 0.009em;
+/* The signature line. It aligns to the name's right edge (the flex column is
+   `w-fit`, so `self-end` means the name's edge, not the container's) and sits
+   close under the baseline — the small gap is what makes it read as part of the
+   wordmark rather than as a standalone caption. */
+.designation {
+    margin-top: 0.35rem;
+    font-size: clamp(0.875rem, 0.6rem + 0.9vw, 1.375rem);
+    font-weight: 500;
+    line-height: 1.3;
+    letter-spacing: 0.01em;
     color: #606b7b;
 }
 
-:global(html.dark) .lede {
+:global(html.dark) .designation {
     color: color-mix(in oklab, var(--foreground) 68%, transparent);
 }
 
-/* The promo card. A 5px radius and a shadow with no visible edge — 80px of blur
-   at 4% — so it lifts off the page without ever drawing a line around itself. */
-.promo {
-    display: inline-block;
-    padding: 22px 27px;
-    border-radius: 5px;
-    background: #fff;
-    box-shadow: 0 30px 80px 0 rgb(0 0 0 / 0.04);
-}
-
-/* That shadow is invisible on a dark page, so the card earns its edge the other
-   way: a lifted surface and a hairline. */
-:global(html.dark) .promo {
-    background: color-mix(in oklab, var(--foreground) 6%, var(--background));
-    border: 1px solid color-mix(in oklab, var(--foreground) 10%, transparent);
-    box-shadow: 0 30px 80px 0 rgb(0 0 0 / 0.35);
-}
-
-.promoLabel {
-    font-size: 0.875rem;
-    color: #707a89;
-}
-
-:global(html.dark) .promoLabel {
-    color: color-mix(in oklab, var(--foreground) 60%, transparent);
-}
-
-.promoValue {
-    font-size: 1.375rem;
-    font-weight: 700;
-    color: var(--foreground);
-    line-height: 1.2;
-}
-
-/* The strip of marks along the bottom of the card, standing in for the client
-   logo row the reference runs there. Muted at rest so the card stays one quiet
-   block, and only the mark under the cursor comes up to full strength. */
-.promoStrip {
-    border-top: 1px solid color-mix(in oklab, var(--foreground) 8%, transparent);
-}
-
-.promoMark {
-    color: color-mix(in oklab, var(--foreground) 45%, transparent);
+/* The profile marks. Muted at rest so the row stays one quiet band under the
+   name, and only the mark under the cursor comes up to full strength. */
+.mark {
+    color: color-mix(in oklab, var(--foreground) 50%, transparent);
     transition: color 300ms ease;
 }
 
-.promoMark:hover,
-.promoMark:focus-visible {
+.mark:hover,
+.mark:focus-visible {
     color: var(--foreground);
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .promoMark {
+    .mark {
         transition: none;
     }
 }
