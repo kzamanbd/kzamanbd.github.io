@@ -1,3 +1,8 @@
+// The resume has two cuts of the same facts, differing only in what leads:
+// `contents` with Laravel, API and data design, `contents.frontend` with React,
+// Next.js and component architecture. Both export the same names, so
+// retargeting the page at a frontend role is this one import — swap `title`
+// below to match.
 import {
     additionalInformation,
     education,
