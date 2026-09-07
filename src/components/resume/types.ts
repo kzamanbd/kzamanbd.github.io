@@ -30,3 +30,16 @@ export interface SkillRow {
     label: string;
     value: string;
 }
+
+/**
+ * One piece of shipped work. Every field has to be checkable against the thing
+ * itself — the resume claims nothing here that the linked app or pull request
+ * does not already show.
+ */
+export interface ResumeProject {
+    name: string;
+    description: string;
+    tech: string[];
+    /** The live app where there is one, otherwise the repository or the PR. */
+    url: string;
+}

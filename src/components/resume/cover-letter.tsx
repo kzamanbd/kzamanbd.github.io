@@ -1,37 +1,47 @@
+import { careerExperience, currentWorkplace } from '@/lib/metadata';
+
+/**
+ * The optional second sheet, printed alongside the resume from the print menu.
+ *
+ * The years figure is derived from `careerExperience` rather than written out,
+ * because the hardcoded one went stale — it still claimed "more than two years"
+ * long after the resume beside it said otherwise, and a letter that contradicts
+ * the attached resume is worse than no letter.
+ */
 export default function CoverLetter() {
     return (
-        <div className="page-container cover-letter mt-6 hidden p-8">
-            <div className="pr-10 text-justify text-sm">
+        <div className="page-container cover-letter mt-6 hidden p-8 print:p-0">
+            <div className="text-justify text-sm">
                 <h1 className="subtitle mb-8 text-3xl capitalize">Dear Hiring Manager!</h1>
 
                 <div className="mt-2 space-y-4">
                     <p>
-                        I have read out the job post, and all the requirements that you have asked
-                        for the job, have been occupying me.
+                        I am writing to apply for the role you advertised. I have over{' '}
+                        {careerExperience} years of professional experience building and maintaining
+                        production web applications, and the responsibilities in your posting line
+                        up closely with the work I do day to day.
                     </p>
                     <p>
-                        I am impressed with the {`company's`} mission and values, and I believe my
-                        skills and experiences align well with the opportunities available at the
-                        company. I am excited about the potential to make a meaningful impact and
-                        grow professionally with the team.
+                        Most of my recent work is in React, Next.js and TypeScript: designing
+                        reusable component systems, integrating REST APIs, managing application
+                        state, and profiling interfaces that had grown slow. I take features from
+                        requirement analysis through to deployment and support, rather than handing
+                        them over at the pull request. A full-stack background in PHP (Laravel),
+                        Node and MySQL means API contracts, authentication and deployment concerns
+                        are things I can work through with the team instead of waiting on someone
+                        else.
                     </p>
                     <p>
-                        I am confident that my skills and experiences align well with the
-                        requirements of the role, and I am excited about the opportunity to make a
-                        meaningful impact and grow professionally with the team. I am also a quick
-                        learner, a problem-solver, and a team player who is always ready to go the
-                        extra mile.
+                        At {currentWorkplace} I own revenue-critical modules — subscriptions,
+                        booking, multi-gateway payments and vendor management — on products that
+                        carry high-volume, concurrent traffic. That work has meant debugging under
+                        real user load, cutting response times through caching and query work, and
+                        reviewing pull requests and mentoring junior developers along the way.
                     </p>
                     <p>
-                        I’ve more than two years of experience and profound knowledge of web
-                        development. I am proficient in PHP, Laravel, JavaScript, Vue and React. My
-                        main responsibilities are building web applications, updating, maintaining,
-                        testing, and debugging applications.
-                    </p>
-                    <p>
-                        My skills and experience in designing and developing applications will be of
-                        great benefit to your job. I’d love to discuss the further role with you. I
-                        have attached my resume, please have at look whenever you want.
+                        I would welcome the chance to talk about the role in more detail. My resume
+                        is attached, along with links to projects and open-source contributions you
+                        are welcome to look through.
                     </p>
                 </div>
 

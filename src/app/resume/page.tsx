@@ -1,8 +1,14 @@
+// The resume has two cuts of the same facts, differing only in what leads:
+// `contents` with Laravel, API and data design, `contents.frontend` with React,
+// Next.js and component architecture. Both export the same names, so
+// retargeting the page at a frontend role is this one import — swap `title`
+// below to match.
 import {
     additionalInformation,
     education,
     experience,
     professionalSummary,
+    projects,
     skillRows
 } from '@/app/resume/contents';
 import BulletList from '@/components/resume/bullet-list';
@@ -10,6 +16,7 @@ import CoverLetter from '@/components/resume/cover-letter';
 import EducationItem from '@/components/resume/education-item';
 import ExperienceItem from '@/components/resume/experience-item';
 import PrintButton from '@/components/resume/print-button';
+import ProjectItem from '@/components/resume/project-item';
 import ResumeContactHeader from '@/components/resume/resume-contact-header';
 import ResumeSection from '@/components/resume/resume-section';
 import SkillsTable from '@/components/resume/skills-table';
@@ -54,12 +61,12 @@ const Resume = () => {
             </div>
 
             <div className="page-container h-auto text-gray-900 print:h-auto">
-                <div className="p-10 print:p-0 print:pl-1.5">
+                <div className="flex flex-col gap-4 p-10 print:p-0">
                     <ResumeContactHeader />
 
                     <div className="about-me">
                         <h5 className="section-heading">PROFESSIONAL SUMMARY</h5>
-                        <p className="mb-4 text-justify text-sm">{professionalSummary}</p>
+                        <p className="text-justify text-sm">{professionalSummary}</p>
                     </div>
 
                     <ResumeSection title="TECHNICAL SKILLS">
@@ -74,7 +81,15 @@ const Resume = () => {
                         </div>
                     </ResumeSection>
 
-                    <ResumeSection title="EDUCATION" breakBeforePage>
+                    <ResumeSection title="PROJECTS">
+                        <ul className="bullet-list">
+                            {projects.map((project) => (
+                                <ProjectItem key={project.name} project={project} />
+                            ))}
+                        </ul>
+                    </ResumeSection>
+
+                    <ResumeSection title="EDUCATION">
                         <div className="timeline-container">
                             {education.map((entry) => (
                                 <EducationItem key={entry.degree} entry={entry} />
