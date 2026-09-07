@@ -11,7 +11,7 @@ const socialLinks = Object.entries({
 /** Name, title, and every way to make contact, above the resume body. */
 export default function ResumeContactHeader() {
     return (
-        <div className="mb-2 flex justify-between">
+        <div className="flex justify-between">
             <div className="flex flex-col">
                 <h1 className="text-xl font-bold">MD KAMRUZZAMAN</h1>
                 <h2 className="text-lg font-semibold">Full Stack Software Engineer</h2>

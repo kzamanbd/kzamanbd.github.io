@@ -200,8 +200,14 @@
 }
 
 @layer components {
+    /* The A4 sheet. On screen it is drawn at its real size so the page looks
+       like the paper it becomes; in print it must NOT restate 210mm × 297mm,
+       because `@page` has already taken its margin out of the sheet and the
+       printable box is smaller than A4. Sizing to the full sheet there overflows
+       the printable area on every side and pushes content onto phantom pages —
+       `auto` lets the content fill whatever `@page` leaves. */
     .page-container {
-        @apply relative z-1 mx-auto h-auto w-full break-before-auto bg-white md:my-6 md:h-[297mm] md:w-[210mm] md:rounded md:border print:mx-0 print:my-0 print:h-[297mm] print:w-[210mm] print:rounded-none print:border-0 print:shadow-none;
+        @apply relative z-1 mx-auto h-auto w-full break-before-auto bg-white md:my-6 md:h-[297mm] md:w-[210mm] md:rounded md:border print:mx-0 print:my-0 print:h-auto print:w-auto print:rounded-none print:border-0 print:shadow-none;
     }
     .orange-gradient {
         @apply bg-linear-to-r from-amber-500 via-orange-600 to-yellow-500 bg-clip-text text-transparent;
@@ -276,7 +282,7 @@
         @apply mb-1.5 font-bold uppercase;
     }
     .timeline-container {
-        @apply relative mb-4 ml-2 flex flex-col;
+        @apply relative ml-2 flex flex-col;
     }
     .timeline-container > div {
         @apply border-primary-500 relative border-l pb-4 pl-4;
@@ -442,9 +448,14 @@ body:has(.page-container) button[aria-label='Open menu'] {
     }
 }
 
+/* 16mm on every side: 0.63in, comfortably inside the 0.5in floor that consumer
+   printers can actually render, and equal on all four sides because an uneven
+   margin reads as a broken layout rather than a choice. It is stated in mm, not
+   rem, because the page box is a physical sheet — a rem here would rescale the
+   margin if the root font size ever moved. */
 @page {
     size: A4;
-    margin: 2.5rem;
+    margin: 16mm;
     @bottom-right {
         content: 'Page ' counter(page) ' of ' counter(pages);
         font-size: 12px;
