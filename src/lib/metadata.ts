@@ -47,7 +47,7 @@ export const siteURL = 'https://kzaman.com';
 
 export const siteThumbnail = '/thumbnail.png';
 
-export const siteAuthorEmail = 'kzamanbn@gmail.com';
+export const siteAuthorEmail = 'kzamanhq@gmail.com';
 
 export const profileImage = '/kzaman.jpg';
 
@@ -126,7 +126,7 @@ export const user: User = {
     wordpressOrg: 'https://profiles.wordpress.org/kzamanbd/',
     description: description,
     phone: '+8801716724245',
-    email: 'kzamanbn@gmail.com',
+    email: siteAuthorEmail,
     address: 'Dhaka, Bangladesh'
 };
 
