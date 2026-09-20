@@ -32,6 +32,17 @@ export interface SkillRow {
 }
 
 /**
+ * One entry in the resume's variant switcher. The route owns which cuts exist
+ * and where they live; the switcher only renders the links it is handed, so it
+ * never has to import the registry out of `src/app`.
+ */
+export interface ResumeVariantLink {
+    href: string;
+    label: string;
+    active: boolean;
+}
+
+/**
  * One piece of shipped work. Every field has to be checkable against the thing
  * itself — the resume claims nothing here that the linked app or pull request
  * does not already show.
