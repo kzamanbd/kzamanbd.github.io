@@ -72,11 +72,19 @@ const Resume = async ({ searchParams }: PageProps) => {
         skillRows
     } = resumeVariants[variantKey].contents;
 
-    const variantLinks = resumeVariantKeys.map((key) => ({
-        href: resumeVariantHref(key),
-        label: resumeVariants[key].label,
-        active: key === variantKey
-    }));
+    // The switcher is a development affordance, not something a visitor should
+    // see: the deployed page is whichever cut its link asked for, and offering
+    // a stranger the other two invites them to read the resume as three
+    // pitches rather than one. `?variant=` still works in production — that is
+    // the URL that goes into an application — it simply has no visible control.
+    const variantLinks =
+        process.env.NODE_ENV === 'production'
+            ? []
+            : resumeVariantKeys.map((key) => ({
+                  href: resumeVariantHref(key),
+                  label: resumeVariants[key].label,
+                  active: key === variantKey
+              }));
 
     return (
         <div>
