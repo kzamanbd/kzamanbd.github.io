@@ -14,6 +14,7 @@ import './globals.css';
 import {
     authorName,
     bingSiteVerification,
+    currentJobTitle,
     description,
     facebookPageId,
     googleSiteVerification,
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
     // Both halves carry the same name string the Person schema and every
     // external profile use, so a title is one more place the entity matches.
     title: {
-        default: `${authorName} — Full Stack Software Engineer`,
+        default: `${authorName} — ${currentJobTitle}`,
         template: `%s | ${authorName}`
     },
     description,

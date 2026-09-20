@@ -9,4 +9,3 @@ export async function POST() {
         device_id: '9618a15dbe4b3140487a8f96fe2058e72a3db0b3eaf2e21819622502a2b10157'
     });
 }
-

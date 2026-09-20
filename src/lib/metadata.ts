@@ -75,7 +75,15 @@ export const siteKeywords: string[] = [
 ];
 
 // workspace
-export const currentJobTitle: string = 'Software Engineer (Full Stack)';
+/**
+ * One job-title string, for the same reason `authorName` is one name string.
+ * This is what `Person.jobTitle`, the hero designation and the root title all
+ * render, so the entity reads identically wherever it is quoted. The site used
+ * to carry three spellings — `Software Engineer (Full Stack)` in the schema,
+ * `Full Stack Software Engineer` in the root title, `Backend Engineer` on the
+ * resume — which is three claims to reconcile rather than one to corroborate.
+ */
+export const currentJobTitle: string = 'Full Stack Software Engineer';
 export const currentWorkplace: string = 'weDevs';
 export const currentWorkplaceURL: string = 'https://wedevs.com';
 

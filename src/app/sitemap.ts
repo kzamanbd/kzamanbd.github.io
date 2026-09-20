@@ -15,8 +15,11 @@ export const dynamic = 'force-static';
  * already applied to the article entries below.
  */
 const staticRouteLastModified: Record<string, string> = {
-    '/': '2026-08-15',
-    '/resume': '2026-08-15',
+    // `git log -1 --date=short -- <the route's page and components>` is the
+    // check: a stamp older than the page's last real edit is the same lost
+    // signal as a stamp that moves on every deploy, in the other direction.
+    '/': '2026-09-20',
+    '/resume': '2026-09-20',
     '/now': '2026-08-15',
     '/plugins/debug-suite': '2026-08-15'
 };

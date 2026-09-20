@@ -47,7 +47,11 @@ const person: Person = {
     name: siteName,
     alternateName: jsonLdAlternateName,
     url: siteURL,
-    image: siteThumbnail,
+    // Absolute, not the bare `siteThumbnail`. Next resolves a relative path in
+    // `openGraph.images` against `metadataBase`, but nothing resolves one inside
+    // a JSON-LD blob — a consumer reading `/thumbnail.png` has no base to join
+    // it to, so the image claim is simply unusable.
+    image: `${siteURL}${siteThumbnail}`,
     jobTitle: currentJobTitle,
     description: jsonLdDescription,
     knowsAbout: jsonLdKnowsAbout,

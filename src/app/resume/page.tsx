@@ -18,7 +18,14 @@ import ResumeContactHeader from '@/components/resume/resume-contact-header';
 import ResumeSection from '@/components/resume/resume-section';
 import SkillsTable from '@/components/resume/skills-table';
 import VariantSwitcher from '@/components/resume/variant-switcher';
-import { authorName, careerExperience, currentWorkplace, siteURL, user } from '@/lib/metadata';
+import {
+    authorName,
+    careerExperience,
+    currentJobTitle,
+    currentWorkplace,
+    siteURL,
+    user
+} from '@/lib/metadata';
 import type { Metadata } from 'next';
 
 interface PageProps {
@@ -30,9 +37,8 @@ const description = `The full resume of ${authorName}: ${careerExperience}+ year
 // Without these the page inherits the root title and description verbatim,
 // which reads to a search engine as a second copy of the homepage — on the one
 // page that answers "who is this engineer and what have they shipped".
-export async function generateMetadata({ searchParams }: PageProps): Promise<Metadata> {
-    const variant = resolveResumeVariant((await searchParams).variant);
-    const title = `${authorName} — ${resumeVariants[variant].role} Resume`;
+export async function generateMetadata(): Promise<Metadata> {
+    const title = `${authorName} — ${currentJobTitle} Resume`;
 
     return {
         // `absolute`: the root template would append "| Kamruzzaman" to a title
