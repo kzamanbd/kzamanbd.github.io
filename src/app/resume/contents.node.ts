@@ -111,9 +111,9 @@ export const experience: ExperienceEntry[] = [
 ];
 
 /**
- * Shipped work a reader can open. Kept to four so the section stays one block
- * on the printed page, and ordered Node/TypeScript-heaviest first — this cut's
- * reader is looking for JavaScript that runs on a server.
+ * Shipped work a reader can open. Kept short enough that the section stays one
+ * block on the printed page, and ordered Node/TypeScript-heaviest first — this
+ * cut's reader is looking for JavaScript that runs on a server.
  */
 export const projects: ResumeProject[] = [
     {
@@ -129,13 +129,6 @@ export const projects: ResumeProject[] = [
             'Real-time chat and video platform in a Turborepo monorepo — a Socket.IO server handling messaging, presence and WebRTC signalling for one-to-one and group calls, behind JWT auth, with the React client and shared packages beside it.',
         tech: ['Node.js', 'Socket.IO', 'WebRTC', 'JWT', 'React 19', 'RTK Query', 'Turborepo'],
         url: 'https://chat.kzaman.com'
-    },
-    {
-        name: 'TypeOn',
-        description:
-            'Typing practice platform with per-keystroke feedback and speed, accuracy and progress tracked across sessions.',
-        tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
-        url: 'https://typeon.kzaman.com'
     },
     {
         name: 'laravel/vs-code-extension #273',

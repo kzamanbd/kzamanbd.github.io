@@ -115,15 +115,6 @@ export const projects: Project[] = [
         repoURL: 'https://github.com/kzamanbd/smriti-ai'
     },
     {
-        name: 'TypeOn',
-        category: 'Web App',
-        description:
-            'A typing practice platform with real-time per-keystroke feedback, accuracy and speed history, and progress tracking across sessions.',
-        tech: ['TypeScript', 'Next.js', 'Tailwind CSS'],
-        repoURL: 'https://github.com/kzamanbd/typeon',
-        links: [{ url: 'https://typeon.kzaman.com', label: 'Live app' }]
-    },
-    {
         name: 'Task Queue',
         category: 'Backend System',
         description:

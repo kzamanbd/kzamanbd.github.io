@@ -104,8 +104,8 @@ export const experience: ExperienceEntry[] = [
 ];
 
 /**
- * Shipped work a reader can open. Kept to four so the section stays one block
- * on the printed page, and ordered frontend-heaviest first.
+ * Shipped work a reader can open. Kept short enough that the section stays one
+ * block on the printed page, and ordered frontend-heaviest first.
  */
 export const projects: ResumeProject[] = [
     {
@@ -114,13 +114,6 @@ export const projects: ResumeProject[] = [
             'Real-time chat and video platform structured as a Turborepo monorepo — app, shared UI and config as separate packages. Messaging over Socket.IO, one-to-one and group calls over WebRTC, behind JWT auth.',
         tech: ['React 19', 'Redux Toolkit', 'RTK Query', 'Socket.IO', 'WebRTC', 'Turborepo'],
         url: 'https://chat.kzaman.com'
-    },
-    {
-        name: 'TypeOn',
-        description:
-            'Typing practice platform with per-keystroke feedback and speed, accuracy and progress tracked across sessions.',
-        tech: ['Next.js', 'TypeScript', 'Tailwind CSS'],
-        url: 'https://typeon.kzaman.com'
     },
     {
         name: 'Browser Terminal',
