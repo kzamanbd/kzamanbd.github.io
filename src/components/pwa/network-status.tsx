@@ -29,7 +29,7 @@ export default function NetworkStatus() {
         let retryTimer: ReturnType<typeof setTimeout> | undefined;
 
         const probe = async () => {
-            let reachable = false;
+            let reachable: boolean;
             try {
                 const response = await fetch(`/version.json?ts=${Date.now()}`, {
                     cache: 'no-store'

@@ -43,9 +43,17 @@ export default [
         plugins: {
             'react-hooks': pluginReactHooks
         },
-        settings: { react: { version: 'detect' } },
+        // Pinned rather than 'detect': eslint-plugin-react 7.x's detection calls
+        // `context.getFilename()`, which ESLint 10 removed.
+        settings: { react: { version: '19.3' } },
         rules: {
             ...pluginReactHooks.configs.recommended.rules,
+            // React Compiler lints that eslint-plugin-react-hooks 7 added to
+            // `recommended`. The app does not run the compiler, and the flagged
+            // hooks (mount flags, effect-driven resets, ref reads) are deliberate.
+            'react-hooks/refs': 'off',
+            'react-hooks/purity': 'off',
+            'react-hooks/set-state-in-effect': 'off',
             // Not needed with the modern JSX transform.
             'react/react-in-jsx-scope': 'off',
             '@typescript-eslint/no-explicit-any': 'off'
