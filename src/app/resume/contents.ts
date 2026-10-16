@@ -17,7 +17,7 @@ import { careerExperience } from '@/lib/metadata';
  * at a frontend role is one import line in `page.tsx` plus its title.
  */
 
-export const professionalSummary = `Backend engineer with ${careerExperience}+ years designing and operating PHP/Laravel and Node.js services behind high-traffic products — REST API design, data modelling, caching, queue-backed workflows and the deployment around them. Track record on multi-vendor marketplace, SaaS licensing and enterprise ERP systems: payment gateway integrations, subscription and booking domains, license and update delivery, telemetry ingest from installed WordPress sites, and the query, index and cache work that keeps them fast under concurrent load. Comfortable owning a feature through to production and support, with enough React and Next.js depth to design an API its consumers can actually use.`;
+export const professionalSummary = `Backend engineer with ${careerExperience}+ years designing and operating PHP/Laravel and Node.js services behind high-traffic products — REST API design, data modelling, caching, queue-backed workflows and the deployment around them. Track record building, delivering and maintaining SaaS products (Appsero, weMail) alongside multi-vendor marketplace and enterprise ERP systems: payment gateway integrations, subscription and booking domains, license and update delivery, telemetry ingest from installed WordPress sites, and the query, index and cache work that keeps them fast under concurrent load. Comfortable owning a feature through to production and support, with enough React and Next.js depth to design an API its consumers can actually use.`;
 
 export const skillRows: SkillRow[] = [
     {
@@ -70,11 +70,11 @@ export const experience: ExperienceEntry[] = [
         location: 'Mirpur DOHS 1216, Dhaka, Bangladesh',
         bullets: [
             'Architect backend modules for subscriptions, licensing, payments, booking and vendor management, owning the data model and the versioned REST APIs above it.',
-            'Own a product telemetry pipeline: ingest from installed WordPress sites, the schema it lands in, and the aggregation behind install, version-spread and deactivation reporting.',
-            'Design license management and update delivery, plus a public PHP client SDK kept backward compatible across every version already in the wild.',
-            'Build email marketing features across backend and frontend — campaigns, automation workflows, subscriber lists and segmentation, an email builder, and delivery through Amazon SES and SendGrid.',
+            'Own the telemetry pipeline of Appsero, a SaaS analytics and licensing platform for WordPress plugins: ingest from installed sites, the schema it lands in, and the aggregation behind install, version-spread and deactivation reporting.',
+            'Design Appsero license management and update delivery, plus a public PHP client SDK kept backward compatible across every version already in the wild.',
+            'Build weMail, a SaaS email marketing platform, across backend and frontend — campaigns, automation workflows, subscriber lists and segmentation, an email builder, and delivery through Amazon SES and SendGrid.',
             'Cut response times and infrastructure cost under concurrent load through indexing, caching and N+1 elimination.',
-            'Resolve production incidents across the stack, and ship the React/TypeScript dashboard screens those APIs serve.',
+            'Deliver and maintain both SaaS products in production — release support and incident resolution across the stack — and ship the React/TypeScript dashboard screens those APIs serve.',
             'Guard critical flows with PHPUnit, Jest and Playwright in CI; review pull requests and mentor junior developers.'
         ]
     },

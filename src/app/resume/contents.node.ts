@@ -19,7 +19,7 @@ import { careerExperience } from '@/lib/metadata';
  * JavaScript depth and stops at the first PHP-shaped headline.
  */
 
-export const professionalSummary = `Full-stack JavaScript/TypeScript engineer with ${careerExperience}+ years shipping production React and Next.js applications and the Node.js and REST services beneath them — API design and versioning, data modelling, caching, queue-backed workflows and the deployment around them. Track record on high-traffic multi-vendor marketplace products and data-dense SaaS analytics dashboards: payment gateway integrations, subscription and licensing domains, telemetry ingest and aggregation, real-time features over WebSockets and WebRTC, and the query, index and cache work that keeps them fast under concurrent load. Comfortable owning a feature from requirement analysis through to production and support, with the same types describing the API and the client that calls it.`;
+export const professionalSummary = `Full-stack JavaScript/TypeScript engineer with ${careerExperience}+ years shipping production React and Next.js applications and the Node.js and REST services beneath them — API design and versioning, data modelling, caching, queue-backed workflows and the deployment around them. Track record building, delivering and maintaining SaaS products (Appsero, weMail) and high-traffic multi-vendor marketplace products: payment gateway integrations, subscription and licensing domains, telemetry ingest and aggregation, real-time features over WebSockets and WebRTC, and the query, index and cache work that keeps them fast under concurrent load. Comfortable owning a feature from requirement analysis through to production and support, with the same types describing the API and the client that calls it.`;
 
 export const skillRows: SkillRow[] = [
     {
@@ -73,9 +73,9 @@ export const experience: ExperienceEntry[] = [
         bullets: [
             'Own features end-to-end — the React/TypeScript screens, the versioned REST APIs beneath them, the data model, deployment and support.',
             'Design revenue-critical modules (subscriptions, licensing, payments, booking, vendor management), owning both the API contract and the client state that consumes it.',
-            'Build a data-dense analytics dashboard in React and TypeScript — usage and version-spread charts, filterable tables over site telemetry, product, plan and license management views.',
+            'Build the data-dense analytics dashboard of Appsero, a SaaS analytics and licensing platform, in React and TypeScript — usage and version-spread charts, filterable tables over site telemetry, product, plan and license management views.',
             'Own the telemetry pipeline behind it: ingest from installed sites, the schema it lands in, and the aggregation behind install, version-spread and deactivation reporting.',
-            'Build email marketing features across the stack — campaign and automation workflows, subscriber lists and segmentation, a React email builder, and the sending layer on Amazon SES and SendGrid.',
+            'Build weMail, a SaaS email marketing platform, across the stack — campaign and automation workflows, subscriber lists and segmentation, a React email builder, and the sending layer on Amazon SES and SendGrid.',
             'Cut response times and infrastructure cost under concurrent load through indexing, caching and N+1 elimination, and profile the browser side for re-renders, bundle splitting and Core Web Vitals.',
             'Guard critical flows with Jest, Playwright and PHPUnit in CI; review pull requests and mentor junior developers.'
         ]

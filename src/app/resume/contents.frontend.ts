@@ -16,7 +16,7 @@ import { careerExperience } from '@/lib/metadata';
  * Laravel and infrastructure work is kept but demoted to supporting evidence.
  */
 
-export const professionalSummary = `Frontend engineer with ${careerExperience}+ years building production React, Next.js and TypeScript applications, from component architecture and design systems through API integration, state management and performance work. Comfortable owning a feature from requirement analysis to deployment, and the API contract underneath it. Track record on high-traffic multi-vendor marketplace products and data-dense SaaS analytics dashboards, with a focus on Core Web Vitals, reusable UI systems and code that stays maintainable after the first release.`;
+export const professionalSummary = `Frontend engineer with ${careerExperience}+ years building production React, Next.js and TypeScript applications, from component architecture and design systems through API integration, state management and performance work. Comfortable owning a feature from requirement analysis to deployment, and the API contract underneath it. Track record building, delivering and maintaining SaaS products (Appsero, weMail) and high-traffic multi-vendor marketplace products, with a focus on Core Web Vitals, reusable UI systems and code that stays maintainable after the first release.`;
 
 export const skillRows: SkillRow[] = [
     {
@@ -66,8 +66,8 @@ export const experience: ExperienceEntry[] = [
         bullets: [
             'Own frontend features end-to-end — requirement analysis, React/TypeScript interfaces, the APIs behind them, deployment and support.',
             'Design the frontend architecture for revenue-critical modules (subscriptions, licensing, payments, booking, vendor management), owning the state boundaries and the API contracts beneath them.',
-            'Build a data-dense analytics dashboard — usage and version-spread charts, filterable tables over site telemetry, product, plan and license management views.',
-            'Build email marketing interfaces in React — an email builder, campaign and automation workflow editors, subscriber list and segmentation views — over APIs that send through Amazon SES and SendGrid.',
+            'Build the data-dense analytics dashboard of Appsero, a SaaS analytics and licensing platform — usage and version-spread charts, filterable tables over site telemetry, product, plan and license management views.',
+            'Build the React interfaces of weMail, a SaaS email marketing platform — an email builder, campaign and automation workflow editors, subscriber list and segmentation views — over APIs that send through Amazon SES and SendGrid.',
             'Extract shared components out of duplicated screens into a reusable layer, so one treatment ships across products instead of being rebuilt per feature.',
             'Profile and optimize the browser side — re-renders, bundle splitting, asset delivery, Core Web Vitals — and resolve production issues under live user load.',
             'Guard critical flows with Jest and Playwright in CI; review pull requests and mentor junior developers on component structure, typing and accessibility.'
