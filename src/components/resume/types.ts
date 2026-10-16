@@ -13,7 +13,6 @@ export interface ExperienceEntry {
     role: string;
     /** One employer, or an employer plus the group it belongs to. */
     companies: ResumeCompany[];
-    logo: string;
     period: string;
     location: string;
     bullets: string[];

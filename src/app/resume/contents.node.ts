@@ -68,14 +68,14 @@ export const experience: ExperienceEntry[] = [
     {
         role: 'Software Engineer L2',
         companies: [{ name: 'weDevs', url: 'https://wedevs.com' }],
-        logo: '/images/wedevs-logo.svg',
         period: 'November 2024 - Present',
         location: 'Mirpur DOHS 1216, Dhaka, Bangladesh',
         bullets: [
-            'Own features end-to-end across Dokan and Appsero — the React/TypeScript screens, the versioned REST APIs beneath them, the data model, deployment and support.',
+            'Own features end-to-end — the React/TypeScript screens, the versioned REST APIs beneath them, the data model, deployment and support.',
             'Design revenue-critical modules (subscriptions, licensing, payments, booking, vendor management), owning both the API contract and the client state that consumes it.',
-            "Build Appsero's dashboard as a data-dense analytics surface in React and TypeScript — usage and version-spread charts, filterable tables over site telemetry, product, plan and license management views.",
-            "Own Appsero's telemetry pipeline: ingest from installed sites, the schema it lands in, and the aggregation behind install, version-spread and deactivation reporting.",
+            'Build a data-dense analytics dashboard in React and TypeScript — usage and version-spread charts, filterable tables over site telemetry, product, plan and license management views.',
+            'Own the telemetry pipeline behind it: ingest from installed sites, the schema it lands in, and the aggregation behind install, version-spread and deactivation reporting.',
+            'Build email marketing features across the stack — campaign and automation workflows, subscriber lists and segmentation, a React email builder, and the sending layer on Amazon SES and SendGrid.',
             'Cut response times and infrastructure cost under concurrent load through indexing, caching and N+1 elimination, and profile the browser side for re-renders, bundle splitting and Core Web Vitals.',
             'Guard critical flows with Jest, Playwright and PHPUnit in CI; review pull requests and mentor junior developers.'
         ]
@@ -86,7 +86,6 @@ export const experience: ExperienceEntry[] = [
             { name: 'MononSoft Ltd.', url: 'https://mononsoft.org' },
             { name: '(JMI Group)', url: 'https://jmigroup-bd.com' }
         ],
-        logo: '/images/mononsoft-logo.svg',
         period: 'July 2021 - October 2024',
         location: '50/B New Eskaton Road, Dhaka 1000',
         bullets: [
@@ -99,7 +98,6 @@ export const experience: ExperienceEntry[] = [
     {
         role: 'Jr. Software Engineer',
         companies: [{ name: 'MaxSOP', url: 'https://maxsop.com/' }],
-        logo: '/images/maxsop-logo.svg',
         period: 'May 2020 - June 2021',
         location: '27/2 Ram Babu Road, Mymensingh-2200',
         bullets: [

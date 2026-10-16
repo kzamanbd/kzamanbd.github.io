@@ -118,7 +118,7 @@ const Resume = async ({ searchParams }: PageProps) => {
                     </ResumeSection>
 
                     <ResumeSection title="PROFESSIONAL EXPERIENCE">
-                        <div className="timeline-container">
+                        <div className="flex flex-col gap-4">
                             {experience.map((entry) => (
                                 <ExperienceItem key={entry.role + entry.period} entry={entry} />
                             ))}

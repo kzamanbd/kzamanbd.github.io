@@ -61,13 +61,13 @@ export const experience: ExperienceEntry[] = [
     {
         role: 'Software Engineer L2',
         companies: [{ name: 'weDevs', url: 'https://wedevs.com' }],
-        logo: '/images/wedevs-logo.svg',
         period: 'November 2024 - Present',
         location: 'Mirpur DOHS 1216, Dhaka, Bangladesh',
         bullets: [
-            'Own frontend features end-to-end across Dokan and Appsero — requirement analysis, React/TypeScript interfaces, the APIs behind them, deployment and support.',
+            'Own frontend features end-to-end — requirement analysis, React/TypeScript interfaces, the APIs behind them, deployment and support.',
             'Design the frontend architecture for revenue-critical modules (subscriptions, licensing, payments, booking, vendor management), owning the state boundaries and the API contracts beneath them.',
-            "Build Appsero's dashboard as a data-dense analytics surface — usage and version-spread charts, filterable tables over site telemetry, product, plan and license management views.",
+            'Build a data-dense analytics dashboard — usage and version-spread charts, filterable tables over site telemetry, product, plan and license management views.',
+            'Build email marketing interfaces in React — an email builder, campaign and automation workflow editors, subscriber list and segmentation views — over APIs that send through Amazon SES and SendGrid.',
             'Extract shared components out of duplicated screens into a reusable layer, so one treatment ships across products instead of being rebuilt per feature.',
             'Profile and optimize the browser side — re-renders, bundle splitting, asset delivery, Core Web Vitals — and resolve production issues under live user load.',
             'Guard critical flows with Jest and Playwright in CI; review pull requests and mentor junior developers on component structure, typing and accessibility.'
@@ -79,7 +79,6 @@ export const experience: ExperienceEntry[] = [
             { name: 'MononSoft Ltd.', url: 'https://mononsoft.org' },
             { name: '(JMI Group)', url: 'https://jmigroup-bd.com' }
         ],
-        logo: '/images/mononsoft-logo.svg',
         period: 'July 2021 - October 2024',
         location: '50/B New Eskaton Road, Dhaka 1000',
         bullets: [
@@ -92,7 +91,6 @@ export const experience: ExperienceEntry[] = [
     {
         role: 'Jr. Software Engineer',
         companies: [{ name: 'MaxSOP', url: 'https://maxsop.com/' }],
-        logo: '/images/maxsop-logo.svg',
         period: 'May 2020 - June 2021',
         location: '27/2 Ram Babu Road, Mymensingh-2200',
         bullets: [
