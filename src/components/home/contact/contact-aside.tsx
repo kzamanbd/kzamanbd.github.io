@@ -7,7 +7,7 @@ import {
     directEmailLead
 } from '@/components/home/contact/contents';
 import StatusDot from '@/components/home/contact/status-dot';
-import { user } from '@/lib/metadata';
+import { user } from '@/services/metadata';
 
 /**
  * The left rail of the contact panel: a short, human pitch plus a live status

@@ -1,5 +1,5 @@
-import { createResendProvider } from '@/lib/contact/providers/resend';
-import type { ContactProvider } from '@/lib/contact/types';
+import { createResendProvider } from '@/services/contact/providers/resend';
+import type { ContactProvider } from '@/services/contact/types';
 
 /** The route that owns the send; the Resend API key lives only behind it. */
 export const contactEndpoint = '/api/contact';
@@ -13,4 +13,8 @@ export const contactProvider: ContactProvider = createResendProvider({
     endpoint: contactEndpoint
 });
 
-export type { ContactMessage, ContactProvider, ContactSubmitResult } from '@/lib/contact/types';
+export type {
+    ContactMessage,
+    ContactProvider,
+    ContactSubmitResult
+} from '@/services/contact/types';

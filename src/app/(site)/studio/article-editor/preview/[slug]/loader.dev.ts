@@ -1,5 +1,5 @@
-import type { Article } from '@/lib/posts';
-import { renderMarkdown, slugifyHeading } from '@/lib/markdown';
+import type { Article } from '@/services/posts';
+import { renderMarkdown, slugifyHeading } from '@/services/markdown';
 import { coverGradientForSlug } from '@/utils/article-cover';
 import { fileSlug, parseArticleFile } from '@/utils/article-file';
 import fs from 'node:fs';

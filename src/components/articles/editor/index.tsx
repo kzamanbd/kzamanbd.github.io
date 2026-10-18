@@ -16,7 +16,7 @@ import type {
 } from '@/components/articles/editor/types';
 import WritingGuide from '@/components/articles/editor/writing-guide';
 import { useDisclosure } from '@/components/layout/hooks/use-disclosure';
-import { slugifyHeading } from '@/lib/markdown';
+import { slugifyHeading } from '@/services/markdown';
 import { fileSlug } from '@/utils/article-file';
 import { cn } from '@/utils/cn';
 import { useState } from 'react';

@@ -3,7 +3,7 @@
 import TocList from '@/components/articles/toc-list';
 import { useScrollActiveIntoView } from '@/components/articles/hooks/use-scroll-active-into-view';
 import { useScrollSpy } from '@/components/layout/hooks/use-scroll-spy';
-import type { TocItem } from '@/lib/markdown';
+import type { TocItem } from '@/services/markdown';
 import { useMemo, useRef } from 'react';
 
 /**

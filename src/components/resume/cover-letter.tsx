@@ -1,4 +1,4 @@
-import { careerExperience, currentWorkplace } from '@/lib/metadata';
+import { careerExperience, currentWorkplace } from '@/services/metadata';
 
 /**
  * The optional second sheet, printed alongside the resume from the print menu.

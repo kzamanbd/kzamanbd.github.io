@@ -23,10 +23,10 @@ import {
     siteThumbnail,
     siteURL,
     user
-} from '@/lib/metadata';
+} from '@/services/metadata';
 
 /**
- * Ownership verification tags, built from the tokens in `@/lib/metadata`. An
+ * Ownership verification tags, built from the tokens in `@/services/metadata`. An
  * unset token contributes nothing, so the block disappears rather than
  * rendering `content=""`.
  */

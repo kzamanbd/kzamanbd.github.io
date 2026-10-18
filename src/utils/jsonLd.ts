@@ -14,7 +14,7 @@ import {
     siteThumbnail,
     siteURL,
     user
-} from '@/lib/metadata';
+} from '@/services/metadata';
 
 /**
  * Stable node identifiers. Every other piece of structured data on the site —

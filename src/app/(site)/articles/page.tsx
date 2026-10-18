@@ -4,8 +4,8 @@ import TagFilter from '@/components/articles/tag-filter';
 import SectionHeading from '@/components/common/section-heading';
 import SpotlightList from '@/components/common/spotlight-list';
 import Breadcrumb from '@/components/layout/breadcrumb';
-import { siteURL } from '@/lib/metadata';
-import { ARTICLES_PER_PAGE, getAllArticles, getAllTags } from '@/lib/posts';
+import { siteURL } from '@/services/metadata';
+import { ARTICLES_PER_PAGE, getAllArticles, getAllTags } from '@/services/posts';
 import type { Metadata } from 'next';
 import Link from 'next/link';
 

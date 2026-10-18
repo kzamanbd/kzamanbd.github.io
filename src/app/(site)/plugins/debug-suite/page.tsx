@@ -12,8 +12,8 @@ import {
     Wrench
 } from 'lucide-react';
 import { Github } from '@/components/icons';
-import { siteURL } from '@/lib/metadata';
-import { getWordPressPluginInfo } from '@/lib/wordpress-plugin';
+import { siteURL } from '@/services/metadata';
+import { getWordPressPluginInfo } from '@/services/wordpress-plugin';
 import { personId } from '@/utils/jsonLd';
 import type { Metadata } from 'next';
 import Link from 'next/link';

@@ -1,4 +1,4 @@
-import type { ArticleSeries } from '@/lib/article-schema';
+import type { ArticleSeries } from '@/services/article-schema';
 import { cn } from '@/utils/cn';
 
 /**

@@ -1,4 +1,4 @@
-import { getFeedData, renderRssFeed } from '@/lib/feed';
+import { getFeedData, renderRssFeed } from '@/services/feed';
 
 // The corpus is files on disk, so the feed only changes on deploy.
 export const dynamic = 'force-static';

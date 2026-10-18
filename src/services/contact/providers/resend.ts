@@ -1,4 +1,8 @@
-import type { ContactMessage, ContactProvider, ContactSubmitResult } from '@/lib/contact/types';
+import type {
+    ContactMessage,
+    ContactProvider,
+    ContactSubmitResult
+} from '@/services/contact/types';
 
 interface ResendProviderConfig {
     /** The route that performs the send. Same origin, so no CORS involved. */

@@ -8,7 +8,7 @@ import {
     X,
     YouTube
 } from '@/components/icons';
-import { user } from '@/lib/metadata';
+import { user } from '@/services/metadata';
 
 /**
  * Every profile worth linking, in the order they earn attention: the code first,

@@ -1,6 +1,6 @@
 import DifficultyBadge from '@/components/articles/difficulty-badge';
 import SeriesBadge from '@/components/articles/series-badge';
-import type { ArticleSummary } from '@/lib/posts';
+import type { ArticleSummary } from '@/services/posts';
 import { cn } from '@/utils/cn';
 import { formatArticleDate } from '@/utils/format-date';
 import type { ReactNode } from 'react';

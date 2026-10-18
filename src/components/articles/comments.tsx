@@ -1,6 +1,6 @@
 'use client';
 
-import { giscus, isGiscusConfigured } from '@/lib/metadata';
+import { giscus, isGiscusConfigured } from '@/services/metadata';
 import { useTheme } from 'next-themes';
 import { useEffect, useRef } from 'react';
 

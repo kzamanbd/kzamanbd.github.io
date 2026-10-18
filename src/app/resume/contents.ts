@@ -4,7 +4,7 @@ import type {
     ResumeProject,
     SkillRow
 } from '@/components/resume/types';
-import { careerExperience } from '@/lib/metadata';
+import { careerExperience } from '@/services/metadata';
 
 /**
  * The resume as /resume serves it: the backend-focused cut.

@@ -1,4 +1,4 @@
-import type { ArticleFrontmatter } from '@/lib/article-schema';
+import type { ArticleFrontmatter } from '@/services/article-schema';
 import { toDateString } from '@/utils/article-date';
 import matter from 'gray-matter';
 

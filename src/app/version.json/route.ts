@@ -1,4 +1,4 @@
-import { getBuiltAt } from '@/lib/version';
+import { getBuiltAt } from '@/services/version';
 
 // The client polls this to learn when a newer build (a strictly later builtAt)
 // has been deployed. Static: the value is fixed for the lifetime of a build.

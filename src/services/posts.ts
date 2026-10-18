@@ -1,13 +1,16 @@
-import type { ArticleDifficulty, ArticleSeries as SeriesFrontmatter } from '@/lib/article-schema';
-import { renderMarkdown, type TocItem } from '@/lib/markdown';
+import type {
+    ArticleDifficulty,
+    ArticleSeries as SeriesFrontmatter
+} from '@/services/article-schema';
+import { renderMarkdown, type TocItem } from '@/services/markdown';
 import { coverGradientForSlug } from '@/utils/article-cover';
 import { parseArticleDate, toDateString } from '@/utils/article-date';
 import matter from 'gray-matter';
 import fs from 'node:fs';
 import path from 'node:path';
 
-export type { ArticleDifficulty } from '@/lib/article-schema';
-export type { TocItem } from '@/lib/markdown';
+export type { ArticleDifficulty } from '@/services/article-schema';
+export type { TocItem } from '@/services/markdown';
 
 const ARTICLES_DIRECTORY = path.join(process.cwd(), 'content/articles');
 

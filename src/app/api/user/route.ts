@@ -1,4 +1,4 @@
-import { user } from '@/lib/metadata';
+import { user } from '@/services/metadata';
 import { NextResponse } from 'next/server';
 
 export async function GET() {

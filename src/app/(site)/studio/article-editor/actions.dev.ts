@@ -5,7 +5,7 @@ import type {
     ArticleListItem,
     EditorSuggestions
 } from '@/components/articles/editor/types';
-import { slugifyHeading } from '@/lib/markdown';
+import { slugifyHeading } from '@/services/markdown';
 import {
     fileSlug,
     nextNumberPrefix,

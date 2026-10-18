@@ -1,4 +1,4 @@
-import { profileImage, user } from '@/lib/metadata';
+import { profileImage, user } from '@/services/metadata';
 import Image from 'next/image';
 
 const socialLinks = Object.entries({

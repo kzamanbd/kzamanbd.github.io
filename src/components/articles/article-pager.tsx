@@ -1,7 +1,7 @@
 import SpotlightBorder from '@/components/common/spotlight-border';
 import SpotlightGroup from '@/components/common/spotlight-group';
 import { spotlightSurfaceProps } from '@/components/common/spotlight-surface';
-import type { ArticleSummary } from '@/lib/posts';
+import type { ArticleSummary } from '@/services/posts';
 import { cn } from '@/utils/cn';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import Link from 'next/link';

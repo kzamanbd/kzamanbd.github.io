@@ -1,4 +1,4 @@
-import { getAllArticles } from '@/lib/posts';
+import { getAllArticles } from '@/services/posts';
 import { parseArticleDate } from '@/utils/article-date';
 import type { MetadataRoute } from 'next';
 

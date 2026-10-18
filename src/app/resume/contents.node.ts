@@ -4,7 +4,7 @@ import type {
     ResumeProject,
     SkillRow
 } from '@/components/resume/types';
-import { careerExperience } from '@/lib/metadata';
+import { careerExperience } from '@/services/metadata';
 
 /**
  * The JavaScript/TypeScript full-stack cut of the resume.

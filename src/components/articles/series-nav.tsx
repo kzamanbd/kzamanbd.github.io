@@ -1,4 +1,4 @@
-import type { ArticleSeries } from '@/lib/posts';
+import type { ArticleSeries } from '@/services/posts';
 import { cn } from '@/utils/cn';
 import Link from 'next/link';
 

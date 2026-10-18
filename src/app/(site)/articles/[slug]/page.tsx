@@ -23,8 +23,8 @@ import {
     getArticle,
     getRelatedArticles,
     getSeriesForArticle
-} from '@/lib/posts';
-import { siteURL } from '@/lib/metadata';
+} from '@/services/posts';
+import { siteURL } from '@/services/metadata';
 import { buildArticleJsonLd, buildBreadcrumbJsonLd } from '@/utils/article-json-ld';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';

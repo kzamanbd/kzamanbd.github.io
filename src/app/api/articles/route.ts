@@ -1,4 +1,4 @@
-import { getAllArticles } from '@/lib/posts';
+import { getAllArticles } from '@/services/posts';
 import { NextResponse } from 'next/server';
 
 /**

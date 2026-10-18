@@ -1,5 +1,5 @@
-import { contactFromAddress, contactToAddress, resendApiKey } from '@/lib/contact/config';
-import type { ContactMessage } from '@/lib/contact/types';
+import { contactFromAddress, contactToAddress, resendApiKey } from '@/services/contact/config';
+import type { ContactMessage } from '@/services/contact/types';
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
 

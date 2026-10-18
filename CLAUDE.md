@@ -33,7 +33,7 @@ is static.
 Secrets vs public config: `NEXT_PUBLIC_*` values reach the browser by design (the
 Firebase client config is public; Firestore rules govern access). `RESEND_API_KEY`
 is an account secret and is read **only** by `src/app/api/contact/route.ts` through
-`src/lib/contact/config.ts`, which is server-only and must never be imported from a
+`src/services/contact/config.ts`, which is server-only and must never be imported from a
 client component.
 
 ## Architecture
@@ -51,6 +51,11 @@ in the component folder so both sides can import them without crossing the bound
 
 Files are kebab-case; imports always use the `@/` alias, never relative paths.
 
+`src/services/` holds modules that do I/O, keep state or own a subsystem (posts,
+markdown, feeds, contact delivery, site metadata). `src/utils/` holds small pure
+helpers. Some services are server-only (`posts.ts` reads the filesystem), so check
+before importing one from a client component.
+
 The root layout owns only what every route needs — `<html>`/`<body>`, the theme
 providers, the page wash, analytics. The navbar and footer live one level down in
 `src/app/(site)/layout.tsx`, so a route opts out of the site chrome by sitting
@@ -64,17 +69,17 @@ themselves.
 Markdown in `content/articles/NN-<slug>.md` (the `NN` ordering prefix is stripped
 for the URL) flows through:
 
-- `src/lib/article-schema.ts` — the frontmatter contract. Deliberately node-free
+- `src/services/article-schema.ts` — the frontmatter contract. Deliberately node-free
   (no `fs`/`path`) so client components can import it.
-- `src/lib/posts.ts` — reads and caches the files, excludes `draft: true`, derives
+- `src/services/posts.ts` — reads and caches the files, excludes `draft: true`, derives
   reading time, series and related posts. It **throws on a missing or malformed
   `date:`**, naming the file, because an invalid date would otherwise surface as
   an `Invalid Date` deep inside feed or sitemap serialisation.
-- `src/lib/markdown.ts` — marked + shiki, with custom inline extensions
+- `src/services/markdown.ts` — marked + shiki, with custom inline extensions
   (`==mark==`, `~sub~`, `^sup^`), alerts, footnotes and emoji. It also stamps
   `spotlightSurfaceAttribute` onto code blocks and tables so the cursor spotlight
   works inside article bodies.
-- `src/lib/feed.ts` feeds `/feed.xml`, `/atom.xml`, `/feed.json`.
+- `src/services/feed.ts` feeds `/feed.xml`, `/atom.xml`, `/feed.json`.
 
 Cover art is **not** stored: `src/utils/article-cover.ts` hashes the slug into a
 deterministic gradient pair, which the card, the page wash and the OG image
@@ -125,8 +130,8 @@ tiles, facet cards, the contact panel) each carry a local module.
 
 ### Contact form
 
-`src/lib/contact/` is a vendor-agnostic `ContactProvider` contract. The active
-provider is one line in `src/lib/contact/index.ts`; the form, its hook and its UI
+`src/services/contact/` is a vendor-agnostic `ContactProvider` contract. The active
+provider is one line in `src/services/contact/index.ts`; the form, its hook and its UI
 depend only on the contract, so swapping delivery never touches them. The current
 provider POSTs to `/api/contact`, which is where the Resend SDK actually runs.
 
@@ -140,7 +145,7 @@ Resend account's own address; sending anywhere else needs a verified domain and
 ### PWA and update detection
 
 `next.config.ts` bakes a fresh ISO timestamp into `NEXT_PUBLIC_BUILD_TIME` each
-build; `src/lib/version.ts` and the `/version.json` route expose it. A running tab
+build; `src/services/version.ts` and the `/version.json` route expose it. A running tab
 compares its baked value against the deployed one to detect a newer deploy — git
 plays no part, so it behaves the same locally and in CI. The service worker
 (`src/app/sw.ts`) registers manually rather than automatically, so the update toast

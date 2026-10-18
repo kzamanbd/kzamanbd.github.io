@@ -1,5 +1,5 @@
-import type { Article } from '@/lib/posts';
-import { authorName, siteThumbnail, siteURL } from '@/lib/metadata';
+import type { Article } from '@/services/posts';
+import { authorName, siteThumbnail, siteURL } from '@/services/metadata';
 import type { BlogPosting, BreadcrumbList, WithContext } from 'schema-dts';
 
 /** Approximate word count from rendered HTML (tags stripped). */

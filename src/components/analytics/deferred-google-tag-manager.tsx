@@ -1,6 +1,6 @@
 'use client';
 
-import { googleTagManagerId } from '@/lib/metadata';
+import { googleTagManagerId } from '@/services/metadata';
 import { GoogleTagManager } from '@next/third-parties/google';
 import { useEffect, useState } from 'react';
 

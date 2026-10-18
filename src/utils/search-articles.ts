@@ -1,4 +1,4 @@
-import type { ArticleSummary } from '@/lib/posts';
+import type { ArticleSummary } from '@/services/posts';
 
 export interface ArticleSearchResult {
     article: ArticleSummary;

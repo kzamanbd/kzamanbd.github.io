@@ -13,7 +13,7 @@ interface WritingGuideProps {
 /**
  * Every body feature the renderer supports, with an insert button for each. It
  * exists so the answer to "does this site do footnotes?" is one click rather
- * than a trip through `src/lib/markdown.ts`.
+ * than a trip through `src/services/markdown.ts`.
  */
 export default function WritingGuide({ onClose, onInsert }: WritingGuideProps) {
     useCloseOnEscape(true, onClose);

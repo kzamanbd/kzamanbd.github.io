@@ -1,5 +1,5 @@
 import type { ArticleDraft } from '@/components/articles/editor/types';
-import { DIFFICULTIES } from '@/lib/article-schema';
+import { DIFFICULTIES } from '@/services/article-schema';
 
 export const difficultyOptions = DIFFICULTIES;
 

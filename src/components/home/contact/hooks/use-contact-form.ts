@@ -1,6 +1,6 @@
 import { emptyContactValues } from '@/components/home/contact/contents';
 import type { ContactFormValues, ContactStatus } from '@/components/home/contact/types';
-import { contactProvider } from '@/lib/contact';
+import { contactProvider } from '@/services/contact';
 import { useCallback, useState, type SubmitEvent } from 'react';
 
 /**

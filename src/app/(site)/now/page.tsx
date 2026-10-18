@@ -2,7 +2,7 @@ import { nowMeta, nowQuote, nowSections } from '@/app/(site)/now/contents';
 import CatalogGrid from '@/components/common/catalog-grid';
 import SectionHeading from '@/components/common/section-heading';
 import Breadcrumb from '@/components/layout/breadcrumb';
-import { authorName, siteURL } from '@/lib/metadata';
+import { authorName, siteURL } from '@/services/metadata';
 import type { Metadata } from 'next';
 
 const description = `What ${authorName} is focused on right now: current work, what he is building and learning, and what he is aiming at next.`;

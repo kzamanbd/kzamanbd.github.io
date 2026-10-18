@@ -1,4 +1,4 @@
-import { user } from '@/lib/metadata';
+import { user } from '@/services/metadata';
 
 /**
  * Server-only contact settings. Nothing here is prefixed NEXT_PUBLIC, so none

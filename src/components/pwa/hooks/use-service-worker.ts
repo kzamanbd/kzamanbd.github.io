@@ -1,6 +1,6 @@
 'use client';
 
-import { getBuiltAt } from '@/lib/version';
+import { getBuiltAt } from '@/services/version';
 import { Serwist } from '@serwist/window';
 import { useCallback, useEffect, useRef, useState } from 'react';
 

@@ -2,7 +2,7 @@ import type { ShareTarget } from '@/components/articles/share-menu/types';
 import { Facebook, Linkedin } from '@/components/icons';
 import WhatsApp from '@/components/icons/whatsapp';
 import X from '@/components/icons/x';
-import { user } from '@/lib/metadata';
+import { user } from '@/services/metadata';
 
 const twitterHandle = user.twitter.split('/').pop() ?? '';
 

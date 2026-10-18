@@ -2,7 +2,7 @@
 
 import ArticleCard from '@/components/articles/article-card';
 import SpotlightList from '@/components/common/spotlight-list';
-import type { ArticleSummary } from '@/lib/posts';
+import type { ArticleSummary } from '@/services/posts';
 import { searchArticles } from '@/utils/search-articles';
 import { Search } from 'lucide-react';
 import { useMemo, useState } from 'react';

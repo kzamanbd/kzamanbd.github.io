@@ -1,11 +1,11 @@
 // Feed generation. Assembles the published-article corpus once into a
 // format-neutral model, then serialises it to RSS 2.0, Atom 1.0 and JSON Feed
-// 1.1. Channel and author values come from `@/lib/metadata` (never hardcoded),
+// 1.1. Channel and author values come from `@/services/metadata` (never hardcoded),
 // and every link and image is absolute.
 
-import { getAllArticles, getArticle } from '@/lib/posts';
-import { authorName, description as siteDescription, siteName, siteURL } from '@/lib/metadata';
-import { user } from '@/lib/metadata';
+import { getAllArticles, getArticle } from '@/services/posts';
+import { authorName, description as siteDescription, siteName, siteURL } from '@/services/metadata';
+import { user } from '@/services/metadata';
 import { requireArticleDate } from '@/utils/article-date';
 
 /** One article as a feed entry, with absolute URLs and parsed dates. */

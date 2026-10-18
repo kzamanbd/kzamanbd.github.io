@@ -1,7 +1,7 @@
 import ArticleCard from '@/components/articles/article-card';
 import SectionHeading from '@/components/common/section-heading';
 import SpotlightList from '@/components/common/spotlight-list';
-import { getLatestArticles } from '@/lib/posts';
+import { getLatestArticles } from '@/services/posts';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 

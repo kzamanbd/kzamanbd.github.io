@@ -1,6 +1,6 @@
 'use client';
 
-import type { ArticleSummary } from '@/lib/posts';
+import type { ArticleSummary } from '@/services/posts';
 import { useEffect, useState } from 'react';
 
 // The archive only changes on deploy, so one fetch per page load is enough. The

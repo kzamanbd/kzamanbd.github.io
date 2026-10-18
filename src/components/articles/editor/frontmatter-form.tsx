@@ -6,7 +6,7 @@ import type { EditorSuggestions } from '@/components/articles/editor/types';
 import { fieldControlClassName } from '@/components/ui/field';
 import Input from '@/components/ui/input';
 import Textarea from '@/components/ui/textarea';
-import type { ArticleDifficulty, ArticleFrontmatter } from '@/lib/article-schema';
+import type { ArticleDifficulty, ArticleFrontmatter } from '@/services/article-schema';
 import { cn } from '@/utils/cn';
 
 const labelClassName = 'text-foreground/70 text-xs font-semibold tracking-[0.14em] uppercase';

@@ -1,4 +1,4 @@
-import type { ArticleDifficulty } from '@/lib/posts';
+import type { ArticleDifficulty } from '@/services/posts';
 import { cn } from '@/utils/cn';
 
 // One hue per level, so the badge is readable at a glance before the word is:

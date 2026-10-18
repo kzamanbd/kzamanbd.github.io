@@ -14,7 +14,7 @@ export interface GuideGroup {
  * snippet is exactly what `renderMarkdown` handles, so inserting one and looking
  * at the preview is the fastest way to answer "is this supported?".
  *
- * Keep it in step with `src/lib/markdown.ts`: a feature added there and missing
+ * Keep it in step with `src/services/markdown.ts`: a feature added there and missing
  * here is a feature nobody will ever use.
  */
 export const guideGroups: GuideGroup[] = [

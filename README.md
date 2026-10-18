@@ -6,7 +6,7 @@ short URLs.
 
 Extracted from the `draftscripts` monorepo into a standalone project; the shared
 metadata, social icons, theme provider and class helpers that used to come from
-`@repo/shared` now live under `src/lib` and `src/components`.
+`@repo/shared` now live under `src/services` and `src/components`.
 
 ## Requirements
 

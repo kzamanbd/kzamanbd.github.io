@@ -1,4 +1,4 @@
-import { careerExperience } from '@/lib/metadata';
+import { careerExperience } from '@/services/metadata';
 
 export interface Facet {
     title: string;

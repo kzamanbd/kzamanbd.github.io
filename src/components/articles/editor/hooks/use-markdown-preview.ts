@@ -1,6 +1,6 @@
 'use client';
 
-import { renderMarkdown, type TocItem } from '@/lib/markdown';
+import { renderMarkdown, type TocItem } from '@/services/markdown';
 import { useEffect, useRef, useState } from 'react';
 
 /**

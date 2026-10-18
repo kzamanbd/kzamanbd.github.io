@@ -1,4 +1,4 @@
-import { getAllArticles, getArticle } from '@/lib/posts';
+import { getAllArticles, getArticle } from '@/services/posts';
 import { ImageResponse } from 'next/og';
 
 export const alt = 'Article cover';

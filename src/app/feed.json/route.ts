@@ -1,4 +1,4 @@
-import { getFeedData, renderJsonFeed } from '@/lib/feed';
+import { getFeedData, renderJsonFeed } from '@/services/feed';
 
 export const dynamic = 'force-static';
 

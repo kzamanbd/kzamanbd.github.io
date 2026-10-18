@@ -25,7 +25,7 @@ import {
     currentWorkplace,
     siteURL,
     user
-} from '@/lib/metadata';
+} from '@/services/metadata';
 import type { Metadata } from 'next';
 
 interface PageProps {

@@ -3,7 +3,7 @@ import styles from '@/components/home/hero/hero.module.css';
 import ScrollDownCue from '@/components/home/hero/scroll-down-cue';
 import { heroId } from '@/components/layout/navbar/contents';
 import { lato } from '@/config/hero-font';
-import { user } from '@/lib/metadata';
+import { user } from '@/services/metadata';
 import { cn } from '@/utils/cn';
 
 /**

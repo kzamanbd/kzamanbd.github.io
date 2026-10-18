@@ -1,4 +1,4 @@
-import type { ArticleFrontmatter } from '@/lib/article-schema';
+import type { ArticleFrontmatter } from '@/services/article-schema';
 
 /** A whole article as the editor holds it: structured frontmatter plus body. */
 export interface ArticleDraft {

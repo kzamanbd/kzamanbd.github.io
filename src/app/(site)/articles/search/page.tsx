@@ -1,8 +1,8 @@
 import ArticleSearch from '@/components/articles/article-search';
 import SectionHeading from '@/components/common/section-heading';
 import Breadcrumb from '@/components/layout/breadcrumb';
-import { getAllArticles } from '@/lib/posts';
-import { siteURL } from '@/lib/metadata';
+import { getAllArticles } from '@/services/posts';
+import { siteURL } from '@/services/metadata';
 import type { Metadata } from 'next';
 
 const title = 'Search articles';
