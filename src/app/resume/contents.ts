@@ -9,18 +9,19 @@ import { careerExperience } from '@/services/metadata';
 /**
  * The resume as /resume serves it.
  *
- * PHP/Laravel, API and service design, data modelling and the infrastructure
- * work lead; the React and Next.js work is kept but sits underneath as
- * supporting evidence, so a backend reader is not asked to hunt for the server
- * side beneath a frontend headline.
+ * The summary pitches a software engineer who owns products end to end, not a
+ * backend specialist: the server-side depth (PHP/Laravel, API and service
+ * design, data modelling, infrastructure) still leads the skills and the
+ * bullets, but the headline paragraph gives the React and Next.js work and the
+ * product ownership equal billing.
  */
 
-export const professionalSummary = `Backend engineer with ${careerExperience}+ years designing and operating PHP/Laravel and Node.js services behind high-traffic products — REST API design, data modelling, caching, queue-backed workflows and the deployment around them. Track record building, delivering and maintaining SaaS products (Appsero, weMail) alongside multi-vendor marketplace and enterprise ERP systems: payment gateway integrations, subscription and booking domains, license and update delivery, telemetry ingest from installed WordPress sites, and the query, index and cache work that keeps them fast under concurrent load. Comfortable owning a feature through to production and support, with enough React and Next.js depth to design an API its consumers can actually use.`;
+export const professionalSummary = `Software Engineer with ${careerExperience}+ years building, shipping and maintaining SaaS products, multi-vendor marketplaces and enterprise ERP systems, working across the stack from database schema to user interface. Day to day that means PHP/Laravel and Node.js services with well-designed REST APIs, caching and queue-backed workflows, paired with React, Next.js and Vue frontends built on TypeScript. Has delivered SaaS products (Appsero, weMail) and revenue-critical domains — payment gateway integrations, subscriptions and booking, license and update delivery, and telemetry from installed WordPress sites — and kept them fast and reliable under concurrent load. Owns features from requirements through deployment and production support, reviews code and mentors junior developers, and cares about clean, maintainable systems that scale.`;
 
 export const skillRows: SkillRow[] = [
     {
         label: 'Languages & Frameworks',
-        value: 'PHP 8+ (Laravel), Node.js/Express, TypeScript/JavaScript (ES6+), WordPress plugin development, React.js, Next.js, Vue.js'
+        value: 'PHP 8+ (Laravel), Express.js, TypeScript/JavaScript (ES6+), WordPress plugin development, React.js, Next.js, Vue.js'
     },
     {
         label: 'API & Service Design',
@@ -48,11 +49,11 @@ export const skillRows: SkillRow[] = [
     },
     {
         label: 'Testing & Quality',
-        value: 'PHPUnit, Jest, Vitest, Playwright, typed contracts, code review, CI gates on lint, types and build'
+        value: 'PHPUnit, Vitest, Playwright, code review, CI gates on lint, types and build'
     },
     {
         label: 'Frontend',
-        value: 'React.js, Next.js (SSR/SSG/ISR), Redux Toolkit and RTK Query, Tailwind CSS, reusable component systems, Core Web Vitals'
+        value: 'React.js, Next.js (SSR/SSG/ISR), Redux Toolkit and RTK Query, Tailwind CSS, reusable component systems'
     },
     {
         label: 'Other',

@@ -83,7 +83,7 @@ export const siteKeywords: string[] = [
  * `Full Stack Software Engineer` in the root title, `Backend Engineer` on the
  * resume — which is three claims to reconcile rather than one to corroborate.
  */
-export const currentJobTitle: string = 'Full Stack Software Engineer';
+export const currentJobTitle: string = 'Software Engineer';
 export const currentWorkplace: string = 'weDevs';
 export const currentWorkplaceURL: string = 'https://wedevs.com';
 

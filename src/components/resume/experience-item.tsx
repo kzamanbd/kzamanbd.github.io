@@ -5,9 +5,9 @@ import type { ExperienceEntry } from '@/components/resume/types';
 export default function ExperienceItem({ entry }: { entry: ExperienceEntry }) {
     return (
         <div>
-            <div className="job-header mt-0">
-                <div className="font-bold">
-                    <h3>{entry.role}</h3>
+            <div className="job-header">
+                <div>
+                    <h3 className="job-title">{entry.role}</h3>
                     <div className="company-info">
                         <div className="contact-link">
                             {entry.companies.map((company) => (

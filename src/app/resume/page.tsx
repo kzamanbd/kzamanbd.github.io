@@ -70,17 +70,16 @@ const Resume = () => {
                 <div className="flex flex-col gap-4 p-10 print:p-0">
                     <ResumeContactHeader />
 
-                    <div className="about-me">
-                        <h5 className="section-heading">PROFESSIONAL SUMMARY</h5>
-                        <p className="text-justify text-sm">{professionalSummary}</p>
-                    </div>
+                    <ResumeSection title="PROFESSIONAL SUMMARY">
+                        <p className="text-justify text-xs">{professionalSummary}</p>
+                    </ResumeSection>
 
                     <ResumeSection title="TECHNICAL SKILLS">
                         <SkillsTable rows={skillRows} />
                     </ResumeSection>
 
                     <ResumeSection title="PROFESSIONAL EXPERIENCE">
-                        <div className="flex flex-col gap-4">
+                        <div className="flex flex-col gap-3">
                             {experience.map((entry) => (
                                 <ExperienceItem key={entry.role + entry.period} entry={entry} />
                             ))}

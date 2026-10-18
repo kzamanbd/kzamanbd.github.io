@@ -236,11 +236,15 @@
     .section-box {
         @apply bg-primary-100 flex h-10 items-center justify-center rounded-lg;
     }
+    /* The dot is pinned to the first line (`items-start` plus a top offset of
+       half the 1rem line box, less half the dot) rather than centred, so a
+       bullet that wraps keeps its marker beside its opening words, and
+       `shrink-0` stops a long line squeezing the dot. */
     .bullet-list {
-        @apply relative ml-2 space-y-1.5 text-left text-xs;
+        @apply relative space-y-1 text-left text-xs;
     }
     .bullet-list li {
-        @apply before:bg-primary-500 flex items-center before:mr-2 before:h-1 before:w-1 before:rounded-full;
+        @apply flex items-start before:mt-1.5 before:mr-2 before:h-1 before:w-1 before:shrink-0 before:rounded-full before:bg-gray-700;
     }
     .key-button {
         @apply relative inline-flex items-center justify-center overflow-hidden rounded-full bg-linear-to-br p-0.5 text-sm font-medium text-gray-900 focus:ring-4 focus:outline-none;
@@ -278,32 +282,42 @@
     .contact-link {
         @apply flex items-center gap-1;
     }
+    /* Resume type scale, one step per level: section heading (base), entry
+       title (sm), entry meta and all body copy (xs). Vertical rhythm: gap-4
+       between sections, gap-3 between entries, mb-2 under a section heading,
+       mb-1.5 under an entry header. */
     .section-heading {
-        @apply mb-1.5 font-bold uppercase;
+        @apply mb-2 text-base font-bold tracking-wide uppercase;
     }
     .timeline-container {
-        @apply relative ml-2 flex flex-col;
+        @apply relative ml-1.5 flex flex-col;
     }
     .timeline-container > div {
-        @apply border-primary-500 relative border-l pb-4 pl-4;
+        @apply border-primary-500 relative border-l pb-3 pl-4;
     }
     .timeline-container > div:last-child {
         @apply border-transparent pb-0;
     }
     .job-header {
-        @apply -mt-1 mb-2 flex justify-between;
+        @apply mb-1.5 flex justify-between gap-4;
+    }
+    .job-title {
+        @apply text-sm font-bold;
     }
     .company-info {
-        @apply flex gap-1 text-sm font-medium;
+        @apply flex gap-1 text-xs font-semibold;
     }
     .job-meta {
-        @apply text-right text-sm;
+        @apply shrink-0 text-right text-xs;
+    }
+    .job-meta address {
+        @apply text-gray-600;
     }
     .resume-list-item {
         @apply flex items-center;
     }
     .resume-link {
-        @apply hover:text-primary-500 text-sm font-semibold text-gray-800 underline;
+        @apply hover:text-primary-500 font-semibold text-gray-800 underline;
     }
     .radial-gradient {
         background: radial-gradient(

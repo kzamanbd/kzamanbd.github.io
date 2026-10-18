@@ -5,12 +5,12 @@ import type { EducationEntry } from '@/components/resume/types';
 export default function EducationItem({ entry }: { entry: EducationEntry }) {
     return (
         <TimelineIcon>
-            <div className="job-header mb-0">
-                <div className="font-bold">
-                    <h3>{entry.degree}</h3>
-                    <div className="text-sm font-medium">
-                        <span className="font-bold">{entry.institution}</span>
-                    </div>
+            {/* `-mt-1` lifts the title onto the timeline dot; `mb-0` because no
+                bullets follow. */}
+            <div className="job-header -mt-1 mb-0">
+                <div>
+                    <h3 className="job-title">{entry.degree}</h3>
+                    <div className="company-info">{entry.institution}</div>
                 </div>
                 <div className="job-meta">
                     <time>{entry.period}</time>

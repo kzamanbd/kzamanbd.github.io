@@ -1,4 +1,4 @@
-import { user } from '@/services/metadata';
+import { currentJobTitle, user } from '@/services/metadata';
 
 const socialLinks = Object.entries({
     GitHub: user.github,
@@ -11,12 +11,12 @@ const socialLinks = Object.entries({
 export default function ResumeContactHeader() {
     return (
         <div className="flex justify-between">
-            <div className="flex flex-col">
-                <h1 className="text-xl font-bold">MD KAMRUZZAMAN</h1>
-                <h2 className="text-lg font-semibold">Full Stack Software Engineer</h2>
-                <p className="mt-1 text-sm">PHP • Laravel • JavaScript • React • Vue • AWS</p>
+            <div className="flex flex-col gap-1 text-xs">
+                <h1 className="text-2xl font-bold tracking-wide">MD KAMRUZZAMAN</h1>
+                <h2 className="mb-1 text-base font-semibold">{currentJobTitle}</h2>
+                <p>PHP • Laravel • JavaScript • React • Vue • AWS</p>
 
-                <ul className="flex gap-2 text-sm">
+                <ul className="flex flex-wrap gap-x-3">
                     <li>
                         <a href={`tel:${user.phone}`} className="contact-link">
                             <span className="font-semibold">Phone:</span>
@@ -30,7 +30,7 @@ export default function ResumeContactHeader() {
                             rel="noreferrer"
                             className="contact-link">
                             <span className="font-semibold">Email:</span>
-                            <span className="underline"> {user.email}</span>
+                            <span className="underline">{user.email}</span>
                         </a>
                     </li>
                     <li className="contact-link">
@@ -39,7 +39,7 @@ export default function ResumeContactHeader() {
                     </li>
                 </ul>
 
-                <div className="mb-4 flex flex-wrap gap-x-2 text-sm">
+                <div className="flex flex-wrap gap-x-2">
                     {socialLinks.map(([name, url], index) => (
                         <div key={name} className="contact-link">
                             <a href={url} target="_blank" rel="noreferrer" className="resume-link">
