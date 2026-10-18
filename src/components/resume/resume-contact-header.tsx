@@ -1,5 +1,4 @@
-import { profileImage, user } from '@/services/metadata';
-import Image from 'next/image';
+import { user } from '@/services/metadata';
 
 const socialLinks = Object.entries({
     GitHub: user.github,
@@ -51,20 +50,6 @@ export default function ResumeContactHeader() {
                     ))}
                 </div>
             </div>
-
-            {/* The source file is 3422x3480, so `width`/`height` carry that real
-                ratio and the square box comes from CSS, cropped by object-cover.
-                `shrink-0` matters: as a flex item the portrait would otherwise be
-                squeezed a pixel or two by the contact column beside it, leaving a
-                rendered box that no longer matches the declared ratio, which is
-                exactly what Next warns about. */}
-            <Image
-                src={profileImage}
-                className="size-25 shrink-0 rounded-xl object-cover"
-                width={342}
-                height={348}
-                alt={user.name}
-            />
         </div>
     );
 }
