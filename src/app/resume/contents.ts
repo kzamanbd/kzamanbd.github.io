@@ -7,14 +7,12 @@ import type {
 import { careerExperience } from '@/services/metadata';
 
 /**
- * The resume as /resume serves it: the backend-focused cut.
+ * The resume as /resume serves it.
  *
  * PHP/Laravel, API and service design, data modelling and the infrastructure
  * work lead; the React and Next.js work is kept but sits underneath as
  * supporting evidence, so a backend reader is not asked to hunt for the server
- * side beneath a frontend headline. `contents.frontend.ts` carries the same
- * facts in the opposite order and exports the same names, so pointing the page
- * at a frontend role is one import line in `page.tsx` plus its title.
+ * side beneath a frontend headline.
  */
 
 export const professionalSummary = `Backend engineer with ${careerExperience}+ years designing and operating PHP/Laravel and Node.js services behind high-traffic products — REST API design, data modelling, caching, queue-backed workflows and the deployment around them. Track record building, delivering and maintaining SaaS products (Appsero, weMail) alongside multi-vendor marketplace and enterprise ERP systems: payment gateway integrations, subscription and booking domains, license and update delivery, telemetry ingest from installed WordPress sites, and the query, index and cache work that keeps them fast under concurrent load. Comfortable owning a feature through to production and support, with enough React and Next.js depth to design an API its consumers can actually use.`;
