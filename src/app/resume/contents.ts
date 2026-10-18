@@ -24,6 +24,10 @@ export const skillRows: SkillRow[] = [
         value: 'PHP 8+ (Laravel), Express.js, TypeScript/JavaScript (ES6+), WordPress plugin development, React.js, Next.js, Vue.js'
     },
     {
+        label: 'Frontend',
+        value: 'React.js, Next.js (SSR/SSG/ISR), HTML5, CSS3, responsive and mobile-first layouts, Redux Toolkit and RTK Query, Tailwind CSS, reusable component systems'
+    },
+    {
         label: 'API & Service Design',
         value: 'REST API design and versioning, service boundaries and microservices, event-driven and queue-backed workflows, job scheduling, webhooks and third-party integrations (Stripe, Twilio), public SDK design and backward compatibility, idempotent retries, failure and timeout handling'
     },
@@ -49,11 +53,7 @@ export const skillRows: SkillRow[] = [
     },
     {
         label: 'Testing & Quality',
-        value: 'PHPUnit, Vitest, Playwright, code review, CI gates on lint, types and build'
-    },
-    {
-        label: 'Frontend',
-        value: 'React.js, Next.js (SSR/SSG/ISR), Redux Toolkit and RTK Query, Tailwind CSS, reusable component systems'
+        value: 'PHPUnit, Jest, Vitest, Playwright, code review, CI gates on lint, types and build'
     },
     {
         label: 'Other',
@@ -73,7 +73,7 @@ export const experience: ExperienceEntry[] = [
             'Design Appsero license management and update delivery, plus a public PHP client SDK kept backward compatible across every version already in the wild.',
             'Build weMail, a SaaS email marketing platform, across backend and frontend — campaigns, automation workflows, subscriber lists and segmentation, an email builder, and delivery through Amazon SES and SendGrid.',
             'Cut response times and infrastructure cost under concurrent load through indexing, caching and N+1 elimination.',
-            'Deliver and maintain both SaaS products in production — release support and incident resolution across the stack — and ship the React/TypeScript dashboard screens those APIs serve.',
+            'Deliver and maintain both SaaS products in production — release support and incident resolution across the stack — and ship the responsive React/TypeScript dashboard screens those APIs serve.',
             'Guard critical flows with PHPUnit, Jest and Playwright in CI; review pull requests and mentor junior developers.'
         ]
     },
