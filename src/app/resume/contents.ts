@@ -151,7 +151,6 @@ export const education: EducationEntry[] = [
 export const additionalInformation: string[] = [
     'Comfortable with system design and scalable architecture, from schema and service boundaries through to deployment.',
     'Experience with real-time systems (WebSockets, Pusher, Socket.io) and third-party APIs (Stripe, Twilio).',
-    'Strong foundation in Data Structures and Algorithms.',
     'Domain depth in multi-vendor marketplaces, payment gateways, SaaS licensing and usage analytics, ERP systems and WordPress plugin development.',
     'Estimate and deliver to schedule, communicate risk early, and keep knowledge transfer part of the team routine.',
     'Write and maintain technical documentation; take part in sprint planning, standups and retrospectives.'
