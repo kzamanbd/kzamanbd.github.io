@@ -95,7 +95,7 @@ const Resume = () => {
                     </ResumeSection>
 
                     <ResumeSection title="EDUCATION">
-                        <div className="timeline-container">
+                        <div className="flex flex-col gap-3">
                             {education.map((entry) => (
                                 <EducationItem key={entry.degree} entry={entry} />
                             ))}

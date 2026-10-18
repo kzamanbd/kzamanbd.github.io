@@ -230,9 +230,6 @@
     .subtitle {
         @apply relative mb-1.5 bg-linear-to-r from-blue-600 to-cyan-600 bg-clip-text font-bold text-transparent uppercase print:text-gray-700;
     }
-    .timeline-icon {
-        @apply border-primary-200 absolute left-[-6.5px] flex h-3 w-3 items-center justify-center rounded-full border;
-    }
     .section-box {
         @apply bg-primary-100 flex h-10 items-center justify-center rounded-lg;
     }
@@ -288,15 +285,6 @@
        mb-1.5 under an entry header. */
     .section-heading {
         @apply mb-2 text-base font-bold tracking-wide uppercase;
-    }
-    .timeline-container {
-        @apply relative ml-1.5 flex flex-col;
-    }
-    .timeline-container > div {
-        @apply border-primary-500 relative border-l pb-3 pl-4;
-    }
-    .timeline-container > div:last-child {
-        @apply border-transparent pb-0;
     }
     .job-header {
         @apply mb-1.5 flex justify-between gap-4;
