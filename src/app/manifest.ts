@@ -32,15 +32,15 @@ export default function manifest(): MetadataRoute.Manifest {
         ],
         screenshots: [
             {
-                src: '/screenshot-640x320.png',
-                sizes: '640x320',
+                src: '/screenshot-2560x1280.png',
+                sizes: '2560x1280',
                 type: 'image/png',
                 form_factor: 'wide',
                 label: 'Kamruzzaman - Wide Screenshot'
             },
             {
-                src: '/screenshot-637x911.png',
-                sizes: '637x911',
+                src: '/screenshot-1274x1822.png',
+                sizes: '1274x1822',
                 type: 'image/png',
                 form_factor: 'narrow',
                 label: 'Kamruzzaman - Narrow Screenshot'
