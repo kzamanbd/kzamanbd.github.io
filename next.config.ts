@@ -36,6 +36,12 @@ const nextConfig: NextConfig = {
                 destination:
                     'https://docs.google.com/presentation/d/17qcOi17heBSjS3sK5sV7VRT-kY1Vs6nSSxstmvgSih4/edit?usp=sharing',
                 permanent: false
+            },
+            {
+                source: '/research-pdf',
+                destination:
+                    'https://drive.google.com/file/d/1e7jrUP1LH5QitY6L2eajwsaxSgmUmPIF/view?usp=sharing',
+                permanent: false
             }
         ];
     }
