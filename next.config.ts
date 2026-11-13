@@ -26,6 +26,18 @@ const nextConfig: NextConfig = {
     },
     experimental: {
         turbopackFileSystemCacheForDev: true
+    },
+    // Temporary (307) so the target can change later without browsers having
+    // cached a permanent redirect.
+    async redirects() {
+        return [
+            {
+                source: '/research',
+                destination:
+                    'https://docs.google.com/presentation/d/17qcOi17heBSjS3sK5sV7VRT-kY1Vs6nSSxstmvgSih4/edit?usp=sharing',
+                permanent: false
+            }
+        ];
     }
 };
 
