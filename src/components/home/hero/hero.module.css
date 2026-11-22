@@ -1,10 +1,11 @@
 /* The hero's one column.
 
    The hero is a wordmark: the name set as large as the viewport allows, the job
-   title hung off its right edge, and the profile marks centred under both. There
-   is no artwork to balance it against, so the type carries the whole screen and
-   the only measured values here are the ones that make display sizes read — the
-   negative tracking, the flat line-height, and the engineering grid behind it.
+   title hung off its right edge, a status pill above, and the actions and profile
+   marks centred under both. There is no artwork to balance it against, so the
+   type carries the whole screen and the only measured values here are the ones
+   that make display sizes read — the negative tracking, the flat line-height,
+   and the engineering grid behind it, which lights up under the cursor.
 
    Everything is a CSS Module rather than utilities because most of it is either
    a pseudo-element or a value with no utility equivalent (a ruled grid, a fluid
@@ -44,10 +45,102 @@
    and needs a touch more alpha to survive against a near-black field. */
 .section {
     --hero-grid: rgb(15 23 42 / 0.055);
+    --hero-grid-lit: rgb(79 70 229 / 0.4);
 }
 
 :global(html.dark) .section {
     --hero-grid: rgb(255 255 255 / 0.055);
+    --hero-grid-lit: rgb(165 180 252 / 0.6);
+}
+
+/* The lit grid. The same rules as `::before`, drawn again in an accent colour
+   and masked twice: once to a soft circle at the pointer (written to
+   --pointer-x / --pointer-y by the SpotlightGroup wrapping the hero), and once
+   by the same bottom fade, so the light can never outrun the grid it sits on.
+   `intersect` keeps only where both masks are opaque.
+
+   Fine pointers only, and off for reduced motion: the hook does not track on
+   either, so without this gate a touch tap's sticky :hover would show a frozen
+   circle at the default position. */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+    .section::after {
+        content: '';
+        position: absolute;
+        z-index: -1;
+        inset: 0;
+        background-image:
+            linear-gradient(to right, var(--hero-grid-lit) 1px, transparent 1px),
+            linear-gradient(to bottom, var(--hero-grid-lit) 1px, transparent 1px);
+        background-size: 64px 64px;
+        background-position: center;
+        -webkit-mask-image:
+            radial-gradient(
+                280px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+                #000,
+                transparent 70%
+            ),
+            linear-gradient(to bottom, #000 55%, transparent 100%);
+        -webkit-mask-composite: source-in;
+        mask-image:
+            radial-gradient(
+                280px circle at var(--pointer-x, 50%) var(--pointer-y, 50%),
+                #000,
+                transparent 70%
+            ),
+            linear-gradient(to bottom, #000 55%, transparent 100%);
+        mask-composite: intersect;
+        opacity: 0;
+        transition: opacity 400ms ease;
+        pointer-events: none;
+    }
+
+    .section:hover::after {
+        opacity: 1;
+    }
+}
+
+/* The status pill: a quiet translucent chip in the site's surface motif, with a
+   live dot that pulses outward to read as "current" rather than as a bullet. */
+.status {
+    border-color: color-mix(in oklab, var(--foreground) 12%, transparent);
+    background: color-mix(in oklab, var(--background) 60%, transparent);
+    color: color-mix(in oklab, var(--foreground) 70%, transparent);
+    backdrop-filter: blur(8px);
+    transition:
+        border-color 300ms ease,
+        color 300ms ease;
+}
+
+.status:hover,
+.status:focus-visible {
+    border-color: color-mix(in oklab, var(--foreground) 28%, transparent);
+    color: var(--foreground);
+}
+
+.statusDot {
+    position: relative;
+    width: 0.5rem;
+    height: 0.5rem;
+    flex-shrink: 0;
+    border-radius: 9999px;
+    background: var(--color-emerald-500);
+}
+
+.statusDot::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: inherit;
+    animation: status-ping 2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes status-ping {
+    75%,
+    100% {
+        transform: scale(2.4);
+        opacity: 0;
+    }
 }
 
 /* The name. It scales on `vw` rather than stepping at breakpoints because it is
@@ -86,6 +179,20 @@
     color: color-mix(in oklab, var(--foreground) 68%, transparent);
 }
 
+/* The lede. Body-size type would vanish under a 130px name, so it scales a step
+   with the viewport, but stays in the title's muted colour so the name is still
+   the first thing read and the lede the second. */
+.lede {
+    font-size: clamp(0.95rem, 0.8rem + 0.45vw, 1.2rem);
+    line-height: 1.65;
+    text-wrap: pretty;
+    color: #606b7b;
+}
+
+:global(html.dark) .lede {
+    color: color-mix(in oklab, var(--foreground) 68%, transparent);
+}
+
 /* The profile marks. Muted at rest so the row stays one quiet band under the
    name, and only the mark under the cursor comes up to full strength. */
 .mark {
@@ -99,7 +206,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-    .mark {
+    .mark,
+    .status {
         transition: none;
+    }
+
+    .statusDot::after {
+        animation: none;
     }
 }

@@ -26,9 +26,10 @@ export const pageItems: NavItemData[] = [
  * The resume sits apart from the other page links: it is the one thing a
  * recruiter opens the site for, so it renders as a filled call to action pinned
  * to the end of the bar (and the top of the mobile panel) rather than as another
- * item in the list. It used to be a second CTA in the hero as well; keeping it
- * only here means it is reachable from every page, not just the top of the home
- * page, and is never on screen twice.
+ * item in the list, which keeps it reachable from every page. The home hero
+ * also renders it as its primary button, reading the label and href from here
+ * so the two can never disagree. The navbar starts hidden over the hero, so the
+ * two only overlap once the idle reveal brings the bar in at the top.
  */
 export const resumeItem: NavItemData = { label: 'Resume', href: '/resume' };
 
