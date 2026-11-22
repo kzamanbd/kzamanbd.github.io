@@ -16,7 +16,7 @@ import { useContactForm } from '@/components/home/contact/hooks/use-contact-form
 import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
 import Textarea from '@/components/ui/textarea';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { ArrowRight } from 'lucide-react';
 import { useRef } from 'react';
 

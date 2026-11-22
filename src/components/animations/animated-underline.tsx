@@ -1,7 +1,7 @@
 'use client';
 
 import styles from '@/components/animations/animated-underline.module.css';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { useEffect, useRef, useState } from 'react';
 
 export type UnderlineVariant =

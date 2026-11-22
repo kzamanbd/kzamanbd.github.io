@@ -4,7 +4,7 @@ import Wordmark from '@/components/icons/wordmark';
 import BinaryReveal from '@/components/layout/footer/binary-reveal';
 import { usePointerSpotlight } from '@/components/layout/footer/hooks/use-pointer-spotlight';
 import styles from '@/components/layout/footer/signature-spotlight.module.css';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { useRef } from 'react';
 
 /**

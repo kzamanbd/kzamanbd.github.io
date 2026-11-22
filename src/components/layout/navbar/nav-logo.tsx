@@ -1,7 +1,7 @@
 'use client';
 
 import { lockScrollSync } from '@/components/layout/scroll-sync-lock';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import type { MouseEvent } from 'react';

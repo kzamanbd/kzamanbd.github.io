@@ -1,7 +1,7 @@
 'use client';
 
 import type { ShareTarget } from '@/components/articles/share-menu/types';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 
 interface ShareMenuItemProps {
     target: ShareTarget;

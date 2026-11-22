@@ -1,7 +1,7 @@
 'use client';
 
 import { fieldControlClassName } from '@/components/ui/field';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { X } from 'lucide-react';
 import { useId, useState, type KeyboardEvent } from 'react';
 

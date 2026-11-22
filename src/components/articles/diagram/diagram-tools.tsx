@@ -1,6 +1,6 @@
 'use client';
 
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { Check, Copy, Maximize2, Minus, Plus, RotateCcw, X } from 'lucide-react';
 import type { ReactNode } from 'react';
 

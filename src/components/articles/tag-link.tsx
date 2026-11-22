@@ -1,5 +1,5 @@
 import Tag from '@/components/common/tag';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import Link from 'next/link';
 
 /**

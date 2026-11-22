@@ -5,7 +5,7 @@ import { useCloseOnClickOutside } from '@/components/layout/hooks/use-close-on-c
 import { useCloseOnEscape } from '@/components/layout/hooks/use-close-on-escape';
 import { useCloseOnRouteChange } from '@/components/layout/hooks/use-close-on-route-change';
 import { useDisclosure } from '@/components/layout/hooks/use-disclosure';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { PenLine } from 'lucide-react';
 import Link from 'next/link';
 import { useRef } from 'react';

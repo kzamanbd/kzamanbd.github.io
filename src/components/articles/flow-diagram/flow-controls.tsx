@@ -2,7 +2,7 @@
 
 import type { FlowPlayback } from '@/components/articles/flow-diagram/use-flow-playback';
 import type { FlowScenario, FlowView } from '@/components/articles/flow-diagram/types';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { ChevronLeft, ChevronRight, Pause, Play, RotateCcw } from 'lucide-react';
 
 function ControlButton({

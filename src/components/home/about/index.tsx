@@ -7,7 +7,7 @@ import { bio, education, experience } from '@/components/home/about/contents';
 import SystemDiagram from '@/components/home/about/system-diagram';
 import TimelineList from '@/components/home/about/timeline-list';
 import styles from '@/components/common/glow-card.module.css';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import type { CSSProperties } from 'react';
 
 export default function AboutArea() {

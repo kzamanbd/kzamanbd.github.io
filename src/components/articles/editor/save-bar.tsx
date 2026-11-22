@@ -3,7 +3,7 @@
 import type { ArticleListItem, SaveState } from '@/components/articles/editor/types';
 import Button from '@/components/ui/button';
 import { fieldControlClassName } from '@/components/ui/field';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { BookOpen, Eye, EyeOff, FilePlus2, Save, Trash2 } from 'lucide-react';
 
 interface SaveBarProps {

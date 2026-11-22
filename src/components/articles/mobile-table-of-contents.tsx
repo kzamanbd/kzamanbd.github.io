@@ -4,7 +4,7 @@ import TocList from '@/components/articles/toc-list';
 import { useDisclosure } from '@/components/layout/hooks/use-disclosure';
 import { useScrollSpy } from '@/components/layout/hooks/use-scroll-spy';
 import type { TocItem } from '@/services/markdown';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { ChevronDown, List } from 'lucide-react';
 import { useMemo } from 'react';
 

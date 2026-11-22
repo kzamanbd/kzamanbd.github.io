@@ -4,7 +4,7 @@ import ScrollDownCue from '@/components/home/hero/scroll-down-cue';
 import { heroId } from '@/components/layout/navbar/contents';
 import { lato } from '@/config/hero-font';
 import { user } from '@/services/metadata';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 
 /**
  * The top of the home page: the name, set as large as the viewport allows, and

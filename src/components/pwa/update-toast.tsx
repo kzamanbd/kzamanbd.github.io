@@ -1,7 +1,7 @@
 'use client';
 
 import styles from '@/components/pwa/update-toast.module.css';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 
 interface UpdateToastProps {
     /** Apply the pending update (reloads onto the new build). */

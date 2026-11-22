@@ -1,5 +1,5 @@
 import type { TocItem } from '@/services/markdown';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 
 interface TocListProps {
     items: TocItem[];

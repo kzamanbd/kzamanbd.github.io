@@ -5,7 +5,7 @@ import type { Project } from '@/components/home/projects/contents';
 import styles from '@/components/home/projects/project-card.module.css';
 import ProjectLink from '@/components/home/projects/project-link';
 import { Github } from '@/components/icons';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { ExternalLink } from 'lucide-react';
 import type { CSSProperties } from 'react';
 

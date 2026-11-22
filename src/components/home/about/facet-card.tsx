@@ -2,7 +2,7 @@ import SpotlightBorder from '@/components/common/spotlight-border';
 import { spotlightSurfaceProps } from '@/components/common/spotlight-surface';
 import type { Facet } from '@/components/home/about/contents';
 import styles from '@/components/home/about/facet-card.module.css';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import type { CSSProperties } from 'react';
 
 interface FacetCardProps {

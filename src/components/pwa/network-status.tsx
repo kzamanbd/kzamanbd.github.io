@@ -2,7 +2,7 @@
 
 import Button from '@/components/ui/button';
 import ButtonLink from '@/components/ui/button-link';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { useEffect, useState } from 'react';
 
 /** How long the probe waits before retrying while still offline. */

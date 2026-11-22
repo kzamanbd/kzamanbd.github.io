@@ -1,5 +1,5 @@
 import type { ArticleSeries } from '@/services/posts';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import Link from 'next/link';
 
 /** The full reading order of a multi-part series, with the current part marked. */

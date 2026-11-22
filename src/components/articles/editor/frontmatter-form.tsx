@@ -7,7 +7,7 @@ import { fieldControlClassName } from '@/components/ui/field';
 import Input from '@/components/ui/input';
 import Textarea from '@/components/ui/textarea';
 import type { ArticleDifficulty, ArticleFrontmatter } from '@/services/article-schema';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 
 const labelClassName = 'text-foreground/70 text-xs font-semibold tracking-[0.14em] uppercase';
 

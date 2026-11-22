@@ -1,4 +1,4 @@
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 
 /**
  * The lit edge of a surface's cursor spotlight: a hairline ring that the

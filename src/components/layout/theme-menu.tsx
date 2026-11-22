@@ -5,7 +5,7 @@ import { useCloseOnEscape } from '@/components/layout/hooks/use-close-on-escape'
 import { useCloseOnRouteChange } from '@/components/layout/hooks/use-close-on-route-change';
 import { useDisclosure } from '@/components/layout/hooks/use-disclosure';
 import { systemThemeOption, themeOptions } from '@/components/layout/theme-options';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { useTheme } from 'next-themes';
 import { useEffect, useRef, useState } from 'react';
 

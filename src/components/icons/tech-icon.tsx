@@ -1,4 +1,4 @@
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import type { SVGProps } from 'react';
 // AWS is deliberately absent: simple-icons carries no Amazon mark (the brand
 // does not license it for redistribution), so the AWS tile uses a generic cloud

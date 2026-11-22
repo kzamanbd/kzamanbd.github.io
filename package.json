@@ -39,7 +39,7 @@
         "@serwist/next": "^9.5.15",
         "@serwist/window": "^9.5.15",
         "@xyflow/react": "^13.0.2",
-        "clsx": "^2.1.1",
+        "cn": "0.5.2",
         "firebase": "^13.4.0",
         "gemoji": "^8.1.0",
         "gray-matter": "^4.0.3",
@@ -55,8 +55,7 @@
         "react-dom": "19.3.1",
         "resend": "^6.39.0",
         "shiki": "^4.6.0",
-        "simple-icons": "^16.38.0",
-        "tailwind-merge": "^3.7.1"
+        "simple-icons": "^16.38.0"
     },
     "devDependencies": {
         "@eslint/js": "^10.0.1",

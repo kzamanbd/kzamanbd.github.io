@@ -4,7 +4,7 @@ import { DiagramToolbar, ZoomControls } from '@/components/articles/diagram/diag
 import { usePanZoom } from '@/components/articles/diagram/use-pan-zoom';
 import { useArticleImages } from '@/components/articles/hooks/use-article-images';
 import { useCloseOnEscape } from '@/components/layout/hooks/use-close-on-escape';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { useEffect, useRef } from 'react';
 

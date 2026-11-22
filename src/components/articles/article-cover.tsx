@@ -1,4 +1,4 @@
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import Image from 'next/image';
 
 interface ArticleCoverProps {

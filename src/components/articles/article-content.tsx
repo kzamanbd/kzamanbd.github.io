@@ -5,7 +5,7 @@ import CodeCopy from '@/components/articles/code-copy';
 import FlowDiagrams from '@/components/articles/flow-diagram';
 import MermaidRenderer from '@/components/articles/mermaid-renderer';
 import { useSpotlightSurfaces } from '@/components/common/hooks/use-spotlight-surfaces';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { useRef } from 'react';
 
 /**

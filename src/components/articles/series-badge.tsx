@@ -1,5 +1,5 @@
 import type { ArticleSeries } from '@/services/article-schema';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 
 /**
  * An article's place in a multi-part series, as it appears in a byline.

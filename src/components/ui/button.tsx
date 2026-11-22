@@ -1,5 +1,5 @@
 import Spinner from '@/components/ui/spinner';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import type { ButtonHTMLAttributes } from 'react';
 
 export type ButtonVariant = 'solid' | 'outline' | 'text';

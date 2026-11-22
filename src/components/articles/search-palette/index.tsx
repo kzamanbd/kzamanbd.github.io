@@ -2,7 +2,7 @@
 
 import { useSearchPalette } from '@/components/articles/search-palette/hooks/use-search-palette';
 import SearchResultItem from '@/components/articles/search-palette/search-result-item';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { Search } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState, type KeyboardEvent } from 'react';

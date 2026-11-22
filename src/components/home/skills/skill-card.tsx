@@ -3,7 +3,7 @@ import { spotlightSurfaceProps } from '@/components/common/spotlight-surface';
 import { skillBrandColor, type Skill } from '@/components/home/skills/contents';
 import styles from '@/components/home/skills/skill-card.module.css';
 import TechIcon from '@/components/icons/tech-icon';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import type { CSSProperties } from 'react';
 
 /**

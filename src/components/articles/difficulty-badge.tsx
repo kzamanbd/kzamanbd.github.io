@@ -1,5 +1,5 @@
 import type { ArticleDifficulty } from '@/services/posts';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 
 // One hue per level, so the badge is readable at a glance before the word is:
 // green for approachable, amber for some background assumed, rose for deep.

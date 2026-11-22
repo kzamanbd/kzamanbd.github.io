@@ -7,7 +7,7 @@ import { useDisclosure } from '@/components/layout/hooks/use-disclosure';
 import type { NavItemData } from '@/components/layout/navbar/contents';
 import MobileMenuButton from '@/components/layout/navbar/mobile-menu-button';
 import MobileMenuPanel from '@/components/layout/navbar/mobile-menu-panel';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { useRef } from 'react';
 
 interface MobileNavProps {

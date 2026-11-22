@@ -1,5 +1,5 @@
 import styles from '@/components/animations/shiny-text.module.css';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 
 interface ShinyTextProps {
     children: React.ReactNode;

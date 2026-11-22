@@ -1,7 +1,7 @@
 'use client';
 
 import { themeOptions } from '@/components/layout/theme-options';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { useTheme } from 'next-themes';
 import { useEffect, useState } from 'react';
 

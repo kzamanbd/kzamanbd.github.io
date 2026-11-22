@@ -18,7 +18,7 @@ import WritingGuide from '@/components/articles/editor/writing-guide';
 import { useDisclosure } from '@/components/layout/hooks/use-disclosure';
 import { slugifyHeading } from '@/services/markdown';
 import { fileSlug } from '@/utils/article-file';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { useState } from 'react';
 
 interface ArticleEditorProps {

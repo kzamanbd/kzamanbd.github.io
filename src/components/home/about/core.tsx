@@ -1,6 +1,6 @@
 import styles from '@/components/home/about/core.module.css';
 import { profileImage, user } from '@/services/metadata';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import Image from 'next/image';
 
 /**

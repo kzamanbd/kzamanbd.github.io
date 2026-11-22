@@ -1,4 +1,4 @@
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import type { SimpleIcon } from 'simple-icons';
 import type { SVGProps } from 'react';
 

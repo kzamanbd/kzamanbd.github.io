@@ -9,7 +9,7 @@ import {
 import { usePanZoom } from '@/components/articles/diagram/use-pan-zoom';
 import { useCopyToClipboard } from '@/components/articles/hooks/use-copy-to-clipboard';
 import { useCloseOnEscape } from '@/components/layout/hooks/use-close-on-escape';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { useEffect, useRef } from 'react';
 
 interface DiagramModalProps {

@@ -2,7 +2,7 @@ import SpotlightBorder from '@/components/common/spotlight-border';
 import { spotlightSurfaceProps } from '@/components/common/spotlight-surface';
 import SpotlightGroup from '@/components/common/spotlight-group';
 import styles from '@/components/common/glow-card.module.css';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 
 /** Key takeaways from the article's frontmatter, shown above the body. */
 export default function WhatYoullLearn({ items }: { items: string[] }) {

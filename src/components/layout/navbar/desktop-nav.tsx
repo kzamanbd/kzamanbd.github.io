@@ -2,7 +2,7 @@ import { resumeItem, type NavItemData } from '@/components/layout/navbar/content
 import NavItem from '@/components/layout/navbar/nav-item';
 import NavLogo from '@/components/layout/navbar/nav-logo';
 import StudioMenu from '@/components/layout/navbar/studio-menu';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 
 interface DesktopNavProps {
     visible: boolean;

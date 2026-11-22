@@ -4,7 +4,7 @@ import { SIGNATURE_PATH_D, SIGNATURE_VIEW_BOX } from '@/components/icons/wordmar
 import { generateBinaryField } from '@/components/layout/footer/binary-field';
 import { useBinaryFlicker } from '@/components/layout/footer/hooks/use-binary-flicker';
 import styles from '@/components/layout/footer/signature-spotlight.module.css';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { RefObject, useRef } from 'react';
 
 // An SVG of the signature path, inlined as a data URI, used to crop the digit

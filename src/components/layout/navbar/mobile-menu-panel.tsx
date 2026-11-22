@@ -2,7 +2,7 @@ import { resumeItem, type NavItemData } from '@/components/layout/navbar/content
 import NavItem from '@/components/layout/navbar/nav-item';
 import NavLogo from '@/components/layout/navbar/nav-logo';
 import ThemeToggle from '@/components/layout/theme-toggle';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 
 interface MobileMenuPanelProps {
     open: boolean;

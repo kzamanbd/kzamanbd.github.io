@@ -1,6 +1,6 @@
 import type { NavItemData } from '@/components/layout/navbar/contents';
 import { lockScrollSync } from '@/components/layout/scroll-sync-lock';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import Link from 'next/link';
 
 interface NavItemProps {

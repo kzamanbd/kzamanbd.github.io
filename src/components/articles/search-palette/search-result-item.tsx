@@ -2,7 +2,7 @@
 
 import HighlightedText from '@/components/articles/search-palette/highlighted-text';
 import type { ArticleSummary } from '@/services/posts';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { formatArticleDate } from '@/utils/format-date';
 import Link from 'next/link';
 

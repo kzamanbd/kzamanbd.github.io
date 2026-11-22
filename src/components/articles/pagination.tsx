@@ -1,4 +1,4 @@
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 

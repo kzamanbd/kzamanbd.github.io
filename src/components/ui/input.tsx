@@ -1,5 +1,5 @@
 import { FieldMessages, fieldControlClassName, RequiredMark } from '@/components/ui/field';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { useId, type ComponentPropsWithRef } from 'react';
 
 interface InputProps extends ComponentPropsWithRef<'input'> {

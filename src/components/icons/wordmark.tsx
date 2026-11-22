@@ -1,4 +1,4 @@
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 
 // The wordmark geometry, shared by this icon and by the footer's BinaryReveal
 // (which uses the same path as a letterform mask), so the two stay in lockstep

@@ -6,7 +6,7 @@ import {
     type GradientColors
 } from '@/components/backgrounds/page-gradient/provider';
 import { coverGradientForSlug } from '@/utils/article-cover';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { pageGradientColors } from '@/utils/page-gradient';
 import { usePathname } from 'next/navigation';
 import type { CSSProperties } from 'react';

@@ -6,7 +6,7 @@ import ArticleMeta from '@/components/articles/article-meta';
 import DifficultyBadge from '@/components/articles/difficulty-badge';
 import styles from '@/components/common/glow-card.module.css';
 import type { ArticleSummary } from '@/services/posts';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import Link from 'next/link';
 
 /**

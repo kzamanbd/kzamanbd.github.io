@@ -2,7 +2,7 @@
 
 import { toneStyle } from '@/components/articles/flow-diagram/tones';
 import type { FlowTone } from '@/components/articles/flow-diagram/types';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { Handle, Position, type NodeProps, type Node } from '@xyflow/react';
 
 export type FlowNodeData = {

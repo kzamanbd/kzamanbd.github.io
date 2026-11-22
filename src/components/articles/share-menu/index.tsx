@@ -6,7 +6,7 @@ import { useShareMenu } from '@/components/articles/share-menu/hooks/use-share-m
 import ShareMenuItem from '@/components/articles/share-menu/share-menu-item';
 import styles from '@/components/articles/share-menu/share-menu.module.css';
 import { accentStyle } from '@/utils/accent-style';
-import { cn } from '@/utils/cn';
+import { cn } from 'cn';
 import { Check, Copy, Share2 } from 'lucide-react';
 import { useRef } from 'react';
 
