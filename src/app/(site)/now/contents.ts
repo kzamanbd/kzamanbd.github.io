@@ -4,12 +4,16 @@ import { BookOpen, Briefcase, Code, Cpu, PenLine, Server, Target } from 'lucide-
 /**
  * Page-wise data for /now. Update `lastUpdated` whenever you revise this file:
  * the whole point of a "now" page is that the date is honest.
+ *
+ * It is an ISO date rather than display text because the same value feeds the
+ * page's "Last updated" badge and the sitemap's `lastmod`, so the two can never
+ * disagree.
  */
 export const nowMeta = {
     title: 'What I am doing now',
     subtitle:
         'A snapshot of what has my attention at the moment: the work, the side projects, and what I am trying to get better at.',
-    lastUpdated: 'August 2026'
+    lastUpdated: '2026-08-15'
 };
 
 export const nowQuote = 'Ship the boring thing that works, then make it fast.';

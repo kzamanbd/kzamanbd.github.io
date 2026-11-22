@@ -11,6 +11,7 @@ import {
     Star,
     Wrench
 } from 'lucide-react';
+import { pluginSlug } from '@/app/(site)/plugins/debug-suite/contents';
 import { Github } from '@/components/icons';
 import { siteURL } from '@/services/metadata';
 import { getWordPressPluginInfo } from '@/services/wordpress-plugin';
@@ -38,7 +39,6 @@ export const metadata: Metadata = {
 };
 
 /** Where the plugin actually lives, for the CTAs and the structured data. */
-const pluginSlug = 'debug-suite';
 const directoryURL = `https://wordpress.org/plugins/${pluginSlug}/`;
 const repositoryURL = 'https://github.com/kzamanbd/debug-suite';
 

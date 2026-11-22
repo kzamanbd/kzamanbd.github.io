@@ -14,6 +14,14 @@ export const metadata: Metadata = {
     openGraph: { title: 'Now', description, url: `${siteURL}/now`, type: 'profile' }
 };
 
+// A month is the right precision for a "now" page; the exact day lives in the
+// `dateTime` attribute and the sitemap.
+const lastUpdatedLabel = new Intl.DateTimeFormat('en-US', {
+    month: 'long',
+    year: 'numeric',
+    timeZone: 'UTC'
+}).format(new Date(`${nowMeta.lastUpdated}T00:00:00Z`));
+
 export default function NowPage() {
     return (
         <main className="container mx-auto px-4 pt-28 pb-20">
@@ -37,7 +45,9 @@ export default function NowPage() {
                     <span className="size-2 rounded-full bg-emerald-500" />
                 </span>
                 Last updated
-                <time className="text-foreground/85 font-semibold">{nowMeta.lastUpdated}</time>
+                <time dateTime={nowMeta.lastUpdated} className="text-foreground/85 font-semibold">
+                    {lastUpdatedLabel}
+                </time>
             </p>
 
             <div className="mt-12">

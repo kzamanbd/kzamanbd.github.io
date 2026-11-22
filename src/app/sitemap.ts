@@ -1,32 +1,42 @@
+import { homeLastModified } from '@/app/(site)/contents';
+import { nowMeta } from '@/app/(site)/now/contents';
+import { debugSuitePageLastModified, pluginSlug } from '@/app/(site)/plugins/debug-suite/contents';
+import { resumeLastModified } from '@/app/resume/contents';
 import { getAllArticles } from '@/services/posts';
+import { getWordPressPluginInfo } from '@/services/wordpress-plugin';
 import { parseArticleDate } from '@/utils/article-date';
 import type { MetadataRoute } from 'next';
 
 export const dynamic = 'force-static';
 
-/**
- * When each static route last really changed. Bump the entry when you edit the
- * page's content.
- *
- * These used to be `new Date()`, which claimed every static page changed on
- * every deploy. Google ignores `changefreq` and `priority` outright and starts
- * discounting `lastmod` once it is demonstrably wrong, so a wall-clock stamp
- * costs the signal rather than strengthening it — which is the same reasoning
- * already applied to the article entries below.
- */
-const staticRouteLastModified: Record<string, string> = {
-    // `git log -1 --date=short -- <the route's page and components>` is the
-    // check: a stamp older than the page's last real edit is the same lost
-    // signal as a stamp that moves on every deploy, in the other direction.
-    '/': '2026-09-20',
-    '/resume': '2026-09-20',
-    '/now': '2026-08-15',
-    '/plugins/debug-suite': '2026-08-15'
-};
+/** The later of two `YYYY-MM-DD` dates; ISO dates compare correctly as strings. */
+const laterDate = (a: string, b: string | null) => (b && b > a ? b : a);
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     const siteURL = process.env.NEXT_PUBLIC_SITE_URL || 'https://kzaman.com';
     const articles = getAllArticles();
+
+    // The plugin page renders live directory data, so a release is a real change
+    // to it. `last_updated` arrives as "2026-10-18 3:51pm GMT"; the date part is
+    // enough. If the API is unreachable, the page's own copy date still stands.
+    const pluginInfo = await getWordPressPluginInfo(pluginSlug);
+    const pluginReleased = pluginInfo?.lastUpdated?.slice(0, 10) ?? null;
+
+    /**
+     * When each static route last really changed. Each date lives next to the
+     * content it describes, so the stamp is bumped in the same commit as the
+     * edit; they used to sit in a map here and went stale twice.
+     *
+     * They are never `new Date()`. Google ignores `changefreq` and `priority`
+     * outright and starts discounting `lastmod` once it is demonstrably wrong,
+     * whether a stamp lags the page or moves on every deploy.
+     */
+    const staticRouteLastModified: Record<string, string> = {
+        '/': homeLastModified,
+        '/resume': resumeLastModified,
+        '/now': nowMeta.lastUpdated,
+        '/plugins/debug-suite': laterDate(debugSuitePageLastModified, pluginReleased)
+    };
 
     // The corpus only changes on deploy, so the index's lastModified is the most
     // recent article change rather than wall-clock time, which would otherwise
