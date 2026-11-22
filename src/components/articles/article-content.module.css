@@ -93,6 +93,10 @@
     border-radius: 0.35rem;
     padding: 0.15em 0.35em;
     font-size: 0.9em;
+    /* A long identifier or path has no break opportunities of its own, so on a
+       phone it pushed the page 47px wider than the viewport. Let it break
+       anywhere rather than scroll the whole page sideways. */
+    overflow-wrap: anywhere;
 }
 
 /* GitHub-style alerts from marked-alert. */
@@ -233,9 +237,18 @@
 }
 
 /* Mermaid diagrams. Until the client renders them this is the raw source, which
-   stays legible; afterwards it holds an SVG that should centre and scale. */
+   stays legible; afterwards it holds an SVG that should centre and scale.
+
+   Deliberately NOT a scroll container (no `overflow-x: auto`). When a scroll
+   container's contents are swapped, Chrome reports the shift in the container's
+   own coordinates, as if it sat at the top of the viewport. A diagram 10,000px
+   down the page then scored CLS 0.26 ("poor") on 8 of 9 articles, both in
+   Lighthouse and in the field data CrUX collects. The source wraps instead of
+   scrolling, and the rendered SVG already scales to the column. */
 .content :global(pre.mermaid) {
-    overflow-x: auto;
+    overflow: visible;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
     padding: 1rem;
     font-family: ui-monospace, monospace;
     font-size: 0.8rem;
