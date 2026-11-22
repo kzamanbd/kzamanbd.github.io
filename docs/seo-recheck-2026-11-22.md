@@ -146,11 +146,11 @@ An earlier draft of this report listed `/now` as stale. It was correct: its only
 
 The September fix was a manual bump, so it regressed as soon as the pages changed.
 
-_Fix:_ each date now lives next to the content it describes: `homeLastModified` in
-`src/app/(site)/contents.ts`, `resumeLastModified` in `src/app/resume/contents.ts`, and
-`nowMeta.lastUpdated` (now ISO, and also the source of the page's "Last updated" badge). The plugin
-page reports the later of its own copy date and the plugin's `last_updated` from the directory API,
-so a release updates it automatically. Built sitemap: `/` and `/resume` 2026-11-22, `/now`
+_Fix:_ every static route's date now lives in one file, `src/app/last-modified.ts`, alongside the
+rules for bumping it. Each route's content file points back to it. `/now`'s "Last updated" badge
+reads the same value, so the page and the sitemap cannot disagree. The plugin page reports the later
+of its own copy date and the plugin's `last_updated` from the directory API, so a release updates it
+automatically. Built sitemap: `/` and `/resume` 2026-11-22, `/now`
 2026-08-15, `/plugins/debug-suite` 2026-10-18.
 
 **N-08 — Meta descriptions run well past the snippet length. Low. ✅ Fixed.**

@@ -1,4 +1,5 @@
 import { nowMeta, nowQuote, nowSections } from '@/app/(site)/now/contents';
+import { lastModified } from '@/app/last-modified';
 import CatalogGrid from '@/components/common/catalog-grid';
 import SectionHeading from '@/components/common/section-heading';
 import Breadcrumb from '@/components/layout/breadcrumb';
@@ -20,7 +21,7 @@ const lastUpdatedLabel = new Intl.DateTimeFormat('en-US', {
     month: 'long',
     year: 'numeric',
     timeZone: 'UTC'
-}).format(new Date(`${nowMeta.lastUpdated}T00:00:00Z`));
+}).format(new Date(`${lastModified.now}T00:00:00Z`));
 
 export default function NowPage() {
     return (
@@ -45,7 +46,7 @@ export default function NowPage() {
                     <span className="size-2 rounded-full bg-emerald-500" />
                 </span>
                 Last updated
-                <time dateTime={nowMeta.lastUpdated} className="text-foreground/85 font-semibold">
+                <time dateTime={lastModified.now} className="text-foreground/85 font-semibold">
                     {lastUpdatedLabel}
                 </time>
             </p>

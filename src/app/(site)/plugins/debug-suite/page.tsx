@@ -11,9 +11,8 @@ import {
     Star,
     Wrench
 } from 'lucide-react';
-import { pluginSlug } from '@/app/(site)/plugins/debug-suite/contents';
 import { Github } from '@/components/icons';
-import { siteURL } from '@/services/metadata';
+import { debugSuitePluginSlug as pluginSlug, siteURL } from '@/services/metadata';
 import { getWordPressPluginInfo } from '@/services/wordpress-plugin';
 import { personId } from '@/utils/jsonLd';
 import type { Metadata } from 'next';

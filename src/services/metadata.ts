@@ -93,6 +93,10 @@ export const currentJobTitle: string = 'Software Engineer';
 export const currentWorkplace: string = 'weDevs';
 export const currentWorkplaceURL: string = 'https://wedevs.com';
 
+// plugins
+/** Debug Suite's wordpress.org slug, read by its landing page and the sitemap. */
+export const debugSuitePluginSlug: string = 'debug-suite';
+
 // education
 export const education: string = 'Bachelor of Science in Computer Science and Engineering';
 export const educationURL: string = 'https://www.seu.edu.bd/';

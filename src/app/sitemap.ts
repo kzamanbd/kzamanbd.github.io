@@ -1,7 +1,5 @@
-import { homeLastModified } from '@/app/(site)/contents';
-import { nowMeta } from '@/app/(site)/now/contents';
-import { debugSuitePageLastModified, pluginSlug } from '@/app/(site)/plugins/debug-suite/contents';
-import { resumeLastModified } from '@/app/resume/contents';
+import { lastModified } from '@/app/last-modified';
+import { debugSuitePluginSlug } from '@/services/metadata';
 import { getAllArticles } from '@/services/posts';
 import { getWordPressPluginInfo } from '@/services/wordpress-plugin';
 import { parseArticleDate } from '@/utils/article-date';
@@ -19,23 +17,16 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     // The plugin page renders live directory data, so a release is a real change
     // to it. `last_updated` arrives as "2026-10-18 3:51pm GMT"; the date part is
     // enough. If the API is unreachable, the page's own copy date still stands.
-    const pluginInfo = await getWordPressPluginInfo(pluginSlug);
+    const pluginInfo = await getWordPressPluginInfo(debugSuitePluginSlug);
     const pluginReleased = pluginInfo?.lastUpdated?.slice(0, 10) ?? null;
 
-    /**
-     * When each static route last really changed. Each date lives next to the
-     * content it describes, so the stamp is bumped in the same commit as the
-     * edit; they used to sit in a map here and went stale twice.
-     *
-     * They are never `new Date()`. Google ignores `changefreq` and `priority`
-     * outright and starts discounting `lastmod` once it is demonstrably wrong,
-     * whether a stamp lags the page or moves on every deploy.
-     */
+    // The dates themselves, and the rules for bumping them, live in
+    // `src/app/last-modified.ts`.
     const staticRouteLastModified: Record<string, string> = {
-        '/': homeLastModified,
-        '/resume': resumeLastModified,
-        '/now': nowMeta.lastUpdated,
-        '/plugins/debug-suite': laterDate(debugSuitePageLastModified, pluginReleased)
+        '/': lastModified.home,
+        '/resume': lastModified.resume,
+        '/now': lastModified.now,
+        '/plugins/debug-suite': laterDate(lastModified.debugSuite, pluginReleased)
     };
 
     // The corpus only changes on deploy, so the index's lastModified is the most

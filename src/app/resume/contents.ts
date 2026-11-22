@@ -14,14 +14,10 @@ import { careerExperience } from '@/services/metadata';
  * design, data modelling, infrastructure) still leads the skills and the
  * bullets, but the headline paragraph gives the React and Next.js work and the
  * product ownership equal billing.
+ *
+ * After any visible edit here or in `src/components/resume/`, bump `resume` in
+ * `src/app/last-modified.ts` so the sitemap's `lastmod` stays honest.
  */
-
-/**
- * When the resume's content last really changed, as the sitemap reports it.
- * Bump it in the same commit as any edit to this file or to
- * `src/components/resume/`; a stale stamp costs Google's trust in `lastmod`.
- */
-export const resumeLastModified = '2026-11-22';
 
 export const professionalSummary = `Software Engineer with ${careerExperience}+ years building, shipping and maintaining SaaS products, multi-vendor marketplaces and enterprise ERP systems, working across the stack from database schema to user interface. Day to day that means PHP/Laravel and Node.js services with well-designed REST APIs, caching and queue-backed workflows, paired with React, Next.js and Vue frontends built on TypeScript. Has delivered SaaS products (Appsero, weMail) and revenue-critical domains — payment gateway integrations, subscriptions and booking, license and update delivery, and telemetry from installed WordPress sites — and kept them fast and reliable under concurrent load. Owns features from requirements through deployment and production support, reviews code and mentors junior developers, and cares about clean, maintainable systems that scale.`;
 
