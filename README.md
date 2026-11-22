@@ -80,7 +80,8 @@ stripped from the URL (`/articles/<slug>`).
 ```yaml
 ---
 title: 'Your cron ran twice'
-description: 'One or two sentences for cards, feeds and meta tags.'
+description: 'One or two sentences, shown on the page, on cards and in feeds.'
+metaDescription: 'Optional ~155-character search snippet; falls back to description.'
 date: '2026-07-23' # required; the build fails on a missing or invalid date
 updated: '2026-08-01' # optional
 tags: [Scheduling, Reliability]

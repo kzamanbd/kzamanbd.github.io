@@ -31,7 +31,13 @@ export const careerExperience: number = Math.floor(
     (Date.now() - careerStart.getTime()) / (365.25 * 24 * 60 * 60 * 1000)
 );
 
-export const description = `${careerExperience}+ yrs of hands-on experience in PHP, Laravel, WordPress, Vue.js, React, and AWS. Skilled in building and optimizing web apps from architecture to deployment. Passionate about learning new tools and delivering scalable, high-quality solutions in team environments`;
+/**
+ * The site-wide meta description (home page `<meta>`, OpenGraph, Twitter, the
+ * `WebSite` schema and the feeds). Kept under ~155 characters, the length search
+ * engines show before truncating, with the role, the domain and the stack in the
+ * part that survives. It used to run to 263 characters and was cut mid-clause.
+ */
+export const description = `Software engineer at weDevs with ${careerExperience}+ years building multi-vendor marketplaces, payment gateways and WordPress plugins in Laravel and Next.js.`;
 
 /**
  * One canonical spelling of the name, everywhere. Search engines resolve a

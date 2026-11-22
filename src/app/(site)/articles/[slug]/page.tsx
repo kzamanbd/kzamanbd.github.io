@@ -47,12 +47,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
     return {
         title: article.title,
-        description: article.description,
+        // The short snippet, not the on-page summary: search engines cut the
+        // meta description at roughly 155 characters.
+        description: article.metaDescription,
         keywords: [...article.tags, ...article.tech],
         alternates: { canonical: url },
         openGraph: {
             title: article.title,
-            description: article.description,
+            description: article.metaDescription,
             url,
             type: 'article',
             publishedTime: article.date,
@@ -62,7 +64,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         twitter: {
             card: 'summary_large_image',
             title: article.title,
-            description: article.description
+            description: article.metaDescription
         }
     };
 }

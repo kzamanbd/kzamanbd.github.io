@@ -17,6 +17,13 @@ export interface ArticleSeries {
 export interface ArticleFrontmatter {
     title: string;
     description: string;
+    /**
+     * Optional search-snippet text, about 155 characters, for the `<meta>`,
+     * OpenGraph and Twitter descriptions. `description` stays the longer summary
+     * shown on the page, on cards and in feeds; search engines truncate anything
+     * past roughly 155 characters, so without this they would cut it mid-clause.
+     */
+    metaDescription?: string;
     /** `YYYY-MM-DD`. Required for a published article. */
     date: string;
     updated?: string;

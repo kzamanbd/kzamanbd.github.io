@@ -67,8 +67,22 @@ export default function FrontmatterForm({
                         rows={2}
                         required
                         value={frontmatter.description}
-                        placeholder="One or two sentences. Used as the card text and the SEO description."
+                        placeholder="One or two sentences. Shown on the page, on cards and in feeds."
                         onChange={(event) => onChange({ description: event.target.value })}
+                    />
+                </div>
+
+                <div className="lg:col-span-2">
+                    <Textarea
+                        label="Meta description"
+                        labelClassName={labelClassName}
+                        rows={2}
+                        value={frontmatter.metaDescription ?? ''}
+                        placeholder="Optional search snippet. Lead with the problem and the payoff."
+                        helperText={`${(frontmatter.metaDescription ?? '').length} / 155 characters. Search engines truncate past ~155; leave empty to reuse the description.`}
+                        onChange={(event) =>
+                            onChange({ metaDescription: event.target.value || undefined })
+                        }
                     />
                 </div>
 

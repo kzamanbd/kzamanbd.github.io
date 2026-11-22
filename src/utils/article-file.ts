@@ -45,9 +45,14 @@ function listBlock(field: string, items: string[]): string {
 export function serializeArticle(frontmatter: ArticleFrontmatter, body: string): string {
     const lines = [
         `title: ${quote(frontmatter.title)}`,
-        `description: ${quote(frontmatter.description)}`,
-        `date: ${quote(frontmatter.date)}`
+        `description: ${quote(frontmatter.description)}`
     ];
+
+    if (frontmatter.metaDescription) {
+        lines.push(`metaDescription: ${quote(frontmatter.metaDescription)}`);
+    }
+
+    lines.push(`date: ${quote(frontmatter.date)}`);
 
     if (frontmatter.updated) {
         lines.push(`updated: ${quote(frontmatter.updated)}`);
@@ -106,6 +111,10 @@ export function parseArticleFile(raw: string): {
         frontmatter: {
             title: typeof data.title === 'string' ? data.title : '',
             description: typeof data.description === 'string' ? data.description : '',
+            metaDescription:
+                typeof data.metaDescription === 'string' && data.metaDescription
+                    ? data.metaDescription
+                    : undefined,
             // `toDateString`, not `String()`: an unquoted YAML date reaches us
             // as a real `Date` from gray-matter, and stringifying that gives
             // "Tue Aug 04 2026 00:00:00 GMT+0000" — which the editor's date

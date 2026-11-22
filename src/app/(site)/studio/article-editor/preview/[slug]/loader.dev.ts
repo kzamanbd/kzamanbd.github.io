@@ -54,6 +54,7 @@ export async function loadArticleForPreview(slug: string): Promise<Article | nul
         slug: wanted,
         title: frontmatter.title || wanted,
         description: frontmatter.description ?? '',
+        metaDescription: frontmatter.metaDescription || frontmatter.description || '',
         // A draft often has no date yet. The published pipeline throws on that,
         // because an invalid date poisons the feeds; here it would only stop the
         // author seeing their own work, so today stands in.

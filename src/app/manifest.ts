@@ -1,3 +1,4 @@
+import { authorName, description } from '@/services/metadata';
 import type { MetadataRoute } from 'next';
 
 export const dynamic = 'force-static';
@@ -5,9 +6,12 @@ export const dynamic = 'force-static';
 
 export default function manifest(): MetadataRoute.Manifest {
     return {
-        name: 'Kamruzzaman',
+        // The canonical name and the site description, rather than a third
+        // spelling ("Kamruzzaman's Portfolio - Web Developer, Designer...") that
+        // disagreed with the schema and the page titles.
+        name: authorName,
         short_name: 'Zaman',
-        description: "Kamruzzaman's Portfolio - Web Developer, Designer, and Content Creator",
+        description,
         start_url: '/',
         display: 'standalone',
         background_color: '#ffffff',

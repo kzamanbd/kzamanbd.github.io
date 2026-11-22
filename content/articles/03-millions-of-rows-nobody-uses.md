@@ -1,6 +1,7 @@
 ---
 title: 'Millions of rows nobody uses: how to delete them without breaking production'
 description: 'You found a table with millions of rows and no obvious owner. This is the playbook: prove nothing reads it, make every step reversible before any step is destructive, then delete in batches your replicas can survive — with the MySQL and PostgreSQL queries that produce the evidence.'
+metaDescription: 'A safe playbook for deleting a table with millions of unused rows: prove nothing reads it, keep every step reversible, then delete in replica-safe batches.'
 date: '2026-03-09'
 cover: '/images/articles/safe-table-cleanup-cover.webp'
 tags:

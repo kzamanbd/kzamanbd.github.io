@@ -20,6 +20,7 @@ export const ARTICLES_PER_PAGE = 9;
 interface Frontmatter {
     title?: string;
     description?: string;
+    metaDescription?: string;
     date?: string;
     updated?: string;
     tags?: string[];
@@ -50,6 +51,8 @@ export interface ArticleSummary {
     slug: string;
     title: string;
     description: string;
+    /** Search-snippet text for meta tags; falls back to `description` when unset. */
+    metaDescription: string;
     date: string;
     updated?: string;
     tags: string[];
@@ -118,6 +121,7 @@ function toSummary(article: ParsedArticle): ArticleSummary {
         slug,
         title: data.title ?? slug,
         description: data.description ?? '',
+        metaDescription: data.metaDescription || data.description || '',
         date: toDateString(data.date),
         updated: data.updated ? toDateString(data.updated) : undefined,
         tags: Array.isArray(data.tags) ? data.tags : [],

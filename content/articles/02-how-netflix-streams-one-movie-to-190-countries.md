@@ -1,6 +1,7 @@
 ---
 title: 'One movie, 190 countries, zero buffering: how Netflix answers the interview'
 description: 'A system-design case study of the classic Netflix question — 120 million simultaneous streams, 4–15 Mbps each, no buffering. We do the napkin math, show why a data centre cannot serve it, and walk through Open Connect, adaptive bitrate and the control-plane / data-plane split that actually make it work.'
+metaDescription: 'How Netflix streams to 120 million screens without buffering: the napkin math, Open Connect, adaptive bitrate and the control-plane/data-plane split.'
 date: '2026-02-26'
 cover: '/images/articles/netflix-open-connect-cover.webp'
 tags:

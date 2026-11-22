@@ -1,13 +1,4 @@
-import {
-    Codeforces,
-    Facebook,
-    Github,
-    LeetCode,
-    Linkedin,
-    Medium,
-    X,
-    YouTube
-} from '@/components/icons';
+import { Codeforces, Facebook, Github, LeetCode, Linkedin, X, YouTube } from '@/components/icons';
 import { careerExperience, user } from '@/services/metadata';
 
 /**
@@ -40,13 +31,17 @@ export const heroHighlights: string[] = [
  *
  * The contact section shows the same list, from the same array, so a profile
  * added here can never be missing from one of them.
+ *
+ * Medium is deliberately absent: the profile has no posts, and linking an empty
+ * property from the most prominent spot on the home page nominates it as part of
+ * the entity (it is kept out of the `sameAs` schema for the same reason). Add it
+ * back here once it carries articles. `user.medium` stays in metadata for that.
  */
 export const socialLinks = [
     { href: user.github, Icon: Github, label: 'GitHub' },
     { href: user.linkedin, Icon: Linkedin, label: 'LinkedIn' },
     { href: user.leetcode, Icon: LeetCode, label: 'LeetCode' },
     { href: user.codeforces, Icon: Codeforces, label: 'Codeforces' },
-    { href: user.medium, Icon: Medium, label: 'Medium' },
     { href: user.twitter, Icon: X, label: 'X' },
     { href: user.youtube, Icon: YouTube, label: 'YouTube' },
     { href: user.facebook, Icon: Facebook, label: 'Facebook' }
