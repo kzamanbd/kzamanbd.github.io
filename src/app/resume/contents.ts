@@ -137,7 +137,7 @@ export const education: EducationEntry[] = [
     {
         degree: 'BSc in Computer Science & Engineering',
         institution: 'Southeast University',
-        period: '2022 - 2026',
+        period: '2021 - 2025',
         location: 'Dhaka, Bangladesh'
     },
     {
